@@ -9,7 +9,7 @@ exports.seed = function(knex, Promise) {
   }).then( () => {
     return knex('history').del()
   })
-  .then(function () {
+  .then( () => {
      // Inserts seed entries
       return knex('accounts').insert([
         {name: 'test1', email: 'test1.com', password:  'test'},
