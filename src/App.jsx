@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
+// import Timeline from './components/Timeline';
 import Dashboard from './components/Dashboard';
-import Pets from './components/Pets'
+// import Pets from './components/Pets'
 import './App.css';
 
 class App extends Component {
@@ -32,7 +33,7 @@ class App extends Component {
 
   render() {
     return (
-      < Dashboard/>
+      < Dashboard pet={this.state.pets}/>
     );
   }
 }
