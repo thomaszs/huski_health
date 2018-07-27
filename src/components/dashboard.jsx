@@ -4,6 +4,8 @@ class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id = "",
+            userName = this.props.currentUser.name,
             currentPet = this.props.pet
         }
     }
