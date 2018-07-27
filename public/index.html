@@ -1,40 +1,442 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<html>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<head>
+  <meta charset="utf-8">
+  <title>HuskiHealth &raquo; </title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+  <!-- Demo Dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js" type="text/javascript"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.3.2/holder.min.js" type="text/javascript"></script>
+  <script>
+    Holder.add_theme("white", {
+      background: "#fff",
+      foreground: "#a7a7a7",
+      size: 10
+    });
+  </script>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+  <!-- keen-analysis@1.2.2 -->
+  <script src="https://d26b395fwzu5fz.cloudfront.net/keen-analysis-1.2.2.js" type="text/javascript"></script>
+
+  <!-- keen-dataviz@1.1.3 -->
+  <link href="https://d26b395fwzu5fz.cloudfront.net/keen-dataviz-1.1.3.css" rel="stylesheet" />
+  <script src="https://d26b395fwzu5fz.cloudfront.net/keen-dataviz-1.1.3.js" type="text/javascript"></script>
+
+  <!-- Dashboard -->
+  <link rel="stylesheet" type="text/css" href="../src/css/keen-dashboards.css" />
+  <link rel="stylesheet" type="text/css" href="../src/css/keen-static.css" />
+  <link rel="stylesheet" type="text/css" href="../src/css/timeline.css" />
+
+</head>
+
+<body id="dashboard-body" class="keen-dashboard" style="padding-top: 80px;">
+<div id="root">
+  <div id="navbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: #003399">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="navbar-brand" href="./">HuskiHealth &raquo; </a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left">
+          <li>
+            <a href="https://keen.io">Home</a>
+          </li>
+         <!-- <li>
+            <a href="https://keen.io/team">Team</a>
+          </li>
+          <li>
+            <a href="https://github.com/keenlabs/dashboards/tree/gh-pages/layouts/hero-sidebar">Source</a>
+          </li>
+          <li>
+            <a href="https://groups.google.com/forum/#!forum/keen-io-devs">Community</a>
+          </li>
+          <li>
+            <a href="http://stackoverflow.com/questions/tagged/keen-io?sort=newest&pageSize=15">Technical Support</a>
+          </li>-->
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <!-- NEW ROW -->
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            <h2>Leonard</h2>
+            <img class="pet-img" style="width: 100%" src="https://toll-imageinaboxllc.netdna-ssl.com/wp-content/uploads/2014/06/Fat-Cat_400-2.jpg" />
+          </div>
+          <div class="chart-stage" id="chart-01">
+            <!-- This is where you need to put the id property in! -->
+            <!-- Get rid of that img tag! -->
+          </div>
+          <div class="chart-notes">
+            <table class="table table-dark" style="font-size: medium">
+              <tbody>
+                <tr>
+                  <td>Weight:</td>
+                  <td>22lbs</td>
+                </tr>
+                <tr>
+                  <td>Age:</td>
+                  <td>6</td>
+                </tr>
+                <tr>
+                  <td>Birthday:</td>
+                  <td>April 8, 2012</td>
+                </tr>
+                <tr>
+                  <td>Breed:</td>
+                  <td>Egyptian Mau</td>
+                </tr>
+                <tr>
+                  <td>Owners:</td>
+                  <td>Lexi</td>
+                </tr>
+                <tr>
+                  <td>Notes:</td>
+                  <td>On a weightloss plan - NO TREATS</td>
+                </tr>
+                <tr>
+                  <td>
+                    <button type="button" class="btn btn-primary">Edit Profile</button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-success">Add Activity</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+                <h2>Weight over Time</h2>
+              </div>
+              <div class="chart-stage" id="chart-02">
+                <img style="width: 100%" src="https://www.amcharts.com/wp-content/uploads/2013/12/demo_7398_light.jpg" />
+              </div>
+              <div class="chart-notes">
+                Notes about this chart
+              </div>
+            </div>
+            <!-- ACTIVITY TIMELINE -->
+            <h2>Activity Timeline</h2>
+            <div class="page">
+              <div class="page__demo">
+                <div class="main-container page__container">
+                  <div class="timeline">
+                    <div class="timeline__group">
+                      <span class="timeline__year">2013</span>
+                      <div class="timeline__box">
+                        <div class="timeline__date">
+                          <span class="timeline__day">2</span>
+                          <span class="timeline__month">Jun</span>
+                        </div>
+                        <div class="timeline__post">
+                          <div class="timeline__content">
+                            <p>Went for a 30 minute run but Leonard refused to jog so I ended up carrying him</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="timeline__box">
+                        <div class="timeline__date">
+                          <span class="timeline__day">4</span>
+                          <span class="timeline__month">Jun</span>
+                        </div>
+                        <div class="timeline__post">
+                          <div class="timeline__content">
+                            <p>Bought a new red laser and played with Leonard for an hour</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="timeline__group">
+                      <span class="timeline__year">2016</span>
+                      <div class="timeline__box">
+                        <div class="timeline__date">
+                          <span class="timeline__day">14</span>
+                          <span class="timeline__month">Jul</span>
+                        </div>
+                        <div class="timeline__post">
+                          <div class="timeline__content">
+                            <p>Went on a trip and Leonard was DEFINITELY overfed. Time to start a diet!</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="timeline__group">
+                      <span class="timeline__year">2018</span>
+                      <div class="timeline__box">
+                        <div class="timeline__date">
+                          <span class="timeline__day">28</span>
+                          <span class="timeline__month">Aug</span>
+                        </div>
+                        <div class="timeline__post">
+                          <div class="timeline__content">
+                            <p>Leonard is down 3 lbs!</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- CURRENT STATUS -->
+          <div class="col-sm-4">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+                <h2>Current Weight</h2>
+              </div>
+              <div class="chart-stage" id="chart-05">
+                <h1>22lbs</h1>
+              </div>
+              <div class="chart-notes">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+                <h2>Last Fed</h2>
+              </div>
+              <div class="chart-stage" id="chart-01">
+                <h1>8:00am</h1>
+              </div>
+              <div class="chart-notes">
+                July 25, 2018
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+                <h2>Last Active</h2>
+              </div>
+              <div class="chart-stage" id="chart-02">
+                <h1>July 23, 2018</h1>
+              </div>
+              <div class="chart-notes">
+                Notes about this chart
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+                <h2>Did you know...</h2>
+              </div>
+              <div class="chart-stage" id="chart-03">
+                <p>Frequencies of 20 to 50 Hertz are helpful in speeding the healing process of bone injuries. Cat's purr vibrations
+                  which range from 20 – 140 Hertz, can help heal soft tissue injuries to ligaments, tendons and muscles.
+                </p>
+              </div>
+              <div class="chart-notes">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END ROW -->
+  <div class="container-fluid">
+    <p class="small text-muted">Built with &#9829; by
+      <a href="https://keen.io">Keen IO</a>
+    </p>
+  </div>
+  <script>
+    var client = new Keen({
+      projectId: "5368fa5436bf5a5623000000",
+      readKey: "3f324dcb5636316d6865ab0ebbbbc725224c7f8f3e8899c7733439965d6d4a2c7f13bf7765458790bd50ec76b4361687f51cf626314585dc246bb51aeb455c0a1dd6ce77a993d9c953c5fc554d1d3530ca5d17bdc6d1333ef3d8146a990c79435bb2c7d936f259a22647a75407921056"
+    });
+    Keen.ready(function () {
+      // ----------------------------------------
+      // Sample one
+      // ----------------------------------------
+      var pageviews_timeline = new Keen.Query("count", {
+        eventCollection: "pageviews",
+        interval: "hourly",
+        groupBy: "user.device_info.browser.family",
+        timeframe: {
+          start: "2014-05-04T00:00:00.000Z",
+          end: "2014-05-05T00:00:00.000Z"
+        }
+      });
+      client.draw(pageviews_timeline, document.getElementById("chart-01"), {
+        chartType: "areachart",
+        title: false,
+        height: 250,
+        width: "auto",
+        chartOptions: {
+          chartArea: {
+            height: "85%",
+            left: "5%",
+            top: "5%",
+            width: "80%"
+          },
+          isStacked: true
+        }
+      });
+      // ----------------------------------------
+      //  End sample one
+      // ----------------------------------------
+      // ----------------------------------------
+      // Sample two
+      // ----------------------------------------
+      var pageviews_static = new Keen.Query("count", {
+        eventCollection: "pageviews",
+        groupBy: "user.device_info.browser.family",
+        timeframe: {
+          start: "2014-05-01T00:00:00.000Z",
+          end: "2014-05-05T00:00:00.000Z"
+        }
+      });
+      client.draw(pageviews_static, document.getElementById("chart-02"), {
+        chartType: "piechart",
+        title: false,
+        height: 250,
+        width: "auto",
+        chartOptions: {
+          chartArea: {
+            height: "85%",
+            left: "5%",
+            top: "5%",
+            width: "100%"
+          },
+          pieHole: .4
+        }
+      });
+      // ----------------------------------------
+      // End sample two
+      // ----------------------------------------
+      // ----------------------------------------
+      // Sample three
+      // ----------------------------------------
+      var impressions_timeline = new Keen.Query("count", {
+        eventCollection: "impressions",
+        groupBy: "ad.advertiser",
+        interval: "hourly",
+        timeframe: {
+          start: "2014-05-04T00:00:00.000Z",
+          end: "2014-05-05T00:00:00.000Z"
+        }
+      });
+      client.draw(impressions_timeline, document.getElementById("chart-03"), {
+        chartType: "columnchart",
+        title: false,
+        height: 250,
+        width: "auto",
+        chartOptions: {
+          chartArea: {
+            height: "75%",
+            left: "10%",
+            top: "5%",
+            width: "60%"
+          },
+          bar: {
+            groupWidth: "85%"
+          },
+          isStacked: true
+        }
+      });
+      // ----------------------------------------
+      // End sample three
+      // ----------------------------------------
+      // ----------------------------------------
+      // Sample four
+      // ----------------------------------------
+      var impressions_timeline_by_device = new Keen.Query("count", {
+        eventCollection: "impressions",
+        groupBy: "user.device_info.device.family",
+        interval: "hourly",
+        timeframe: {
+          start: "2014-05-04T00:00:00.000Z",
+          end: "2014-05-05T00:00:00.000Z"
+        }
+      });
+      client.draw(impressions_timeline_by_device, document.getElementById("chart-04"), {
+        chartType: "columnchart",
+        title: false,
+        height: 250,
+        width: "auto",
+        chartOptions: {
+          chartArea: {
+            height: "75%",
+            left: "10%",
+            top: "5%",
+            width: "60%"
+          },
+          bar: {
+            groupWidth: "85%"
+          },
+          isStacked: true
+        }
+      });
+      // ----------------------------------------
+      // End sample four
+      // ----------------------------------------
+      // ----------------------------------------
+      // Sample five
+      // ----------------------------------------
+      var impressions_timeline_by_country = new Keen.Query("count", {
+        eventCollection: "impressions",
+        groupBy: "user.geo_info.country",
+        interval: "hourly",
+        timeframe: {
+          start: "2014-05-04T00:00:00.000Z",
+          end: "2014-05-05T00:00:00.000Z"
+        }
+      });
+      client.draw(impressions_timeline_by_country, document.getElementById("chart-05"), {
+        chartType: "columnchart",
+        title: false,
+        height: 250,
+        width: "auto",
+        chartOptions: {
+          chartArea: {
+            height: "75%",
+            left: "10%",
+            top: "5%",
+            width: "60%"
+          },
+          bar: {
+            groupWidth: "85%"
+          },
+          isStacked: true
+        }
+      });
+      // ----------------------------------------
+      // End sample five
+      // ----------------------------------------
+    });
+  </script>
+  <!-- Project Analytics -->
+  <script type="text/javascript" src="../../assets/js/keen-analytics.js"></script>
+  </div>
+</body>
+
 </html>
