@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // import NavBar from 'NavBar.jsx';
-// import PetProfile from 'PetProfile.jsx';
+import PetProfile from './PetProfile.jsx';
 // import PetChart from 'PetChart.jsx';
 // import PetActivity from 'PetActivity.jsx';
 // import StatusBar from 'StatusBar.jsx';
@@ -24,7 +24,7 @@ class Dashboard extends Component {
 
               <div className="row">
                 <div className="col-sm-3">
-                    {/* < PetProfile pet={this.state.currentPet} /> */}
+                    <PetProfile />
                 </div>
               </div>
                 <div className="col-sm-9">

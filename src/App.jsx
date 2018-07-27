@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
-// import Dashboard from './components/Dashboard';
+import Dashboard from './components/Dashboard';
 import Pets from './components/Pets'
 import './App.css';
 
@@ -32,7 +32,7 @@ class App extends Component {
 
   render() {
     return (
-      < Pets pet={this.state.pets} user={this.state.currentUser}/>
+      < Dashboard/>
     );
   }
 }
