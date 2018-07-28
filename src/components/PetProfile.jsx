@@ -86,7 +86,7 @@ class PetProfile extends Component {
       <div className="chart-title">
         <div className="chart-wrapper">
           <div className="chart-title">
-            <h2>{this.props.pet[0].name}</h2>
+            <h2>{this.state.petName}</h2>
             <img className="pet-img" alt="petprofilepic" style={{ width: "100%" }} src="https://toll-imageinaboxllc.netdna-ssl.com/wp-content/uploads/2014/06/Fat-Cat_400-2.jpg" />
           </div>
           <div className="chart-stage" id="chart-01">
