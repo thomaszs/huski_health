@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({
 })); 
 
 app.post('/api/pets/1', (req, res) => {
-    database.editPet(req.body.newPetName)
+    database.editPet(req.body);
     //get the DAta from the POST
     //2. To save the data in the Database through Knex
     //3. use .then to send the response back 

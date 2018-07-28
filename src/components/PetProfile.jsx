@@ -7,7 +7,8 @@ class PetProfile extends Component {
     this.state = {
       pet: this.props.pet,
       petName: this.props.pet[0].name, 
-      petWeight: this.props.pet[0].weight, 
+      petWeight: this.props.pet[0].weight,
+      petBreed: this.props.pet[0].breed, 
       isEditing: false, 
       test: 'hello,world',
      };
@@ -16,6 +17,7 @@ class PetProfile extends Component {
     this.savePetProfile = this.savePetProfile.bind(this);
     this.onChangePetName = this.onChangePetName.bind(this);
     this.onChangePetWeight = this.onChangePetWeight.bind(this);
+    this.onChangePetBreed = this.onChangePetBreed.bind(this);
    
   }
 
@@ -56,6 +58,9 @@ class PetProfile extends Component {
     this.setState({ petWeight: event.target.value })
   }
  
+  onChangePetBreed(event) { 
+    this.setState({ petBreed: event.target.value })
+  }
   
   render() {
     if (this.state.isEditing) {
@@ -65,11 +70,10 @@ class PetProfile extends Component {
       {/*Consider creating a EditPetProfile.jsx component. Will need to make ajax post request to the server to save new pet information*/}
           <form>
             Name: <input type="text" name="name" placeholder={this.state.pet[0].name} defaultValue={this.state.petName} onChange={this.onChangePetName}/><br/>
-            Weight:<input type="text" name="weight" onChange={this.onChangePetWeight}/><br/>
+            Weight:<input type="text" name="weight" defaultValue={this.state.petWeight} onChange={this.onChangePetWeight}/><br/>
             Age:<input type="text" name="age"/><br/>
             Birthday:<input type="text" name="birthday"/><br/>
-            Breed:<input type="text" name="breed"/><br/>
-            Owners:<input type="text" name="owners"/><br/>
+            Breed:<input type="text" name="breed" defaultValue={this.state.petBreed} onChange={this.onChangePetBreed}/><br/>
             Notes: <input type="text" name="notes"/><br/>
             <button type="button" className="btn btn-primary" onClick={this.savePetProfile}>Save</button>
           </form>
@@ -91,7 +95,7 @@ class PetProfile extends Component {
               <tbody>
                 <tr>
                   <td>Weight:</td>
-                  <td>{this.props.pet[0].weight}</td>
+                  <td>{this.state.petWeight}</td>
                 </tr>
                 <tr>
                   <td>Age:</td>
@@ -103,7 +107,7 @@ class PetProfile extends Component {
                 </tr>
                 <tr>
                   <td>Breed:</td>
-                  <td>{this.props.pet[0].breed}</td>
+                  <td>{this.state.petBreed}</td>
                 </tr>
                 <tr>
                   <td>Owners:</td>
