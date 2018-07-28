@@ -1,0 +1,23 @@
+import React, { Component } from 'react';
+
+class PetChart extends Component {
+    render(){
+        return(
+            <div>
+            <div className="chart-wrapper">
+              <div className="chart-title">
+                <h2>Weight over Time</h2>
+              </div>
+              <div className="chart-stage" id="chart-02">
+                <img style={{width: "100%"}} src="https://www.amcharts.com/wp-content/uploads/2013/12/demo_7398_light.jpg" />
+              </div>
+              <div className="chart-notes">
+                Notes about this chart
+              </div>
+            </div>
+            </div>
+        )
+    }
+}
+
+export default PetChart
