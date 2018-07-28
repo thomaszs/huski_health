@@ -4,8 +4,7 @@ import NavBar from './NavBar.jsx';
 import PetProfile from './PetProfile.jsx';
 import Timeline from './Timeline.jsx';
 import PetChart from './PetChart.jsx';
-// import PetActivity from 'PetActivity.jsx';
-// import StatusBar from './StatusBar.jsx';
+import StatusBar from './StatusBar.jsx';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -16,7 +15,6 @@ class Dashboard extends Component {
             <div>
                 < NavBar />
                 <div className="container-fluid">
-
                     <div className="row">
                         <div className="col-sm-3">
                             <PetProfile pet={this.props.pet} />
@@ -25,11 +23,8 @@ class Dashboard extends Component {
                             <div className="col-sm-8">
                                 < PetChart pet={this.props.pet} />
                                 < Timeline pet={this.props.pet} />
-
                             </div>
-                            <div className="col-sm-4">
-                                {/* < StatusBar pet={this.props.pet}/>  */}
-                            </div>
+                                < StatusBar pet={this.props.pet}/> 
                         </div>
                     </div>
                 </div>

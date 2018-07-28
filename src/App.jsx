@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-// import Timeline from './components/Timeline';
+
 import Dashboard from './components/Dashboard';
-// import Pets from './components/Pets'
-import './App.css';
-// import Navbar from './components/Navbar'
-import StatusBar from './components/StatusBar'
-import NewPetForm from './components/NewPetForm'
+
+import './css/keen-static.css';
+import './css/timeline.css';
+import './css/keen-dashboards.css';
+
+
+
 
 class App extends Component {
   constructor(props) {
