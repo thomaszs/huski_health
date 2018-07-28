@@ -50,6 +50,7 @@ class PetProfile extends Component {
     if (this.state.isEditing) {
       return (
         <div>
+          <div id="profile">
           <img className="pet-img" style={{ width: "100%" }} src="https://toll-imageinaboxllc.netdna-ssl.com/wp-content/uploads/2014/06/Fat-Cat_400-2.jpg" />
       {/*Consider creating a EditPetProfile.jsx component. Will need to make ajax post request to the server to save new pet information*/}
           <form>
@@ -62,6 +63,7 @@ class PetProfile extends Component {
             Notes: <input type="text" name="notes"/><br/>
             <button type="button" className="btn btn-primary" onClick={this.savePetProfile}>Save</button>
           </form>
+          </div>
         </div>
       )
     }

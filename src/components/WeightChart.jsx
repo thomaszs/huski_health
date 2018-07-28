@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
-import ReactDOM from 'react-dom';
+// import { render } from 'react-dom';
+// import ReactDOM from 'react-dom';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack } from 'victory';
 
 const data2012 = [
@@ -35,7 +35,7 @@ class WeightChart extends React.Component {
   render() {
     return (
       <div>
-        <h1>Victory Tutorial</h1>
+        <h1>Weight Over Time</h1>
         <VictoryChart
           domainPadding={10}
           theme={VictoryTheme.material}
