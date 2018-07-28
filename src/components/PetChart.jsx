@@ -6,9 +6,6 @@ class PetChart extends Component {
         return(
             <div>
             <div className="chart-wrapper">
-              <div className="chart-title">
-                <h2>Weight over Time</h2>
-              </div>
               <div className="chart-stage" id="chart-02">
                 
                 <WeightChart />
