@@ -27,10 +27,10 @@ class PetProfile extends Component {
 
   savePetProfile(event){
     event.preventDefault(); 
-    $.ajax('http://localhost:8080/api/login', {
+    $.ajax('http://localhost:8080/api/pets/1', {
       method: 'POST',
       data: {
-        newPetName: 'newPetName'
+        newPetName: this.state.petName
       }, 
       success: function (result) {
         console.log("Yes, it worked");
