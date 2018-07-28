@@ -7,12 +7,15 @@ class PetProfile extends Component {
     this.state = {
       pet: this.props.pet,
       petName: this.props.pet[0].name, 
+      petWeight: this.props.pet[0].weight, 
       isEditing: false, 
       test: 'hello,world',
      };
     this.toggleEdit = this.toggleEdit.bind(this);
     this.editPetProfile = this.editPetProfile.bind(this);
     this.savePetProfile = this.savePetProfile.bind(this);
+    this.onChangePetName = this.onChangePetName.bind(this);
+    this.onChangePetWeight = this.onChangePetWeight.bind(this);
    
   }
 
@@ -27,10 +30,11 @@ class PetProfile extends Component {
 
   savePetProfile(event){
     event.preventDefault(); 
-    $.ajax('http://localhost:8080/api/login', {
+    $.ajax('http://localhost:8080/api/pets/1', {
       method: 'POST',
       data: {
-        newPetName: 'newPetName'
+        newPetName: this.state.petName, 
+        newPetWeight: this.state.petWeight,
       }, 
       success: function (result) {
         console.log("Yes, it worked");
@@ -43,7 +47,13 @@ class PetProfile extends Component {
     console.log(event)
   }
 
- 
+  onChangePetName(event) { 
+    this.setState({ petName: event.target.value })
+  }
+
+  onChangePetWeight(event) { 
+    this.setState({ petWeight: event.target.value })
+  }
  
   
   render() {
@@ -53,8 +63,8 @@ class PetProfile extends Component {
           <img className="pet-img" style={{ width: "100%" }} src="https://toll-imageinaboxllc.netdna-ssl.com/wp-content/uploads/2014/06/Fat-Cat_400-2.jpg" />
       {/*Consider creating a EditPetProfile.jsx component. Will need to make ajax post request to the server to save new pet information*/}
           <form>
-            Name: <input type="text" name="name" placeholder={this.state.pet[0].name}/><br/>
-            Weight:<input type="text" name="weight"/><br/>
+            Name: <input type="text" name="name" placeholder={this.state.pet[0].name} onChange={this.onChangePetName}/><br/>
+            Weight:<input type="text" name="weight" onChange={this.onChangePetWeight}/><br/>
             Age:<input type="text" name="age"/><br/>
             Birthday:<input type="text" name="birthday"/><br/>
             Breed:<input type="text" name="breed"/><br/>
