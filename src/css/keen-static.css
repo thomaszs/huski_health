@@ -8,18 +8,18 @@ h1, h2, h3 {
 }
 h1 {
   font-size: 32px;
-  font-weight: 100;
+  /* font-weight: 100; */
   letter-spacing: .02em;
   line-height: 48px;
   margin: 12px 0;
 }
 h2 {
-  color: #2a333c;
-  font-weight: 200;
-  font-size: 21px;
+  color: #fff;
+  /* font-weight: 200;
+  font-size: 21px; */
 }
 h3 {
-  color: rgb(84, 102, 120);
+  color: #fff;
   font-size: 21px;
   font-weight: 500;
   letter-spacing: -0.28px;
@@ -47,6 +47,7 @@ h3 {
 
 .navbar-nav {
   margin: 5px 0 0;
+  background-color: #003399;
 }
 
 a .navbar-brand {
@@ -81,7 +82,6 @@ a .navbar-brand {
 
 .masthead {
   background-color: #00afd7;
-  background-image: url("../img/bg-bars.png");
   background-position: 0 -290px;
   background-repeat: repeat-x;
   color: #fff;
@@ -157,7 +157,7 @@ img .pet-img {
 
 .love {
   border-top: 1px solid #d7d7d7;
-  color: #546678;
+  color: #fff;
   margin: 24px 0 0;
   padding: 15px 0;
   text-align: center;

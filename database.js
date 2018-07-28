@@ -29,7 +29,11 @@ module.exports = function knexData(knex) {
         knex('pets').where({
           'id': 1
         }).update({
+<<<<<<< HEAD
           'name': data.newPetName,
+=======
+          'name': data.newPetName, 
+>>>>>>> 3d48ca2200b47a02a94f5a5143b899b39f033e96
           'weight': data.newPetWeight
         }).then(console.log("CHANGED"))
       },
@@ -40,7 +44,7 @@ module.exports = function knexData(knex) {
           'species': data.species[0],
           'gender': data.gender[0],
           'date_of_birth': data.birthday,
-          'notes': data.weight,
+          'weight': data.weight,
           'breed': data.breed,
           'img': data.image
         }).then(console.log("CHANGED"))
