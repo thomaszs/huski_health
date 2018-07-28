@@ -6,7 +6,8 @@ class PetProfile extends Component {
     super(props);
     this.state = {
       pet: this.props.pet,
-      petName: this.props.pet[0].name, 
+      petName: this.props.pet[0].name,
+      petWeight: this.props.pet[0].weight, 
       isEditing: false, 
       test: 'hello,world',
      };
@@ -30,7 +31,8 @@ class PetProfile extends Component {
     $.ajax('http://localhost:8080/api/pets/1', {
       method: 'POST',
       data: {
-        newPetName: this.state.petName
+        newPetName: this.state.petName,
+        newPetWeight: this.state.petWeight
       }, 
       success: function (result) {
         console.log("Yes, it worked");
