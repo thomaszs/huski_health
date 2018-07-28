@@ -29,11 +29,7 @@ module.exports = function knexData(knex) {
         knex('pets').where({
           'id': 1
         }).update({
-<<<<<<< HEAD
-          'name': data.newPetName,
-=======
           'name': data.newPetName, 
->>>>>>> 3d48ca2200b47a02a94f5a5143b899b39f033e96
           'weight': data.newPetWeight
         }).then(console.log("CHANGED"))
       },

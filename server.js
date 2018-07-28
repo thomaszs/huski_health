@@ -22,13 +22,9 @@ app.use(bodyParser.urlencoded({
 })); 
 
 app.post('/api/pets/1', (req, res) => {
-<<<<<<< HEAD
     let data = req.body
    database.editPet(data)
     return res.json(data)
-=======
-    database.editPet(req.body);
->>>>>>> 3d48ca2200b47a02a94f5a5143b899b39f033e96
     //get the DAta from the POST
     //2. To save the data in the Database through Knex
     //3. use .then to send the response back 
