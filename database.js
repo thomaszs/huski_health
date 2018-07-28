@@ -1,34 +1,28 @@
 module.exports = function knexData(knex) {
     return {
   
-      getAllPosts: function () {
-        return knex('posts')
+      getAccount: function (email, password) {
+        return knex('accounts').where({email: email, password: password})
       },
   
-      insertPost: function (content, category) {
-        knex('posts').insert([{
-            content: content,
-            category: category
-          }])
-          .asCallback(function (err, result) {
-            if (err) {
-              return console.log(err)
-            } else {
-              return
-            }
-          });
+      insertAccount: function (name, email, password) {
+        knex('accounts').insert([{
+            name: name,
+            email: email,
+            password: password
+          }]).then()
       },
   
-      modifyPost: function (data) {
-        knex('posts').where({
+      modifyHistory: function (data) {
+        knex('history').where({
           'id': data.id
         }).update({
           'category': data.newCategory
         }).then()
       },
   
-      deletePost: function (id) {
-        knex('posts').where({
+      deleteHistory: function (id) {
+        knex('history').where({
           'id': id.id
         }).del().then();
       }

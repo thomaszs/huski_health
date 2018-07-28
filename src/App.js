@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-const knex = require("knex")(knexConfig[ENV]);
-const database = require("./database")(knex);
+
 
 const BasicExample = () => (
   <Router>
@@ -15,6 +14,9 @@ const BasicExample = () => (
         </li>
         <li>
           <Link to="/topics">Topics</Link>
+        </li>
+        <li>
+          <Link to="/api/login">Login</Link>
         </li>
       </ul>
 
@@ -30,6 +32,7 @@ const BasicExample = () => (
 const Home = () => (
   <div>
     <h2>Home</h2>
+    {/* <h1>{database.getAccount('test1@test1.com', 'test').email}</h1> */}
   </div>
 );
 
