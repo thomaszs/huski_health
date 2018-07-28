@@ -36,7 +36,8 @@ class App extends Component {
 
   render() {
     return (
-      < Dashboard pet={this.state.pets}/>
+      // < Dashboard pet={this.state.pets}/>
+      < NewPetForm />
     );
   }
 }
