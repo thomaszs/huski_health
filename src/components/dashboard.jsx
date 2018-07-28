@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-// import NavBar from 'NavBar.jsx';
+import NavBar from './NavBar.jsx';
 import PetProfile from './PetProfile.jsx';
 // import PetChart from 'PetChart.jsx';
 // import PetActivity from 'PetActivity.jsx';
-// import StatusBar from 'StatusBar.jsx';
+import StatusBar from './StatusBar.jsx';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -19,7 +19,7 @@ class Dashboard extends Component {
     render() {
         return(
             <div>
-                {/* < NavBar /> */}
+                < NavBar />
             <div className="container-fluid">
 
               <div className="row">
@@ -35,18 +35,10 @@ class Dashboard extends Component {
 
                     </div>
 
-                    <div className="col-sm-4">
-                          {/* < CurrentWeight weight={this.state.currentPet}/>  */}
-                    </div>
-                    <div className="col-sm-4">
-                          {/* < LastFed lastFed={this.state.currentPet}/> */}
-                    </div>
-                    <div className="col-sm-4">
-                          {/* < LastActive lastActive={this.state.currentPet}/> */}
-                    </div>
-                    <div className="col-sm-4">
-                          {/* < DidYouKnow /> */}
-                    </div>
+                    
+                          < StatusBar /> 
+                    
+
                   </div>
                 </div>
               </div>

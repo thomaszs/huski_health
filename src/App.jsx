@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import Dashboard from './components/Dashboard';
 import Pets from './components/Pets'
 import './App.css';
+// import Navbar from './components/Navbar'
+import StatusBar from './components/StatusBar'
+import NewPetForm from './components/NewPetForm'
 
 class App extends Component {
   constructor(props) {
@@ -36,5 +39,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
