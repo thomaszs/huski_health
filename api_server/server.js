@@ -44,10 +44,10 @@ app.get('/api/login', (req, res) => {
 //    }
 })
 
-// app.post('/pet', (req, res) => {
-//     console.log("GOTTEN PET")
-//     database.getPet() 
-//  })
+app.post('/api/pets', (req, res) => {
+    console.log("GOTTEN PET")
+    console.log(req)
+ })
 
 app.listen(PORT, () => {
  console.log("Example app listening on port " + PORT);
