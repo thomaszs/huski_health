@@ -32,6 +32,18 @@ module.exports = function knexData(knex) {
           'name': data
         }).then(console.log("CHANGED"))
       },
+
+      newPet: function (data) {
+        knex('pets').insert({
+          'name': data.petName,
+          'species': data.species[0],
+          'gender': data.gender[0],
+          'date_of_birth': data.birthday,
+          'notes': data.weight,
+          'breed': data.breed,
+          'img': data.image
+        }).then(console.log("CHANGED"))
+      },
   
       deleteHistory: function (id) {
         knex('history').where({

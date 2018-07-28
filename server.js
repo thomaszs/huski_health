@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({
     extended:true
 })); 
 
-app.post('/api/pets/1', async (req, res) => {
+app.post('/api/pets/1', (req, res) => {
     database.editPet(req.body.newPetName)
     //get the DAta from the POST
     //2. To save the data in the Database through Knex
@@ -35,8 +35,8 @@ app.post('/api/pets/1', async (req, res) => {
 //    }
 })
 
-app.post('/api/pets', async (req, res) => {
-    // database.newPet(req.body.n
+app.post('/api/pets', (req, res) => {
+    database.newPet(req.body.newData)
 })
 
 app.get('/api/login', (req, res) => {

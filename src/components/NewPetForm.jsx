@@ -17,16 +17,15 @@ class NewPetForm extends Component {
       breed: "",
       image: "",
     };
-		// this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    // this.handleClearForm = this.handleClearForm.bind(this);
-    // this.handlePetNameChange = this.handlePetNameChange.bind(this);
-    // this.handleSpeciesSelection = this.handleSpeciesSelection.bind(this);
-    // this.handleGenderSelection = this.handleGenderSelection.bind(this);
-    // this.handleBirthdayChange = this.handleBirthdayChange.bind(this);
-    // this.handleWeightChange = this.handleWeightChange.bind(this);
-    // this.handleBreedChange = this.handleBreedChange.bind(this);
-    // this.handleImageChange = this.handleImageChange.bind(this);
-    this.onClickTest = this.onClickTest.bind(this);
+		this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleClearForm = this.handleClearForm.bind(this);
+    this.handlePetNameChange = this.handlePetNameChange.bind(this);
+    this.handleSpeciesSelection = this.handleSpeciesSelection.bind(this);
+    this.handleGenderSelection = this.handleGenderSelection.bind(this);
+    this.handleBirthdayChange = this.handleBirthdayChange.bind(this);
+    this.handleWeightChange = this.handleWeightChange.bind(this);
+    this.handleBreedChange = this.handleBreedChange.bind(this);
+    this.handleImageChange = this.handleImageChange.bind(this);
   }
   // componentDidMount() {
 	// 	fetch('./fake_db.json')
@@ -92,7 +91,7 @@ class NewPetForm extends Component {
           image: this.state.image
         };
 
-        $.ajax('http://localhost:8080/api/pets/', {
+        $.ajax('http://localhost:8080/api/pets', {
           method: 'POST',
           data: {
             newData: newPetInfo,
@@ -111,75 +110,76 @@ class NewPetForm extends Component {
 
       render() {
         return (
-        //    <form className="container" onSubmit={this.handleFormSubmit}>
-				//  <h5>Add a new pet!</h5>
-				//  <SingleInput
-				// 	inputType={'text'}
-				// 	title={'Pet name'}
-				// 	name={'name'}
-				// 	controlFunc={this.handlePetNameChange}
-				// 	content={this.state.petName}
-				// 	placeholder={'Type in your furry friend\'s name'} />
+          <form className="container" onSubmit={this.handleFormSubmit}>
+				<h5>Add a new pet!</h5>
+				<SingleInput
+					inputType={'text'}
+					title={'Pet name'}
+					name={'name'}
+					controlFunc={this.handlePetNameChange}
+					content={this.state.petName}
+					placeholder={'Type in your furry friend\'s name'} />
 
-        // <CheckBox
-				// 	title={'Is your pet a dog or a cat?'}
-				// 	setName={'species'}
-				// 	controlFunc={this.handleSpeciesSelection}
-				// 	type={'radio'}
-				// 	options={this.state.speciesOptions}
-				// 	selectedOptions={this.state.species} />
+        <CheckBox
+					title={'Is your pet a dog or a cat?'}
+					setName={'species'}
+					controlFunc={this.handleSpeciesSelection}
+					type={'radio'}
+					options={this.state.speciesOptions}
+					selectedOptions={this.state.species} />
 
-        // <CheckBox
-				// 	title={'Is your pet a boy or a girl?'}
-				// 	setName={'gender'}
-				// 	controlFunc={this.handleGenderSelection}
-				// 	type={'radio'}
-				// 	options={this.state.genderOptions}
-				// 	selectedOptions={this.state.gender} />
+        <CheckBox
+					title={'Is your pet a boy or a girl?'}
+					setName={'gender'}
+					controlFunc={this.handleGenderSelection}
+					type={'radio'}
+					options={this.state.genderOptions}
+					selectedOptions={this.state.gender} />
         
-				// <SingleInput
-        //   inputType={'text'}
-        //   title={'Birthday'}
-        //   birthday={'birthday'}
-				// 	controlFunc={this.handleBirthdayChange}
-				// 	content={this.state.birthday}
-				// 	placeholder={'Enter your pet\'s birthday'} />
+				<SingleInput
+          inputType={'text'}
+          title={'Birthday'}
+          birthday={'birthday'}
+					controlFunc={this.handleBirthdayChange}
+					content={this.state.birthday}
+					placeholder={'Enter your pet\'s birthday'} />
         
-				// <SingleInput
-				// 	inputType={'text'}
-				// 	title={'Weight'}
-				// 	name={'weight'}
-				// 	controlFunc={this.handleWeightChange}
-				// 	content={this.state.weight}
-				// 	placeholder={'Enter your pet\'s weight'} />
+				<SingleInput
+					inputType={'text'}
+					title={'Weight'}
+					name={'weight'}
+					controlFunc={this.handleWeightChange}
+					content={this.state.weight}
+					placeholder={'Enter your pet\'s weight'} />
 
-        // 	<SingleInput
-				// 	inputType={'text'}
-				// 	title={'Breed'}
-				// 	name={'breed'}
-				// 	controlFunc={this.handleBreedChange}
-				// 	content={this.state.breed}
-				// 	placeholder={'Enter your pet\'s breed'} />
+        	<SingleInput
+					inputType={'text'}
+					title={'Breed'}
+					name={'breed'}
+					controlFunc={this.handleBreedChange}
+					content={this.state.breed}
+					placeholder={'Enter your pet\'s breed'} />
 
-        //   <SingleInput
-				// 	inputType={'text'}
-				// 	title={'Image'}
-				// 	name={'image'}
-				// 	controlFunc={this.handleImageChange}
-				// 	content={this.state.image}
-        //   placeholder={'Upload your furry friend\'s photo'} />
+          <SingleInput
+					inputType={'text'}
+					title={'Image'}
+					name={'image'}
+					controlFunc={this.handleImageChange}
+					content={this.state.image}
+          placeholder={'Upload your furry friend\'s photo'} />
 
-				// <input
-				// 	type="submit"
-				// 	className="btn btn-primary float-right"
-				// 	value="Submit"/>
+				<input
+					type="submit"
+					className="btn btn-primary float-right"
+					value="Submit"/>
 				<button
 					className="btn btn-link float-left"
-					onClick={this.onClickTest}>Clear form</button>
-			// </form>
+					onClick={this.handleClearForm}>Clear form</button>
+			</form>
         )
       }
 	}
 
 export default NewPetForm;
+
 
