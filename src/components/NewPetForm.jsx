@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-// import CheckBox from './CheckBox';
-// import SingleInput from './SingleInput';
+import CheckBox from './CheckBox';
+import SingleInput from './SingleInput';
+import $ from 'jquery';
 
 class NewPetForm extends Component {
   constructor(props) {
@@ -27,78 +28,87 @@ class NewPetForm extends Component {
     // this.handleImageChange = this.handleImageChange.bind(this);
     this.onClickTest = this.onClickTest.bind(this);
   }
-  componentDidMount() {
-		// fetch('/api/login')
-			// .then(res => res.json())
-			// .then(data => {
-			// 	this.setState({
-      //     petName: data.name,
-      //     species: data.species,
-      //     gender: data.gender,
-			// 		birthday: data.date_of_birth,
-			// 		weight: data.weight,
-			// 		breed: data.breed,
-			// 		image: data.img,
-			// 	});
-      // });
-    }
+  // componentDidMount() {
+	// 	fetch('./fake_db.json')
+	// 		.then(res => res.json())
+	// 		.then(data => {
+	// 			this.setState({
+  //         petName: data.petName,
+  //         speciesOptions: data.speciesOptions,
+  //         species: data.species,
+  //         genderOptions: data.genderOptions,
+  //         gender: data.gender,
+	// 				birthday: data.birthday,
+	// 				weight: data.weight,
+	// 				breed: data.breed,
+	// 				image: data.image,
+	// 			});
+  //     });
+  //   }
+      handlePetNameChange(e) {
+        this.setState({ petName: e.target.value }, () => console.log('name:', this.state.petName));
+      }
+      handleSpeciesSelection(e) {
+        this.setState({ species: [e.target.value] }, () => console.log('species', this.state.species));
+      }
+      handleGenderSelection(e) {
+        this.setState({ gender: [e.target.value] }, () => console.log('gender', this.state.gender));
+      }
+      handleBirthdayChange(e) {
+        this.setState({ birthday: e.target.value }, () => console.log('birthday:', this.state.birthday));
+      }
+      handleWeightChange(e) {
+        this.setState({ weight: e.target.value }, () => console.log('weight:', this.state.petName));
+      }
+      handleBreedChange(e) {
+        this.setState({ breed: e.target.value }, () => console.log('breed:', this.state.breed));
+      }
+      handleImageChange(e) {
+        this.setState({ image: e.target.value }, () => console.log('image:', this.state.image));
+      }
+      handleClearForm(e) {
+        e.preventDefault();
+        this.setState({
+          petName: "",
+          species: [],
+          gender:[],
+          birthday: "",
+          weight: "",
+          breed: "",
+          image: "",
+        });
+      }
 
-    onClickTest(event) {
-      event.preventDefault()
-      return fetch('/api/login')
-    }
-
-
-      // handlePetNameChange(e) {
-      //   this.setState({ petName: e.target.value }, () => console.log('name:', this.state.petName));
-      // }
-
-      // handleSpeciesSelection(e) {
-      //   this.setState({ species: [e.target.value] }, () => console.log('species', this.state.species));
-      // }
-      // handleGenderSelection(e) {
-      //   this.setState({ gender: [e.target.value] }, () => console.log('gender', this.state.gender));
-      // }
-      // handleBirthdayChange(e) {
-      //   this.setState({ birthday: e.target.value }, () => console.log('birthday:', this.state.birthday));
-      // }
-      // handleWeightChange(e) {
-      //   this.setState({ weight: e.target.value }, () => console.log('weight:', this.state.petName));
-      // }
-      // handleBreedChange(e) {
-      //   this.setState({ breed: e.target.value }, () => console.log('breed:', this.state.breed));
-      // }
-      // handleImageChange(e) {
-      //   this.setState({ image: e.target.value }, () => console.log('image:', this.state.image));
-      // }
-      // handleClearForm(e) {
-      //   e.preventDefault();
-      //   this.setState({
-      //     petName: "",
-      //     species: [],
-      //     gender:[],
-      //     birthday: "",
-      //     weight: "",
-      //     breed: "",
-      //     image: "",
-      //   });
-      // }
-      // handleFormSubmit(e) {
-      //   e.preventDefault();
+      handleFormSubmit(e) {
+        e.preventDefault();
     
-      //   const submit = {
-      //     petName: this.state.petName,
-      //     species: this.state.species,
-      //     gender: this.state.gender,
-      //     birthday: this.state.birthday,
-      //     weight: this.state.weight,
-      //     breed: this.state.breed,
-      //     image: this.state.image
-      //   };
-    
-      //   console.log('Send this in a POST request:', submit);
-      //   this.handleClearForm(e);
-      // }
+        const newPetInfo = {
+          petName: this.state.petName,
+          species: this.state.species,
+          gender: this.state.gender,
+          birthday: this.state.birthday,
+          weight: this.state.weight,
+          breed: this.state.breed,
+          image: this.state.image
+        };
+
+        $.ajax('http://localhost:8080/api/pets/', {
+          method: 'POST',
+          data: {
+            newData: newPetInfo,
+          }, 
+          success: function (result) {
+            console.log("Yes, it worked");
+            console.log(result); // {result: "True"}
+          },
+          error: function(err) {
+            console.log("It doesnt work")
+            }
+        });
+        console.log(e)
+        this.handleClearForm(e);
+      }
+
       render() {
         return (
         //    <form className="container" onSubmit={this.handleFormSubmit}>
