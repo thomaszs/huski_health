@@ -12,27 +12,27 @@ class Dashboard extends Component {
         super(props);
     }
     render() {
-        return(
+        return (
             <div>
                 < NavBar />
-            <div className="container-fluid">
+                <div className="container-fluid">
 
-              <div className="row">
-                <div className="col-sm-3">
-                    <PetProfile pet={this.props.pet}/>
-                </div>
-                <div className="col-sm-9">
-                    <div className="col-sm-8">
-                    < PetChart pet={this.props.pet} />
-                    < Timeline pet={this.props.pet} />
+                    <div className="row">
+                        <div className="col-sm-3">
+                            <PetProfile pet={this.props.pet} />
+                        </div>
+                        <div className="col-sm-9">
+                            <div className="col-sm-8">
+                                < PetChart pet={this.props.pet} />
+                                < Timeline pet={this.props.pet} />
 
+                            </div>
+                            <div className="col-sm-4">
+                                {/* < StatusBar pet={this.props.pet}/>  */}
+                            </div>
+                        </div>
                     </div>
-                    <div className="col-sm-4">
-                          {/* < StatusBar pet={this.props.pet}/>  */}
-                    </div>
-                  </div>
                 </div>
-              </div>
             </div>
         );
     }
