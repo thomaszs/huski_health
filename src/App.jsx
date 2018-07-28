@@ -7,6 +7,7 @@ import './App.css';
 // import Navbar from './components/Navbar'
 import StatusBar from './components/StatusBar'
 import NewPetForm from './components/NewPetForm'
+import PetProfile from './components/PetProfile';
 
 class App extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class App extends Component {
   render() {
     return (
       < Dashboard pet={this.state.pets}/>
+      // <  pet={this.state.pets}/>
     );
   }
 }
