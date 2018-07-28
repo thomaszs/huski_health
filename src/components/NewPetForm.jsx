@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import CheckBox from './CheckBox';
 import SingleInput from './SingleInput';
+import $ from 'jquery';
 
 class NewPetForm extends Component {
   constructor(props) {
@@ -76,10 +77,11 @@ class NewPetForm extends Component {
           image: "",
         });
       }
+
       handleFormSubmit(e) {
         e.preventDefault();
     
-        const submit = {
+        const newPetInfo = {
           petName: this.state.petName,
           species: this.state.species,
           gender: this.state.gender,
@@ -88,10 +90,24 @@ class NewPetForm extends Component {
           breed: this.state.breed,
           image: this.state.image
         };
-    
-        console.log('Send this in a POST request:', submit);
+
+        $.ajax('http://localhost:8080/api/pets', {
+          method: 'POST',
+          data: {
+            newData: newPetInfo,
+          }, 
+          success: function (result) {
+            console.log("Yes, it worked");
+            console.log(result); // {result: "True"}
+          },
+          error: function(err) {
+            console.log("It doesnt work")
+            }
+        });
+        console.log(e)
         this.handleClearForm(e);
       }
+
       render() {
         return (
           <form className="container" onSubmit={this.handleFormSubmit}>
@@ -165,4 +181,5 @@ class NewPetForm extends Component {
 	}
 
 export default NewPetForm;
+
 

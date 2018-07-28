@@ -33,8 +33,12 @@ class PetProfile extends Component {
     $.ajax('http://localhost:8080/api/pets/1', {
       method: 'POST',
       data: {
+<<<<<<< HEAD
         newPetName: this.state.petName, 
         newPetWeight: this.state.petWeight,
+=======
+        newPetName: this.state.petName
+>>>>>>> 27dc2216218c7b64742adddf49e0a85396916efa
       }, 
       success: function (result) {
         console.log("Yes, it worked");
