@@ -24,6 +24,14 @@ module.exports = function knexData(knex) {
           'notes': data.notes
         }).then()
       },
+
+      editPet: function (data) {
+        knex('pets').where({
+          'id': 1
+        }).update({
+          'name': data
+        }).then(console.log("CHANGED"))
+      },
   
       deleteHistory: function (id) {
         knex('history').where({
