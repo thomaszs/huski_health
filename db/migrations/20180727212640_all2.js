@@ -20,7 +20,7 @@ exports.up = function (knex, Promise) {
          table.string('breed',255);
          table.string('img', 255);
          table.string('notes', 255);
-         table.string('weight', 255);
+         table.integer('weight');
          table.string('species', 255);
          table.integer('account_id').unsigned();
          table.foreign('account_id').references('accounts.id');
