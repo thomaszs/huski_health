@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import WeightChart from './WeightChart.jsx';
 
 class PetChart extends Component {
     render(){
@@ -9,7 +10,10 @@ class PetChart extends Component {
                 <h2>Weight over Time</h2>
               </div>
               <div className="chart-stage" id="chart-02">
-                <img style={{width: "100%"}} src="https://www.amcharts.com/wp-content/uploads/2013/12/demo_7398_light.jpg" />
+                
+                <WeightChart />
+
+                {/* <img style={{width: "100%"}} src="https://www.amcharts.com/wp-content/uploads/2013/12/demo_7398_light.jpg" /> */}
               </div>
               <div className="chart-notes">
                 Notes about this chart
