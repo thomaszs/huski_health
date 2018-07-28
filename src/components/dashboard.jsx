@@ -24,7 +24,7 @@ class Dashboard extends Component {
 
               <div className="row">
                 <div className="col-sm-3">
-                    <PetProfile />
+                    <PetProfile pet={this.props.pet}/>
                 </div>
               </div>
                 <div className="col-sm-9">

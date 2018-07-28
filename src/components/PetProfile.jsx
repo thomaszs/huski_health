@@ -6,7 +6,8 @@ class PetProfile extends Component {
             <div className="chart-title">
             <div className="chart-wrapper">
             <div className="chart-title">
-                      <h2>Leonard</h2>
+            {console.log(this.props.pet[0])}
+                      <h2>{this.props.pet[0].name}</h2>
                       <img className="pet-img" style={{width: "100%"}} src="https://toll-imageinaboxllc.netdna-ssl.com/wp-content/uploads/2014/06/Fat-Cat_400-2.jpg" />
                     </div>
                     <div className="chart-stage" id="chart-01">
@@ -17,27 +18,27 @@ class PetProfile extends Component {
             <tbody>
               <tr>
                 <td>Weight:</td>
-                <td>22lbs</td>
+                <td>{this.props.pet[0].weight}</td>
               </tr>
               <tr>
                 <td>Age:</td>
-                <td>6</td>
+                <td>{this.props.pet[0].age}</td>
               </tr>
               <tr>
                 <td>Birthday:</td>
-                <td>April 8, 2012</td>
+                <td>{this.props.pet[0].birthday}</td>
               </tr>
               <tr>
                 <td>Breed:</td>
-                <td>Egyptian Mau</td>
+                <td>{this.props.pet[0].breed}</td>
               </tr>
               <tr>
                 <td>Owners:</td>
-                <td>Lexi</td>
+                <td>{this.props.pet[0].owner}</td>
               </tr>
               <tr>
                 <td>Notes:</td>
-                <td>On a weightloss plan - NO TREATS</td>
+                <td>{this.props.pet[0].notes}</td>
               </tr>
               <tr>
                 <td>

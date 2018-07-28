@@ -32,7 +32,7 @@ class App extends Component {
 
   render() {
     return (
-      < Dashboard/>
+      < Dashboard pet={this.state.pets}/>
     );
   }
 }
