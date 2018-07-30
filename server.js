@@ -22,31 +22,30 @@ app.use(bodyParser.urlencoded({
 })); 
 
 app.post('/api/pets/1', (req, res) => {
-    let data = req.body
-   database.editPet(data)
-    return res.json(data)
+   database.editPet(req.body)
+    return res.json(req.body)
     //get the DAta from the POST
     //2. To save the data in the Database through Knex
     //3. use .then to send the response back 
 })
 
-app.post('/api/pets', (req, res) => {
-    database.newPet(req.body.newData)
+// app.post('/api/pets', (req, res) => {
+//     database.newPet(req.body.newData)
+// })
+
+app.post('/api/pets/', (req, res) => {
+   console.log(req.body)
+    database.getPets(req.body.userId)
+    .then(function (result) {
+        console.log(result)
+        res.send(result)
+    })
 })
 
-app.get('/api/login', (req, res) => {
-   console.log("HIT")
-//    if (database.getAccount(req.body.email, req.body.password)) {
-//        console.log("LOGGED IN")
-//    } else {
-//        console.log("FAIL")
-//    }
-})
-
-app.post('/api/pets', (req, res) => {
-    console.log("GOTTEN PET", req.body)
-//     database.getPet() 
- })
+// app.post('/api/pets', (req, res) => {
+//     console.log("GOTTEN PET", req.body)
+// //     database.getPet() 
+//  })
 
 app.listen(PORT, () => {
  console.log("Example app listening on port " + PORT);

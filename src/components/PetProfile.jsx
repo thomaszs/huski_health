@@ -37,10 +37,12 @@ class PetProfile extends Component {
       data: {
         newPetName: this.state.petName, 
         newPetWeight: this.state.petWeight,
+        newPetBreed: this.state.petBreed
       }, 
-      success: function (result) {
+      success: (result) => {
         console.log("Yes, it worked");
         console.log(result); // {result: "True"}
+       return this.props.updatePet(result)
       },
       error: function(err) {
         console.log("It doesnt work")
@@ -70,7 +72,7 @@ class PetProfile extends Component {
           <img className="pet-img" style={{ width: "100%" }} src="https://toll-imageinaboxllc.netdna-ssl.com/wp-content/uploads/2014/06/Fat-Cat_400-2.jpg" />
       {/*Consider creating a EditPetProfile.jsx component. Will need to make ajax post request to the server to save new pet information*/}
           <form>
-            Name: <input type="text" name="name" placeholder={this.state.pet[0].name} defaultValue={this.state.petName} onChange={this.onChangePetName}/><br/>
+            Name: <input type="text" name="name"  defaultValue={this.state.petName} onChange={this.onChangePetName}/><br/>
             Weight:<input type="text" name="weight" defaultValue={this.state.petWeight} onChange={this.onChangePetWeight}/><br/>
             Age:<input type="text" name="age"/><br/>
             Birthday:<input type="text" name="birthday"/><br/>

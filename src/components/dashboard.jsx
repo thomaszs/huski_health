@@ -18,7 +18,7 @@ class Dashboard extends Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-3">
-                            <PetProfile pet={this.props.pet} />
+                            <PetProfile pet={this.props.pet} updatePet={this.props.updatePet} />
                         </div>
                         <div className="col-sm-9">
                             <div className="col-sm-8">

@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Dashboard from './components/Dashboard';
+import Pets from './components/Pets';
+import NavBar from './components/NavBar';
 
 import './css/keen-static.css';
 import './css/timeline.css';
@@ -29,6 +33,33 @@ class App extends Component {
         }
       ]
     }
+    this.updatePet = this.updatePet.bind(this);
+  }
+
+  componentDidMount() {
+
+      $.ajax('http://localhost:8080/api/pets/', {
+        method: 'POST',
+        data: {
+          userId: 2
+        }, 
+        success: (result) => {
+          console.log("Yes, it worked");
+          // console.log(result); 
+          this.setState({pets: result})
+          console.log(this.state.pets)
+        },
+        error: function(err) {
+          console.log("It doesnt work")
+          }
+      });
+  }
+  updatePet(result) {
+    let items = this.state.pets;
+    items[0].name = result.newPetName;
+    items[0].weight = result.newPetWeight;
+    items[0].breed = result.newPetBreed;
+    this.setState({items});
   }
 
   // set routing; based on this route render this
@@ -37,9 +68,10 @@ class App extends Component {
 
   render() {
     return (
-      < Dashboard pet={this.state.pets}/>
-      // <  pet={this.state.pets}/>
-    );
+      < Pets pets={this.state.pets} updatePet={this.updatePet}/>
+      /* // < Dashboard pet={this.state.pets} updatePet={this.updatePet}/>
+      // <  pet={this.state.pets}/> */
+    )
   }
 }
 export default App;

@@ -5,8 +5,8 @@ module.exports = function knexData(knex) {
         return knex('accounts').where({email: email, password: password})
       },
 
-      getPet: function (email, password) {
-        // return (knex('pets').where({id: }))
+      getPets: function (id) {
+        return knex('pets').where({account_id: id})
       },
   
       insertAccount: function (name, email, password) {
@@ -30,7 +30,8 @@ module.exports = function knexData(knex) {
           'id': 1
         }).update({
           'name': data.newPetName, 
-          'weight': data.newPetWeight
+          'weight': data.newPetWeight,
+          'breed': data.petNewBreed
         }).then(console.log("CHANGED"))
       },
 
