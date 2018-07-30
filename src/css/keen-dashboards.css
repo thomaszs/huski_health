@@ -1,5 +1,5 @@
 .keen-dashboard {
-  background: #e0e0e0;
+  background: #171923;
 
   font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif; 
 }
@@ -22,7 +22,7 @@
 }
 
 .keen-dataviz-notes {
-  background: #fbfbfb;
+  background: #fff;
   border-radius: 0 0 2px 2px;
   border-top: 1px solid #e7e7e7;
   font-family: 'Helvetica Neue', Helvetica, sans-serif;
@@ -39,16 +39,17 @@
 }
 
 .keen-dashboard .chart-wrapper {
-  background: rgb(1,88,161);
-background: linear-gradient(180deg, rgba(1,88,161,1) 0%, rgba(0,105,192,1) 11%, rgba(0,105,192,1) 90%, rgba(1,88,161,1) 100%);
-
-  box-shadow: 5px 5px 10px #888888;
+  background: #1E212F;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px #0f0f0f;
   border: 1px 1px 1px solid #e2e2e2;
-  border-radius: 5px;
   margin-bottom: 10px;
 }
 .keen-dashboard .chart-wrapper .chart-title {
-  color: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  
+  color: rgb(252, 240, 207);
   font-size: 14px;
   font-weight: 200;
   padding: 5px 20px;
@@ -58,7 +59,7 @@ background: linear-gradient(180deg, rgba(1,88,161,1) 0%, rgba(0,105,192,1) 11%, 
   overflow: hidden;
   padding: 5px 20px;
   position: relative;
-  color: #fff;
+  color: #FF9400;
 }
 
 .keen-dashboard .chart-wrapper .chart-notes {
