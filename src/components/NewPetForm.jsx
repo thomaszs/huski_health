@@ -110,10 +110,12 @@ class NewPetForm extends Component {
 
       render() {
         return (
-          <form className="container" onSubmit={this.handleFormSubmit}>
-				<h5>Add a new pet!</h5>
+          <div className="chart-wrapper">
+          <div className="container">
+          <form className="form-container" onSubmit={this.handleFormSubmit}>
+				<h2>Add a new pet!</h2>
 				<SingleInput
-					inputType={'text'}
+          inputType={'text'}
 					title={'Pet name'}
 					name={'name'}
 					controlFunc={this.handlePetNameChange}
@@ -176,6 +178,8 @@ class NewPetForm extends Component {
 					className="btn btn-link float-left"
 					onClick={this.handleClearForm}>Clear form</button>
 			</form>
+      </div>
+      </div>
         )
       }
 	}

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 
+
+
+
 class PetProfile extends Component {
   constructor(props) {
     super(props);
@@ -67,7 +70,7 @@ class PetProfile extends Component {
       return (
         <div>
           <div id="profile">
-          <img className="pet-img" style={{ width: "100%" }} src="https://toll-imageinaboxllc.netdna-ssl.com/wp-content/uploads/2014/06/Fat-Cat_400-2.jpg" />
+          <img className="pet-img" style={{ width: "100%", borderRadius:"8px" }} src="https://toll-imageinaboxllc.netdna-ssl.com/wp-content/uploads/2014/06/Fat-Cat_400-2.jpg" />
       {/*Consider creating a EditPetProfile.jsx component. Will need to make ajax post request to the server to save new pet information*/}
           <form>
             Name: <input type="text" name="name" placeholder={this.state.pet[0].name} defaultValue={this.state.petName} onChange={this.onChangePetName}/><br/>
@@ -121,10 +124,10 @@ class PetProfile extends Component {
                 </tr>
                 <tr>
                   <td>
-                    <button type="button" className="btn btn-primary" onClick={this.editPetProfile}>Edit Profile</button>
+                    <button type="button" className="btn btn-warning" onClick={this.editPetProfile}>Edit Profile</button>
                   </td>
                   <td>
-                    <button type="button" className="btn btn-success">Add Activity</button>
+                    <button type="button" className="btn btn-activity">Add Activity</button>
                   </td>
                 </tr>
               </tbody>
