@@ -15,26 +15,36 @@ class Dashboard extends Component {
         super(props)
         this.state = {loading: true}
 
-        this.onChangePetName = this.onChangePetName.bind(this);
-        this.onChangePetWeight = this.onChangePetWeight.bind(this);
-        this.onChangePetBreed = this.onChangePetBreed.bind(this);
+        // this.onChangePetName = this.onChangePetName.bind(this);
+        // this.onChangePetWeight = this.onChangePetWeight.bind(this);
+        // this.onChangePetBreed = this.onChangePetBreed.bind(this);
+        // this.updatePet = this.updatePet.bind(this)
     }
 
-    onChangePetName(event) { 
-        event.preventDefault()
-        this.setState(prevState => ({pet: {...prevState.pet, name: event.target.value }}))
-      }
+    // onChangePetName(event) { 
+    //     event.preventDefault()
+    //     this.setState(prevState => ({pet: {...prevState.pet, name: event.target.value }}))
+    //   }
     
-      onChangePetWeight(event) { 
-        event.preventDefault()
-        console.log(this.state.pet.weight)
-        this.setState({pet: { weight: event.target.value }})
-      }
+    //   onChangePetWeight(event) { 
+    //     event.preventDefault()
+    //     console.log(this.state.pet.weight)
+    //     this.setState({pet: { weight: event.target.value }})
+    //   }
      
-      onChangePetBreed(event) { 
-        event.preventDefault()
-        this.setState(prevState => ({pet: {...prevState.pet, breed: event.target.value }}))
-      }
+    //   onChangePetBreed(event) { 
+    //     event.preventDefault()
+    //     this.setState(prevState => ({pet: {...prevState.pet, breed: event.target.value }}))
+    //   }
+
+    //   updatePet(result) {
+    //     let item = this.state.pet;
+    //     item.name = result.newPetName;
+    //     item.weight = result.newPetWeight;
+    //     item.breed = result.newPetBreed;
+    //     this.setState({pet: item});
+    //   }
+    
 
     componentDidMount() {
 
@@ -65,7 +75,7 @@ class Dashboard extends Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-3">
-                             <PetProfile pet={this.state.pet} updatePet={this.props.updatePet} onChangePetName={this.onChangePetName} onChangePetWeight={this.onChangePetWeight} onChangePetBreed={this.onChangePetBreed} />
+                             <PetProfile pet={this.state.pet} updatePet={this.updatePet} onChangePetName={this.onChangePetName} onChangePetWeight={this.onChangePetWeight} onChangePetBreed={this.onChangePetBreed} />
                         </div>
                         <div className="col-sm-9">
                             <div className="col-sm-8">

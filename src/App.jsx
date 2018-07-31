@@ -9,6 +9,7 @@ import PetProfile from './components/PetProfile';
 import Homepage from './components/Homepage';
 import SignUp from './components/SignUp'
 import Login from './components/Login'
+import Activity from './components/Activity';
 
 import './css/homepage.css';
 import './css/keen-static.css';
@@ -39,7 +40,7 @@ class App extends Component {
         }
       ]
     }
-    this.updatePet = this.updatePet.bind(this);
+    // this.updatePet = this.updatePet.bind(this);
     this.renderMergedProps = this.renderMergedProps.bind(this)
     this.PropsRoute = this.PropsRoute.bind(this)
   }
@@ -62,13 +63,13 @@ class App extends Component {
           }
       });
   }
-  updatePet(result) {
-    let items = this.state.pets;
-    items[0].name = result.newPetName;
-    items[0].weight = result.newPetWeight;
-    items[0].breed = result.newPetBreed;
-    this.setState({items});
-  }
+  // updatePet(result) {
+  //   let items = this.state.pets;
+  //   items[0].name = result.newPetName;
+  //   items[0].weight = result.newPetWeight;
+  //   items[0].breed = result.newPetBreed;
+  //   this.setState({items});
+  // }
 
   renderMergedProps(component, ...rest) {
     const finalProps = Object.assign({}, ...rest);
@@ -106,6 +107,7 @@ class App extends Component {
           <this.PropsRoute exact path="/" component={Pets} pets={this.state.pets} />
           {/* <this.PropsRoute exact path='/pet/:id/profile' component={PetProfile} updatePet={this.updatePet}/> */}
           <this.PropsRoute exact path='/pet/:id' component={Dashboard} updatePet={this.updatePet}/>
+          {/* <this.PropsRoute exact path='/pet/:id/activity' component={Activity} /> */}
           </Switch>
       </div>
       </Router>

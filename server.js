@@ -24,10 +24,14 @@ app.use(bodyParser.urlencoded({
 app.post('/api/pets/:id', (req, res) => {
     console.log(req.body)
    database.editPet(req.body)
-    return res.json(req.body)
+   .then(function(result) {
+       return res.sendStatus(204)
+    // console.log(result)
+    // res.send(result)
     //get the DAta from the POST
     //2. To save the data in the Database through Knex
     //3. use .then to send the response back 
+})
 })
 
 // app.post('/api/pets', (req, res) => {
@@ -44,16 +48,16 @@ app.post('/api/pets/', (req, res) => {
 })
 
 app.post('/api/pet/', (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
      database.getPet(req.body.id)
      .then(function (result) {
-         console.log(result)
+        //  console.log(result)
          res.send(result)
      })
  })
 
  app.post('/api/pet/new', (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
      database.newPet(req.body)
  })
 
@@ -65,6 +69,5 @@ app.post('/api/pet/', (req, res) => {
 app.listen(PORT, () => {
  console.log("Example app listening on port " + PORT);
 });
-
 
 
