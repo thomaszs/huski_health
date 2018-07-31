@@ -12,6 +12,7 @@ export default class SignUp extends Component {
                 <div className="container-main">
                     <div className="color-overlay"></div>
                     <form className="sign-up-form">
+                    <h2>Sign Up</h2>
                      <div className="form-group">
                        <label for="exampleInputEmail1">Email address</label>
                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
