@@ -8,6 +8,7 @@ class NewPetForm extends Component {
     super(props);
     this.state = {
       petName: "",
+      // age: 0,
       speciesOptions: ["dog", "cat"],
       species: [],
       genderOptions: ["male", "female"],
@@ -26,24 +27,9 @@ class NewPetForm extends Component {
     this.handleWeightChange = this.handleWeightChange.bind(this);
     this.handleBreedChange = this.handleBreedChange.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
+    // this.handleAgeChange = this.handleAgeChange.bind(this)
   }
-  // componentDidMount() {
-  // 	fetch('./fake_db.json')
-  // 		.then(res => res.json())
-  // 		.then(data => {
-  // 			this.setState({
-  //         petName: data.petName,
-  //         speciesOptions: data.speciesOptions,
-  //         species: data.species,
-  //         genderOptions: data.genderOptions,
-  //         gender: data.gender,
-  // 				birthday: data.birthday,
-  // 				weight: data.weight,
-  // 				breed: data.breed,
-  // 				image: data.image,
-  // 			});
-  //     });
-  //   }
+
   handlePetNameChange(e) {
     this.setState({ petName: e.target.value }, () => console.log('name:', this.state.petName));
   }
@@ -65,6 +51,10 @@ class NewPetForm extends Component {
   handleImageChange(e) {
     this.setState({ image: e.target.value }, () => console.log('image:', this.state.image));
   }
+  // handleAgeChange(e) {
+  //   this.setState({ age: e.target.value }, () => console.log('image:', this.state.image));
+  // }
+
   handleClearForm(e) {
     e.preventDefault();
     this.setState({
@@ -88,19 +78,20 @@ class NewPetForm extends Component {
       birthday: this.state.birthday,
       weight: this.state.weight,
       breed: this.state.breed,
-      image: this.state.image
+      image: this.state.image,
+      // age: this.state.age,
+      accountID: 2
     };
 
-    $.ajax('http://localhost:8080/api/pets', {
+    $.ajax('http://localhost:8080/api/pet/new', {
       method: 'POST',
-      data: {
-        newData: newPetInfo,
-      },
+      data: newPetInfo,
       success: function (result) {
         console.log("Yes, it worked");
         console.log(result); // {result: "True"}
       },
       error: function (err) {
+        console.log(err)
         console.log("It doesnt work")
       }
     });
@@ -150,6 +141,14 @@ class NewPetForm extends Component {
                         controlFunc={this.handleBirthdayChange}
                         content={this.state.birthday}
                         placeholder={'Enter your pet\'s birthday'} />
+
+                        {/* <SingleInput
+                        inputType={'text'}
+                        title={'Age'}
+                        birthday={'age'}
+                        controlFunc={this.handleAgeChange}
+                        content={this.state.age}
+                        placeholder={'Enter your pet\'s age'} /> */}
 
                       <SingleInput
                         inputType={'text'}
