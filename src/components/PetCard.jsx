@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import PetProfile from './PetProfile'
-import Dashboard from './Dashboard'
+// import PetProfile from './PetProfile'
+// import Dashboard from './Dashboard'
 
 export default class PetCard extends Component {
   constructor(props) {
