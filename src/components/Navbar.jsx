@@ -13,12 +13,12 @@ export default function NavBar(props) {
               <a className="navbar-brand" href="./" style={{marginTop:"0.25em", marginLeft:"5px"}}>HuskiHealth</a>
             <div className="navbar-collapse collapse">
               <ul className="nav navbar-nav navbar-left">
-                <li>
-                  <a style={{lineHeight: "0.6em"}} href="http://localhost:3000">Home</a>
+                <li>             
+                  <a style={{lineHeight: "0.6em"}} href="localhost:3000">Home</a>
                 </li>
-                {/* <li>
-                  <a style={{lineHeight: "0.6em"}} href="https://keen.io/team">Team</a>
-                </li> */}
+                <li>
+                  <a style={{lineHeight: "0.6em"}} href="localhost:3000">Team</a>
+                </li>
               </ul>
               <button className="btn btn-sm btn-warning" style={{ float: "right", marginTop: "10px" }}>Signout</button>
             </div>
