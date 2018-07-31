@@ -16,9 +16,9 @@ export default function NavBar(props) {
                 <li>
                   <a style={{lineHeight: "0.6em"}} href="http://localhost:3000">Home</a>
                 </li>
-                <li>
+                {/* <li>
                   <a style={{lineHeight: "0.6em"}} href="https://keen.io/team">Team</a>
-                </li>
+                </li> */}
               </ul>
               <button className="btn btn-sm btn-warning" style={{ float: "right", marginTop: "10px" }}>Signout</button>
             </div>

@@ -13,9 +13,11 @@ import NewPetForm from './NewPetForm.jsx';
 class Dashboard extends Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {loading: true}
     }
-    componentDidMount() {
+
+    
+    componentWillMount() {
 
         $.ajax('http://localhost:8080/api/pet/', {
           method: 'POST',
@@ -25,7 +27,7 @@ class Dashboard extends Component {
           success: (result) => {
             console.log("Yes, it worked");
             console.log(result); 
-            this.setState({pet: result})
+            this.setState({pet: result[0], loading: false})
             console.log(this.state.pet)
           },
           error: function(err) {
@@ -35,13 +37,16 @@ class Dashboard extends Component {
     }
 
     render() {
+        if(this.state.loading) {
+            return 'Loading...'
+        } 
         return (
             <div>
                 < NavBar />
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-3">
-                             {/* <PetProfile pet={this.state.pet} /> */}
+                             <PetProfile pet={this.state.pet} updatePet={this.props.updatePet} />
                         </div>
                         <div className="col-sm-9">
                             <div className="col-sm-8">

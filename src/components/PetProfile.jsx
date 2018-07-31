@@ -7,7 +7,7 @@ import $ from 'jquery';
 class PetProfile extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {pet: this.props.pet}
     this.toggleEdit = this.toggleEdit.bind(this);
     this.editPetProfile = this.editPetProfile.bind(this);
     this.savePetProfile = this.savePetProfile.bind(this);
@@ -28,7 +28,7 @@ class PetProfile extends Component {
 
   savePetProfile(event) {
     event.preventDefault();
-    $.ajax('http://localhost:8080/api/pets/1', {
+    $.ajax(`http://localhost:8080/api/pets/${this.state.pet.id}`, {
       method: 'POST',
       data: {
         newPetName: this.state.pet.name, 
@@ -49,59 +49,63 @@ class PetProfile extends Component {
   }
 
   onChangePetName(event) { 
-    this.setState({ name: event.target.value })
+    event.preventDefault()
+    this.setState(prevState => ({pet: {...prevState.pet, name: event.target.value }}))
   }
 
   onChangePetWeight(event) { 
-    this.setState({ weight: event.target.value })
+    event.preventDefault()
+    console.log(this.state.pet.weight)
+    this.setState(prevState => ({pet: {...prevState.pet, weight: event.target.value }}))
   }
  
   onChangePetBreed(event) { 
-    this.setState({ breed: event.target.value })
+    event.preventDefault()
+    this.setState(prevState => ({pet: {...prevState.pet, breed: event.target.value }}))
   }
   
-  componentDidMount() {
-    // if (!this.props.pet) {
-    $.ajax('http://localhost:8080/api/pet/', {
-      method: 'POST',
-      data: {
-        id: this.props.match.params.id
-      }, 
-      success: (result) => {
-        console.log("Yes, it worked");
-        console.log(result); 
-        this.setState({pet: result})
-        console.log(this.state.pet)
-      },
-      error: function(err) {
-        console.log("It doesnt work")
-        }
-    });
-  // } else {
-  //   this.setState({pet: this.props.pet})
-  // }
-}
+//   componentDidMount() {
+//     // if (!this.props.pet) {
+//     $.ajax('http://localhost:8080/api/pet/', {
+//       method: 'POST',
+//       data: {
+//         id: this.props.match.params.id
+//       }, 
+//       success: (result) => {
+//         console.log("Yes, it worked");
+//         console.log(result); 
+//         this.setState({pet: result})
+//         console.log(this.state.pet)
+//       },
+//       error: function(err) {
+//         console.log("It doesnt work")
+//         }
+//     });
+//   // } else {
+//   //   this.setState({pet: this.props.pet})
+//   // }
+// }
 
   render() {
-    // // if (this.state.isEditing) {
-    //   return (
-    //     <div>
-    //       <div id="profile">
-    //       <img className="pet-img" style={{ width: "100%" }} src={this.props.pet.img} />
-    //   {/*Consider creating a EditPetProfile.jsx component. Will need to make ajax post request to the server to save new pet information*/}
-    //       <form>
-    //         Name: <input type="text" name="name"  defaultValue={this.state.pet.name} onChange={this.onChangePetName}/><br/>
-    //         Weight:<input type="text" name="weight" defaultValue={this.state.pet.weight} onChange={this.onChangePetWeight}/><br/>
-    //         Age:<input type="text" name="age"/><br/>
-    //         Birthday:<input type="text" name="birthday"/><br/>
-    //         Breed:<input type="text" name="breed" defaultValue={this.state.pet.breed} onChange={this.onChangePetBreed}/><br/>
-    //         Notes: <input type="text" name="notes"/><br/>
-    //         <button type="button" className="btn btn-primary" onClick={this.savePetProfile}>Save</button>
-    //       </form>
-    //       </div>
-    //     </div>
-    //   )
-    // // }
+    if (this.state.isEditing) {
+      return (
+        <div>
+          <div id="profile">
+          <img className="pet-img" style={{ width: "100%" }} src={this.props.pet.img} />
+      {/*Consider creating a EditPetProfile.jsx component. Will need to make ajax post request to the server to save new pet information*/}
+          <form>
+            Name: <input type="text" name="name"  defaultValue={this.state.pet.name} onChange={this.onChangePetName}/><br/>
+            Weight:<input type="text" name="weight" defvalue={this.props.pet.weight} onChange={this.onChangePetWeight}/><br/>
+            Age:<input type="text" name="age"/><br/>
+            Birthday:<input type="text" name="birthday"/><br/>
+            Breed:<input type="text" name="breed" defaultValue={this.state.pet.breed} onChange={this.onChangePetBreed}/><br/>
+            Notes: <input type="text" name="notes"/><br/>
+            <button type="button" className="btn btn-primary" onClick={this.savePetProfile}>Save</button>
+          </form>
+          </div>
+        </div>
+      )
+    }
 
     return (
       <div className="chart-title">
