@@ -14,10 +14,10 @@ export default function NavBar(props) {
             <div className="navbar-collapse collapse">
               <ul className="nav navbar-nav navbar-left">
                 <li>
-                  <a style={{lineHeight: "0.6em"}} href="https://keen.io">Home</a>
+                  <a style={{lineHeight: "0.6em"}} href="localhost:3000">Home</a>
                 </li>
                 <li>
-                  <a style={{lineHeight: "0.6em"}} href="https://keen.io/team">Team</a>
+                  <a style={{lineHeight: "0.6em"}} href="localhost:3000">Team</a>
                 </li>
               </ul>
               <button className="btn btn-sm btn-warning" style={{ float: "right", marginTop: "10px" }}>Signout</button>

@@ -40,9 +40,9 @@ class Dashboard extends Component {
                 < NavBar />
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-sm-3">
+                        {/* <div className="col-sm-3">
                              <PetProfile pet={this.state.pet} />
-                        </div>
+                        </div> */}
                         <div className="col-sm-9">
                             <div className="col-sm-8">
                                 < PetChart pet={this.state.pet} />
