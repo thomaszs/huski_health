@@ -24,7 +24,7 @@ class App extends Component {
           name: "Leonard",
           birthday: "April 8, 2012",
           age: 6,
-          weight: "22lbs",
+          weight: "22",
           breed: "Egyptian Mau",
           owner: "Lexi",
           notes: "These are some notes about my fat cat named Leonard."
