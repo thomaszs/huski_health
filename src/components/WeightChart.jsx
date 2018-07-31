@@ -174,12 +174,23 @@ class WeightChart extends React.Component {
   constructor (props) {
     super(props)
   const currentBreed = this.props.pet.breed;
-  console.log(currentBreed);
+  //placeholder if statement -- will be changed
+  for (let eachPet in petWeightRange) {
+    if (currentBreed === eachPet) {
+      const minWeight = petWeightRange[currentBreed][0];
+      const maxWeight = petWeightRange[currentBreed][1];
+      options.annotation.annotations[0].value = minWeight;
+      options.annotation.annotations[1].value = maxWeight;
+    } else {
+      const minWeight = 10;
+      const maxWeight = 20;
+      options.annotation.annotations[0].value = minWeight;
+      options.annotation.annotations[1].value = maxWeight;
+    }
+  }
+  
   const id = this.props.pet.id;
-  const minWeight = petWeightRange[currentBreed][0];
-  const maxWeight = petWeightRange[currentBreed][1];
-  options.annotation.annotations[0].value = minWeight;
-  options.annotation.annotations[1].value = maxWeight;
+  
 
   // ajax based on this.props.pet.id
   // get history table 
