@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import CheckBox from './CheckBox';
 import SingleInput from './SingleInput';
 import $ from 'jquery';
+const dogBreed = require('what-dog');
+
+// dogBreed('https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12225919/Pembroke-Welsh-Corgi-On-White-01.jpg')
+//   .then(doggyData => {
+//         console.log(doggyData)
+//         .catch(function(e) {
+//           console.log("error in dog image");
+//         });
+//     })
+
 
 class NewPetForm extends Component {
   constructor(props) {
@@ -63,7 +73,7 @@ class NewPetForm extends Component {
     this.setState({ breed: e.target.value }, () => console.log('breed:', this.state.breed));
   }
   handleImageChange(e) {
-    this.setState({ image: e.target.value }, () => console.log('image:', this.state.image));
+    this.setState({ image: e.target.value }, () => console.log('image url:', this.state.image));
   }
   handleClearForm(e) {
     e.preventDefault();
@@ -87,7 +97,12 @@ class NewPetForm extends Component {
       gender: this.state.gender,
       birthday: this.state.birthday,
       weight: this.state.weight,
-      breed: this.state.breed,
+      breed: dogBreed(this.state.image).then(doggyData => {
+        (doggyData.breed)
+        // .catch(function(e) {
+        //   console.log("error in dog image", e);
+        // });
+      }),
       image: this.state.image
     };
 
@@ -173,7 +188,7 @@ class NewPetForm extends Component {
                         name={'image'}
                         controlFunc={this.handleImageChange}
                         content={this.state.image}
-                        placeholder={'Upload your furry friend\'s photo'} />
+                        placeholder={'Enter image url to find out your pet\'s breed'} />
 
                       <input
                         type="submit"
