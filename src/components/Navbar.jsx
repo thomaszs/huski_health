@@ -14,7 +14,7 @@ export default function NavBar(props) {
             <div className="navbar-collapse collapse">
               <ul className="nav navbar-nav navbar-left">
                 <li>             
-                  <a style={{lineHeight: "0.6em"}} href="localhost:3000">Home</a>
+                  <a style={{lineHeight: "0.6em"}} href="http://localhost:3000/">Home</a>
                 </li>
                 <li>
                   <a style={{lineHeight: "0.6em"}} href="localhost:3000">Team</a>
