@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import mainLogo from '../huski-health.png'
-
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 
 export default function NavBar(props) {
@@ -20,7 +20,7 @@ export default function NavBar(props) {
                   <a style={{lineHeight: "0.6em"}} href="localhost:3000">Team</a>
                 </li>
               </ul>
-              <button className="btn btn-sm btn-warning" style={{ float: "right", marginTop: "10px" }}>Signout</button>
+              <button className="btn btn-sm btn-warning" style={{ float: "right", marginTop: "10px" }}><Link to={`/signup`}>Sign Up</Link></button>
             </div>
           {/* </div> */}
         </div>

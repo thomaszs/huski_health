@@ -1,5 +1,5 @@
 a, a:focus, a:hover, a:active {
-  color: #00afd7;
+  color: #fff;
 }
 
 h1, h2, h3 {
@@ -162,11 +162,6 @@ img > .pet-img {
 .love p {
   margin-bottom: 0;
 }
-/* 
-table #profile td {
-  padding: 0px;
-} */
-
 
 .card-body-buttons {
   margin: 10px;
