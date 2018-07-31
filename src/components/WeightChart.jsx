@@ -1,77 +1,62 @@
 import React, { Component } from 'react';
 // import { render } from 'react-dom';
 // import ReactDOM from 'react-dom';
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack } from 'victory';
-
-const data2012 = [
-  {quarter: 1, earnings: 13},
-  {quarter: 2, earnings: 16},
-  {quarter: 3, earnings: 14},
-  {quarter: 4, earnings: 19}
-];
-
-const data2013 = [
-  {quarter: 1, earnings: 15},
-  {quarter: 2, earnings: 12},
-  {quarter: 3, earnings: 19},
-  {quarter: 4, earnings: 13}
-];
-
-const data2014 = [
-  {quarter: 1, earnings: 11},
-  {quarter: 2, earnings: 13},
-  {quarter: 3, earnings: 20},
-  {quarter: 4, earnings: 15}
-];
-
-const data2015 = [
-  {quarter: 1, earnings: 18},
-  {quarter: 2, earnings: 13},
-  {quarter: 3, earnings: 15},
-  {quarter: 4, earnings: 12}
-];
+import { VictoryChart, VictoryLabel, VictoryLine, VictoryAxis, VictoryTheme, VictoryStack, VictoryScatter, VictoryVoronoiContainer, VictoryGroup, VictoryTooltip } from 'victory';
 
 class WeightChart extends React.Component {
   render() {
     return (
       <div>
-        <h2>Weight Over Time</h2>
-        <VictoryChart
-          domainPadding={10}
-          theme={VictoryTheme.material}
-        >
-          <VictoryAxis
-            tickValues={["Week 1", "Week 2", "Week 3", "Week 4"]}
-          />
-          <VictoryAxis
-            dependentAxis
-            tickFormat={(x) => (`${x}lbs`)}
-          />
-          <VictoryStack
-            colorScale={"warm"}
+        <h1>Weight Over Time</h1>
+        <VictoryChart height={400} width={400}
+        containerComponent={<VictoryVoronoiContainer/>}
+      >
+          <VictoryGroup
+            color="#c43a31"
+            labels={(d) => `y: ${d.y}`}
+            labelComponent={
+              <VictoryTooltip
+                style={{ fontSize: 10 }}
+              />
+            }
+            data={[
+              { x: 1, y: -3 },
+              { x: 2, y: 5 },
+              { x: 3, y: 3 },
+              { x: 4, y: 0 },
+              { x: 5, y: -2 },
+              { x: 6, y: -2 },
+              { x: 7, y: 5 }
+            ]}
           >
-            <VictoryBar
-              data={data2012}
-              x={"quarter"}
-              y={"earnings"}
+            <VictoryLine/>
+            <VictoryScatter
+              size={(d, a) => {return a ? 8 : 3;}}
             />
-            <VictoryBar
-              data={data2013}
-              x={"quarter"}
-              y={"earnings"}
+          </VictoryGroup>
+          <VictoryGroup
+            labels={(d) => `y: ${d.y}`}
+            labelComponent={
+              <VictoryTooltip
+                style={{ fontSize: 10 }}
+              />
+            }
+            data={[
+              { x: 1, y: 1 },
+              { x: 2, y: 1 },
+              { x: 3, y: 1 },
+              { x: 4, y: 1 },
+              { x: 5, y: 1 },
+              { x: 6, y: 1 },
+              { x: 7, y: 1 },
+            ]}
+          >
+            <VictoryLine/>
+            <VictoryScatter
+              size={(d, a) => {return a ? 8 : 3;}}
             />
-            <VictoryBar
-              data={data2014}
-              x={"quarter"}
-              y={"earnings"}
-            />
-            <VictoryBar
-              data={data2015}
-              x={"quarter"}
-              y={"earnings"}
-            />
-          </VictoryStack>
-        </VictoryChart>
+          </VictoryGroup>
+       </VictoryChart>
       </div>
     );
   }
