@@ -7,8 +7,6 @@ import './css/timeline.css';
 import './css/keen-dashboards.css';
 
 
-
-
 class App extends Component {
   constructor(props) {
     super(props);
