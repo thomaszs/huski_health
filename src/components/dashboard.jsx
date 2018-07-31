@@ -14,10 +14,29 @@ class Dashboard extends Component {
     constructor(props) {
         super(props)
         this.state = {loading: true}
+
+        this.onChangePetName = this.onChangePetName.bind(this);
+        this.onChangePetWeight = this.onChangePetWeight.bind(this);
+        this.onChangePetBreed = this.onChangePetBreed.bind(this);
     }
 
+    onChangePetName(event) { 
+        event.preventDefault()
+        this.setState(prevState => ({pet: {...prevState.pet, name: event.target.value }}))
+      }
     
-    componentWillMount() {
+      onChangePetWeight(event) { 
+        event.preventDefault()
+        console.log(this.state.pet.weight)
+        this.setState({pet: { weight: event.target.value }})
+      }
+     
+      onChangePetBreed(event) { 
+        event.preventDefault()
+        this.setState(prevState => ({pet: {...prevState.pet, breed: event.target.value }}))
+      }
+
+    componentDidMount() {
 
         $.ajax('http://localhost:8080/api/pet/', {
           method: 'POST',
@@ -46,7 +65,7 @@ class Dashboard extends Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-3">
-                             <PetProfile pet={this.state.pet} updatePet={this.props.updatePet} />
+                             <PetProfile pet={this.state.pet} updatePet={this.props.updatePet} onChangePetName={this.onChangePetName} onChangePetWeight={this.onChangePetWeight} onChangePetBreed={this.onChangePetBreed} />
                         </div>
                         <div className="col-sm-9">
                             <div className="col-sm-8">

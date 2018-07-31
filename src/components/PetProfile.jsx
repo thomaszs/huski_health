@@ -7,16 +7,14 @@ import $ from 'jquery';
 class PetProfile extends Component {
   constructor(props) {
     super(props);
-    this.state = {pet: this.props.pet}
+    this.state = {pet: this.pr}
     this.toggleEdit = this.toggleEdit.bind(this);
     this.editPetProfile = this.editPetProfile.bind(this);
     this.savePetProfile = this.savePetProfile.bind(this);
-    this.onChangePetName = this.onChangePetName.bind(this);
-    this.onChangePetWeight = this.onChangePetWeight.bind(this);
-    this.onChangePetBreed = this.onChangePetBreed.bind(this);
-
+    // this.onChangePetName = this.onChangePetName.bind(this);
+    // this.onChangePetWeight = this.onChangePetWeight.bind(this);
+    // this.onChangePetBreed = this.onChangePetBreed.bind(this);
   }
-
 
   toggleEdit() {
     this.setState({ isEditing: !this.state.isEditing })
@@ -28,12 +26,12 @@ class PetProfile extends Component {
 
   savePetProfile(event) {
     event.preventDefault();
-    $.ajax(`http://localhost:8080/api/pets/${this.state.pet.id}`, {
+    $.ajax(`http://localhost:8080/api/pets/${this.props.pet.id}`, {
       method: 'POST',
       data: {
-        newPetName: this.state.pet.name, 
-        newPetWeight: this.state.pet.weight,
-        newPetBreed: this.state.pet.breed
+        newPetName: this.props.pet.name, 
+        newPetWeight: this.props.pet.weight,
+        newPetBreed: this.props.pet.breed
       }, 
       success: (result) => {
         console.log("Yes, it worked");
@@ -44,47 +42,26 @@ class PetProfile extends Component {
         console.log("It doesnt work")
       }
     });
-    this.toggleEdit();
-    console.log(event)
+  //   this.toggleEdit();
+  //   console.log(event)
   }
 
-  onChangePetName(event) { 
-    event.preventDefault()
-    this.setState(prevState => ({pet: {...prevState.pet, name: event.target.value }}))
-  }
+  // onChangePetName(event) { 
+  //   event.preventDefault()
+  //   this.setState(prevState => ({pet: {...prevState.pet, name: event.target.value }}))
+  // }
 
-  onChangePetWeight(event) { 
-    event.preventDefault()
-    console.log(this.state.pet.weight)
-    this.setState(prevState => ({pet: {...prevState.pet, weight: event.target.value }}))
-  }
+  // onChangePetWeight(event) { 
+  //   event.preventDefault()
+  //   console.log(this.state.pet.weight)
+  //   this.setState({pet: { weight: event.target.value }})
+  // }
  
-  onChangePetBreed(event) { 
-    event.preventDefault()
-    this.setState(prevState => ({pet: {...prevState.pet, breed: event.target.value }}))
-  }
+  // onChangePetBreed(event) { 
+  //   event.preventDefault()
+  //   this.setState(prevState => ({pet: {...prevState.pet, breed: event.target.value }}))
+  // }
   
-//   componentDidMount() {
-//     // if (!this.props.pet) {
-//     $.ajax('http://localhost:8080/api/pet/', {
-//       method: 'POST',
-//       data: {
-//         id: this.props.match.params.id
-//       }, 
-//       success: (result) => {
-//         console.log("Yes, it worked");
-//         console.log(result); 
-//         this.setState({pet: result})
-//         console.log(this.state.pet)
-//       },
-//       error: function(err) {
-//         console.log("It doesnt work")
-//         }
-//     });
-//   // } else {
-//   //   this.setState({pet: this.props.pet})
-//   // }
-// }
 
   render() {
     if (this.state.isEditing) {
@@ -94,11 +71,11 @@ class PetProfile extends Component {
           <img className="pet-img" style={{ width: "100%" }} src={this.props.pet.img} />
       {/*Consider creating a EditPetProfile.jsx component. Will need to make ajax post request to the server to save new pet information*/}
           <form>
-            Name: <input type="text" name="name"  defaultValue={this.state.pet.name} onChange={this.onChangePetName}/><br/>
-            Weight:<input type="text" name="weight" defvalue={this.props.pet.weight} onChange={this.onChangePetWeight}/><br/>
+            Name: <input type="text" name="name"  defaultValue={this.props.pet.name} onChange={this.props.onChangePetName}/><br/>
+            Weight:<input type="text" name="weight" defaultValue={this.props.pet.weight} onChange={this.props.onChangePetWeight}/><br/>
             Age:<input type="text" name="age"/><br/>
             Birthday:<input type="text" name="birthday"/><br/>
-            Breed:<input type="text" name="breed" defaultValue={this.state.pet.breed} onChange={this.onChangePetBreed}/><br/>
+            Breed:<input type="text" name="breed" defaultValue={this.props.pet.breed} onChange={this.props.onChangePetBreed}/><br/>
             Notes: <input type="text" name="notes"/><br/>
             <button type="button" className="btn btn-primary" onClick={this.savePetProfile}>Save</button>
           </form>
@@ -111,8 +88,8 @@ class PetProfile extends Component {
       <div className="chart-title">
         <div className="chart-wrapper">
           <div className="chart-title">
-            <h2>{this.state.pet.name}</h2>
-            <img className="pet-img" alt="petprofilepic" style={{ width: "100%" }} src={this.state.pet.img} />
+            <h2>{this.props.pet.name}</h2>
+            <img className="pet-img" alt="petprofilepic" style={{ width: "100%" }} src={this.props.pet.img} />
           </div>
           <div className="chart-stage" id="chart-01">
 
@@ -122,19 +99,19 @@ class PetProfile extends Component {
               <tbody>
                 <tr>
                   <td>Weight:</td>
-                  <td>{this.state.pet.weight}</td>
+                  <td>{this.props.pet.weight}</td>
                 </tr>
-                <tr>
-                  <td>Age:</td>
-                  <td>{this.state.pet.age}</td>
-                </tr>
+                {/* <tr> */}
+                  {/* <td>Age:</td>
+                  <td>{this.props.pet.age}</td>
+                </tr> */}
                 <tr>
                   <td>Birthday:</td>
-                  <td>{this.state.pet.date_of_birth}</td>
+                  <td>{this.props.pet.date_of_birth}</td>
                 </tr>
                 <tr>
                   <td>Breed:</td>
-                  <td>{this.state.pet.breed}</td>
+                  <td>{this.props.pet.breed}</td>
                 </tr>
                 {/* <tr>
                   <td>Owners:</td>
@@ -142,7 +119,7 @@ class PetProfile extends Component {
                 </tr> */}
                 <tr>
                   <td>Notes:</td>
-                  <td>{this.state.pet.notes}</td>
+                  <td>{this.props.pet.notes}</td>
                 </tr>
                 <tr>
                   <td>
