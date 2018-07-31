@@ -1,31 +1,33 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 
+
+
+
 class PetProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {}
-
     this.toggleEdit = this.toggleEdit.bind(this);
     this.editPetProfile = this.editPetProfile.bind(this);
     this.savePetProfile = this.savePetProfile.bind(this);
     this.onChangePetName = this.onChangePetName.bind(this);
     this.onChangePetWeight = this.onChangePetWeight.bind(this);
     this.onChangePetBreed = this.onChangePetBreed.bind(this);
-   
+
   }
 
 
   toggleEdit() {
-    this.setState({isEditing: !this.state.isEditing})
+    this.setState({ isEditing: !this.state.isEditing })
   }
 
   editPetProfile(event) {
-    this.toggleEdit(); 
+    this.toggleEdit();
   }
 
-  savePetProfile(event){
-    event.preventDefault(); 
+  savePetProfile(event) {
+    event.preventDefault();
     $.ajax('http://localhost:8080/api/pets/1', {
       method: 'POST',
       data: {
@@ -38,9 +40,9 @@ class PetProfile extends Component {
         console.log(result); // {result: "True"}
        return this.props.updatePet(result)
       },
-      error: function(err) {
+      error: function (err) {
         console.log("It doesnt work")
-        }
+      }
     });
     this.toggleEdit();
     console.log(event)
@@ -100,6 +102,7 @@ class PetProfile extends Component {
     //     </div>
     //   )
     // // }
+
     return (
       <div className="chart-title">
         <div className="chart-wrapper">
@@ -139,10 +142,9 @@ class PetProfile extends Component {
                 </tr>
                 <tr>
                   <td>
-                    <button type="button" className="btn btn-primary" onClick={this.editPetProfile}>Edit Profile</button>
+                    <button type="button" className="btn btn-warning" onClick={this.editPetProfile}>Edit Profile</button>
                   </td>
                   <td>
-                    <button type="button" className="btn btn-success">Add Activity</button>
                   </td>
                 </tr>
               </tbody>

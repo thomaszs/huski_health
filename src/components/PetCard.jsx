@@ -9,7 +9,6 @@ export default class PetCard extends Component {
   }
 
   render() {
-
     return (
         <div className="col-sm-4">
           <div className="chart-wrapper">
@@ -41,3 +40,4 @@ export default class PetCard extends Component {
     )
   }
   }
+

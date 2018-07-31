@@ -10,6 +10,7 @@ import PetProfile from './components/PetProfile';
 import './css/keen-static.css';
 import './css/timeline.css';
 import './css/keen-dashboards.css';
+import './css/homepage.css';
 
 
 
