@@ -31,8 +31,8 @@ export default class PetCard extends Component {
                   <button className="btn btn-primary" href="#">Feed Me</button>
                   <button className="btn btn-primary" href="#" style={{ float: "right" }}>Log Activity</button>
                 </div>
-                <Link to={`/pet/${this.props.pet.id}/profile`}>Profile</Link>
-                <Link to={`/pet/${this.props.pet.id}/dashboard`}>Dashboard</Link>
+                {/* <Link to={`/pet/${this.props.pet.id}/profile`}>Profile</Link> */}
+                <Link to={`/pet/${this.props.pet.id}`}>Dashboard</Link>
               </div>
             </div>
           </div>

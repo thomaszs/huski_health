@@ -13,8 +13,29 @@ import NewPetForm from './NewPetForm.jsx';
 class Dashboard extends Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {loading: true}
+
+        this.onChangePetName = this.onChangePetName.bind(this);
+        this.onChangePetWeight = this.onChangePetWeight.bind(this);
+        this.onChangePetBreed = this.onChangePetBreed.bind(this);
     }
+
+    onChangePetName(event) { 
+        event.preventDefault()
+        this.setState(prevState => ({pet: {...prevState.pet, name: event.target.value }}))
+      }
+    
+      onChangePetWeight(event) { 
+        event.preventDefault()
+        console.log(this.state.pet.weight)
+        this.setState({pet: { weight: event.target.value }})
+      }
+     
+      onChangePetBreed(event) { 
+        event.preventDefault()
+        this.setState(prevState => ({pet: {...prevState.pet, breed: event.target.value }}))
+      }
+
     componentDidMount() {
 
         $.ajax('http://localhost:8080/api/pet/', {
@@ -25,7 +46,7 @@ class Dashboard extends Component {
           success: (result) => {
             console.log("Yes, it worked");
             console.log(result); 
-            this.setState({pet: result})
+            this.setState({pet: result[0], loading: false})
             console.log(this.state.pet)
           },
           error: function(err) {
@@ -35,14 +56,17 @@ class Dashboard extends Component {
     }
 
     render() {
+        if(this.state.loading) {
+            return 'Loading...'
+        } 
         return (
             <div>
                 < NavBar />
                 <div className="container-fluid">
                     <div className="row">
-                        {/* <div className="col-sm-3">
-                             <PetProfile pet={this.state.pet} />
-                        </div> */}
+                        <div className="col-sm-3">
+                             <PetProfile pet={this.state.pet} updatePet={this.props.updatePet} onChangePetName={this.onChangePetName} onChangePetWeight={this.onChangePetWeight} onChangePetBreed={this.onChangePetBreed} />
+                        </div>
                         <div className="col-sm-9">
                             <div className="col-sm-8">
                                 < PetChart pet={this.state.pet} />

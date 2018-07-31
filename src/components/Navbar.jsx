@@ -13,7 +13,7 @@ export default function NavBar(props) {
               <a className="navbar-brand" href="./" style={{marginTop:"0.25em", marginLeft:"5px"}}>HuskiHealth</a>
             <div className="navbar-collapse collapse">
               <ul className="nav navbar-nav navbar-left">
-                <li>
+                <li>             
                   <a style={{lineHeight: "0.6em"}} href="localhost:3000">Home</a>
                 </li>
                 <li>
