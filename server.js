@@ -21,7 +21,8 @@ app.use(bodyParser.urlencoded({
     extended:true
 })); 
 
-app.post('/api/pets/1', (req, res) => {
+app.post('/api/pets/:id', (req, res) => {
+    console.log(req.body)
    database.editPet(req.body)
     return res.json(req.body)
     //get the DAta from the POST
@@ -49,6 +50,11 @@ app.post('/api/pet/', (req, res) => {
          console.log(result)
          res.send(result)
      })
+ })
+
+ app.post('/api/pet/new', (req, res) => {
+    console.log(req.body)
+     database.newPet(req.body)
  })
 
 // app.post('/api/pets', (req, res) => {

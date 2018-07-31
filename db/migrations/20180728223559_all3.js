@@ -16,6 +16,7 @@ exports.up = function (knex, Promise) {
          table.increments('id');
          table.string('name', 255);
          table.string('date_of_birth', 255);
+         table.integer('age');
          table.string('gender', 255);
          table.string('breed',255);
          table.string('img', 255);
