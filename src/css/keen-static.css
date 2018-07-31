@@ -7,28 +7,23 @@ h1, h2, h3 {
   margin: 12px 0;
 }
 h1 {
-  font-size: 32px;
-  font-weight: 100;
   letter-spacing: .02em;
   line-height: 48px;
   margin: 12px 0;
+  color: #FF9400;
+  font-weight: 300;
 }
 h2 {
-  color: #aeaeae;
+  color: #B1B298;
   font-weight: 200;
   font-size: 21px;
 }
 h3 {
-  color: rgb(84, 102, 120);
+  color: #B1B298;
   font-size: 21px;
   font-weight: 500;
   letter-spacing: -0.28px;
   line-height: 29.39px;
-}
-
-.btn {
-  background: transparent;
-  border: 1px solid white;
 }
 
 .keen-logo {
@@ -47,11 +42,16 @@ h3 {
 
 .navbar-nav {
   margin: 5px 0 0;
-  color: red;
+  color: #FF9400;
 }
 
 a .navbar-brand {
-  color: white;
+  color: #FF9400;
+
+}
+
+.navbar-header {
+  width: 100%;
 }
 
 .navbar-nav > li > a {
@@ -60,7 +60,7 @@ a .navbar-brand {
   color: #fff;
   letter-spacing: 0.03em;
   padding-top: 19px;
-  text-shadow: 0 0 2px rgba(0,0,0,.1);
+  text-shadow: 0 0 2px red(0,0,0,.1);
 }
 .navbar-nav > li > a:focus,
 .navbar-nav > li > a:hover {
@@ -135,7 +135,7 @@ a .navbar-brand {
   color: #00afd7;
 }
 
-img .pet-img {
+img > .pet-img {
   width: 150px;
   height: 150px;
   margin: 0 auto;
@@ -170,3 +170,22 @@ img .pet-img {
 table #profile td {
   padding: 0px;
 } */
+
+
+.card-body-buttons {
+  margin: 10px;
+}
+
+.front-card-text {
+  color: #B1B298;
+  padding: 5px;
+  font-weight: 100;
+}
+
+.form-container {
+  color: white;
+}
+
+.btn-activity {
+  background: #A00029;
+}

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
 import Dashboard from './components/Dashboard';
+// import Pets from './components/Pets';
 
 import './css/keen-static.css';
 import './css/timeline.css';
 import './css/keen-dashboards.css';
+import './css/homepage.css';
 
 
 
