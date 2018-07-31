@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
+import { withRouter } from 'react-router-dom';
 import NavBar from './NavBar.jsx';
 import PetProfile from './PetProfile.jsx';
 import Timeline from './Timeline.jsx';
@@ -10,8 +12,28 @@ import NewPetForm from './NewPetForm.jsx';
 
 class Dashboard extends Component {
     constructor(props) {
-        super(props);
+        super(props)
+        this.state = {}
     }
+    componentDidMount() {
+
+        $.ajax('http://localhost:8080/api/pet/', {
+          method: 'POST',
+          data: {
+            id: this.props.match.params.id
+          }, 
+          success: (result) => {
+            console.log("Yes, it worked");
+            console.log(result); 
+            this.setState({pet: result})
+            console.log(this.state.pet)
+          },
+          error: function(err) {
+            console.log("It doesnt work")
+            }
+        });
+    }
+
     render() {
         return (
             <div>
@@ -19,14 +41,14 @@ class Dashboard extends Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-3">
-                            <PetProfile pet={this.props.pet} />
+                             <PetProfile pet={this.state.pet} />
                         </div>
                         <div className="col-sm-9">
                             <div className="col-sm-8">
-                                < PetChart pet={this.props.pet} />
-                                < Timeline pet={this.props.pet} />
+                                < PetChart pet={this.state.pet} />
+                                < Timeline pet={this.state.pet} />
                             </div>
-                                < StatusBar pet={this.props.pet}/> 
+                                < StatusBar pet={this.state.pet}/> 
                             <div className="col-sm-4">
                                 < NewPetForm />
                             </div>
@@ -37,4 +59,5 @@ class Dashboard extends Component {
         );
     }
 }
+withRouter(Dashboard);
 export default Dashboard;

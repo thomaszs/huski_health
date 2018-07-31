@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import mainLogo from '../huski-health.png'
 
 
+
 export default function NavBar(props) {
   return (
     <div>

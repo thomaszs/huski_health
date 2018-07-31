@@ -1,46 +1,43 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import PetProfile from './PetProfile'
+import Dashboard from './Dashboard'
 
-export default function PetCard(props) {
-  const pet = props.pet[0]
-  return (
-    <div>
-      <div className="col-sm-4">
-        <div className="chart-wrapper">
-          <div className="chart-title">
-            <h1>{pet.name}</h1>
-          </div>
-          <div className="chart-stage">
-            <div className="card" style={{ width: "100%" }}>
-              <img className="card-img-top" style={{ width: "100%" }} src="https://previews.123rf.com/images/satura86/satura861507/satura86150701142/42515335-fat-cat-lyingfat-lazy-cat-in-the-street-in-turkey.jpg"
-                alt="Card cap" ></img>
-              <div className="card-body">
+export default class PetCard extends Component {
+  constructor(props) {
+    super(props)
+  }
 
-                <p className="front-card-text">Pet Notes: {pet.notes}</p>
-              </div>
-              <table class="table table-dark" style={{padding:"10px"}}>
-                <tbody>
-                  <tr>
-                    <td>Pet Weight:</td>
-                    <td>{pet.weight}</td>
-                  </tr>
-                  <tr>
-                    <td>Pet ID: </td>
-                    <td>{pet.id}</td>
-                  </tr>
-                  <tr>
-                    <td>Pet Owner: </td>
-                    <td>{pet.owner}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="card-body-buttons">
-                <button className="btn btn-primary" href="#">Feed Me</button>
-                <button className="btn btn-primary" href="#" style={{ float: "right" }}>Log Activity</button>
+  render() {
+    return (
+        <div className="col-sm-4">
+          <div className="chart-wrapper">
+            <div className="chart-title">
+              <h1>{this.props.pet.name}</h1>
+            </div>
+            <div className="chart-stage">
+              <div className="card" style={{ width: "100%" }}>
+                <img className="card-img-top" style={{ width: "100%" }} src={this.props.pet.img}
+                  alt="Card cap" ></img>
+                <div className="card-body">
+                  <p className="card-text">Pet Notes: {this.props.pet.notes}</p>
+                </div>
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item">Pet Weight: {this.props.pet.weight}</li>
+                  <li className="list-group-item">Pet ID: {this.props.pet.id}</li>
+                  <li className="list-group-item">Pet Owner: {this.props.pet.account_id}</li>
+                </ul>
+                <div className="card-body">
+                  <button className="btn btn-primary" href="#">Feed Me</button>
+                  <button className="btn btn-primary" href="#" style={{ float: "right" }}>Log Activity</button>
+                </div>
+                <Link to={`/pet/${this.props.pet.id}/profile`}>Profile</Link>
+                <Link to={`/pet/${this.props.pet.id}/dashboard`}>Dashboard</Link>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  )
-}
+    )
+  }
+  }
+
