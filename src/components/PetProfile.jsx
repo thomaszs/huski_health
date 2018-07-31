@@ -4,14 +4,8 @@ import $ from 'jquery';
 class PetProfile extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      pet: this.props.pet,
-      petName: this.props.pet[0].name, 
-      petWeight: this.props.pet[0].weight,
-      petBreed: this.props.pet[0].breed, 
-      isEditing: false, 
-      test: 'hello,world',
-     };
+    this.state = {}
+
     this.toggleEdit = this.toggleEdit.bind(this);
     this.editPetProfile = this.editPetProfile.bind(this);
     this.savePetProfile = this.savePetProfile.bind(this);
@@ -35,9 +29,9 @@ class PetProfile extends Component {
     $.ajax('http://localhost:8080/api/pets/1', {
       method: 'POST',
       data: {
-        newPetName: this.state.petName, 
-        newPetWeight: this.state.petWeight,
-        newPetBreed: this.state.petBreed
+        newPetName: this.state.pet.name, 
+        newPetWeight: this.state.pet.weight,
+        newPetBreed: this.state.pet.breed
       }, 
       success: (result) => {
         console.log("Yes, it worked");
@@ -53,43 +47,65 @@ class PetProfile extends Component {
   }
 
   onChangePetName(event) { 
-    this.setState({ petName: event.target.value })
+    this.setState({ name: event.target.value })
   }
 
   onChangePetWeight(event) { 
-    this.setState({ petWeight: event.target.value })
+    this.setState({ weight: event.target.value })
   }
  
   onChangePetBreed(event) { 
-    this.setState({ petBreed: event.target.value })
+    this.setState({ breed: event.target.value })
   }
   
+  componentDidMount() {
+    // if (!this.props.pet) {
+    $.ajax('http://localhost:8080/api/pet/', {
+      method: 'POST',
+      data: {
+        id: this.props.match.params.id
+      }, 
+      success: (result) => {
+        console.log("Yes, it worked");
+        console.log(result); 
+        this.setState({pet: result})
+        console.log(this.state.pet)
+      },
+      error: function(err) {
+        console.log("It doesnt work")
+        }
+    });
+  // } else {
+  //   this.setState({pet: this.props.pet})
+  // }
+}
+
   render() {
-    if (this.state.isEditing) {
-      return (
-        <div>
-          <div id="profile">
-          <img className="pet-img" style={{ width: "100%" }} src="https://toll-imageinaboxllc.netdna-ssl.com/wp-content/uploads/2014/06/Fat-Cat_400-2.jpg" />
-      {/*Consider creating a EditPetProfile.jsx component. Will need to make ajax post request to the server to save new pet information*/}
-          <form>
-            Name: <input type="text" name="name"  defaultValue={this.state.petName} onChange={this.onChangePetName}/><br/>
-            Weight:<input type="text" name="weight" defaultValue={this.state.petWeight} onChange={this.onChangePetWeight}/><br/>
-            Age:<input type="text" name="age"/><br/>
-            Birthday:<input type="text" name="birthday"/><br/>
-            Breed:<input type="text" name="breed" defaultValue={this.state.petBreed} onChange={this.onChangePetBreed}/><br/>
-            Notes: <input type="text" name="notes"/><br/>
-            <button type="button" className="btn btn-primary" onClick={this.savePetProfile}>Save</button>
-          </form>
-          </div>
-        </div>
-      )
-    }
+    // // if (this.state.isEditing) {
+    //   return (
+    //     <div>
+    //       <div id="profile">
+    //       <img className="pet-img" style={{ width: "100%" }} src={this.props.pet.img} />
+    //   {/*Consider creating a EditPetProfile.jsx component. Will need to make ajax post request to the server to save new pet information*/}
+    //       <form>
+    //         Name: <input type="text" name="name"  defaultValue={this.state.pet.name} onChange={this.onChangePetName}/><br/>
+    //         Weight:<input type="text" name="weight" defaultValue={this.state.pet.weight} onChange={this.onChangePetWeight}/><br/>
+    //         Age:<input type="text" name="age"/><br/>
+    //         Birthday:<input type="text" name="birthday"/><br/>
+    //         Breed:<input type="text" name="breed" defaultValue={this.state.pet.breed} onChange={this.onChangePetBreed}/><br/>
+    //         Notes: <input type="text" name="notes"/><br/>
+    //         <button type="button" className="btn btn-primary" onClick={this.savePetProfile}>Save</button>
+    //       </form>
+    //       </div>
+    //     </div>
+    //   )
+    // // }
     return (
       <div className="chart-title">
         <div className="chart-wrapper">
           <div className="chart-title">
-            <h2>{this.state.petName}</h2>
-            <img className="pet-img" alt="petprofilepic" style={{ width: "100%" }} src="https://toll-imageinaboxllc.netdna-ssl.com/wp-content/uploads/2014/06/Fat-Cat_400-2.jpg" />
+            <h2>{this.state.pet.name}</h2>
+            <img className="pet-img" alt="petprofilepic" style={{ width: "100%" }} src={this.state.pet.img} />
           </div>
           <div className="chart-stage" id="chart-01">
 
@@ -99,27 +115,27 @@ class PetProfile extends Component {
               <tbody>
                 <tr>
                   <td>Weight:</td>
-                  <td>{this.state.petWeight}</td>
+                  <td>{this.state.pet.weight}</td>
                 </tr>
                 <tr>
                   <td>Age:</td>
-                  <td>{this.props.pet[0].age}</td>
+                  <td>{this.state.pet.age}</td>
                 </tr>
                 <tr>
                   <td>Birthday:</td>
-                  <td>{this.props.pet[0].birthday}</td>
+                  <td>{this.state.pet.date_of_birth}</td>
                 </tr>
                 <tr>
                   <td>Breed:</td>
-                  <td>{this.state.petBreed}</td>
+                  <td>{this.state.pet.breed}</td>
                 </tr>
-                <tr>
+                {/* <tr>
                   <td>Owners:</td>
-                  <td>{this.props.pet[0].owner}</td>
-                </tr>
+                  <td>{this.props.pet.owner}</td>
+                </tr> */}
                 <tr>
                   <td>Notes:</td>
-                  <td>{this.props.pet[0].notes}</td>
+                  <td>{this.state.pet.notes}</td>
                 </tr>
                 <tr>
                   <td>

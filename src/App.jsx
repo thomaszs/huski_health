@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 import Dashboard from './components/Dashboard';
 import Pets from './components/Pets';
 import NavBar from './components/NavBar';
+import PetProfile from './components/PetProfile';
 
 import './css/keen-static.css';
 import './css/timeline.css';
@@ -34,6 +35,8 @@ class App extends Component {
       ]
     }
     this.updatePet = this.updatePet.bind(this);
+    this.renderMergedProps = this.renderMergedProps.bind(this)
+    this.PropsRoute = this.PropsRoute.bind(this)
   }
 
   componentDidMount() {
@@ -41,7 +44,7 @@ class App extends Component {
       $.ajax('http://localhost:8080/api/pets/', {
         method: 'POST',
         data: {
-          userId: 2
+          userId: 1
         }, 
         success: (result) => {
           console.log("Yes, it worked");
@@ -62,15 +65,39 @@ class App extends Component {
     this.setState({items});
   }
 
+  renderMergedProps(component, ...rest) {
+    const finalProps = Object.assign({}, ...rest);
+    return (
+      React.createElement(component, finalProps)
+    );
+  }
+  
+  PropsRoute({ component, ...rest }) {
+    return (
+      <Route {...rest} render={routeProps => {
+        return this.renderMergedProps(component, routeProps, rest);
+      }}/>
+    );
+  }
+
   // set routing; based on this route render this
   // if user is logged in, render pets
   // if not, render log in route
 
   render() {
     return (
-      < Pets pets={this.state.pets} updatePet={this.updatePet}/>
-      /* // < Dashboard pet={this.state.pets} updatePet={this.updatePet}/>
-      // <  pet={this.state.pets}/> */
+      <div>
+      <Router>
+        <div>
+          <NavBar/>
+          <Switch>
+          <this.PropsRoute exact path="/" component={Pets} pets={this.state.pets} />
+          <this.PropsRoute exact path='/pet/:id/profile' component={PetProfile} pets={this.state.pets}/>
+          <this.PropsRoute exact path='/pet/:id/dashboard' component={Dashboard} pets={this.state.pets}/>
+          </Switch>
+      </div>
+      </Router>
+      </div>
     )
   }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 export default function NavBar(props) {
   return (
     <div>
@@ -20,7 +21,7 @@ export default function NavBar(props) {
           <div className="navbar-collapse collapse">
             <ul className="nav navbar-nav navbar-left">
               <li>
-                <a href="https://keen.io">Home</a>
+                <a href="http://localhost:3000/">Home</a>
               </li>
             </ul>
           </div>

@@ -8,6 +8,10 @@ module.exports = function knexData(knex) {
       getPets: function (id) {
         return knex('pets').where({account_id: id})
       },
+      getPet: function (id) {
+        console.log(id)
+        return knex('pets').where({id: id})
+      },
   
       insertAccount: function (name, email, password) {
         knex('accounts').insert([{

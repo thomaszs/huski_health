@@ -34,13 +34,22 @@ app.post('/api/pets/1', (req, res) => {
 // })
 
 app.post('/api/pets/', (req, res) => {
-   console.log(req.body)
+//    console.log(req.body)
     database.getPets(req.body.userId)
     .then(function (result) {
-        console.log(result)
+        // console.log(result)
         res.send(result)
     })
 })
+
+app.post('/api/pet/', (req, res) => {
+    console.log(req.body)
+     database.getPet(req.body.id)
+     .then(function (result) {
+         console.log(result)
+         res.send(result)
+     })
+ })
 
 // app.post('/api/pets', (req, res) => {
 //     console.log("GOTTEN PET", req.body)
