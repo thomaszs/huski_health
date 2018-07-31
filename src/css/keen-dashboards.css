@@ -39,17 +39,16 @@
 
 .keen-dashboard .chart-wrapper {
   background: #1E212F;
-  border-radius: 10px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
   box-shadow: 5px 5px 10px #0f0f0f;
   border: 1px 1px 1px solid #e2e2e2;
   margin-bottom: 10px;
 }
 .keen-dashboard .chart-wrapper .chart-title {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  /* border-top-left-radius: 10px;
+  border-top-right-radius: 10px; */
   color: rgb(252, 240, 207);
-  /* font-size: 14px;
-  font-weight: 200; */
   padding: 5px 20px;
 }
 
@@ -63,7 +62,6 @@
 
 .keen-dashboard .chart-wrapper .chart-notes {
   color: #B1B298;
-  /* font-weight: 300; */
   font-size: 12px;
   padding: 10px;
 }
