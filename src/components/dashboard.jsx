@@ -41,7 +41,7 @@ class Dashboard extends Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-3">
-                             <PetProfile pet={this.state.pet} />
+                             {/* <PetProfile pet={this.state.pet} /> */}
                         </div>
                         <div className="col-sm-9">
                             <div className="col-sm-8">
