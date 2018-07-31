@@ -1,6 +1,6 @@
 .keen-dashboard {
   background: #171923;
-  font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif; 
+  font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;
 }
 
 .keen-dataviz {
@@ -70,6 +70,10 @@
 .keen-dashboard .chart-wrapper .keen-dataviz-title,
 .keen-dashboard .chart-stage .chart-title {
   border: medium none;
+}
+
+.row {
+  margin-top: 20px;
 }
 
 .btn-circle {

@@ -14,7 +14,7 @@ class Homepage extends Component {
                     <div className="color-overlay"></div>
                     <div className="hero-text">
                         <h1 id="homepage" className="homepage-h1">HuskiHealth</h1>
-                        <button type="button" className="btn btn-warning"><Link to={`/login`}>Login</Link></button>
+                        <Link to={`/login`}><button type="button" className="btn btn-warning">Login</button></Link>
                         
                     </div>
                 </div>

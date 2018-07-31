@@ -26,7 +26,7 @@ export default class SignUp extends Component {
                        <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Confirm Password"/>
                      </div>
                      <button type="submit" className="btn btn-primary">Submit</button>
-                     <Link to={`/`} style={{float: "right"}}>back</Link>
+                     <Link to={`/`} style={{float: "right"}}>Back</Link>
                     </form>
                 </div>
             </div>
