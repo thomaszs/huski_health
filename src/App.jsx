@@ -49,7 +49,7 @@ class App extends Component {
       $.ajax('http://localhost:8080/api/pets/', {
         method: 'POST',
         data: {
-          userId: 1
+          userId: 2
         }, 
         success: (result) => {
           console.log("Yes, it worked");
@@ -102,7 +102,10 @@ class App extends Component {
           <this.PropsRoute exact path="/login" component={Login}/>
           <this.PropsRoute exact path="/pets" component={Pets} pets={this.state.pets} />
           <this.PropsRoute exact path='/pet/:id/profile' component={PetProfile} pets={this.state.pets}/>
-          <this.PropsRoute exact path='/pet/:id/dashboard' component={Dashboard} pets={this.state.pets}/>
+          {/* <this.PropsRoute exact path='/pet/:id/dashboard' component={Dashboard} pets={this.state.pets}/> */}
+          <this.PropsRoute exact path="/" component={Pets} pets={this.state.pets} />
+          {/* <this.PropsRoute exact path='/pet/:id/profile' component={PetProfile} updatePet={this.updatePet}/> */}
+          <this.PropsRoute exact path='/pet/:id' component={Dashboard} updatePet={this.updatePet}/>
           </Switch>
       </div>
       </Router>
