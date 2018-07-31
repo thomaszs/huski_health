@@ -4,13 +4,7 @@ import SingleInput from './SingleInput';
 import $ from 'jquery';
 const dogBreed = require('what-dog');
 
-// dogBreed('https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12225919/Pembroke-Welsh-Corgi-On-White-01.jpg')
-//   .then(doggyData => {
-//         console.log(doggyData)
-//         .catch(function(e) {
-//           console.log("error in dog image");
-//         });
-//     })
+
 
 
 class NewPetForm extends Component {
@@ -38,6 +32,11 @@ class NewPetForm extends Component {
     this.handleBreedChange = this.handleBreedChange.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
     // this.handleAgeChange = this.handleAgeChange.bind(this)
+
+  //   dogBreed('https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12225919/Pembroke-Welsh-Corgi-On-White-01.jpg')
+  //       .then(doggyData => {
+  //       console.log(doggyData.breed)
+  //   })
   }
 
   handlePetNameChange(e) {
@@ -80,38 +79,40 @@ class NewPetForm extends Component {
 
   handleFormSubmit(e) {
     e.preventDefault();
+    // dogBreed(this.state.image).then(doggyData => {
+    //   console.log(doggyData);
 
-    const newPetInfo = {
-      petName: this.state.petName,
-      species: this.state.species,
-      gender: this.state.gender,
-      birthday: this.state.birthday,
-      weight: this.state.weight,
-      breed: dogBreed(this.state.image).then(doggyData => {
-        (doggyData.breed)
-        // .catch(function(e) {
-        //   console.log("error in dog image", e);
-        // });
-        
-      }),
-      accountID: 2,
-      image: this.state.image
-    };
+      const newPetInfo = {
+        petName: this.state.petName,
+        species: this.state.species,
+        gender: this.state.gender,
+        birthday: this.state.birthday,
+        weight: this.state.weight,
+        breed: this.state.breed,
+        //doggyData.breed,
+          // .catch(function(e) {
+          //   console.log("error in dog image", e);
+          // });
+          accountID: 2,
+          image: this.state.image
+    
+      };
 
-    $.ajax('http://localhost:8080/api/pet/new', {
-      method: 'POST',
-      data: newPetInfo,
-      success: function (result) {
-        console.log("Yes, it worked");
-        console.log(result); // {result: "True"}
-      },
-      error: function (err) {
-        console.log(err)
-        console.log("It doesnt work")
-      }
-    });
-    console.log(e)
-    this.handleClearForm(e);
+      $.ajax('http://localhost:8080/api/pet/new', {
+        method: 'POST',
+        data: newPetInfo,
+        success: function (result) {
+          console.log("Yes, it worked");
+          console.log(result); // {result: "True"}
+        },
+        error: function (err) {
+          console.log(err)
+          console.log("It doesnt work")
+        }
+      });
+      console.log(e)
+      this.handleClearForm(e);
+    // })
   }
 
   render() {

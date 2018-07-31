@@ -5,14 +5,6 @@ import 'chartjs-plugin-annotation';
 // import ReactDOM from 'react-dom';
 // import { VictoryChart, VictoryLabel, VictoryLine, VictoryAxis, VictoryTheme, VictoryStack, VictoryScatter, VictoryVoronoiContainer, VictoryGroup, VictoryTooltip } from 'victory';
 
-const breed = this.props.pet.breed
-// ajax based on this.props.pet.id
-// get history table 
-
-
-
-
-
 const petWeightRange = 
     {
       "Airedale terriers": "40–65",
@@ -127,10 +119,10 @@ const petWeightRange =
       petWeightRange[key] = rangeArray; 
     }
     
-    console.log(petWeightRange)
+    // console.log(petWeightRange)
 
     const data = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       datasets: [
         {
           label: 'Leonard',
@@ -162,7 +154,7 @@ const petWeightRange =
             type: 'line',
             mode: 'horizontal',
             scaleID: 'y-axis-0',
-            value: '8',
+            value: 5,
             borderColor: 'red',
             borderWidth: 2,
           }, {
@@ -170,7 +162,7 @@ const petWeightRange =
             type: 'line',
             mode: 'horizontal',
             scaleID: 'y-axis-0',
-            value: '10',
+            value: 10,
             borderColor: 'red',
             borderWidth: 2,
           }]
@@ -179,6 +171,19 @@ const petWeightRange =
     
 
 class WeightChart extends React.Component {
+  constructor (props) {
+    super(props)
+  const currentBreed = this.props.pet.breed;
+  console.log(currentBreed);
+  const id = this.props.pet.id;
+  const minWeight = petWeightRange[currentBreed][0];
+  const maxWeight = petWeightRange[currentBreed][1];
+  options.annotation.annotations[0].value = minWeight;
+  options.annotation.annotations[1].value = maxWeight;
+
+  // ajax based on this.props.pet.id
+  // get history table 
+  }
   render() {
     return (
       <div>
