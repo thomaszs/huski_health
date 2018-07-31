@@ -7,7 +7,7 @@ class Timeline extends Component {
         <div className="chart-wrapper">
           <div className="chart-stage" id="chart-02">
             <h2>Activity Timeline</h2>
-            <button type="button" className="btn btn-success">Add Activity</button>
+            <button type="button" className="btn btn-activity">Add Activity</button>
             <div className="page">
               <div className="page__demo">
                 <div className="main-container page__container">

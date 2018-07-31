@@ -1,28 +1,27 @@
 import React, { Component } from 'react';
+import mainLogo from '../huski-health.png'
+
+
 
 export default function NavBar(props) {
   return (
     <div>
-      <div id="navbar" className="navbar navbar-inverse navbar-fixed-top" role="navigation" >
-        <div className="container-fluid" style={{ backgroundColor:"#003399"}}>
+      <div className="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div className="container-fluid">
           <div className="navbar-header">
-            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span className="sr-only">Toggle navigation</span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-            </button>
-            <a className="navbar-brand" href="../">
-              <span className="glyphicon glyphicon-chevron-left"></span>
-            </a>
-            <a className="navbar-brand" href="./">HuskiHealth &raquo; </a>
-          </div>
-          <div className="navbar-collapse collapse">
-            <ul className="nav navbar-nav navbar-left">
-              <li>
-                <a href="https://keen.io">Home</a>
-              </li>
-            </ul>
+            <img src={mainLogo} style={{ height: "3em", float: "left", padding: "5px" }}/>
+              <a className="navbar-brand" href="./" style={{marginTop:"0.25em", marginLeft:"5px"}}>HuskiHealth</a>
+            <div className="navbar-collapse collapse">
+              <ul className="nav navbar-nav navbar-left">
+                <li>             
+                  <a style={{lineHeight: "0.6em"}} href="http://localhost:3000/">Home</a>
+                </li>
+                <li>
+                  <a style={{lineHeight: "0.6em"}} href="localhost:3000">Team</a>
+                </li>
+              </ul>
+              <button className="btn btn-sm btn-warning" style={{ float: "right", marginTop: "10px" }}>Signout</button>
+            </div>
           </div>
         </div>
       </div>
