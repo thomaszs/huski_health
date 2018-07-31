@@ -9,7 +9,7 @@ exports.up = function (knex, Promise) {
        table.increments('id');
        table.string('name', 255);
        table.integer('account_id').unsigned();
-       table.foreign('account_id').references('accounts.id');
+    //    table.foreign('account_id').references('accounts.id');
    })
    }).then( () => {
        return knex.schema.createTable('pets', function (table) {
@@ -23,7 +23,7 @@ exports.up = function (knex, Promise) {
        table.integer('weight');
        table.string('species', 255);
        table.integer('account_id').unsigned();
-       table.foreign('account_id').references('accounts.id');
+    //    table.foreign('account_id').references('accounts.id');
    })
    }).then( () => {
        return knex.schema.createTable('history', function (table) {
@@ -32,9 +32,9 @@ exports.up = function (knex, Promise) {
        table.string('notes', 255);
        table.dateTime('created_at').defaultTo(knex.fn.now());
        table.integer('profile_id').unsigned();
-       table.foreign('profile_id').references('profiles.id');
+    //    table.foreign('profile_id').references('profiles.id');
        table.integer('pet_id').unsigned();
-       table.foreign('pet_id').references('pets.id');
+    //    table.foreign('pet_id').references('pets.id');
    })
    })
 }

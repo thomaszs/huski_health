@@ -30,13 +30,14 @@ module.exports = function knexData(knex) {
       // },
 
       editPet: function (data) {
-        knex('pets').where({
+        console.log(data)
+        return knex('pets').where({
           'id': data.id
         }).update({
           'name': data.newPetName, 
-          'weight': data.newPetWeight,
-          'breed': data.petNewBreed
-        }).then(console.log("CHANGED"))
+          'weight': data.newPetWeight
+          // 'breed': data.newPetBreed
+        })
       },
 
       newPet: function (data) {

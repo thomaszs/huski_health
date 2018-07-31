@@ -2,10 +2,20 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import PetProfile from './PetProfile'
 import Dashboard from './Dashboard'
+import Activity from './Activity';
 
 export default class PetCard extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      showPopup: false
+    };
+    this.togglePopup = this.togglePopup.bind(this)
+  }
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
   }
 
   render() {
@@ -29,14 +39,19 @@ export default class PetCard extends Component {
                 </ul>
                 <div className="card-body">
                   <button className="btn btn-primary" href="#">Feed Me</button>
-                  <button className="btn btn-primary" href="#" style={{ float: "right" }}>Log Activity</button>
+                  <button onClick={this.togglePopup.bind(this)} className="btn btn-primary" href="#" style={{ float: "right" }}>Log Activity</button>
                 </div>
                 {/* <Link to={`/pet/${this.props.pet.id}/profile`}>Profile</Link> */}
                 <Link to={`/pet/${this.props.pet.id}`}>Dashboard</Link>
               </div>
             </div>
           </div>
+          {this.state.showPopup ? 
+          <Activity text='Close Me' closePopup={this.togglePopup.bind(this)}/>
+          : null
+          }
         </div>
+        
     )
   }
   }
