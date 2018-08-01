@@ -10,6 +10,8 @@ import Homepage from './components/Homepage';
 import SignUp from './components/SignUp'
 import Login from './components/Login'
 import Activity from './components/Activity';
+import NewPetForm from './components/NewPetForm';
+
 
 import './css/homepage.css';
 import './css/keen-static.css';
@@ -100,6 +102,7 @@ class App extends Component {
           <this.PropsRoute exact path="/signup" component={SignUp}/>
           <this.PropsRoute exact path="/login" component={Login}/>
           <this.PropsRoute exact path="/pets" component={Pets} pets={this.state.pets} />
+          <this.PropsRoute exact path="/pets/new" component={NewPetForm} />
           {/* <this.PropsRoute exact path='/pet/:id/profile' component={PetProfile} pets={this.state.pets}/> */}
           {/* <this.PropsRoute exact path='/pet/:id/dashboard' component={Dashboard} pets={this.state.pets}/> */}
           <this.PropsRoute exact path="/" component={Pets} pets={this.state.pets} />

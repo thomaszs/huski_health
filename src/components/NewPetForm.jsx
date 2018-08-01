@@ -33,10 +33,12 @@ class NewPetForm extends Component {
     this.handleImageChange = this.handleImageChange.bind(this);
     // this.handleAgeChange = this.handleAgeChange.bind(this)
 
-  //   dogBreed('https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12225919/Pembroke-Welsh-Corgi-On-White-01.jpg')
-  //       .then(doggyData => {
-  //       console.log(doggyData.breed)
+    // dogBreed('https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12225919/Pembroke-Welsh-Corgi-On-White-01.jpg')
+    //     .then(doggyData => {
+    //     console.log(doggyData.breed)
   //   })
+
+
   }
 
   handlePetNameChange(e) {
@@ -79,31 +81,37 @@ class NewPetForm extends Component {
 
   handleFormSubmit(e) {
     e.preventDefault();
-    // dogBreed(this.state.image).then(doggyData => {
-    //   console.log(doggyData);
 
-      const newPetInfo = {
-        petName: this.state.petName,
-        species: this.state.species,
-        gender: this.state.gender,
-        birthday: this.state.birthday,
-        weight: this.state.weight,
-        breed: this.state.breed,
-        //doggyData.breed,
-          // .catch(function(e) {
-          //   console.log("error in dog image", e);
-          // });
-          accountID: 2,
-          image: this.state.image
-    
-      };
+    const newPetInfo = {
+      petName: this.state.petName,
+      species: this.state.species,
+      gender: this.state.gender,
+      birthday: this.state.birthday,
+      weight: this.state.weight,
+      breed: this.state.breed,
+      accountID: 2,
+      image: this.state.image
+    };
 
-      $.ajax('http://localhost:8080/api/pet/new', {
+    $.ajax('http://localhost:8080/api/whatDog', {
         method: 'POST',
-        data: newPetInfo,
+        data: {dogUrl: this.state.image,},
         success: function (result) {
           console.log("Yes, it worked");
           console.log(result); // {result: "True"}
+          newPetInfo.breed = result.doggyData.breed;
+          $.ajax('http://localhost:8080/api/pet/new', {
+            method: 'POST',
+            data: newPetInfo,
+            success: function (result) {
+              console.log("Yes, it worked");
+              console.log(result); // {result: "True"}
+            },
+            error: function (err) {
+              console.log(err)
+              console.log("It doesnt work")
+            }
+          });
         },
         error: function (err) {
           console.log(err)
@@ -112,12 +120,12 @@ class NewPetForm extends Component {
       });
       console.log(e)
       this.handleClearForm(e);
-    // })
-  }
-
+    }
+      
   render() {
     return (
       <div>
+        <div className="container">
         <div className="chart-title">
           <div className="chart-wrapper">
             <div className="chart-title">
@@ -203,6 +211,7 @@ class NewPetForm extends Component {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     )

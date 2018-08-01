@@ -180,3 +180,17 @@ img > .pet-img {
 .btn-activity {
   background: #A00029;
 }
+.table>tbody>tr>td{
+  font-size: 20px;
+  color: white;
+  margin-top: 15px;
+  border:none;
+  
+}
+
+@media screen and (max-width: 320px) {
+  .table>tbody>tr{
+    font-size: 16px;
+  }
+}
+

@@ -20,9 +20,9 @@ export default function Pets(props) {
            {/* for n of pets, render PetCard */}
            {petCards}
            <div className="col-sm-4 col-md-3" style={{ marginTop: "15em" }}>
-               <button type="button" className="btn btn-info btn-circle btn-xl">
+               <a className="btn" href="http://localhost:3000/pets/new"><button type="button" className="btn btn-info btn-circle btn-xl">
                    <i className="glyphicon glyphicon-plus"></i>
-               </button>
+               </button></a>
            </div>
        </div>
            )
