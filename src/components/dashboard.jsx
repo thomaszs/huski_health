@@ -80,12 +80,9 @@ class Dashboard extends Component {
                         <div className="col-sm-9">
                             <div className="col-sm-8">
                                 < PetChart pet={this.state.pet} />
-                                < Timeline pet={this.state.pet} />
+                                < Timeline pet={this.state.pet} history={this.state.history}/>
                             </div>
                                 < StatusBar pet={this.state.pet}/> 
-                            <div className="col-sm-4">
-                                < NewPetForm />
-                            </div>
                         </div>
                     </div>
                 </div>

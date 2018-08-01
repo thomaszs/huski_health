@@ -1,5 +1,5 @@
 a, a:focus, a:hover, a:active {
-  color: #00afd7;
+  color: #fff;
 }
 
 h1, h2, h3 {
@@ -41,10 +41,10 @@ h3 {
 
 
 .navbar-nav {
+  align-items: center;
   margin: 5px 0 0;
-  color: #FF9400;
+  /* color: #FF9400; */
 }
-
 
 .navbar-header {
   width: 100%;
@@ -55,7 +55,7 @@ h3 {
   font-weight: 200;
   color: #fff;
   letter-spacing: 0.03em;
-  padding-top: 19px;
+  /* padding-top: 19px; */
   text-shadow: 0 0 2px red(0,0,0,.1);
 }
 .navbar-nav > li > a:focus,
@@ -162,11 +162,6 @@ img > .pet-img {
 .love p {
   margin-bottom: 0;
 }
-/* 
-table #profile td {
-  padding: 0px;
-} */
-
 
 .card-body-buttons {
   margin: 10px;
@@ -185,3 +180,17 @@ table #profile td {
 .btn-activity {
   background: #A00029;
 }
+.table>tbody>tr>td{
+  font-size: 20px;
+  color: white;
+  margin-top: 15px;
+  border:none;
+  
+}
+
+@media screen and (max-width: 320px) {
+  .table>tbody>tr{
+    font-size: 16px;
+  }
+}
+

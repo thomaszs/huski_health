@@ -6,12 +6,18 @@ import Dashboard from './components/Dashboard';
 import Pets from './components/Pets';
 import NavBar from './components/NavBar';
 import PetProfile from './components/PetProfile';
+import Homepage from './components/Homepage';
+import SignUp from './components/SignUp'
+import Login from './components/Login'
 import Activity from './components/Activity';
+import NewPetForm from './components/NewPetForm';
 
+
+import './css/homepage.css';
 import './css/keen-static.css';
 import './css/timeline.css';
 import './css/keen-dashboards.css';
-import './css/homepage.css';
+
 
 
 
@@ -92,7 +98,15 @@ class App extends Component {
       <Router>
         <div>
           <NavBar/>
+
           <Switch>
+          <this.PropsRoute exact path="/" component={Homepage}/>
+          <this.PropsRoute exact path="/signup" component={SignUp}/>
+          <this.PropsRoute exact path="/login" component={Login}/>
+          <this.PropsRoute exact path="/pets" component={Pets} pets={this.state.pets} />
+          <this.PropsRoute exact path="/pets/new" component={NewPetForm} />
+          {/* <this.PropsRoute exact path='/pet/:id/profile' component={PetProfile} pets={this.state.pets}/> */}
+          {/* <this.PropsRoute exact path='/pet/:id/dashboard' component={Dashboard} pets={this.state.pets}/> */}
           <this.PropsRoute exact path="/" component={Pets} pets={this.state.pets} />
           {/* <this.PropsRoute exact path='/pet/:id/profile' component={PetProfile} updatePet={this.updatePet}/> */}
           <this.PropsRoute exact path='/pet/:id' component={Dashboard} updatePet={this.updatePet}/>
