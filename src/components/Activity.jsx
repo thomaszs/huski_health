@@ -1,37 +1,53 @@
 import React, { Component } from 'react';
-// import {
+import $ from 'jquery';
 import '../css/activity.css';
-//   PopupboxManager,
-//   PopupboxContainer
-// } from 'react-popupbox';
 
-export default class Popup extends React.Component {
+
+export default class Event extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            notes: null
+        }
+        this.saveEvent = this.saveEvent.bind(this)
+        this.onChangeNotes = this.onChangeNotes.bind(this)
     }
-
-    onChangeType(event) { 
-        event.preventDefault()
-        this.setState(prevState => ({pet: {...prevState.pet, name: event.target.value }}))
-      }
     
       onChangeNotes(event) { 
         event.preventDefault()
-        console.log(this.state.pet.weight)
-        this.setState(prevState => ({...prevState.pet, weight: event.target.value }))
-      }
+        this.setState({notes: event.target.value})
+          }
+
+      saveEvent(event) {
+        event.preventDefault();
+        console.log()
+        $.ajax(`http://localhost:8080/api/pets/${this.props.pet.id}/activity`, {
+          method: 'POST',
+          data: {
+            type: this.props.type,
+            notes: this.state.notes, 
+            petId: this.props.pet.id
+          }, 
+          success: (result) => {
+              return this.props.closePopup()
+            console.log("Yes, it worked");
+          },
+          error: function (err) {
+            console.log("It doesnt work")
+          }
+        });
+    }
 
     render() {
       return (
         <div className='popup'>
           <div className='popup_inner'>
-            <h1>{this.props.text}</h1>
+            <h1>New {this.props.type}</h1>
             <form>
-            Type: <input type="text" name="type"   onChange={this.onChangeType}/><br/>
-            Notes:<input type="text" name="notes" onChange={this.onChangePetWeight}/><br/>
-            <button type="button" className="btn btn-primary" onClick={this.saveActivity}>Submit</button>
+            Notes:<input type="text" name="notes" onChange={this.onChangeNotes}/><br/>
+            <button type="button" className="btn btn-primary" onClick={this.saveEvent}>Submit</button>
           </form>
-          <button onClick={this.props.closePopup}>close me</button>
+          <button onClick={this.props.closePopup}>Close</button>
           </div>
         </div>
       );
