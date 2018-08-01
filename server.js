@@ -30,7 +30,7 @@ app.post('/api/whatDog', (req, res) => {
 })
 
 app.post('/api/pets/:id', (req, res) => {
-    // console.log(req.body)
+    console.log("HELLO HELLO HELLO", req.body)
    database.editPet(req.body)
    .then(function(result) {
        return res.sendStatus(204)
@@ -43,6 +43,15 @@ app.post('/api/pets/:id/activity', (req, res) => {
    .then(function(result) {
        return res.sendStatus(204)
 })
+})
+
+//GET a pet's activities based on petId
+app.get('/api/pets/activities', (req, res) => {
+    database.getPetActivities(req.query.id).then(function(result){
+        console.log("ACTIVITY RESULT",result)
+        return res.send(result)
+    }
+)
 })
 
 app.post('/api/pets/', (req, res) => {
