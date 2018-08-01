@@ -85,7 +85,7 @@ const petWeightRange =
       "Poodle": "45–65",
       "Poodles miniture": "11-17",
       "Portuguese water dogs": "35–55",
-      "Pugs": "13–18",
+      "pug": "13–18",
       "Rhodesian ridgebacks": "65–90",
       "Rottweilers": "70–135",
       "Samoyeds": "35–65",

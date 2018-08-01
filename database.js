@@ -13,6 +13,10 @@ module.exports = function knexData(knex) {
         return knex('pets').where({id: id})
       },
 
+      getPetActivities: function(petId) {
+        return knex('history').where({type:'activity',pet_id: petId})
+      },
+
       editPet: function (data) {
         console.log(data)
         return knex('pets').where({
