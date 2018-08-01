@@ -45,10 +45,13 @@ app.post('/api/pets/:id/activity', (req, res) => {
 })
 })
 
-//GET A PETS ACTIVITIES
-//http://localhost:8080/api/pet/activities
-app.post('/api/pets/activities', (req, res) => {
-    console.log("REQUEST FOR PET HISTORY", req)
+//GET a pet's activities based on petId
+app.get('/api/pets/activities', (req, res) => {
+    database.getPetActivities(req.query.id).then(function(result){
+        console.log("ACTIVITY RESULT",result)
+        return res.send(result)
+    }
+)
 })
 
 app.post('/api/pets/', (req, res) => {
