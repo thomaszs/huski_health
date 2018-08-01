@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CheckBox from './CheckBox';
 import SingleInput from './SingleInput';
 import $ from 'jquery';
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 const dogBreed = require('what-dog');
 
 
@@ -40,6 +41,9 @@ class NewPetForm extends Component {
 
 
   }
+  addNewPet(){ //logic to determine if it was successfully added or not
+    alert('Your new pet was successfully added!')
+  } 
 
   handlePetNameChange(e) {
     this.setState({ petName: e.target.value }, () => console.log('name:', this.state.petName));
@@ -198,10 +202,10 @@ class NewPetForm extends Component {
                         content={this.state.image}
                         placeholder={'Enter image url to find out your pet\'s breed'} />
 
-                      <input
+                      <Link to={`/pets`}><input onClick={this.addNewPet}
                         type="submit"
                         className="btn btn-primary float-right"
-                        value="Submit" />
+                        value="Submit" /></Link>
                       <button
                         className="btn btn-link float-left"
                         onClick={this.handleClearForm}>Clear form</button>
