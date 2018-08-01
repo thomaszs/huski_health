@@ -47,7 +47,6 @@ class Dashboard extends Component {
     
 
     componentDidMount() {
-
         $.ajax('http://localhost:8080/api/pet/', {
           method: 'POST',
           data: {
@@ -62,7 +61,25 @@ class Dashboard extends Component {
           error: function(err) {
             console.log("It doesnt work")
             }
-        });
+        })
+
+        console.log("MY PET ID", this.props.match.params.id)
+
+        $.ajax('http://localhost:8080/api/pets/activities', {
+          method: 'POST',
+          data: {
+            id: this.props.match.params.id
+          }, 
+          success: (result) => {
+            console.log("Success grabbing activities history")
+          },
+          error: function(err) {
+            console.log("Cannot REQUEST FOR HISTORY OF PET")
+            }
+        })
+        
+        
+        
     }
 
     render() {

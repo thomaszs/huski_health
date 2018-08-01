@@ -30,7 +30,7 @@ app.post('/api/whatDog', (req, res) => {
 })
 
 app.post('/api/pets/:id', (req, res) => {
-    // console.log(req.body)
+    console.log("HELLO HELLO HELLO", req.body)
    database.editPet(req.body)
    .then(function(result) {
        return res.sendStatus(204)
@@ -43,6 +43,12 @@ app.post('/api/pets/:id/activity', (req, res) => {
    .then(function(result) {
        return res.sendStatus(204)
 })
+})
+
+//GET A PETS ACTIVITIES
+//http://localhost:8080/api/pet/activities
+app.post('/api/pets/activities', (req, res) => {
+    console.log("REQUEST FOR PET HISTORY", req)
 })
 
 app.post('/api/pets/', (req, res) => {
