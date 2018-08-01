@@ -82,7 +82,7 @@ const petWeightRange =
       "Pekingese": "8–10",
       "Pembroke Welsh corgis": "23–27",
       "Pomeranians": "4–7",
-      "Poodles": "45–65",
+      "Poodle": "45–65",
       "Poodles miniture": "11-17",
       "Portuguese water dogs": "35–55",
       "Pugs": "13–18",
