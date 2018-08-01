@@ -63,11 +63,6 @@ class PetProfile extends Component {
     console.log(this.state.pet.weight)
     this.setState({petWeight: event.target.value})
   }
- 
-  // onChangePetBreed(event) { 
-  //   event.preventDefault()
-  //   this.setState(prevState => ({...prevState.pet, breed: event.target.value }))
-  // }
   
 
   render() {
@@ -81,9 +76,9 @@ class PetProfile extends Component {
             Name: <input type="text" name="name"  defaultValue={this.state.petName} onChange={this.onChangePetName}/><br/>
             Weight:<input type="text" name="weight" defaultValue={this.state.petWeight} onChange={this.onChangePetWeight}/><br/>
             Age:<input type="text" name="age"/><br/>
-            Birthday:<input type="text" name="birthday"/><br/>
+            Birthday:<input type="text" name="birthday" defaultValue={this.state.pet.date_of_birth}/><br/>
             Breed:<input type="text" name="breed" defaultValue={this.state.pet.breed} onChange={this.onChangePetBreed}/><br/>
-            Notes: <input type="text" name="notes"/><br/>
+            Notes: <input type="text" name="notes" defaultValue={this.state.pet.notes}/><br/>
             <button type="button" className="btn btn-primary" onClick={this.savePetProfile}>Save</button>
           </form>
           </div>
