@@ -33,11 +33,46 @@ h1 {
   }
   .popup_inner {
     border: 4px solid #1E212F;
+    border-radius: 10px;
+    padding: 20px;
     position: absolute;
-    left: 25%;
-    right: 25%;
-    top: 25%;
-    bottom: 25%;
+    left: 35%;
+    right: 35%;
+    top: 35%;
+    bottom: 35%;
     margin: auto;
-    background: white;
+    background: #1E212F;
+  }
+
+  .pop-up-label {
+    color: white;
+  }
+
+  @media screen and (max-width: 320px){
+    .popup_inner{
+      padding: 5px;
+      position: absolute;
+      margin: auto;
+      left: 10%;
+      right: 10%;
+    }
+    .pop-up-label {
+      font-size: small;
+    }
+  }
+
+  @media screen and (max-width: 600px)and (min-width: 321px){
+    .popup_inner{
+      padding: 5px;
+      position: absolute;
+      margin: auto;
+      left: 10%;
+      right: 10%;
+      top: 35%;
+      max-height: 20rem;
+      bottom: 10%;
+    }
+    .pop-up-label {
+      font-size: small;
+    }
   }
