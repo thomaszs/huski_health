@@ -59,7 +59,7 @@ export default class PetCard extends Component {
           </div>
           <div className="chart-stage">
             <div className="card" style={{ width: "100%" }}>
-              <img className="card-img-top" style={{ width: "100%" }} src={this.props.pet.img}
+              <img className="card-img-top responsive" style={{ width: "100%", objectFit:"cover" }} src={this.props.pet.img}
                 alt="Card cap" ></img>
               <div className="card-body">
               </div>
@@ -80,9 +80,9 @@ export default class PetCard extends Component {
                   </tbody>
                   </table>
                 <div className="card-body-buttons">
-                  <button  onClick={this.onClickTypeFeeding}   className="btn btn-primary" href="#">Feed Me</button>
-                  <button  onClick={this.onClickTypeWeight}   className="btn btn-primary" href="#">Update Weight</button>
-                  <button  onClick={this.onClickTypeActivity} className="btn btn-primary" href="#" style={{ float: "right" }}>Log Activity</button>
+                  <button  onClick={this.onClickTypeFeeding}   className="btn btn-primary btn-sm" href="#">Feed Me</button>
+                  <button  onClick={this.onClickTypeWeight}   className="btn btn-primary btn-sm" href="#">Update Weight</button>
+                  <button  onClick={this.onClickTypeActivity} className="btn btn-primary btn-sm" href="#" style={{ float: "right" }}>Log Activity</button>
                 </div>
                 {/* <Link to={`/pet/${this.props.pet.id}/profile`}>Profile</Link> */}
               </div>
