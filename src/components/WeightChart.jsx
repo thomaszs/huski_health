@@ -180,7 +180,6 @@ class WeightChart extends React.Component {
     let defaultMinWeight = 10;
     let defaultMaxWeight = 20;
     let breedMatch;
-    //placeholder if statement -- will be changed
     for (let eachPet in petWeightRange) {
       if (currentBreed === eachPet) {
        breedMatch = true 
