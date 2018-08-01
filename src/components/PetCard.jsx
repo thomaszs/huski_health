@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import PetProfile from './PetProfile'
 import Dashboard from './Dashboard'
 import Event from './Activity';
-
+import $ from 'jquery'; 
+ 
 export default class PetCard extends Component {
   constructor(props) {
     super(props)
@@ -47,7 +48,8 @@ export default class PetCard extends Component {
       showPopup: !this.state.showPopup
     });
   }
- 
+
+  
 
   render() {
     return (
@@ -89,7 +91,7 @@ export default class PetCard extends Component {
             </div>
           </div>
           {this.state.showPopup ? 
-          <Event text='Close Me' type={this.state.type} pet={this.props.pet} closePopup={this.togglePopup.bind(this)}/>
+          <Event text='Close Me' type={this.state.type} pet={this.props.pet} closePopup={this.togglePopup.bind(this)} onNewActivity={this.onNewActivity}/>
           : null
           }
         </div>

@@ -29,8 +29,14 @@ export default class Event extends React.Component {
             petId: this.props.pet.id
           }, 
           success: (result) => {
-              return this.props.closePopup()
-            console.log("Yes, it worked");
+            // call function defined in Dashboard to set the new state
+            if (this.props.type === "Activity"){
+              this.props.onNewActivity()
+            }
+            
+            return this.props.closePopup()
+            // console.log("Yes, it worked");
+
           },
           error: function (err) {
             console.log("It doesnt work")
