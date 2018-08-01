@@ -2,15 +2,21 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import PetProfile from './PetProfile'
 import Dashboard from './Dashboard'
-import Activity from './Activity';
+import Event from './Activity';
 
 export default class PetCard extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      showPopup: false
+      showPopup: false,
+      type: ""
     };
+    
     this.togglePopup = this.togglePopup.bind(this)
+    this.onClickTypeActivity = this.onClickTypeActivity.bind(this)
+    this.onClickTypeFeeding = this.onClickTypeFeeding.bind(this)
+    this.onClickTypeWeight = this.onClickTypeWeight.bind(this)
+
   }
   togglePopup() {
     this.setState({
@@ -18,8 +24,34 @@ export default class PetCard extends Component {
     });
   }
 
+  onClickTypeActivity() {
+    console.log("CLICKED")
+    this.setState({
+      type: "Activity",
+      showPopup: !this.state.showPopup
+    });
+  }
+
+  onClickTypeFeeding() {
+    console.log("CLICKED")
+    this.setState({
+      type: "Feeding",
+      showPopup: !this.state.showPopup
+    });
+  }
+
+  onClickTypeWeight() {
+    console.log("CLICKED")
+    this.setState({
+      type: "Weight",
+      showPopup: !this.state.showPopup
+    });
+  }
+ 
+
   render() {
     return (
+                  
       <div className="col-sm-4">
         <div className="chart-wrapper">
           <div className="chart-title">
@@ -48,16 +80,20 @@ export default class PetCard extends Component {
                   </tbody>
                   </table>
                 <div className="card-body-buttons">
-                  <button className="btn btn-primary" href="#">Feed Me</button>
-                  <button onClick={this.togglePopup.bind(this)} className="btn btn-primary" href="#" style={{ float: "right" }}>Log Activity</button>
+                  <button  onClick={this.onClickTypeFeeding}   className="btn btn-primary" href="#">Feed Me</button>
+                  <button  onClick={this.onClickTypeWeight}   className="btn btn-primary" href="#">Update Weight</button>
+                  <button  onClick={this.onClickTypeActivity} className="btn btn-primary" href="#" style={{ float: "right" }}>Log Activity</button
+
                 </div>
                 {/* <Link to={`/pet/${this.props.pet.id}/profile`}>Profile</Link> */}
               </div>
             </div>
           </div>
-          {this.state.showPopup ?
-            <Activity text='Close Me' closePopup={this.togglePopup.bind(this)} />
-            : null
+
+          {this.state.showPopup ? 
+          <Event text='Close Me' type={this.state.type} pet={this.props.pet} closePopup={this.togglePopup.bind(this)}/>
+          : null
+
           }
         </div>
 

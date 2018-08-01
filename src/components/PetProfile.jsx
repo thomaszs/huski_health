@@ -64,12 +64,6 @@ class PetProfile extends Component {
     this.setState({ petWeight: event.target.value })
   }
 
-  // onChangePetBreed(event) { 
-  //   event.preventDefault()
-  //   this.setState(prevState => ({...prevState.pet, breed: event.target.value }))
-  // }
-
-
   render() {
     if (this.state.isEditing) {
       return (

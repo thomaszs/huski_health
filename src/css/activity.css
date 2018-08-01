@@ -1,7 +1,17 @@
 h1 {
     margin: 0;
     padding: 0;
+    text-align: center;
   }
+
+  input {
+    margin-bottom: 10px;
+  }
+
+  /* button.close {
+      margin-top: 10px;
+  } */
+
   html, body, .app {
     margin: 0;
     padding: 0;
@@ -22,6 +32,7 @@ h1 {
     z-index: 1;
   }
   .popup_inner {
+    border: 4px solid #1E212F;
     position: absolute;
     left: 25%;
     right: 25%;

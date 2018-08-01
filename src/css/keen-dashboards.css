@@ -1,3 +1,9 @@
+div.card-body {
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-evenly;
+}
+
 .keen-dashboard {
   background: #171923;
   font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;
