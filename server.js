@@ -1,7 +1,7 @@
 "use strict";
 
 require('dotenv').config();
-
+const dogBreed = require('what-dog');
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.ENV || "development";
 const express = require("express");
@@ -21,8 +21,16 @@ app.use(bodyParser.urlencoded({
     extended:true
 })); 
 
+app.post('/api/whatDog', (req, res) => {
+    let dogUrl = req.body.dogUrl
+    console.log(dogUrl)
+    dogBreed(dogUrl).then(doggyData => {
+        res.send({doggyData})
+    })
+})
+
 app.post('/api/pets/:id', (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
    database.editPet(req.body)
    .then(function(result) {
        return res.sendStatus(204)

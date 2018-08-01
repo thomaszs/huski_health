@@ -173,27 +173,26 @@ const petWeightRange =
 class WeightChart extends React.Component {
   constructor (props) {
     super(props)
-  const currentBreed = this.props.pet.breed;
-  //placeholder if statement -- will be changed
-  for (let eachPet in petWeightRange) {
-    if (currentBreed === eachPet) {
-      const minWeight = petWeightRange[currentBreed][0];
-      const maxWeight = petWeightRange[currentBreed][1];
-      options.annotation.annotations[0].value = minWeight;
-      options.annotation.annotations[1].value = maxWeight;
-    } else {
-      const minWeight = 10;
-      const maxWeight = 20;
-      options.annotation.annotations[0].value = minWeight;
-      options.annotation.annotations[1].value = maxWeight;
-    }
-  }
-  
-  const id = this.props.pet.id;
-  
+    const currentBreed = this.props.pet.breed;
+    //placeholder if statement -- will be changed
+    // for (let eachPet in petWeightRange) {
+    //   console.log(eachPet);
+    //   console.log(currentBreed);
+    //   if (currentBreed !== eachPet) {
+    //     const minWeight = 10;
+    //     const maxWeight = 20;
+    //     options.annotation.annotations[0].value = minWeight;
+    //     options.annotation.annotations[1].value = maxWeight;
+    //   } else {
 
-  // ajax based on this.props.pet.id
-  // get history table 
+    const minWeight = currentBreed ? petWeightRange[currentBreed][0] : 10;
+    const maxWeight = currentBreed ? petWeightRange[currentBreed][1] : 20;
+    options.annotation.annotations[0].value = minWeight;
+    options.annotation.annotations[1].value = maxWeight;
+
+    const id = this.props.pet.id;
+    // ajax based on this.props.pet.id
+    // get history table 
   }
   render() {
     return (
