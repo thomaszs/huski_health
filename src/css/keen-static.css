@@ -76,61 +76,6 @@ h3 {
   box-shadow: none;
 }
 
-/* .masthead {
-  background-color: #00afd7;
-  background-position: 0 -290px;
-  background-repeat: repeat-x;
-  color: #fff;
-  margin: 0 0 24px;
-  padding: 20px 0;
-}
-.masthead h1 {
-  margin: 0;
-}
-.masthead small,
-.masthead a,
-.masthead a:focus,
-.masthead a:hover,
-.masthead a:active {
-  color: #fff;
-}
-.masthead p {
-  color: #b3e7f3;
-  font-weight: 100;
-  letter-spacing: .05em;
-} */
-
-
-
-/* .hero {
-  background-position: 50% 100%;
-  min-height: 450px;
-  text-align: center;
-}
-.hero h1 {
-  font-size: 48px;
-  margin: 120px 0 0;
-}
-.hero .lead {
-  margin-bottom: 32px;
-}
-.hero a.hero-btn {
-  border: 2px solid #fff;
-  display: block;
-  font-family: "Gotham Rounded", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 24px;
-  font-weight: 200;
-  margin: 0 auto 12px;
-  max-width: 320px;
-  padding: 12px 0 6px;
-}
-.hero a.hero-btn:focus,
-.hero a.hero-btn:hover {
-  border-color: transparent;
-  background-color: #fff;
-  color: #00afd7;
-} */
-
 img > .pet-img {
   width: 150px;
   height: 150px;
