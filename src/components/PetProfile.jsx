@@ -109,7 +109,7 @@ class PetProfile extends Component {
       <div className="chart-title">
         <div className="chart-wrapper">
           <div className="chart-title">
-            <h2>{this.state.petName}</h2>
+            <h1>{this.state.petName}</h1>
             <img className="pet-img" alt="petprofilepic" style={{ width: "100%" }} src={this.props.pet.img} />
           </div>
           <div className="chart-stage" id="chart-01">

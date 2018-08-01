@@ -23,7 +23,7 @@ export default class PetCard extends Component {
         <div className="col-sm-4">
           <div className="chart-wrapper">
             <div className="chart-title">
-              <h1>{this.props.pet.name}</h1>
+            <Link to={`/pet/${this.props.pet.id}`}><h1>{this.props.pet.name}</h1></Link>
             </div>
             <div className="chart-stage">
               <div className="card" style={{ width: "100%" }}>
@@ -42,7 +42,6 @@ export default class PetCard extends Component {
                   <button onClick={this.togglePopup.bind(this)} className="btn btn-primary" href="#" style={{ float: "right" }}>Log Activity</button>
                 </div>
                 {/* <Link to={`/pet/${this.props.pet.id}/profile`}>Profile</Link> */}
-                <Link to={`/pet/${this.props.pet.id}`}>Dashboard</Link>
               </div>
             </div>
           </div>
