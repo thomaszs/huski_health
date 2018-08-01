@@ -118,6 +118,7 @@ class NewPetForm extends Component {
   render() {
     return (
       <div>
+        <div className="container">
         <div className="chart-title">
           <div className="chart-wrapper">
             <div className="chart-title">
@@ -203,6 +204,7 @@ class NewPetForm extends Component {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     )
