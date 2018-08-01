@@ -83,9 +83,6 @@ class Dashboard extends Component {
                                 < Timeline pet={this.state.pet} history={this.state.history}/>
                             </div>
                                 < StatusBar pet={this.state.pet}/> 
-                            <div className="col-sm-4">
-                                < NewPetForm />
-                            </div>
                         </div>
                     </div>
                 </div>
