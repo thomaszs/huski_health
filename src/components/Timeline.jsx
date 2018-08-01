@@ -10,7 +10,7 @@ class Timeline extends Component {
     super(props)
     this.state = {
       showPopup: false,
-      type: ""
+      type: "", 
     }
     this.togglePopup = this.togglePopup.bind(this)
     this.onClickTypeActivity = this.onClickTypeActivity.bind(this)
@@ -23,7 +23,7 @@ class Timeline extends Component {
   }
 
   onClickTypeActivity() {
-    console.log("CLICKED")
+    console.log("CLICKED ADD ACTIVITY")
     this.setState({
       type: "Activity",
       showPopup: !this.state.showPopup
@@ -37,10 +37,9 @@ class Timeline extends Component {
         <div className="chart-stage" id="chart-02">
         <h2>Activity Timeline</h2>
         <button  onClick={this.onClickTypeActivity} type="button" className="btn btn-activity">Add Activity</button>
-        
         <TimelineList activities={this.props.activities}/>
         {this.state.showPopup ? 
-          <Event text='Close Me' type={this.state.type} pet={this.props.pet} closePopup={this.togglePopup.bind(this)}/>
+          <Event text='Close Me' type={this.state.type} pet={this.props.pet} closePopup={this.togglePopup.bind(this)} onNewActivity={this.props.onNewActivity}/>
           : null
           }
         </div>

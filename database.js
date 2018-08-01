@@ -14,7 +14,7 @@ module.exports = function knexData(knex) {
       },
 
       getPetActivities: function(petId) {
-        return knex('history').where({type:'activity',pet_id: petId})
+        return knex('history').where({type:'Activity',pet_id: petId})
       },
 
       editPet: function (data) {
@@ -44,12 +44,12 @@ module.exports = function knexData(knex) {
       },
 
       newHistory: function (data) {
-        console.log(data)
+        // console.log(data)
        return knex('history').insert({
           'type': data.type,
           'notes': data.notes,
           'pet_id': data.petId
-        }).then(console.log("CHANGED"))
+        }).then(console.log("CHANGED: NEW HISTORY ADDED TO DB"))
       }
       
   

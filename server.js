@@ -38,10 +38,12 @@ app.post('/api/pets/:id', (req, res) => {
 })
 
 app.post('/api/pets/:id/activity', (req, res) => {
-    console.log(req.body)
+   console.log("THE NEW ACTIVITY OBJECT",req.body)
    database.newHistory(req.body)
    .then(function(result) {
-       return res.sendStatus(204)
+    //    return res.sendStatus()
+    console.log("Result after posting new activity", result)
+    return res.send(result)
 })
 })
 
