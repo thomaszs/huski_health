@@ -17,15 +17,16 @@ export default function Pets(props) {
         // <PropsRoute exact path="/" component={Pets} pet={props.pets}/>
         // <PropsRoute exact path="/pet"  re/>
         // </Switch>
-           <div className="row" style={{ marginLeft: "20px" }}>
+           <div className="row">
            {/* for n of pets, render PetCard */}
            {petCards}
-           <div className="col-sm-4 col-md-3" style={{ marginTop: "15em" }}>
-               <a className="btn" href="http://localhost:3000/pets/new"><button type="button" className="btn btn-info btn-circle btn-xl">
+           <div className="row" style={{ marginTop: "20px" }}>
+               <a className="btn-new-pet" href="http://localhost:3000/pets/new"><button type="button" className="btn btn-info btn-circle btn-xl">
                    <i className="glyphicon glyphicon-plus"></i>
                </button></a>
            </div>
-       </div>
+           </div>
+
            )
     }
 // export default Pets;

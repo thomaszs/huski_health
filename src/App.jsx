@@ -50,7 +50,7 @@ class App extends Component {
       $.ajax('http://localhost:8080/api/pets/', {
         method: 'POST',
         data: {
-          userId: 1, 
+          userId: 2, 
         }, 
         success: (result) => {
           console.log("Yes, it worked");
