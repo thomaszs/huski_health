@@ -9,7 +9,8 @@ export default function Pets(props) {
            return (
            <PetCard pet={pet} key={pet.id} />
            )
-        })
+        });
+
 
     return (
         // <Switch>
