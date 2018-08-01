@@ -42,3 +42,9 @@ body {
   border-radius: 10px;
   z-index: 1;
 }
+
+@media screen and (max-width: 320px){
+  .container-main{
+    max-width: 320px;
+  }
+}
