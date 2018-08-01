@@ -11,7 +11,7 @@ export default class PetCard extends Component {
       showPopup: false,
       type: ""
     };
-    
+
     this.togglePopup = this.togglePopup.bind(this)
     this.onClickTypeActivity = this.onClickTypeActivity.bind(this)
     this.onClickTypeFeeding = this.onClickTypeFeeding.bind(this)
@@ -91,7 +91,6 @@ export default class PetCard extends Component {
           {this.state.showPopup ? 
           <Event text='Close Me' type={this.state.type} pet={this.props.pet} closePopup={this.togglePopup.bind(this)}/>
           : null
-
           }
         </div>
 
