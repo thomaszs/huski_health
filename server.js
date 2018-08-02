@@ -64,6 +64,26 @@ app.post('/api/pet/', (req, res) => {
      database.newPet(req.body)
  })
 
+ app.post('/api/signup', (req, res) => {
+    console.log(req.body)
+    if (!database.verifySignup(req.body)) {
+     database.insertAccount(req.body)
+    } else {
+        res.send('already found')
+    }
+ })
+
+ app.post('/api/login', async (req, res) => {
+    // console.log(req.body)
+    let user = await database.verifyLogin(req.body)
+    if (user) {
+        console.log(user)
+        res.send(user)
+    } else {
+        res.send("no user found")
+    }
+ })
+
 
 app.listen(PORT, () => {
  console.log("Example app listening on port " + PORT);

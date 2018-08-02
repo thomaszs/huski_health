@@ -46,16 +46,42 @@ module.exports = function knexData(knex) {
           'notes': data.notes,
           'pet_id': data.petId
         }).then(console.log("CHANGED"))
-      }
+      },
       
   
-      // insertAccount: function (name, email, password) {
-      //   knex('accounts').insert([{
-      //       name: name,
-      //       email: email,
-      //       password: password
-      //     }]).then()
-      // },
+      insertAccount: function (account) {
+        knex('accounts').insert({
+            name: account.name,
+            email: account.email,
+            password: account.password
+          }).then()
+      },
+
+      verifySignup: function (account) {
+        return knex('accounts').where({
+            email: account.email
+          }).asCallback(function (err, result) {
+            if (err) {
+              return err
+            } else {
+              return 
+            }
+      })
+    },
+
+    verifyLogin: function (account) {
+      return knex('accounts').limit(1).where({
+          email: account.email,
+          password: account.password
+        }).asCallback(function (err, result) {
+          if (err) {
+            return err
+          } else {
+            // console.log(result[0])
+            return result
+          }
+    })
+  }
   
       // modifyHistory: function (data) {
       //   knex('history').where({

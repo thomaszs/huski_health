@@ -1,10 +1,69 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 export default class SignUp extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            email: "",
+            password: "",
+            confirmPassword: ""
+        }
+        this.onChangeEmail = this.onChangeEmail.bind(this);
+        this.onChangeName = this.onChangeName.bind(this);
+        this.onChangePassword = this.onChangePassword.bind(this);
+        this.onChangeConfirmPassword = this.onChangeConfirmPassword.bind(this);
+        this.saveAccount = this.saveAccount.bind(this);
     }
+
+    onChangeEmail(event) {
+        event.preventDefault()
+        this.setState({ email: event.target.value })
+      }
+
+      onChangeName(event) {
+        event.preventDefault()
+        this.setState({ name: event.target.value })
+      }
+
+      onChangePassword(event) {
+        event.preventDefault()
+        this.setState({ password: event.target.value })
+      }
+
+      onChangeConfirmPassword(event) {
+        event.preventDefault()
+        this.setState({ confirmPassword: event.target.value })
+      }
+
+
+    saveAccount(event) {
+        if (this.state.password === this.state.confirmPassword && this.state.name && this.state.password && this.state.email) {
+        event.preventDefault();
+        $.ajax(`http://localhost:8080/api/signup`, {
+          method: 'POST',
+          data: {
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password
+          },
+          success: (result) => {
+              if (result === 'already found') {
+                  alert("Account already created, please login")
+              } else {
+            console.log("Yes, it worked");
+            // console.log(result); // {result: "True"}
+            //  return this.props.updatePet(result)
+              }
+          },
+          error: function (err) {
+          }
+        });
+    } else {
+        alert("Please make sure all fields are filled out and that Password matches Confirm Password")
+    }
+      }
 
     render() {
         return (
@@ -13,20 +72,24 @@ export default class SignUp extends Component {
                     <div className="color-overlay"></div>
                     <form className="sign-up-form">
                     <h2>Sign Up</h2>
+                    <div className="form-group">
+                       <label for="exampleInputName1">Name</label>
+                       <input onChange={this.onChangeName} type="name" className="form-control" id="exampleInputName1" placeholder="Enter name"/>
+                     </div>
                      <div className="form-group">
                        <label for="exampleInputEmail1">Email address</label>
-                       <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+                       <input onChange={this.onChangeEmail} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
                        <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                      </div>
                      <div className="form-group">
                        <label for="exampleInputPassword1">Password</label>
-                       <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"/>
+                       <input onChange={this.onChangePassword}  type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"/>
                      </div>
                      <div className="form-group">
                        <label for="exampleInputPassword1">Confirm Password</label>
-                       <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Confirm Password"/>
+                       <input onChange={this.onChangeConfirmPassword} type="password" className="form-control" id="exampleInputPassword2" placeholder="Confirm Password"/>
                      </div>
-                     <button type="submit" className="btn btn-primary">Submit</button>
+                     <button onClick={this.saveAccount} type="submit" className="btn btn-primary">Submit</button>
                      <Link to={`/`} style={{float: "right"}}>Back</Link>
                     </form>
                 </div>
