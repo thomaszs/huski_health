@@ -9,7 +9,7 @@ export default function NavBar(props) {
       <div className="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div className="container-fluid">
             <Link to={`/`}><img alt="huski-health-logo" src={mainLogo} style={{ height: "3em", float: "left", paddingTop: "8px" }}/></Link>
-              <Link to={`/`} className="navbar-brand" style={{marginTop:"0.25em", marginLeft:"5px"}}>HuskiHealth</Link>
+              <Link to={`/`} className="navbar-brand" style={{marginLeft:"5px"}}>HuskiHealth</Link>
             <div className="navbar-collapse collapse">
               <ul className="nav navbar-nav navbar-left">
                 <li>             
