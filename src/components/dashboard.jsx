@@ -10,7 +10,7 @@ import NewPetForm from './NewPetForm.jsx';
 
 // import PetActivity from 'PetActivity.jsx';
 
-class Dashboard extends Component {
+export default class Dashboard extends Component {
     constructor(props) {
         super(props)
         this.state = {loading: true}
@@ -48,7 +48,6 @@ class Dashboard extends Component {
 
     componentDidMount() {
 
-        this.props.requireCurrentUser()
 
         $.ajax('http://localhost:8080/api/pet/', {
           method: 'POST',
@@ -64,11 +63,11 @@ class Dashboard extends Component {
           error: function(err) {
             console.log("It doesnt work")
             }
-        });
-    }
+    })
+}
 
     render() {
-        if(this.state.loading) {
+        if (this.state.loading) {
             return 'Loading...'
         } 
         return (
@@ -77,7 +76,7 @@ class Dashboard extends Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-3">
-                             <PetProfile pet={this.state.pet} updatePet={this.updatePet} onChangePetName={this.onChangePetName} onChangePetWeight={this.onChangePetWeight} onChangePetBreed={this.onChangePetBreed} />
+                             <PetProfile pet={this.state.pet} onChangePetName={this.onChangePetName} onChangePetWeight={this.onChangePetWeight} onChangePetBreed={this.onChangePetBreed} />
                         </div>
                         <div className="col-sm-9">
                             <div className="col-sm-8">
@@ -92,5 +91,3 @@ class Dashboard extends Component {
         );
     }
 }
-withRouter(Dashboard);
-export default Dashboard;
