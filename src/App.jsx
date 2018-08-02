@@ -53,7 +53,6 @@ class App extends Component {
           userId: 2, 
         }, 
         success: (result) => {
-          console.log("Yes, it worked");
           // console.log(result); 
           this.setState({pets: result})
           console.log(this.state.pets)
