@@ -97,5 +97,5 @@ class Dashboard extends Component {
     );
   }
 }
-withRouter(Dashboard);
+
 export default Dashboard;

@@ -88,11 +88,30 @@ app.post('/api/pet/', (req, res) => {
  })
 
  app.post('/api/pet/new', (req, res) => {
-    // console.log(req.body)
      database.newPet(req.body)
      .then(function (result) {
         res.send(result)
     })
+ })
+
+ app.post('/api/signup', async (req, res) => {
+    let user = await database.verifySignup(req.body)
+    if (!user.length) {
+     let newUser = await database.insertAccount(req.body)
+     res.send(newUser)
+    } else {
+        res.send('already found')
+    }
+ })
+
+ app.post('/api/login', async (req, res) => {
+    let user = await database.verifyLogin(req.body)
+    console.log(user)
+    if (user.length) {
+        res.send(user)
+    } else {
+        res.send("no user found")
+    }
  })
 
 

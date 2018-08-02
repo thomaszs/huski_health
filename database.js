@@ -1,13 +1,10 @@
 module.exports = function knexData(knex) {
     return {
   
-      // getAccount: function (email, password) {
-      //   return knex('accounts').where({email: email, password: password})
-      // },
-
       getPets: function (id) {
         return knex('pets').where({account_id: id})
       },
+
       getPet: function (id) {
         console.log(id)
         return knex('pets').where({id: id})
@@ -53,32 +50,40 @@ module.exports = function knexData(knex) {
           'type': data.type,
           'notes': data.notes,
           'pet_id': data.petId
-        }).then(console.log("CHANGED: NEW HISTORY ADDED TO DB"))
-      }
-      
+        }).then(console.log("CHANGED"))
+      },
   
-      // insertAccount: function (name, email, password) {
-      //   knex('accounts').insert([{
-      //       name: name,
-      //       email: email,
-      //       password: password
-      //     }]).then()
-      // },
+      insertAccount: function (account) {
+       return knex('accounts').insert({
+            name: account.name,
+            email: account.email,
+            password: account.password
+          }).returning(['id', 'name', 'email'])
+      },
+
+      verifySignup: function (account) {
+        return knex('accounts').where({
+            email: account.email
+          }).then(function(result) {
+            console.log(result)
+            return result;
+          })
+    },
+
+    verifyLogin: function (account) {
+      return knex.select('id', 'email', 'name').from('accounts').limit(1).where({
+          email: account.email,
+          password: account.password
+        }).asCallback(function (err, result) {
+          if (err) {
+            return err
+          } else {
+            // console.log(result[0])
+            return result
+          }
+    })
+  }
   
-      // modifyHistory: function (data) {
-      //   knex('history').where({
-      //     'id': data.id
-      //   }).update({
-      //     'notes': data.notes
-      //   }).then()
-      // },
-
-
-  //     deleteHistory: function (id) {
-  //       knex('history').where({
-  //         'id': id.id
-  //       }).del().then();
-  //     }
     }
   }
   
