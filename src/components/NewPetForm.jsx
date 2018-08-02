@@ -108,7 +108,7 @@ class NewPetForm extends Component {
             method: 'POST',
             data: newPetInfo,
             success: function (result) {
-              console.log("Yes, it worked");
+              console.log("Yes, it worked. Added a new pet");
               console.log(result); // {result: "True"}
             },
             error: function (err) {

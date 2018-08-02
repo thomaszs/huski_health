@@ -71,7 +71,7 @@ app.post('/api/pet/', (req, res) => {
  })
 
  app.post('/api/pet/new', (req, res) => {
-    // console.log(req.body)
+    console.log("Received request for new pet",req.body)
      database.newPet(req.body)
  })
 
