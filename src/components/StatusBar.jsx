@@ -9,7 +9,7 @@ export default function StatusBar(props){
         <h2>Current Weight</h2>
       </div>
       <div className="chart-stage" id="chart-05">
-        <h1>22lbs <i class="fas fa-weight" style={{ float: "right"}}></i></h1>
+        <h1>{props.pet.weight} lbs <i class="fas fa-weight" style={{ float: "right"}}></i></h1>
       </div>
       <div className="chart-notes">
       </div>

@@ -43,6 +43,7 @@ class App extends Component {
     // this.updatePet = this.updatePet.bind(this);
     this.renderMergedProps = this.renderMergedProps.bind(this)
     this.PropsRoute = this.PropsRoute.bind(this)
+    
   }
 
   componentDidMount() {
@@ -50,7 +51,7 @@ class App extends Component {
       $.ajax('http://localhost:8080/api/pets/', {
         method: 'POST',
         data: {
-          userId: 2, 
+          userId: 1, 
         }, 
         success: (result) => {
           console.log("Yes, it worked");
