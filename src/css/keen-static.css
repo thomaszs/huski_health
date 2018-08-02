@@ -108,7 +108,23 @@ img > .pet-img {
 }
 
 .btn-activity {
-  background: #A00029;
+  background: #850927;
+  background: linear-gradient(0deg, rgba(133,9,39,1) 0%, rgba(133,2,35,1) 49%, rgba(133,2,35,1) 51%, rgba(162,10,49,1) 100%);
+  color: white;
+  text-shadow: 0px -1px #532121;
+  border-color: #850223;
+  filter: brightness(100%);
+
 }
 
+.btn-activity:hover {
+  color: #fff;
+  /* background: #860a29; */
+  border-color: #850223;
+  filter: brightness(95%);
+}
 
+.btn-activity:focus, .btn-warning.focus {
+  -webkit-box-shadow: 0 0 0 2px #85022380;
+          box-shadow: 0 0 0 2px rgba(133, 2, 35, 0.5);
+}
