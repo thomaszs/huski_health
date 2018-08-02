@@ -78,6 +78,7 @@ class PetProfile extends Component {
                   <div className="chart-notes">
                     <div className="form-group">
                       <table className="table table-dark" style={{ fontSize: 16 }}>
+                      <tbody className="profile-table">
                         <form>
                           <label>Name:</label>
                           <input type="text" className="form-control" name="name" defaultValue={this.state.petName} onChange={this.onChangePetName} /><br/>
@@ -88,6 +89,7 @@ class PetProfile extends Component {
                           <label>Notes:</label> <input type="text" className="form-control" name="notes" /><br/>
                           <button type="button" className="btn btn-primary" onClick={this.savePetProfile}>Save</button>
                         </form>
+                        </tbody>
                       </table>
                     </div>
                   </div>
@@ -110,41 +112,23 @@ class PetProfile extends Component {
 
           </div>
           <div className="chart-notes">
-            <table className="table table-dark" style={{ fontSize: 16 }}>
-              <tbody>
-                <tr>
-                  <td>Weight:</td>
-                  <td>{this.state.petWeight}</td>
-                </tr>
-                {/* <tr> */}
-                {/* <td>Age:</td>
-                  <td>{this.props.pet.age}</td>
-                </tr> */}
-                <tr>
-                  <td>Birthday:</td>
-                  <td>{this.state.pet.date_of_birth}</td>
-                </tr>
-                <tr>
-                  <td>Breed:</td>
-                  <td>{this.state.pet.breed}</td>
-                </tr>
-                {/* <tr>
-                  <td>Owners:</td>
-                  <td>{this.props.pet.owner}</td>
-                </tr> */}
-                <tr>
-                  <td>Notes:</td>
-                  <td>{this.state.pet.notes}</td>
-                </tr>
-                <tr>
-                  <td>
+            <div className="profile-container">
+                <div className="container-row">
+                  <p>Birthday: </p>
+                  <p>{this.state.pet.date_of_birth}</p>
+                </div>
+                <div className="container-row">
+                  <p>Breed: </p>
+                  <p>{this.state.pet.breed}</p>
+                </div>
+                <div className="container-row">
+                  <p>Notes: </p>
+                  <p>{this.state.pet.notes}</p>
+                </div>
+                <div className="container-row">
                     <button type="button" className="btn btn-warning" onClick={this.editPetProfile}>Edit Profile</button>
-                  </td>
-                  <td>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                </div>
+            </div>
           </div>
         </div>
       </div>

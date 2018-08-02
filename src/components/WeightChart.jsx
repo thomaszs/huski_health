@@ -1,128 +1,132 @@
 import React, { Component } from 'react';
 import {Line} from 'react-chartjs-2';
 import 'chartjs-plugin-annotation';
+import $ from 'jquery';
 // import { render } from 'react-dom';
 // import ReactDOM from 'react-dom';
 // import { VictoryChart, VictoryLabel, VictoryLine, VictoryAxis, VictoryTheme, VictoryStack, VictoryScatter, VictoryVoronoiContainer, VictoryGroup, VictoryTooltip } from 'victory';
 
 const petWeightRange = 
     {
-      "Airedale terriers": "40–65",
-      "Akitas": "75–115",
-      "Alaskan malamutes": "70–95",
-      "American Staffordshire terriers": "55–65",
-      "Australian cattle dogs": "30–35",
-      "Australian shepherds": "40–65",
-      "Basenjis": "20–25",
-      "Basset hounds": "45–65",
-      "Beagles": "18–30",
-      "Belgian Malinois": "55–75",
-      "Bernese mountain dogs": "85–110",
-      "Bichon frises": "7–12",
-      "Bloodhounds": "80–110",
-      "Border collies": "27–45",
-      "Border terriers": "11–15",
-      "Borzois": "60–100",
-      "Boston": "10–25",
-      "Bouviers des Flandres": "95–120",
-      "Boxers": "50–75",
-      "Brittany spaniels": "30–40",
-      "Brussels": "6–12",
-      "Bull terriers": "45–80",
-      "Bull terriers miniature":  "24–32",
-      "Bulldogs": "40–50",
-      "Bullmastiffs": "100–130",
-      "Cairn terriers": "13–18",
-      "Cardigan Welsh corgis": "25–30",
-      "Cavalier King Charles spaniels": "10–18",
-      "Chesapeake Bay": "55–80",
-      "Chihuahuas": "4–6",
-      "Chinese crested": "8-10",
-      "Chinese Shar-Pei": "45–60",
-      "Chow Chows": "45–70",
-      "Cocker spaniels": "23–28",
-      "Collies": "50–70",
-      "Dachshunds": "10–12",
-      "Dachshunds mini": "8-10",
-      "Dalmatians": "50–55",
-      "Doberman pinschers": "65–90",
-      "English cocker spaniels": "26–34",
-      "English setters": "45–80",
-      "English springer spaniels": "40–50",
-      "Flat-Coated retrievers": "60–70",
-      "French bulldogs": "20-28",
-      "German shepherds": "75–95",
-      "German shorthaired pointers": "45–70",
-      "German wirehaired pointers": "60–70",
-      "Giant schnauzers": "55–80",
-      "Golden retrievers": "65–75",
-      "Gordon setters": "45–80",
-      "Great Danes": "110–180",
-      "Great Pyrenees": "85–100",
-      "Greater Swiss mountain dogs": "130–135",
-      "Havanese": "7–12",
-      "Irish setters": "55–75",
-      "Irish wolfhounds": "90–150",
-      "Italian greyhounds": "6–10",
-      "Japanese Chin": "4–15",
-      "Keeshond": "35–45",
-      "Labrador": "65–80",
-      "Lhasa": "13–15",
-      "Maltese": "4–6",
-      "Mastiffs": "150–160",
-      "Miniature pinschers": "8–10",
-      "Miniature schnauzers": "12–15",
-      "Newfoundlands": "100–150",
-      "Norwegian elkhounds": "40–60",
-      "Norwich": "10–12",
-      "Nova Scotia duck tolling retrievers": "37–50",
-      "Old English sheepdogs": "60–100",
-      "Papillons": "7–10",
-      "Parson Russell terriers (Jack Russell terriers)": "14–18",
-      "Pekingese": "8–10",
-      "Pembroke Welsh corgis": "23–27",
-      "Pomeranians": "4–7",
-      "Poodle": "45–65",
-      "Poodles miniture": "11-17",
-      "Portuguese water dogs": "35–55",
-      "Pugs": "13–18",
-      "Rhodesian ridgebacks": "65–90",
-      "Rottweilers": "70–135",
-      "Samoyeds": "35–65",
-      "Schipperkes": "12–18",
-      "Scottish terriers": "18–21",
-      "Shetland sheepdogs": "18–20",
-      "Shiba Inu": "15–25",
-      "Shih Tzu": "8–16",
-      "Siberian huskies": "35–60",
-      "Silky terriers": "8–11",
-      "Soft-Coated Wheaten terriers": "30–45",
-      "Saint Bernards": "110–200",
-      "Staffordshire bull terriers": "23–38",
-      "Standard schnauzers": "30–45",
-      "Tibetan terriers": "20–24",
-      "Toy fox terriers": "4–7",
-      "Vizsla": "45–60",
-      "Weimaraners": "50–70",
-      "Welsh terriers": "20–21",
-      "West Highland": "13–21",
-      "Whippets": "25–45",
-      "Wirehaired fox terriers": "13–20",
-      "Yorkshire terriers": "7",
-      "Domestic Cat": "8–10",
-      "Persian": "7–12",
-      "Siamese": "5–10",
-      "Maine Coon": "10–25"
+      "Airedale Terrier": [40, 65],
+      "Akita": [75, 11],
+      "Alaskan Malamute": [70, 95],
+      "American Eskimo Dog": [18, 35],
+      "American Staffordshire Terrier": [55, 65],
+      "Australian Cattle Dog": [30, 35],
+      "Australian Shepherd": [40, 65],
+      "Basenji": [20, 25],
+      "Basset Hound": [45, 65],
+      "Beagle": [18, 30],
+      "Belgian Malinois": [55, 75],
+      "Bernese Mountain Dog": [85, 11],
+      "Bichon Frise": [7, 12],
+      "Bloodhound": [80, 11],
+      "Boerboel": [100, 130],
+      "Border Collie": [27, 45],
+      "Border Terrier": [11, 15],
+      "Borzoi": [60, 10],
+      "Boston Terrier": [10, 25],
+      "Bouviers Des Flandres": [95, 12],
+      "Boxer": [50, 75],
+      "Briard": [95, 120],
+      "Brittany": [30, 40],
+      "Brussels Griffon": [6, 12],
+      "Bull Terrier": [45, 80],
+      "Bull Terriers Miniature": [24, 32],
+      "Bulldog": [40, 50],
+      "Bullmastiff": [100, 13],
+      "Cairn Terrier": [13, 18],
+      "Cardigan Welsh Corgi": [25, 30],
+      "Cavalier King Charles Spaniel": [10, 18],
+      "Chesapeake Bay Retriever": [55, 80],
+      "Chihuahua": [4, 6],
+      "Chinese Crested": [8, 10],
+      "Chinese Shar-Pei": [45, 60],
+      "Chow Chow": [45, 70],
+      "Cocker Spaniel": [23, 28],
+      "Collie, Rough or Smooth": [50, 70],
+      "Dachshund": [10, 12],
+      "Dachshund mini": [8, 10],
+      "Dalmatian": [50, 55],
+      "Doberman Pinscher": [65, 90],
+      "English Cocker Spaniel": [26, 34],
+      "English Setter": [45, 80],
+      "English Springer Spaniel": [40, 50],
+      "Flat-Coated Retriever": [60, 70],
+      "French Bulldog": [20, 28],
+      "German Shepherd": [75, 95],
+      "German Shorthaired Pointer": [45, 70],
+      "German Wirehaired Pointer": [60, 70],
+      "Giant Schnauzer": [55, 80],
+      "Golden Retriever": [65, 75],
+      "Gordon Setter": [45, 80],
+      "Great Dane": [110, 18],
+      "Great Pyrenees": [85, 10],
+      "Greater Swiss Mountain Dog": [130, 13],
+      "Havanese": [7, 12],
+      "Irish Setter": [55, 75],
+      "Irish Wolfhound": [90, 15],
+      "Italian Greyhound": [6, 10],
+      "Japanese Chin": [4, 15],
+      "Keeshond": [35, 45],
+      "Labrador": [65, 80],
+      "Lhasa": [13, 15],
+      "Maltese": [4, 6],
+      "Mastiff": [150, 16],
+      "Miniature Pinscher": [8, 10],
+      "Miniature Schnauzer": [12, 15],
+      "Newfoundland": [100, 15],
+      "Norwegian Elkhound": [40, 60],
+      "Norwich Terrier": [10, 12],
+      "Nova Scotia Duck Tolling Retriever": [37, 50],
+      "Old English Sheepdog": [60, 10],
+      "Papillon": [7, 10],
+      "Parson Russell Terrier": [14, 18],
+      "Pekingese": [8, 10],
+      "Pembroke Welsh Corgi": [23, 27],
+      "Pomeranian": [4, 7],
+      "Poodle": [45, 65],
+      "Poodle miniture": [11-17],
+      "Portuguese Water Dog": [35, 55],
+      "Pug": [13, 18],
+      "Rhodesian Ridgeback": [65, 90],
+      "Rottweiler": [70, 13],
+      "Samoyed": [35, 65],
+      "Schipperke": [12, 18],
+      "Scottish Terrier": [18, 21],
+      "Shetland Sheepdog": [18, 20],
+      "Shiba Inu": [15, 25],
+      "Shih Tzu": [8, 16],
+      "Siberian Husky": [35, 60],
+      "Silky Terrier": [8, 11],
+      "Soft-Coated Wheaten Terrier": [30, 45],
+      "Saint Bernard": [110, 20],
+      "Staffordshire Bull Terrier": [23, 38],
+      "Standard Schnauzer": [30, 45],
+      "Tibetan Terrier": [20, 24],
+      "Toy Fox Terrier": [4, 7],
+      "Vizsla": [45, 60],
+      "Weimaraner": [50, 70],
+      "Welsh Terrier": [20, 21],
+      "West Highland": [13, 21],
+      "Whippet": [25, 45],
+      "Wirehaired Fox Terrier": [13, 20],
+      "Yorkshire Terrier": [7],
+      "Domestic Cat": [8, 10],
+      "Persian": [7, 12],
+      "Siamese": [5, 10],
+      "Maine Coon": [10, 25]
     }
-    for (const key in petWeightRange) {
-      const rangeArray = petWeightRange[key].split('–');
-      petWeightRange[key] = rangeArray; 
-    }
+    // for (const key in petWeightRange) {
+    //   const rangeArray = petWeightRange[key].split('–');
+    //   petWeightRange[key] = rangeArray; 
+    // }
     
     // console.log(petWeightRange)
 
-    const data = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    const graphSettings = {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
       datasets: [
         {
           label: 'Leonard',
@@ -172,39 +176,89 @@ const petWeightRange =
 
 class WeightChart extends React.Component {
   constructor (props) {
-    super(props)
-    const currentBreed = this.props.pet.breed;
-    //placeholder if statement -- will be changed
-    // for (let eachPet in petWeightRange) {
-    //   console.log(eachPet);
-    //   console.log(currentBreed);
-    //   if (currentBreed !== eachPet) {
-    //     const minWeight = 10;
-    //     const maxWeight = 20;
-    //     options.annotation.annotations[0].value = minWeight;
-    //     options.annotation.annotations[1].value = maxWeight;
-    //   } else {
+    super(props);
 
-    const minWeight = currentBreed ? petWeightRange[currentBreed][0] : 10;
-    const maxWeight = currentBreed ? petWeightRange[currentBreed][1] : 20;
-    options.annotation.annotations[0].value = minWeight;
-    options.annotation.annotations[1].value = maxWeight;
+    const { breed } = this.props.pet;
+    const petRange = props.petWeightRange[breed];
+    const { annotations } = props.options.annotation;
 
-    const id = this.props.pet.id;
-    // ajax based on this.props.pet.id
-    // get history table 
+    if (petRange) {
+      annotations[0].value = petRange[0] || 10;
+      annotations[1].value = petRange[1] || 20;
+    }
+
+    this.state = { 
+      defaultMinWeight: petRange ? petRange[0] : 10,
+      defaultMaxWeight: petRange ? petRange[1] : 20,
+      options: props.options,
+      graphSettings: props.graphSettings
+    }; 
+
+    this.getLatestGraphData = this.getLatestGraphData.bind(this);
+
+  //   const currentBreed = this.props.pet.breed;
+  //   let defaultMinWeight = 10;
+  //   let defaultMaxWeight = 20;
+  //   let breedMatch;
+  //   for (let eachPet in props.petWeightRange) {
+  //     if (currentBreed === eachPet) {
+  //      breedMatch = true 
+  //   } 
+  // }
+  //   if (breedMatch) {
+  //     defaultMinWeight = props.petWeightRange[currentBreed][0];
+  //     defaultMaxWeight = props.petWeightRange[currentBreed][1];
+  //     options.annotation.annotations[0].value = defaultMinWeight;
+  //     options.annotation.annotations[1].value = defaultMaxWeight;
+  //   } else {
+  //     options.annotation.annotations[0].value = defaultMinWeight;
+  //     options.annotation.annotations[1].value = defaultMaxWeight;
+  //   }
   }
+  componentWillMount() {
+    this.getLatestGraphData();
+  }
+
+  // componentDidUpdate() {
+  //   this.getLatestGraphData();
+  // }
+
+  getLatestGraphData() {
+    const { pet: { id } = {} } = this.props;
+    $.get(`http://localhost:8080/api/pets/${ id }/weights`)
+    .then(data => {
+      const { graphSettings } = this.state;
+      console.log(data);
+      const newWeight = [];
+      for (let i of data) {
+      newWeight.push(i.notes)
+      }
+      graphSettings.datasets[0].data = newWeight
+      console.log(graphSettings.datasets[0].data)
+      // graphSettings.datasets[0].data.push(+data[0].notes) 
+      this.setState({ graphSettings });
+    })
+    .catch(err => {
+      debugger;
+    });
+  }
+
   render() {
+
+    const { graphSettings, options } = this.state
     return (
       <div>
         <h1>Weight Over Time</h1>
-        <Line data={data} options={options} />
+        <Line data={graphSettings} options={options} />
       </div>
     );
   }
 }
 
-
-
+WeightChart.defaultProps = {
+  petWeightRange,
+  options,
+  graphSettings
+}
 
 export default WeightChart;

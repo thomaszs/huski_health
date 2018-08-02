@@ -10,6 +10,14 @@ module.exports = function knexData(knex) {
         return knex('pets').where({id: id})
       },
 
+      getPetActivities: function(petId) {
+        return knex('history').where({type:'Activity',pet_id: petId}).orderBy('id', 'desc')
+      },
+
+      getPetWeight: function(petId) {
+        return knex('history').where({type:'Weight',pet_id: petId})
+      },
+
       editPet: function (data) {
         console.log(data)
         return knex('pets').where({
@@ -37,14 +45,13 @@ module.exports = function knexData(knex) {
       },
 
       newHistory: function (data) {
-        console.log(data)
+        // console.log(data)
        return knex('history').insert({
           'type': data.type,
           'notes': data.notes,
           'pet_id': data.petId
         }).then(console.log("CHANGED"))
       },
-      
   
       insertAccount: function (account) {
        return knex('accounts').insert({

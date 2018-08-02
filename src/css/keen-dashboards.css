@@ -50,26 +50,24 @@ div.card-body-buttons {
   box-shadow: 5px 5px 10px #0f0f0f;
   border: 1px 1px 1px solid #e2e2e2;
   margin-bottom: 10px;
+  max-width: 50em;
 }
 .keen-dashboard .chart-wrapper .chart-title {
-  /* border-top-left-radius: 10px;
-  border-top-right-radius: 10px; */
   color: rgb(252, 240, 207);
   padding: 5px 20px;
 }
 
 .keen-dashboard .chart-wrapper .chart-stage {
   overflow: hidden;
-  padding: 5px 20px;
+  padding: 10px 20px;
   position: relative;
-  font-weight: 300px;
   color: #B1B298;
 }
 
 .keen-dashboard .chart-wrapper .chart-notes {
   color: #B1B298;
   font-size: 12px;
-  padding: 10px;
+  padding: 20px;
 }
 
 .keen-dashboard .chart-wrapper .keen-dataviz,
@@ -80,6 +78,7 @@ div.card-body-buttons {
 
 .row {
   margin-top: 20px;
+  margin-left: 20px;
 }
 
 .btn-circle {
@@ -92,6 +91,7 @@ div.card-body-buttons {
   font-size: 12px;
   line-height: 1.428571429;
   border-radius: 15px;
+  box-shadow: 5px 5px 10px #0f0f0f;
 }
 .btn-circle.btn-lg {
   width: 50px;
@@ -108,6 +108,64 @@ div.card-body-buttons {
   font-size: 24px;
   line-height: 1.33;
   border-radius: 35px;
+}
+
+.new-pet-btn {
+  width: 100%;
+  padding-top: 20px;
+}
+
+.glyphicon-plus {
+  background-color: #666666;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(255,255,255,0.5) 0px 1px 1px;
+}
+
+.responsive {
+  width:230px;
+  height:330px;
+}
+
+.container-profile {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-row {
+  display: flex;
+  justify-content:center;
+  color: white;
+  font-size: large;
+}
+
+.container-row p {
+  flex: 1;
+}
+
+
+@media screen and (max-width: 1029) {
+  .col-sm-8, {
+    width: 100%
+  }
+}
+
+@media screen and (max-width: 1029px) and (min-width: 750px) {
+  .col-sm-4 {
+    width: 48%;
+
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .col-sm-4 {
+    width: 100%;
+  }
+  .row {
+    margin: auto;
+  }
 }
 
 

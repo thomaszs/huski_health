@@ -30,6 +30,7 @@ app.post('/api/whatDog', (req, res) => {
 })
 
 app.post('/api/pets/:id', (req, res) => {
+    console.log("HELLO HELLO HELLO", req.body)
    database.editPet(req.body)
    .then(function(result) {
        return res.sendStatus(204)
@@ -37,11 +38,39 @@ app.post('/api/pets/:id', (req, res) => {
 })
 
 app.post('/api/pets/:id/activity', (req, res) => {
-    console.log(req.body)
+   console.log("THE NEW ACTIVITY OBJECT",req.body)
    database.newHistory(req.body)
    .then(function(result) {
-       return res.sendStatus(204)
+    //    return res.sendStatus()
+    console.log("Result after posting new activity", result)
+    return res.send(result)
 })
+})
+
+
+
+//GET a pet's activities based on petId
+app.get('/api/pets/activities', (req, res) => {
+    database.getPetActivities(req.query.id).then(function(result){
+        console.log("ACTIVITY RESULT",result)
+        return res.send(result)
+    }
+)
+})
+
+app.get('/api/pets/:id/weights', (req, res) => {
+    database.getPetWeight(req.params.id).then((weights) => {
+        console.log('WEIGHTS >>>', weights);
+        if (weights) {
+            return res.json(weights);
+        } else {
+            return res.json({error: 'No Weights found'});
+        }
+        
+    })
+    .catch(err => {
+        console.log('ERROR', err);
+    })
 })
 
 app.post('/api/pets/', (req, res) => {
@@ -60,6 +89,9 @@ app.post('/api/pet/', (req, res) => {
 
  app.post('/api/pet/new', (req, res) => {
      database.newPet(req.body)
+     .then(function (result) {
+        res.send(result)
+    })
  })
 
  app.post('/api/signup', async (req, res) => {

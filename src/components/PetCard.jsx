@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import PetProfile from './PetProfile'
 import Dashboard from './Dashboard'
 import Event from './Activity';
-
+import $ from 'jquery'; 
+ 
 export default class PetCard extends Component {
   constructor(props) {
     super(props)
@@ -47,7 +48,8 @@ export default class PetCard extends Component {
       showPopup: !this.state.showPopup
     });
   }
- 
+
+  
 
   render() {
     return (
@@ -59,37 +61,35 @@ export default class PetCard extends Component {
           </div>
           <div className="chart-stage">
             <div className="card" style={{ width: "100%" }}>
-              <img className="card-img-top" style={{ width: "100%" }} src={this.props.pet.img}
+              <img className="card-img-top responsive" style={{ width: "100%", objectFit:"cover" }} src={this.props.pet.img}
                 alt="Card cap" ></img>
               <div className="card-body">
               </div>
-              <table className="table pet-card-table" style={{ padding: "10px" }}>
-                <tbody>
-                  <tr>
-                    <td>Pet Weight: </td>
-                    <td>{this.props.pet.weight}</td>
-                  </tr>
-                  <tr>
-                    <td>Pet ID: </td>
-                    <td>{this.props.pet.id}</td>
-                  </tr>
-                  <tr>
-                    <td>Pet Owner: </td>
-                    <td>{this.props.pet.account_id}</td>
-                  </tr>
-                  </tbody>
-                  </table>
+              <div className="container-profile" style={{ padding: "10px" }}>
+                  <div className="container-row">
+                    <p>Pet Weight: </p>
+                    <p>{this.props.pet.weight}</p>
+                  </div>
+                  <div className="container-row">
+                    <p>Pet ID: </p>
+                    <p>{this.props.pet.id}</p>
+                  </div>
+                  <div className="container-row">
+                    <p>Pet Owner: </p>
+                    <p>{this.props.pet.account_id}</p>
+                  </div>
+                  </div>
                 <div className="card-body-buttons">
-                  <button  onClick={this.onClickTypeFeeding}   className="btn btn-primary" href="#">Feed Me</button>
-                  <button  onClick={this.onClickTypeWeight}   className="btn btn-primary" href="#">Update Weight</button>
-                  <button  onClick={this.onClickTypeActivity} className="btn btn-primary" href="#" style={{ float: "right" }}>Log Activity</button>
+                  <button  onClick={this.onClickTypeFeeding}   className="btn btn-warning" href="#">Feed Me</button>
+                  <button  onClick={this.onClickTypeWeight}   className="btn btn-activity" href="#">Update Weight</button>
+                  <button  onClick={this.onClickTypeActivity} className="btn btn-warning" href="#" style={{ float: "right" }}>Log Activity</button>
                 </div>
                 {/* <Link to={`/pet/${this.props.pet.id}/profile`}>Profile</Link> */}
               </div>
             </div>
           </div>
           {this.state.showPopup ? 
-          <Event text='Close Me' type={this.state.type} pet={this.props.pet} closePopup={this.togglePopup.bind(this)}/>
+          <Event text='Close Me' type={this.state.type} pet={this.props.pet} closePopup={this.togglePopup.bind(this)} onNewActivity={this.onNewActivity}/>
           : null
           }
         </div>

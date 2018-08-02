@@ -29,8 +29,14 @@ export default class Event extends React.Component {
             petId: this.props.pet.id
           }, 
           success: (result) => {
-              return this.props.closePopup()
-            console.log("Yes, it worked");
+            // call function defined in Dashboard to set the new state
+            if (this.props.type === "Activity"){
+              this.props.onNewActivity()
+            }
+            
+            return this.props.closePopup()
+            // console.log("Yes, it worked");
+
           },
           error: function (err) {
             console.log("It doesnt work")
@@ -42,12 +48,14 @@ export default class Event extends React.Component {
       return (
         <div className='popup'>
           <div className='popup_inner'>
-            <h1>New {this.props.type}</h1>
-            <form>
-            Notes:<input type="text" name="notes" onChange={this.onChangeNotes}/><br/>
-            <button type="button" className="btn btn-primary" onClick={this.saveEvent}>Submit</button>
-          </form>
-          <button onClick={this.props.closePopup}>Close</button>
+            <h2>New {this.props.type}</h2>
+            <table className="table table-dark" style={{ fontSize: 16 }}>
+              <form>
+                <label className="pop-up-label">Enter New {this.props.type}</label><br/>
+                <input type="text" name="notes" style={{width:"100%", color:"black"}}onChange={this.onChangeNotes}/><br/>
+                <button type="button" className="btn btn-primary btn-sm" onClick={this.saveEvent}>Submit</button><a style={{float: "right"}} onClick={this.props.closePopup}>Close</a>
+              </form>
+            </table>
           </div>
         </div>
       );
