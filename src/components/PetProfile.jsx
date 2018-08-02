@@ -41,9 +41,7 @@ class PetProfile extends Component {
         // newPetBreed: this.state.pet.breed
       },
       success: (result) => {
-        // console.log("Yes, it worked");
-        // console.log(result); // {result: "True"}
-        //  return this.props.updatePet(result)
+        this.props.editPetInfo();
       },
       error: function (err) {
         console.log("It doesnt work")
@@ -82,10 +80,10 @@ class PetProfile extends Component {
                         <form>
                           <label>Name:</label>
                           <input type="text" className="form-control" name="name" defaultValue={this.state.petName} onChange={this.onChangePetName} /><br/>
-                          <label>Weight:</label><input type="text" className="form-control" name="weight" defaultValue={this.state.petWeight} onChange={this.onChangePetWeight} /><br/>
-                          <label>Age:</label><input type="text" className="form-control" name="age" /><br/>
-                          <label>Birthday:</label><input type="text" className="form-control" name="birthday" /><br/>
-                          <label>Breed:</label><input type="text" className="form-control" name="breed" defaultValue={this.state.pet.breed} onChange={this.onChangePetBreed} /><br/>
+                          {/* <label>Weight:</label><input type="text" className="form-control" name="weight" defaultValue={this.state.petWeight} onChange={this.onChangePetWeight} /><br/> */}
+                          {/* <label>Age:</label><input type="text" className="form-control" name="age" /><br/> */}
+                          {/* <label>Birthday:</label><input type="text" className="form-control" name="birthday" /><br/> */}
+                          {/* <label>Breed:</label><input type="text" className="form-control" name="breed" defaultValue={this.state.pet.breed} onChange={this.onChangePetBreed} /><br/> */}
                           <label>Notes:</label> <input type="text" className="form-control" name="notes" /><br/>
                           <button type="button" className="btn btn-primary" onClick={this.savePetProfile}>Save</button>
                         </form>
