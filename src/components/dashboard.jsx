@@ -88,7 +88,7 @@ class Dashboard extends Component {
                 <Timeline pet={this.state.pet} activities={this.state.activities} onNewActivity={this.onNewActivity} />
               </div>
               <div className="col-med-4">
-              <StatusBar pet={this.state.pet} />
+              <StatusBar pet={this.state.pet} activities={this.state.history} />
               </div>
             </div>
           </div>
