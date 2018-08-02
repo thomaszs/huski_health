@@ -133,7 +133,7 @@ class NewPetForm extends Component {
       <div>
         <div className="container">
         <div className="chart-title">
-          <div className="chart-wrapper">
+          <div className="chart-wrapper" style={{margin:"auto"}}>
             <div className="chart-title">
               <h1>Add a new pet!</h1>
               <div className="chart-notes">
