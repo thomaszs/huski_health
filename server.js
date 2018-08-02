@@ -47,6 +47,8 @@ app.post('/api/pets/:id/activity', (req, res) => {
 })
 })
 
+
+
 //GET a pet's activities based on petId
 app.get('/api/pets/activities', (req, res) => {
     database.getPetActivities(req.query.id).then(function(result){
@@ -54,6 +56,21 @@ app.get('/api/pets/activities', (req, res) => {
         return res.send(result)
     }
 )
+})
+
+app.get('/api/pets/:id/weights', (req, res) => {
+    database.getPetWeight(req.params.id).then((weights) => {
+        console.log('WEIGHTS >>>', weights);
+        if (weights) {
+            return res.json(weights);
+        } else {
+            return res.json({error: 'No Weights found'});
+        }
+        
+    })
+    .catch(err => {
+        console.log('ERROR', err);
+    })
 })
 
 app.post('/api/pets/', (req, res) => {

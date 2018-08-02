@@ -17,6 +17,10 @@ module.exports = function knexData(knex) {
         return knex('history').where({type:'Activity',pet_id: petId}).orderBy('id', 'desc')
       },
 
+      getPetWeight: function(petId) {
+        return knex('history').where({type:'Weight',pet_id: petId})
+      },
+
       editPet: function (data) {
         console.log(data)
         return knex('pets').where({

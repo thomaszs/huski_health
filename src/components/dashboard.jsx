@@ -83,11 +83,13 @@ class Dashboard extends Component {
               />
             </div>
             <div className="col-sm-9">
-              <div className="col-sm-12 col-lg-8">
+              <div className="col-sm-12 col-lg-8 ">
                 <PetChart pet={this.state.pet}  />
                 <Timeline pet={this.state.pet} activities={this.state.activities} onNewActivity={this.onNewActivity} />
               </div>
+              <div className="col-sm-3">
               <StatusBar pet={this.state.pet} />
+              </div>
             </div>
           </div>
         </div>
