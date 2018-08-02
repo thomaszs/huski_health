@@ -63,24 +63,6 @@ class App extends Component {
 }
 
   updatePet(pet) {
-
-<<<<<<< HEAD
-=======
-      $.ajax('http://localhost:8080/api/pets/', {
-        method: 'POST',
-        data: {
-          userId: 2, 
-        }, 
-        success: (result) => {
-          // console.log(result); 
-          this.setState({pets: result})
-          console.log(this.state.pets)
-        },
-        error: function(err) {
-          console.log("It doesnt work")
-          }
-      });
->>>>>>> 209ed9267b46a7c485e5a378993bf3f46f823eef
   }
   
 

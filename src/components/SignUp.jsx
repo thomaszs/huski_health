@@ -54,8 +54,9 @@ export default class SignUp extends Component {
               } else {
             console.log("Yes, it worked");
             let user = result[0]
-            console.log(user)
+            // console.log(user)
             this.props.updateUser(user)
+            {this.props.history.push('/pets')}
               }
           },
           error: function (err) {

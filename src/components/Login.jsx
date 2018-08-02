@@ -41,7 +41,8 @@ export default class SignUp extends Component {
                     console.log("Yes, it worked");
                     let user = result[0];
                     console.log(user)
-                    return this.props.updateUser(user);
+                    this.props.updateUser(user);
+                    {this.props.history.push('/pets')}
                      }
                 },
                 error: function (err) {}
