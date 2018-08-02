@@ -80,7 +80,7 @@ class PetProfile extends Component {
                         <form>
                           <label>Name:</label>
                           <input type="text" className="form-control" name="name" defaultValue={this.state.petName} onChange={this.onChangePetName} /><br/>
-                          <label>Weight:</label><input type="text" className="form-control" name="weight" defaultValue={this.state.petWeight} onChange={this.onChangePetWeight} /><br/>
+                          {/* <label>Weight:</label><input type="text" className="form-control" name="weight" defaultValue={this.state.petWeight} onChange={this.onChangePetWeight} /><br/> */}
                           {/* <label>Age:</label><input type="text" className="form-control" name="age" /><br/> */}
                           {/* <label>Birthday:</label><input type="text" className="form-control" name="birthday" /><br/> */}
                           {/* <label>Breed:</label><input type="text" className="form-control" name="breed" defaultValue={this.state.pet.breed} onChange={this.onChangePetBreed} /><br/> */}

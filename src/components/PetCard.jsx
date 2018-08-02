@@ -71,12 +71,12 @@ export default class PetCard extends Component {
                     <p>{this.props.pet.weight}</p>
                   </div>
                   <div className="container-row">
-                    <p>Pet ID: </p>
-                    <p>{this.props.pet.id}</p>
+                    <p>Last Fed: </p>
+                    <p>Date of last fed</p>
                   </div>
                   <div className="container-row">
-                    <p>Pet Owner: </p>
-                    <p>{this.props.pet.account_id}</p>
+                    <p>Last Active: </p>
+                    <p>Date of last activity</p>
                   </div>
                   </div>
                 <div className="card-body-buttons">
