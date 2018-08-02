@@ -23,7 +23,7 @@ module.exports = function knexData(knex) {
 
       getPetFeeding: function(petId) {
         console.log(petId)
-        return knex('history').where({type:'Feeding',pet_id: petId})
+        return knex('history').where({type:'Feeding',pet_id: petId}).orderBy('id', 'desc')
       },
 
 

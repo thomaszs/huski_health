@@ -30,6 +30,7 @@ export default class StatusBar extends Component {
   render() {
     const date = this.state.data.created_at
     const dateFromNow = moment(date).fromNow();
+    const notes = this.state.data.notes
   return (
     <fragment>
     <div>
@@ -54,7 +55,7 @@ export default class StatusBar extends Component {
             <h1>{dateFromNow}<i className="fas fa-clock" style={{ float: "right" }}></i></h1>
         </div>
         <div className="chart-notes">
-          July 25, 2018
+          {notes}
     </div>
       </div>
     </div>
