@@ -42,8 +42,6 @@ h3 {
 
 .navbar-nav {
   align-items: center;
-  margin: 5px 0 0;
-  /* color: #FF9400; */
 }
 
 .navbar-header {
@@ -55,7 +53,6 @@ h3 {
   font-weight: 200;
   color: #fff;
   letter-spacing: 0.03em;
-  /* padding-top: 19px; */
   text-shadow: 0 0 2px red(0,0,0,.1);
 }
 .navbar-nav > li > a:focus,
@@ -96,18 +93,6 @@ img > .pet-img {
   margin-right: 10px;
 }
 
-.love {
-  border-top: 1px solid #d7d7d7;
-  color: #546678;
-  margin: 24px 0 0;
-  padding: 15px 0;
-  text-align: center;
-}
-
-.love p {
-  margin-bottom: 0;
-}
-
 .card-body-buttons {
   margin: 10px;
 }
@@ -125,17 +110,5 @@ img > .pet-img {
 .btn-activity {
   background: #A00029;
 }
-.table>tbody>tr>td{
-  font-size: 20px;
-  color: white;
-  margin-top: 15px;
-  border:none;
-  
-}
 
-@media screen and (max-width: 320px) {
-  .table>tbody>tr{
-    font-size: 16px;
-  }
-}
 

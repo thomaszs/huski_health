@@ -114,15 +114,15 @@ class PetProfile extends Component {
           <div className="chart-notes">
             <div className="profile-container">
                 <div className="container-row">
-                  <p>Birthday:</p>
+                  <p>Birthday: </p>
                   <p>{this.state.pet.date_of_birth}</p>
                 </div>
                 <div className="container-row">
-                  <p>Breed:</p>
+                  <p>Breed: </p>
                   <p>{this.state.pet.breed}</p>
                 </div>
                 <div className="container-row">
-                  <p>Notes:</p>
+                  <p>Notes: </p>
                   <p>{this.state.pet.notes}</p>
                 </div>
                 <div className="container-row">
