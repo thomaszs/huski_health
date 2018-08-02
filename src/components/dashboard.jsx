@@ -14,6 +14,7 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = { loading: true };
+    this.onNewActivity = this.onNewActivity.bind(this)
   }
 
   componentDidMount() {
@@ -32,9 +33,10 @@ class Dashboard extends Component {
           },
           success: result => {
             this.setState({activities: result,loading:false})
+            console.log("ADDING ACTIVITIES?", this.state.activities);
           },
           error: function(err) {
-            console.log("Error, can not get pet activities");
+            console.log("Error, can not get pet activities upon intial load.");
           }
         });
       },
@@ -42,8 +44,24 @@ class Dashboard extends Component {
         console.log("It doesnt work");
       }
     });
+  }
 
-    console.log("MY PET ID", this.props.match.params.id);
+  // Once user submits an activity, it should set the state of activities to the new state. 
+  // oldActivityState + newActivity = newActityState
+  onNewActivity() {
+    $.ajax("http://localhost:8080/api/pets/activities", {
+          method: "GET",
+          data: {
+            id: this.props.match.params.id
+          },
+          success: result => {
+            this.setState({activities: result})
+          },
+          error: function(err) {
+            console.log("Error, can not make ajax request to get new activity List");
+          }
+        })
+   
   }
 
   render() {
@@ -65,9 +83,9 @@ class Dashboard extends Component {
               />
             </div>
             <div className="col-sm-9">
-              <div className="col-sm-8">
-                <PetChart pet={this.state.pet} />
-                <Timeline pet={this.state.pet} activities={this.state.activities} />
+              <div className="col-sm-12 col-lg-8">
+                <PetChart pet={this.state.pet}  />
+                <Timeline pet={this.state.pet} activities={this.state.activities} onNewActivity={this.onNewActivity} />
               </div>
               <StatusBar pet={this.state.pet} />
             </div>

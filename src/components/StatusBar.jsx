@@ -9,7 +9,7 @@ export default function StatusBar(props){
         <h2>Current Weight</h2>
       </div>
       <div className="chart-stage" id="chart-05">
-        <h1>22lbs <i class="fas fa-weight" style={{ float: "right"}}></i></h1>
+        <h1>22lbs <i className="fas fa-weight" style={{ float: "right"}}></i></h1>
       </div>
       <div className="chart-notes">
       </div>
@@ -21,7 +21,7 @@ export default function StatusBar(props){
         <h2>Last Fed</h2>
       </div>
       <div className="chart-stage" id="chart-01">
-        <h1>8:00am <i class="fas fa-clock" style={{ float: "right"}}></i></h1>
+        <h1>8:00am <i className="fas fa-clock" style={{ float: "right"}}></i></h1>
       </div>
       <div className="chart-notes">
         July 25, 2018
@@ -34,7 +34,7 @@ export default function StatusBar(props){
         <h2>Last Active</h2>
       </div>
       <div className="chart-stage" id="chart-02">
-        <h1>July 23<i class="fas fa-dumbbell" style={{ float: "right"}}></i></h1>
+        <h1>July 23<i className="fas fa-dumbbell" style={{ float: "right"}}></i></h1>
       </div>
       <div className="chart-notes">
         Notes about this chart
