@@ -69,7 +69,7 @@ export default class StatusBar extends Component {
           <h1>{lastActive}<i className="fas fa-dumbbell" style={{ float: "right" }}></i></h1>
         </div>
         <div className="chart-notes">
-          Notes about this chart
+        {this.props.activities[0].notes}
     </div>
       </div>
     </div>

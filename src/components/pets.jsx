@@ -19,7 +19,7 @@ export default function Pets(props) {
         // </Switch>
         <fragment>
             <div className="row" style={{ marginTop: "20px" }}>
-                <a className="btn-new-pet" href="http://localhost:3000/pets/new"><h1>Add New Pet <strong>+</strong> </h1></a>
+                <a className="btn-new-pet" href="http://localhost:3000/pets/new"><h1><small>Add New Pet<strong>+</strong></small> </h1></a>
             </div>
             <div className="row">
                 {/* for n of pets, render PetCard */}
