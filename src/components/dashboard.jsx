@@ -119,6 +119,7 @@ class Dashboard extends Component {
                 onChangePetName={this.onChangePetName}
                 onChangePetWeight={this.onChangePetWeight}
                 onChangePetBreed={this.onChangePetBreed}
+                editPetInfo={this.props.editPetInfo}
               />
             </div>
             <div className="col-sm-9">

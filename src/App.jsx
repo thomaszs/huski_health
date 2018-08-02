@@ -43,6 +43,7 @@ class App extends Component {
     // this.updatePet = this.updatePet.bind(this);
     this.renderMergedProps = this.renderMergedProps.bind(this)
     this.PropsRoute = this.PropsRoute.bind(this)
+    this.editPetInfo = this.editPetInfo.bind(this)
     
   }
 
@@ -63,6 +64,7 @@ class App extends Component {
           console.log("It doesnt work")
           }
       });
+
   }
   // updatePet(result) {
   //   let items = this.state.pets;
@@ -86,6 +88,24 @@ class App extends Component {
       }}/>
     );
   }
+  
+  //Given that editPetProfile Button has been triggered, make ajax call for new pets info and set the state
+  editPetInfo() {
+    console.log("calling editPetInfo function to set new pet info state")
+    $.ajax('http://localhost:8080/api/pets/', {
+      method: 'POST',
+      data: {
+        userId: 1, 
+      }, 
+      success: (result) => {
+        this.setState({pets: result})
+        console.log("New Pet State after edit:",this.state.pets)
+      },
+      error: function(err) {
+        console.log("Cannot reset state of pets after edit")
+        }
+    })
+  }
 
   // set routing; based on this route render this
   // if user is logged in, render pets
@@ -108,7 +128,7 @@ class App extends Component {
           {/* <this.PropsRoute exact path='/pet/:id/dashboard' component={Dashboard} pets={this.state.pets}/> */}
           <this.PropsRoute exact path="/" component={Pets} pets={this.state.pets} />
           {/* <this.PropsRoute exact path='/pet/:id/profile' component={PetProfile} updatePet={this.updatePet}/> */}
-          <this.PropsRoute exact path='/pet/:id' component={Dashboard} updatePet={this.updatePet}/>
+          <this.PropsRoute exact path='/pet/:id' component={Dashboard} updatePet={this.updatePet} editPetInfo={this.editPetInfo}/>
           {/* <this.PropsRoute exact path='/pet/:id/activity' component={Activity} /> */}
           </Switch>
       </div>

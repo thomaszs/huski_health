@@ -41,9 +41,7 @@ class PetProfile extends Component {
         // newPetBreed: this.state.pet.breed
       },
       success: (result) => {
-        // console.log("Yes, it worked");
-        // console.log(result); // {result: "True"}
-        //  return this.props.updatePet(result)
+        this.props.editPetInfo();
       },
       error: function (err) {
         console.log("It doesnt work")
