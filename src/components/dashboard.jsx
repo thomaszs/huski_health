@@ -123,6 +123,7 @@ class Dashboard extends Component {
               />
             </div>
             <div className="col-sm-9">
+<<<<<<< HEAD
               <div className="col-sm-8">
                 <PetChart pet={this.state.pet} />
                 <Timeline
@@ -131,6 +132,11 @@ class Dashboard extends Component {
                   onNewActivity={this.onNewActivity}
                 />
                 <div ref="mapEl" />
+=======
+              <div className="col-sm-12 col-lg-8">
+                <PetChart pet={this.state.pet}  />
+                <Timeline pet={this.state.pet} activities={this.state.activities} onNewActivity={this.onNewActivity} />
+>>>>>>> 209ed9267b46a7c485e5a378993bf3f46f823eef
               </div>
               <StatusBar pet={this.state.pet} />
             </div>

@@ -6,8 +6,6 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 const dogBreed = require('what-dog');
 
 
-
-
 class NewPetForm extends Component {
   constructor(props) {
     super(props);
@@ -32,6 +30,7 @@ class NewPetForm extends Component {
     this.handleWeightChange = this.handleWeightChange.bind(this);
     this.handleBreedChange = this.handleBreedChange.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
+    this.addNewPet = this.addNewPet.bind(this);
     // this.handleAgeChange = this.handleAgeChange.bind(this)
 
     // dogBreed('https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12225919/Pembroke-Welsh-Corgi-On-White-01.jpg')
@@ -85,7 +84,8 @@ class NewPetForm extends Component {
 
   handleFormSubmit(e) {
     e.preventDefault();
-
+    const addNewPet = this.addNewPet
+    const browserHistory = this.props.history
     const newPetInfo = {
       petName: this.state.petName,
       species: this.state.species,
@@ -108,8 +108,10 @@ class NewPetForm extends Component {
             method: 'POST',
             data: newPetInfo,
             success: function (result) {
-              console.log("Yes, it worked. Added a new pet");
+              console.log("Added new pet");
               console.log(result); // {result: "True"}
+              addNewPet();
+              browserHistory.push('/pets')
             },
             error: function (err) {
               console.log(err)
@@ -131,7 +133,7 @@ class NewPetForm extends Component {
       <div>
         <div className="container">
         <div className="chart-title">
-          <div className="chart-wrapper">
+          <div className="chart-wrapper" style={{margin:"auto"}}>
             <div className="chart-title">
               <h1>Add a new pet!</h1>
               <div className="chart-notes">
@@ -202,7 +204,7 @@ class NewPetForm extends Component {
                         content={this.state.image}
                         placeholder={'Enter image url to find out your pet\'s breed'} />
 
-                      <Link to={`/pets`}><input onClick={this.addNewPet}
+                      <Link to={`/pets`}><input onClick={this.handleFormSubmit} 
                         type="submit"
                         className="btn btn-primary float-right"
                         value="Submit" /></Link>
@@ -223,5 +225,3 @@ class NewPetForm extends Component {
 }
 
 export default NewPetForm;
-
-
