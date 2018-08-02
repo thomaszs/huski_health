@@ -52,7 +52,7 @@ export default class Event extends React.Component {
             <table className="table table-dark" style={{ fontSize: 16 }}>
               <form>
                 <label className="pop-up-label">Enter New {this.props.type}</label><br/>
-                <input type="text" name="notes" style={{width:"100%"}}onChange={this.onChangeNotes}/><br/>
+                <input type="text" name="notes" style={{width:"100%", color:"black"}}onChange={this.onChangeNotes}/><br/>
                 <button type="button" className="btn btn-primary btn-sm" onClick={this.saveEvent}>Submit</button><a style={{float: "right"}} onClick={this.props.closePopup}>Close</a>
               </form>
             </table>

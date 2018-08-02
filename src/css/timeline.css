@@ -56,6 +56,7 @@
 
 .timeline__date{
   min-width: 65px;
+  max-width: 70px;
   position: absolute;
   left: 0;
 

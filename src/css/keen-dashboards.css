@@ -61,14 +61,14 @@ div.card-body-buttons {
   overflow: hidden;
   padding: 5px 20px;
   position: relative;
-  font-weight: 300px;
+  /* font-weight: 200px; */
   color: #B1B298;
 }
 
 .keen-dashboard .chart-wrapper .chart-notes {
   color: #B1B298;
   font-size: 12px;
-  padding: 10px;
+  padding: 20px;
 }
 
 .keen-dashboard .chart-wrapper .keen-dataviz,
@@ -120,7 +120,25 @@ div.card-body-buttons {
   height:330px;
 }
 
-@media screen and (max-width: 1030px) and (min-width: 750px) {
+.container-profile {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-row {
+  display: flex;
+  justify-content:center;
+  color: white;
+  font-size: large;
+}
+
+@media screen and (max-width: 1029) {
+  .col-sm-8, {
+    width: 100%
+  }
+}
+
+@media screen and (max-width: 1029px) and (min-width: 750px) {
   .col-sm-4 {
     width: 48%;
 
@@ -130,13 +148,10 @@ div.card-body-buttons {
 @media screen and (max-width: 749px) {
   .col-sm-4 {
     width: 100%;
-
   }
-}
-
-@media screen and (max-width: 749px){
   .row {
     margin: auto;
   }
 }
+
 
