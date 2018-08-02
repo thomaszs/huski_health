@@ -50,7 +50,6 @@ div.card-body-buttons {
   box-shadow: 5px 5px 10px #0f0f0f;
   border: 1px 1px 1px solid #e2e2e2;
   margin-bottom: 10px;
-  max-width: 50em;
 }
 .keen-dashboard .chart-wrapper .chart-title {
   color: rgb(252, 240, 207);
@@ -146,11 +145,11 @@ div.card-body-buttons {
 }
 
 
-@media screen and (max-width: 1029) {
+/* @media screen and (max-width: 1029) {
   .col-sm-8, {
     width: 100%
   }
-}
+} */
 
 @media screen and (max-width: 1029px) and (min-width: 750px) {
   .col-sm-4 {
@@ -159,7 +158,7 @@ div.card-body-buttons {
   }
 }
 
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 767px) {
   .col-sm-4 {
     width: 100%;
   }
