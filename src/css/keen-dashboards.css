@@ -59,9 +59,8 @@ div.card-body-buttons {
 
 .keen-dashboard .chart-wrapper .chart-stage {
   overflow: hidden;
-  padding: 5px 20px;
+  padding: 10px 20px;
   position: relative;
-  /* font-weight: 200px; */
   color: #B1B298;
 }
 
@@ -92,6 +91,7 @@ div.card-body-buttons {
   font-size: 12px;
   line-height: 1.428571429;
   border-radius: 15px;
+  box-shadow: 5px 5px 10px #0f0f0f;
 }
 .btn-circle.btn-lg {
   width: 50px;
@@ -115,6 +115,15 @@ div.card-body-buttons {
   padding-top: 20px;
 }
 
+.glyphicon-plus {
+  background-color: #666666;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(255,255,255,0.5) 0px 1px 1px;
+}
+
 .responsive {
   width:230px;
   height:330px;
@@ -131,6 +140,11 @@ div.card-body-buttons {
   color: white;
   font-size: large;
 }
+
+.container-row p {
+  flex: 1;
+}
+
 
 @media screen and (max-width: 1029) {
   .col-sm-8, {

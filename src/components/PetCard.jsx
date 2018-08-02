@@ -65,26 +65,24 @@ export default class PetCard extends Component {
                 alt="Card cap" ></img>
               <div className="card-body">
               </div>
-              <table className="table pet-card-table" style={{ padding: "10px" }}>
-                <tbody>
-                  <tr>
-                    <td>Pet Weight: </td>
-                    <td>{this.props.pet.weight}</td>
-                  </tr>
-                  <tr>
-                    <td>Pet ID: </td>
-                    <td>{this.props.pet.id}</td>
-                  </tr>
-                  <tr>
-                    <td>Pet Owner: </td>
-                    <td>{this.props.pet.account_id}</td>
-                  </tr>
-                  </tbody>
-                  </table>
+              <div className="container-profile" style={{ padding: "10px" }}>
+                  <div className="container-row">
+                    <p>Pet Weight: </p>
+                    <p>{this.props.pet.weight}</p>
+                  </div>
+                  <div className="container-row">
+                    <p>Pet ID: </p>
+                    <p>{this.props.pet.id}</p>
+                  </div>
+                  <div className="container-row">
+                    <p>Pet Owner: </p>
+                    <p>{this.props.pet.account_id}</p>
+                  </div>
+                  </div>
                 <div className="card-body-buttons">
-                  <button  onClick={this.onClickTypeFeeding}   className="btn btn-primary btn-sm" href="#">Feed Me</button>
-                  <button  onClick={this.onClickTypeWeight}   className="btn btn-primary btn-sm" href="#">Update Weight</button>
-                  <button  onClick={this.onClickTypeActivity} className="btn btn-primary btn-sm" href="#" style={{ float: "right" }}>Log Activity</button>
+                  <button  onClick={this.onClickTypeFeeding}   className="btn btn-warning" href="#">Feed Me</button>
+                  <button  onClick={this.onClickTypeWeight}   className="btn btn-activity" href="#">Update Weight</button>
+                  <button  onClick={this.onClickTypeActivity} className="btn btn-warning" href="#" style={{ float: "right" }}>Log Activity</button>
                 </div>
                 {/* <Link to={`/pet/${this.props.pet.id}/profile`}>Profile</Link> */}
               </div>
