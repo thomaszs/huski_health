@@ -48,6 +48,8 @@ class Dashboard extends Component {
 
     componentDidMount() {
 
+        this.props.requireCurrentUser()
+
         $.ajax('http://localhost:8080/api/pet/', {
           method: 'POST',
           data: {

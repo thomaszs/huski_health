@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 
 export default class SignUp extends Component {
     constructor(props) {
@@ -13,6 +13,7 @@ export default class SignUp extends Component {
         this.onChangePassword = this.onChangePassword.bind(this)
         this.userLogin = this.userLogin.bind(this)
     }
+
 
     onChangeEmail(event) {
         event.preventDefault()
@@ -34,11 +35,14 @@ export default class SignUp extends Component {
                     password: this.state.password
                 },
                 success: (result) => {
+                    if (result === 'no user found') {
+                        alert("No user found")
+                     } else {
                     console.log("Yes, it worked");
                     let user = result[0];
                     console.log(user)
                     return this.props.updateUser(user);
-                    // console.log(result)
+                     }
                 },
                 error: function (err) {}
             });

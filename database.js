@@ -1,13 +1,10 @@
 module.exports = function knexData(knex) {
     return {
   
-      // getAccount: function (email, password) {
-      //   return knex('accounts').where({email: email, password: password})
-      // },
-
       getPets: function (id) {
         return knex('pets').where({account_id: id})
       },
+
       getPet: function (id) {
         console.log(id)
         return knex('pets').where({id: id})
@@ -50,27 +47,24 @@ module.exports = function knexData(knex) {
       
   
       insertAccount: function (account) {
-        knex('accounts').insert({
+       return knex('accounts').insert({
             name: account.name,
             email: account.email,
             password: account.password
-          }).then()
+          }).returning(['id', 'name', 'email'])
       },
 
       verifySignup: function (account) {
         return knex('accounts').where({
             email: account.email
-          }).asCallback(function (err, result) {
-            if (err) {
-              return err
-            } else {
-              return 
-            }
-      })
+          }).then(function(result) {
+            console.log(result)
+            return result;
+          })
     },
 
     verifyLogin: function (account) {
-      return knex('accounts').limit(1).where({
+      return knex.select('id', 'email', 'name').from('accounts').limit(1).where({
           email: account.email,
           password: account.password
         }).asCallback(function (err, result) {
@@ -83,20 +77,6 @@ module.exports = function knexData(knex) {
     })
   }
   
-      // modifyHistory: function (data) {
-      //   knex('history').where({
-      //     'id': data.id
-      //   }).update({
-      //     'notes': data.notes
-      //   }).then()
-      // },
-
-
-  //     deleteHistory: function (id) {
-  //       knex('history').where({
-  //         'id': id.id
-  //       }).del().then();
-  //     }
     }
   }
   

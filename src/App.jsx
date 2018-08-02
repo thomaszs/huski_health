@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch , Redirect} from "react-router-dom";
 
 import Dashboard from './components/Dashboard';
 import Pets from './components/Pets';
@@ -26,9 +26,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: {
-        name: "Lexi"
-      },
+      currentUser: {},
       pets: [
         {
           id: "1",
@@ -49,7 +47,6 @@ class App extends Component {
   }
 
   async updateUser(user) {
-  // console.log(user)
   await this.setState({currentUser: user})  
    $.ajax('http://localhost:8080/api/pets/', {
     method: 'POST',
@@ -58,7 +55,6 @@ class App extends Component {
     }, 
     success: (result) => {
       console.log("Yes, it worked");
-      // console.log(result); 
       this.setState({pets: result})
       console.log(this.state.pets)
     },
@@ -67,30 +63,11 @@ class App extends Component {
       }
   });
 }
-  //  console.log(this.state.currentUser.id)
+
+  updatePet(pet) {
+
+  }
   
-
-  // componentDidMount() {
-
-  //   console.log(this.state.currentUser.id)
-   
-  //     $.ajax('http://localhost:8080/api/pets/', {
-  //       method: 'POST',
-  //       data: {
-  //         userId: this.state.currentUser.id
-  //       }, 
-  //       success: (result) => {
-  //         console.log("Yes, it worked");
-  //         // console.log(result); 
-  //         this.setState({pets: result})
-  //         console.log(this.state.pets)
-  //       },
-  //       error: function(err) {
-  //         console.log("It doesnt work")
-  //         }
-  //     });
-  // }
-
 
   renderMergedProps(component, ...rest) {
     const finalProps = Object.assign({}, ...rest);
@@ -111,6 +88,26 @@ class App extends Component {
   // if not, render log in route
 
   render() {
+
+    if (!this.state.currentUser.id) {
+      return (
+        <div>
+        <Router>
+          <div>
+            <NavBar/>
+            <Switch>
+            <this.PropsRoute exact path="/" component={Homepage}/>
+            <this.PropsRoute exact path="/signup" component={SignUp} updateUser={this.updateUser}/>
+            <this.PropsRoute exact path="/login" component={Login} updateUser={this.updateUser}/>
+            <this.PropsRoute exact path="/pets" component={Homepage} pets={this.state.pets} />
+            <this.PropsRoute exact path="/pets/new" component={Homepage} />
+            <this.PropsRoute exact path='/pet/:id' component={Homepage} />
+            </Switch>
+        </div>
+        </Router>
+        </div>
+      )
+    } else {
     return (
       <div>
       <Router>
@@ -121,18 +118,14 @@ class App extends Component {
           <this.PropsRoute exact path="/signup" component={SignUp} updateUser={this.updateUser}/>
           <this.PropsRoute exact path="/login" component={Login} updateUser={this.updateUser}/>
           <this.PropsRoute exact path="/pets" component={Pets} pets={this.state.pets} />
-          <this.PropsRoute exact path="/pets/new" component={NewPetForm} />
-          {/* <this.PropsRoute exact path='/pet/:id/profile' component={PetProfile} pets={this.state.pets}/> */}
-          {/* <this.PropsRoute exact path='/pet/:id/dashboard' component={Dashboard} pets={this.state.pets}/> */}
-          {/* <this.PropsRoute exact path="/" component={Pets} pets={this.state.pets} /> */}
-          {/* <this.PropsRoute exact path='/pet/:id/profile' component={PetProfile} updatePet={this.updatePet}/> */}
+          <this.PropsRoute exact path="/pets/new" component={NewPetForm}  />
           <this.PropsRoute exact path='/pet/:id' component={Dashboard} />
-          {/* <this.PropsRoute exact path='/pet/:id/activity' component={Activity} /> */}
           </Switch>
       </div>
       </Router>
       </div>
     )
   }
+    }
 }
 export default App;

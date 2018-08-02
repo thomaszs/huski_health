@@ -53,8 +53,9 @@ export default class SignUp extends Component {
                   alert("Account already created, please login")
               } else {
             console.log("Yes, it worked");
-            // console.log(result); // {result: "True"}
-            //  return this.props.updatePet(result)
+            let user = result[0]
+            console.log(user)
+            this.props.updateUser(user)
               }
           },
           error: function (err) {

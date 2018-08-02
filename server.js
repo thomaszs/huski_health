@@ -30,7 +30,6 @@ app.post('/api/whatDog', (req, res) => {
 })
 
 app.post('/api/pets/:id', (req, res) => {
-    // console.log(req.body)
    database.editPet(req.body)
    .then(function(result) {
        return res.sendStatus(204)
@@ -60,24 +59,21 @@ app.post('/api/pet/', (req, res) => {
  })
 
  app.post('/api/pet/new', (req, res) => {
-    // console.log(req.body)
      database.newPet(req.body)
  })
 
- app.post('/api/signup', (req, res) => {
-    console.log(req.body)
-    if (!database.verifySignup(req.body)) {
-     database.insertAccount(req.body)
+ app.post('/api/signup', async (req, res) => {
+    if (!database.verifySignup(req.body).length) {
+     let user = await database.insertAccount(req.body)
+     res.send(user)
     } else {
         res.send('already found')
     }
  })
 
  app.post('/api/login', async (req, res) => {
-    // console.log(req.body)
     let user = await database.verifyLogin(req.body)
-    if (user) {
-        console.log(user)
+    if (user.length) {
         res.send(user)
     } else {
         res.send("no user found")
