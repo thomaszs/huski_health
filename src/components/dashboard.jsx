@@ -132,7 +132,7 @@ class Dashboard extends Component {
                 />
                 <div ref="mapEl" />
               </div>
-              <StatusBar pet={this.state.pet} />
+              <StatusBar pet={this.state.pet} activities={this.state.activities}/>
             </div>
           </div>
         </div>

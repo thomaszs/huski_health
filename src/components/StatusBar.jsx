@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 export default function StatusBar(props){
+  // let lastActive = "No Activities";
+  // if(props.activities.length > 0) {
+  //   lastActive = props.activities[0].created_at.slice(0,10)
+  // }
+
+  const lastActive = (props.activities[0] && moment(props.activities[0].created_at).fromNow()) || "No Activites"
+
   return (
     <div>
   <div className="col-sm-4">
@@ -34,7 +42,8 @@ export default function StatusBar(props){
         <h2>Last Active</h2>
       </div>
       <div className="chart-stage" id="chart-02">
-        <h1>July 23<i className="fas fa-dumbbell" style={{ float: "right"}}></i></h1>
+      
+        <h1>{lastActive}<i className="fas fa-dumbbell" style={{ float: "right"}}></i></h1>
       </div>
       <div className="chart-notes">
         Notes about this chart
