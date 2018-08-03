@@ -71,7 +71,8 @@ class Dashboard extends Component {
       var request = {
         location: pyrmont,
         radius: "500",
-        type: ["veterinarian"]
+        keyword: "veterinarian",
+        // type: ["veterinarian"]
       };
 
       service = new google.maps.places.PlacesService(map);
