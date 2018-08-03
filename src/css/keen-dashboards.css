@@ -89,7 +89,7 @@ div.card-body-buttons {
   padding: 6px 0;
   font-size: 12px;
   line-height: 1.428571429;
-  border-radius: 15px;
+  /* border-radius: 15px; */
   box-shadow: 5px 5px 10px #0f0f0f;
 }
 .btn-circle.btn-lg {
@@ -98,7 +98,7 @@ div.card-body-buttons {
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.33;
-  border-radius: 25px;
+  /* border-radius: 25px; */
 }
 .btn-circle.btn-xl {
   width: 70px;
@@ -106,7 +106,7 @@ div.card-body-buttons {
   padding: 10px 16px;
   font-size: 24px;
   line-height: 1.33;
-  border-radius: 35px;
+  /* border-radius: 35px; */
 }
 
 .new-pet-btn {
@@ -115,12 +115,8 @@ div.card-body-buttons {
 }
 
 .glyphicon-plus {
-  background-color: #666666;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: rgba(255,255,255,0.5) 0px 1px 1px;
+  font-size: 20px;
+  line-height: 2;
 }
 
 .responsive {
