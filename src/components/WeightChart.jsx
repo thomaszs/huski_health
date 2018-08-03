@@ -129,7 +129,7 @@ const petWeightRange =
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
       datasets: [
         {
-          label: 'Leonard',
+          label: "",
           fill: false,
           lineTension: 0.1,
           backgroundColor: 'rgba(75,192,192,0.4)',
@@ -151,23 +151,48 @@ const petWeightRange =
         }],
       }
         const options = {
+          legend : {
+            labels : {
+              fontColor: '#FF9400'
+            }
+          },
         annotation: {
           drawTime: 'afterDatasetsDraw',
           annotations: [{
+            label: {
+              content: "Suggested ideal minimum weight range",
+              enabled: true,
+              yPadding: 3,
+              xPadding: 3,
+              position: "right",
+              backgroundColor: '#1E212F',
+              yAdjust: 10,
+              fontColor: 'rgba(75,192,192,1)'
+            },
             id: 'a-line-1', // optional
             type: 'line',
             mode: 'horizontal',
             scaleID: 'y-axis-0',
             value: 5,
-            borderColor: 'red',
+            borderColor: '#A00029',
             borderWidth: 2,
           }, {
+            label: {
+              content: "Suggested ideal maxium weight range",
+              enabled: true,
+              yPadding: 3,
+              xPadding: 3,
+              position: "right",
+              backgroundColor: '#1E212F',
+              yAdjust: -10,
+              fontColor: 'rgba(75,192,192,1)'
+            },
             id: 'a-line-2', // optional
             type: 'line',
             mode: 'horizontal',
             scaleID: 'y-axis-0',
             value: 10,
-            borderColor: 'red',
+            borderColor: '#A00029',
             borderWidth: 2,
           }]
       }
@@ -233,8 +258,9 @@ class WeightChart extends React.Component {
       for (let i of data) {
       newWeight.push(i.notes)
       }
-      graphSettings.datasets[0].data = newWeight
-      console.log(graphSettings.datasets[0].data)
+      graphSettings.datasets[0].data = newWeight;
+      graphSettings.datasets[0].label = this.props.pet.name;
+      console.log(graphSettings.datasets[0].data);
       // graphSettings.datasets[0].data.push(+data[0].notes) 
       this.setState({ graphSettings });
     })
