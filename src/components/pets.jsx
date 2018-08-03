@@ -13,21 +13,6 @@ export default function Pets(props) {
 
 
     return (
-<<<<<<< HEAD
-           <div className="row" style={{ marginLeft: "20px" }}>
-
-           {/* for n of pets, render PetCard */}
-           {petCards}
-           <div className="row" style={{ marginTop: "20px" }}>
-               <a className="btn-new-pet" href="http://localhost:3000/pets/new"><Link to={`/pets/new`} ></Link><button type="button" className="btn btn-info btn-circle btn-xl">
-                   <i className="glyphicon glyphicon-plus"></i>
-               </button></a>
-           </div>
-           </div>
-
-           )
-    }
-=======
         // <Switch>
         // <PropsRoute exact path="/" component={Pets} pet={props.pets}/>
         // <PropsRoute exact path="/pet"  re/>
@@ -46,4 +31,3 @@ export default function Pets(props) {
     )
 }
 // export default Pets;
->>>>>>> adb3b850275a8b88dd65464596e22a720a8a104b
