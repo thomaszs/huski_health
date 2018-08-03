@@ -39,6 +39,7 @@ class NewPetForm extends Component {
     this.handleBreedChange = this.handleBreedChange.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
     this.addNewPet = this.addNewPet.bind(this);
+    
     // this.handleAgeChange = this.handleAgeChange.bind(this)
 
     // dogBreed('https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12225919/Pembroke-Welsh-Corgi-On-White-01.jpg')
@@ -97,7 +98,9 @@ class NewPetForm extends Component {
   }
 
   handleFormSubmit(e) {
+
     e.preventDefault();
+    const addNewPetRender = this.props.addNewPetRender
     const addNewPet = this.addNewPet
     const browserHistory = this.props.history
     const newPetInfo = {
@@ -124,6 +127,8 @@ class NewPetForm extends Component {
             success: function (result) {
               console.log("Added new pet");
               console.log(result); // {result: "True"}
+              console.log(this)
+              addNewPetRender(); 
               addNewPet();
               browserHistory.push('/pets')
             },

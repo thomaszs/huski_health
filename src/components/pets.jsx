@@ -5,11 +5,11 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 export default function Pets(props) {
 
-        const petCards = props.pets.map((pet) => {
-           return (
-           <PetCard pet={pet} key={pet.id} />
-           )
-        });
+    const petCards = props.pets.map((pet) => {
+        return (
+            <PetCard pet={pet} key={pet.id} />
+        )
+    });
 
 
     return (
@@ -17,16 +17,17 @@ export default function Pets(props) {
         // <PropsRoute exact path="/" component={Pets} pet={props.pets}/>
         // <PropsRoute exact path="/pet"  re/>
         // </Switch>
-           <div className="row">
-           {/* for n of pets, render PetCard */}
-           {petCards}
-           <div className="row" style={{ marginTop: "20px" }}>
-               <a className="btn-new-pet" href="http://localhost:3000/pets/new"><button type="button" className="btn btn-info btn-circle btn-xl">
-                   <i className="glyphicon glyphicon-plus"></i>
-               </button></a>
-           </div>
-           </div>
+        <fragment>
+            <div className="row">
+                <h1><a className="btn-new-pet" href="http://localhost:3000/pets/new">Add New Pet<strong>+</strong></a></h1>
+            </div>
+            <div className="row-pets">
+                {/* for n of pets, render PetCard */}
+                {petCards}
 
-           )
-    }
+            </div>
+        </fragment>
+
+    )
+}
 // export default Pets;

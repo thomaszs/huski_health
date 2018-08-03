@@ -71,20 +71,18 @@ export default class PetCard extends Component {
                     <p>{this.props.pet.weight}</p>
                   </div>
                   <div className="container-row">
-                    <p>Pet ID: </p>
-                    <p>{this.props.pet.id}</p>
+                    <p>Last Fed: </p>
+                    <p>Date of last fed</p>
                   </div>
                   <div className="container-row">
-                    <p>Pet Owner: </p>
-                    <p>{this.props.pet.account_id}</p>
+                    <p>Last Active: </p>
+                    <p>Date of last activity</p>
                   </div>
                   </div>
                 <div className="card-body-buttons">
                   <button  onClick={this.onClickTypeFeeding}   className="btn btn-warning" href="#">Feed Me</button>
                   <button  onClick={this.onClickTypeWeight}   className="btn btn-activity" href="#">Update Weight</button>
-                  <button  onClick={this.onClickTypeActivity} className="btn btn-warning" href="#" style={{ float: "right" }}>Log Activity</button>
                 </div>
-                {/* <Link to={`/pet/${this.props.pet.id}/profile`}>Profile</Link> */}
               </div>
             </div>
           </div>
