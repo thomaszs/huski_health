@@ -13,11 +13,16 @@
     "express-fileupload": "^0.4.0",
     "jquery": "^3.3.1",
     "knex": "^0.15.2",
+    "moment": "^2.22.2",
     "pg": "^7.4.3",
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
     "react-chartjs-2": "^2.7.4",
+<<<<<<< HEAD
     "react-cookie": "^2.2.0",
+=======
+    "react-day-picker": "^7.1.10",
+>>>>>>> adb3b850275a8b88dd65464596e22a720a8a104b
     "react-dom": "^16.4.1",
     "react-popupbox": "^2.0.8",
     "react-router-dom": "^4.3.1",
