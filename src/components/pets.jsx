@@ -18,10 +18,10 @@ export default function Pets(props) {
         // <PropsRoute exact path="/pet"  re/>
         // </Switch>
         <fragment>
-            <div className="row" style={{ marginTop: "20px" }}>
-                <a className="btn-new-pet" href="http://localhost:3000/pets/new"><h1><small>Add New Pet<strong>+</strong></small> </h1></a>
-            </div>
             <div className="row">
+                <h1><a className="btn-new-pet" href="http://localhost:3000/pets/new">Add New Pet<strong>+</strong></a></h1>
+            </div>
+            <div className="row-pets">
                 {/* for n of pets, render PetCard */}
                 {petCards}
 

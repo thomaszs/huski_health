@@ -9,7 +9,7 @@ export default function ActivityItem(props) {
       </div>
       <div className="timeline__post">
         <div className="timeline__content">
-          {props.notes}
+          {props.notes}<i class="fas fa-trash-alt" style={{float:"right"}}></i>
         </div>
       </div>
     </div>
