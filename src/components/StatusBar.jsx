@@ -31,6 +31,7 @@ export default class StatusBar extends Component {
     const lastActive = (this.props.activities[0] && moment(this.props.activities[0].created_at).fromNow()) || "No Activites"
     const date = this.state.data.created_at
     const dateFromNow = moment(date).fromNow();
+    const notes = this.state.data.notes
   return (
     <fragment>
     <div>
@@ -55,7 +56,7 @@ export default class StatusBar extends Component {
             <h1>{dateFromNow}<i className="fas fa-clock" style={{ float: "right" }}></i></h1>
         </div>
         <div className="chart-notes">
-          July 25, 2018
+          {notes}
     </div>
       </div>
     </div>
@@ -68,7 +69,7 @@ export default class StatusBar extends Component {
           <h1>{lastActive}<i className="fas fa-dumbbell" style={{ float: "right" }}></i></h1>
         </div>
         <div className="chart-notes">
-          Notes about this chart
+        {this.props.activities[0].notes}
     </div>
       </div>
     </div>
