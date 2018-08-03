@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import { BrowserRouter as Router, Route, Link, Switch , Redirect} from "react-router-dom";
+import Cookies from 'universal-cookie';
 
 import Dashboard from './components/Dashboard';
 import Pets from './components/Pets';
@@ -17,6 +18,7 @@ import './css/homepage.css';
 import './css/keen-static.css';
 import './css/timeline.css';
 import './css/keen-dashboards.css';
+const cookies = new Cookies();
 
 
 
@@ -38,22 +40,19 @@ class App extends Component {
         }
       ]
     }
-    // this.updatePet = this.updatePet.bind(this);
-    this.renderMergedProps = this.renderMergedProps.bind(this)
-    this.PropsRoute = this.PropsRoute.bind(this)
-    this.updateUser = this.updateUser.bind(this)
-    this.editPetInfo = this.editPetInfo.bind(this)
-    this.addNewPetRender = this.addNewPetRender.bind(this)
-    
+    this.renderMergedProps = this.renderMergedProps.bind(this);
+    this.PropsRoute = this.PropsRoute.bind(this);
+    this.updateUser = this.updateUser.bind(this);
+    this.editPetInfo = this.editPetInfo.bind(this);
+    this.addNewPetRender = this.addNewPetRender.bind(this) ;
+    this.setUser = this.setUser.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   async updateUser(user) {
   await this.setState({currentUser: user})  
-   $.ajax('http://localhost:8080/api/pets/', {
-    method: 'POST',
-    data: {
-      userId: this.state.currentUser.id
-    }, 
+   $.ajax(`http://localhost:8080/api/pets/${user.id}`, {
+    method: 'GET',
     success: (result) => {
       console.log("Yes, it worked");
       this.setState({pets: result})
@@ -64,6 +63,21 @@ class App extends Component {
       }
   });
 }
+
+    setUser(cookieId) {
+     $.ajax(`http://localhost:8080/api/user/${cookieId}`, {
+      method: 'GET',
+      success: (result) => {
+        console.log("Yes, it worked");
+        let user = result[0]
+        this.updateUser(user)
+        // console.log(this.state.currentUser)
+      },
+      error: function(err) {
+        console.log("It doesnt work")
+        }
+    });
+  }
   
 
   renderMergedProps(component, ...rest) {
@@ -105,11 +119,11 @@ class App extends Component {
     $.ajax('http://localhost:8080/api/pets/', {
       method: 'POST',
       data: {
-        userId: 2, 
+        userId: this.state.currentUser.id 
       }, 
       success: (result) => {
         this.setState({pets: result})
-        console.log("New Pet State after edit:",this.state.pets)
+        console.log("New Pet State after edit:", this.state.pets)
       },
       error: function(err) {
         console.log("Cannot reset state of pets after edit")
@@ -117,12 +131,22 @@ class App extends Component {
     })
   }
 
+  logout() {
+    cookies.remove('hh')
+    this.setState({currentUser: ""})
+    // browserHistory.push('/')
+  }
+
+  componentWillMount() {
+    console.log("WILL UPDATE")
+    this.setUser(cookies.get('hh'))
+  }
+
   // set routing; based on this route render this
   // if user is logged in, render pets
   // if not, render log in route
 
   render() {
-
     if (!this.state.currentUser.id) {
       return (
         <div>
@@ -132,9 +156,9 @@ class App extends Component {
             <Switch>
             <this.PropsRoute exact path="/" component={Homepage}/>
             <this.PropsRoute exact path="/signup" component={SignUp} updateUser={this.updateUser}/>
-            <this.PropsRoute exact path="/login" component={Login} updateUser={this.updateUser}/>
+            <this.PropsRoute exact path="/login" component={Login} setUser={this.setUser}/>
             <this.PropsRoute exact path="/pets" component={Homepage} pets={this.state.pets} />
-            <this.PropsRoute exact path="/pets/new" component={Homepage} />
+            <this.PropsRoute exact path="/pets/new" component={NewPetForm} addNewPetRender={this.addNewPetRender}/>
             <this.PropsRoute exact path='/pet/:id' component={Homepage} />
             </Switch>
         </div>
@@ -146,11 +170,11 @@ class App extends Component {
       <div>
       <Router>
         <div>
-          <NavBar/>
+          <NavBar logout={this.logout}/>
           <Switch>
           {/* <this.PropsRoute exact path="/" component={Homepage}/> */}
-          <this.PropsRoute exact path="/signup" component={SignUp} updateUser={this.updateUser}/>
-          <this.PropsRoute exact path="/login" component={Login} updateUser={this.updateUser}/>
+          <this.PropsRoute exact path="/signup" component={SignUp} setUser={this.setUser}/>
+          <this.PropsRoute exact path="/login" component={Login} setUser={this.setUser}/>
           <this.PropsRoute exact path="/pets" component={Pets} pets={this.state.pets} />
           <this.PropsRoute exact path="/pets/new" component={NewPetForm} addNewPetRender={this.addNewPetRender} />
           {/* <this.PropsRoute exact path='/pet/:id/profile' component={PetProfile} pets={this.state.pets}/> */}
@@ -165,6 +189,7 @@ class App extends Component {
       </div>
     )
   }
-    }
 }
+    }
+
 export default App;

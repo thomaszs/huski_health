@@ -11,7 +11,6 @@ var map;
 var service;
 var infowindow;
 
-// import PetActivity from 'PetActivity.jsx';
 
 class Dashboard extends Component {
   constructor(props) {

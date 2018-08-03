@@ -37,7 +37,8 @@ app.post('/api/pets/:id', (req, res) => {
     console.log("HELLO HELLO HELLO", req.body)
     database.editPet(req.body)
         .then(function (result) {
-            return res.sendStatus(204)
+            console.log(result)
+            // res.send(result)
         })
 })
 
@@ -94,8 +95,8 @@ app.get('/api/pets/:id/feeding', (req, res) => {
         })
 })
 
-app.post('/api/pets/', (req, res) => {
-    database.getPets(req.body.userId)
+app.get('/api/pets/:id', (req, res) => {
+    database.getPets(req.params.id)
         .then(function (result) {
             res.send(result)
         })
@@ -128,6 +129,15 @@ app.post('/api/pet/new', (req, res) => {
  app.post('/api/login', async (req, res) => {
     let user = await database.verifyLogin(req.body)
     console.log(user)
+    if (user.length) {
+        res.send(user)
+    } else {
+        res.send("no user found")
+    }
+ })
+
+ app.get('/api/user/:id', async (req, res) => {
+    let user = await database.getUser(req.params.id)
     if (user.length) {
         res.send(user)
     } else {

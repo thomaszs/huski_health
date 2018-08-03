@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import Cookies from 'universal-cookie';
 
 export default class SignUp extends Component {
     constructor(props) {
@@ -39,6 +40,7 @@ export default class SignUp extends Component {
 
 
     saveAccount(event) {
+      const cookies = new Cookies();
         if (this.state.password === this.state.confirmPassword && this.state.name && this.state.password && this.state.email) {
         event.preventDefault();
         $.ajax(`http://localhost:8080/api/signup`, {
@@ -54,8 +56,10 @@ export default class SignUp extends Component {
               } else {
             console.log("Yes, it worked");
             let user = result[0]
-            // console.log(user)
-            this.props.updateUser(user)
+            cookies.set('hh', user.id, { path: '/' });
+            console.log(cookies.get('hh'));
+            let userId = cookies.get('hh')
+            this.props.setUser(userId);
             {this.props.history.push('/pets')}
               }
           },

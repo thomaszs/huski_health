@@ -127,7 +127,7 @@ class NewPetForm extends Component {
             success: function (result) {
               console.log("Added new pet");
               console.log(result); // {result: "True"}
-              console.log(this)
+              // console.log(this)
               addNewPetRender(); 
               addNewPet();
               browserHistory.push('/pets')
@@ -222,10 +222,10 @@ class NewPetForm extends Component {
                         content={this.state.image}
                         placeholder={'Enter image url to find out your pet\'s breed'} />
 
-                      <Link to={`/pets`}><input onClick={this.handleFormSubmit} 
+                     <input onClick={this.handleFormSubmit} 
                         type="submit"
                         className="btn btn-primary float-right"
-                        value="Submit" /></Link>
+                        value="Submit" />
                       <button
                         className="btn btn-link float-left"
                         onClick={this.handleClearForm}>Clear form</button>

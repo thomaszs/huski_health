@@ -32,7 +32,7 @@ module.exports = function knexData(knex) {
           'name': data.newPetName, 
           'weight': data.newPetWeight
           // 'breed': data.newPetBreed
-        })
+        }).returning('id', 'name','weight', 'date_of_birth', 'gender', 'breed', 'img', 'notes', 'species', 'account_id')
       },
 
       newPet: function (data) {
@@ -75,6 +75,15 @@ module.exports = function knexData(knex) {
             return result;
           })
     },
+
+    getUser: function (id) {
+      return knex('accounts').where({
+          id: id
+        }).then(function(result) {
+          console.log(result)
+          return result;
+        })
+  },
 
     verifyLogin: function (account) {
       return knex.select('id', 'email', 'name').from('accounts').limit(1).where({

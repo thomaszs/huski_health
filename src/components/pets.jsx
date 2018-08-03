@@ -13,10 +13,6 @@ export default function Pets(props) {
 
 
     return (
-        // <Switch>
-        // <PropsRoute exact path="/" component={Pets} pet={props.pets}/>
-        // <PropsRoute exact path="/pet"  re/>
-        // </Switch>
         <fragment>
             <div className="row">
                 <h1><a className="btn-new-pet" href="http://localhost:3000/pets/new">Add New Pet<strong>+</strong></a></h1>
@@ -30,4 +26,3 @@ export default function Pets(props) {
 
     )
 }
-// export default Pets;
