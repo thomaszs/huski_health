@@ -29,6 +29,7 @@ export default class StatusBar extends Component {
   }
   render() {
     const lastActive = (this.props.activities[0] && moment(this.props.activities[0].created_at).fromNow()) || "No Activites"
+    const activityNotes = (this.props.activities[0] && this.props.activities[0].notes) || ""
     const date = this.state.data.created_at
     const dateFromNow = moment(date).fromNow();
     const notes = this.state.data.notes
@@ -69,7 +70,7 @@ export default class StatusBar extends Component {
           <h1>{lastActive}<i className="fas fa-dumbbell" style={{ float: "right" }}></i></h1>
         </div>
         <div className="chart-notes">
-        {this.props.activities[0].notes}
+        {activityNotes}
     </div>
       </div>
     </div>
