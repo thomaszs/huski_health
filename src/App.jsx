@@ -106,7 +106,7 @@ class App extends Component {
         }
     })
   }
-
+  // TESTING GIT COMMIT 
   addNewPetRender() {
     console.log("calling editPetInfo function to set new pet info state")
     $.ajax('http://localhost:8080/api/pets/', {
