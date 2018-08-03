@@ -3,6 +3,14 @@ import CheckBox from './CheckBox';
 import SingleInput from './SingleInput';
 import $ from 'jquery';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import moment from 'moment';
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import 'react-day-picker/lib/style.css';
+import MomentLocaleUtils, {
+  formatDate,
+  parseDate,
+} from 'react-day-picker/moment';
+
 const dogBreed = require('what-dog');
 
 
@@ -53,8 +61,14 @@ class NewPetForm extends Component {
   handleGenderSelection(e) {
     this.setState({ gender: [e.target.value] }, () => console.log('gender', this.state.gender));
   }
-  handleBirthdayChange(e) {
-    this.setState({ birthday: e.target.value }, () => console.log('birthday:', this.state.birthday));
+  // handleBirthdayChange1(e) {
+  //   console.log("BIRTHDAY", e.target.value)
+  //   this.setState({ birthday: e.target.value }, () => console.log('birthday:', this.state.birthday));
+  // }
+
+  handleBirthdayChange(day) {
+    
+    this.setState({ birthday: day }, () => console.log('birthday:', this.state.birthday));
   }
   handleWeightChange(e) {
     this.setState({ weight: e.target.value }, () => console.log('weight:', this.state.petName));
@@ -77,7 +91,7 @@ class NewPetForm extends Component {
       gender: [],
       birthday: "",
       weight: "",
-      breed: "",
+      breed: undefined,
       image: "",
     });
   }
@@ -129,6 +143,7 @@ class NewPetForm extends Component {
     }
       
   render() {
+    const { birthday } = this.state;
     return (
       <div>
         <div className="container">
@@ -164,21 +179,20 @@ class NewPetForm extends Component {
                         options={this.state.genderOptions}
                         selectedOptions={this.state.gender} />
 
-                      <SingleInput
+                      {/* <SingleInput
                         inputType={'text'}
                         title={'Birthday'}
                         birthday={'birthday'}
                         controlFunc={this.handleBirthdayChange}
                         content={this.state.birthday}
-                        placeholder={'Enter your pet\'s birthday'} />
-
-                        {/* <SingleInput
-                        inputType={'text'}
-                        title={'Age'}
-                        birthday={'age'}
-                        controlFunc={this.handleAgeChange}
-                        content={this.state.age}
-                        placeholder={'Enter your pet\'s age'} /> */}
+                        placeholder={'Enter your pet\'s birthday'} /> */}
+                        <DayPickerInput
+                          // formatDate={formatDate}
+                          // parseDate={parseDate}
+                          placeholder={`${formatDate(new Date())}`}
+                          onDayChange={this.handleBirthdayChange}
+                          //content={this.state.birthday} 
+                        />
 
                       <SingleInput
                         inputType={'text'}
@@ -186,15 +200,14 @@ class NewPetForm extends Component {
                         name={'weight'}
                         controlFunc={this.handleWeightChange}
                         content={this.state.weight}
-                        placeholder={'Enter your pet\'s weight'} />
+                        placeholder={'Enter your pet\'s weight in lbs'} />
 
                       <SingleInput
                         inputType={'text'}
                         title={'Breed'}
                         name={'breed'}
                         controlFunc={this.handleBreedChange}
-                        content={this.state.breed}
-                        placeholder={'Enter your pet\'s breed'} />
+                        content={this.state.breed} />
 
                       <SingleInput
                         inputType={'text'}
