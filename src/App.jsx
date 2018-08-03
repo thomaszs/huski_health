@@ -44,6 +44,7 @@ class App extends Component {
     this.renderMergedProps = this.renderMergedProps.bind(this)
     this.PropsRoute = this.PropsRoute.bind(this)
     this.editPetInfo = this.editPetInfo.bind(this)
+    this.addNewPetRender = this.addNewPetRender.bind(this)
     
   }
 
@@ -106,6 +107,25 @@ class App extends Component {
     })
   }
 
+  addNewPetRender() {
+    console.log("calling editPetInfo function to set new pet info state")
+    $.ajax('http://localhost:8080/api/pets/', {
+      method: 'POST',
+      data: {
+        userId: 2, 
+      }, 
+      success: (result) => {
+        this.setState({pets: result})
+        console.log("New Pet State after edit:",this.state.pets)
+      },
+      error: function(err) {
+        console.log("Cannot reset state of pets after edit")
+        }
+    })
+  }
+
+
+
   // set routing; based on this route render this
   // if user is logged in, render pets
   // if not, render log in route
@@ -122,10 +142,10 @@ class App extends Component {
           <this.PropsRoute exact path="/signup" component={SignUp}/>
           <this.PropsRoute exact path="/login" component={Login}/>
           <this.PropsRoute exact path="/pets" component={Pets} pets={this.state.pets} />
-          <this.PropsRoute exact path="/pets/new" component={NewPetForm} />
+          <this.PropsRoute exact path="/pets/new" component={NewPetForm} addNewPetRender={this.addNewPetRender} />
           {/* <this.PropsRoute exact path='/pet/:id/profile' component={PetProfile} pets={this.state.pets}/> */}
           {/* <this.PropsRoute exact path='/pet/:id/dashboard' component={Dashboard} pets={this.state.pets}/> */}
-          <this.PropsRoute exact path="/" component={Pets} pets={this.state.pets} />
+          <this.PropsRoute exact path="/" component={Pets} pets={this.state.pets}  />
           {/* <this.PropsRoute exact path='/pet/:id/profile' component={PetProfile} updatePet={this.updatePet}/> */}
           <this.PropsRoute exact path='/pet/:id' component={Dashboard} updatePet={this.updatePet} editPetInfo={this.editPetInfo}/>
           {/* <this.PropsRoute exact path='/pet/:id/activity' component={Activity} /> */}
