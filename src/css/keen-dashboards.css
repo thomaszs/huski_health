@@ -77,36 +77,11 @@ div.card-body-buttons {
 
 .row {
   margin-top: 20px;
-  margin-left: 20px;
+  /* margin-left: 20px; */
 }
 
-.btn-circle {
-  display: block;
-  margin: auto;
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  /* border-radius: 15px; */
-  box-shadow: 5px 5px 10px #0f0f0f;
-}
-.btn-circle.btn-lg {
-  width: 50px;
-  height: 50px;
-  padding: 10px 16px;
-  font-size: 18px;
-  line-height: 1.33;
-  /* border-radius: 25px; */
-}
-.btn-circle.btn-xl {
-  width: 70px;
-  height: 70px;
-  padding: 10px 16px;
-  font-size: 24px;
-  line-height: 1.33;
-  /* border-radius: 35px; */
+.row-pets {
+  margin: 20px;
 }
 
 .new-pet-btn {
@@ -114,9 +89,15 @@ div.card-body-buttons {
   padding-top: 20px;
 }
 
-.glyphicon-plus {
-  font-size: 20px;
-  line-height: 2;
+.fa-trash-alt {
+  float: right;
+  color: #000;
+  opacity: 0.3;
+}
+
+.fa-trash-alt:hover{
+  cursor: pointer;
+  opacity: 1;
 }
 
 .responsive {
@@ -140,6 +121,14 @@ div.card-body-buttons {
   flex: 1;
 }
 
+@media screen and (max-width: 1331) and (min-width: 1030) {
+  .col-sm-9 {
+    width: 100%;
+  }
+  .col-sm-8 {
+    width: 100%;
+  }
+}
 
 /* @media screen and (max-width: 1029) {
   .col-sm-8, {
@@ -154,7 +143,7 @@ div.card-body-buttons {
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 400px) {
   .col-sm-4 {
     width: 100%;
   }

@@ -123,8 +123,8 @@ class Dashboard extends Component {
                 editPetInfo={this.props.editPetInfo}
               />
             </div>
-            <div className="col-sm-9">
-              <div className="col-sm-8">
+            <div className="col-sm-9 col-lg-6">
+              <div>
                 <PetChart pet={this.state.pet} />
                 <Timeline
                   pet={this.state.pet}
@@ -133,8 +133,8 @@ class Dashboard extends Component {
                 />
                 <div ref="mapEl" />
               </div>
+              </div>
               <StatusBar pet={this.state.pet} activities={this.state.activities}/>
-            </div>
           </div>
         </div>
       </div>

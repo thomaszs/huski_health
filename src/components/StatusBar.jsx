@@ -16,8 +16,6 @@ export default class StatusBar extends Component {
     const { pet: { id } = {} } = this.props;
     $.get(`http://localhost:8080/api/pets/${ id }/feeding`)
     .then(data => {
-      console.log("DATA", data[0])
-      console.log("PROPS", this.props)
       if (data[0] === undefined) {
         data[0].created_at = ""
       }
@@ -33,22 +31,23 @@ export default class StatusBar extends Component {
     const date = this.state.data.created_at
     const dateFromNow = moment(date).fromNow();
     const notes = this.state.data.notes
+    const weight = this.props.pet.weight
   return (
-    <fragment>
-    <div>
-      <div className="col-sm-4">
+    <fragment className="col-lg-3">
+    <div className="row">
+      <div className="col-sm-3 col-lg-12">
         <div className="chart-wrapper">
           <div className="chart-title">
             <h2>Current Weight</h2>
           </div>
           <div className="chart-stage" id="chart-05">
-            <h1>22lbs <i className="fas fa-weight" style={{ float: "right" }}></i></h1>
+            <h1>{weight}lbs <i className="fas fa-weight" style={{ float: "right" }}></i></h1>
           </div>
           <div className="chart-notes">
           </div>
         </div>
       </div>
-      <div className="col-sm-4">
+      <div className="col-sm-3 col-lg-12">
         <div className="chart-wrapper">
           <div className="chart-title">
             <h2>Last Fed</h2>
@@ -61,7 +60,7 @@ export default class StatusBar extends Component {
     </div>
       </div>
     </div>
-    <div className="col-sm-4">
+    <div className="col-sm-3 col-lg-12">
       <div className="chart-wrapper">
         <div className="chart-title">
           <h2>Last Active</h2>
@@ -74,7 +73,7 @@ export default class StatusBar extends Component {
     </div>
       </div>
     </div>
-    <div className="col-sm-4">
+    <div className="col-sm-3 col-lg-12">
       <div className="chart-wrapper">
         <div className="chart-title">
           <h2>Did you know...</h2>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-
-
+import moment from 'moment';
 
 
 class PetProfile extends Component {
@@ -113,7 +112,8 @@ class PetProfile extends Component {
             <div className="profile-container">
                 <div className="container-row">
                   <p>Birthday: </p>
-                  <p>{this.state.pet.date_of_birth}</p>
+                  {/* moment(Date.parse(day)).format("MMM Do, YYYY")}) */}
+                  <p>{moment(Date.parse(this.state.pet.date_of_birth)).format("MMM Do, YYYY")}</p>
                 </div>
                 <div className="container-row">
                   <p>Breed: </p>
