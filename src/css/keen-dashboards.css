@@ -2,6 +2,7 @@ div.card-body-buttons {
   display: flex;
   flex-direction: row; 
   justify-content: space-evenly;
+  margin-bottom: 10px;
 }
 
 .keen-dashboard {
@@ -102,7 +103,7 @@ div.card-body-buttons {
 
 .responsive {
   width:230px;
-  height:330px;
+  height:430px;
 }
 
 .container-profile {
@@ -119,6 +120,12 @@ div.card-body-buttons {
 
 .container-row p {
   flex: 1;
+}
+
+@media screen and (max-width: 767) {
+  .container-row {
+    font-size: medium;
+  }
 }
 
 @media screen and (max-width: 1331) and (min-width: 1030) {

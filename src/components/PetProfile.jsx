@@ -130,7 +130,7 @@ class PetProfile extends Component {
                   <p>Notes: </p>
                   <p>{this.state.petNotes}</p>
                 </div>
-                <div className="container-row">
+                <div className="container-row" style={{marginTop: "20px", marginBottom: "10px"}}>
                     <button type="button" className="btn btn-warning" onClick={this.editPetProfile}>Edit Profile</button>
                 </div>
             </div>

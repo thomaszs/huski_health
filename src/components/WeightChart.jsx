@@ -153,7 +153,7 @@ const petWeightRange =
         const options = {
           legend : {
             labels : {
-              fontColor: '#FF9400'
+              fontColor: '#B1B298'
             }
           },
         annotation: {
@@ -261,13 +261,11 @@ class WeightChart extends React.Component {
       }
       graphSettings.datasets[0].data = newWeight
       graphSettings.datasets[0].label = this.props.pet.name;
-      const latestWeight = newWeight.slice(-1)[0]
-      console.log("NEW WEIGHT", newWeight.slice(-1)[0], "ID", this.props.pet.id)
+      // console.log("NEW WEIGHT", newWeight.slice(-1)[0], "ID", this.props.pet.id)
       console.log(graphSettings.datasets[0].data)
       // graphSettings.datasets[0].data.push(+data[0].notes) 
       this.setState({ graphSettings });
-      // this.setState({weight: latestWeight});
-      // this.props.getLatestPetWeight()
+
     })
     .catch(err => {
       debugger;
