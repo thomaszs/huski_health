@@ -136,7 +136,7 @@ class NewPetForm extends Component {
       }
     });
     console.log(e)
-    this.handleClearForm(e);
+    // this.handleClearForm(e);
   }
 
   render() {

@@ -260,6 +260,7 @@ class WeightChart extends React.Component {
       newWeight.push(i.notes)
       }
       graphSettings.datasets[0].data = newWeight
+      graphSettings.datasets[0].label = this.props.pet.name;
       const latestWeight = newWeight.slice(-1)[0]
       console.log("NEW WEIGHT", newWeight.slice(-1)[0], "ID", this.props.pet.id)
       console.log(graphSettings.datasets[0].data)
