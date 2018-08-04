@@ -265,8 +265,8 @@ class WeightChart extends React.Component {
       console.log(graphSettings.datasets[0].data)
       // graphSettings.datasets[0].data.push(+data[0].notes) 
       this.setState({ graphSettings });
-      this.setState({weight: latestWeight});
-      this.props.getLatestPetWeight()
+      // this.setState({weight: latestWeight});
+      // this.props.getLatestPetWeight()
     })
     .catch(err => {
       debugger;

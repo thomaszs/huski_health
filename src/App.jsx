@@ -135,6 +135,7 @@ class App extends Component {
 
   getPetWeight(newPetWeight, petid) {
     let pets = this.state.pets;
+    
     pets.forEach(function(pet) {
       if (pet.id === petid) {
         return pet.weight = newPetWeight
@@ -145,8 +146,9 @@ class App extends Component {
   }
 
   getLatestPetWeight(){
-    let pets = this.state.pets;
-    pets.forEach(function(pet) { 
+    let pet = this.state.pets[0];
+    console.log("PETS", this.state.pets)
+    // pets.forEach(function(pet) { 
     $.get(`http://localhost:8080/api/pets/${ pet.id }/latestweights`)
     .then(data => {
       if (data[0] === undefined) {
@@ -157,8 +159,8 @@ class App extends Component {
     .catch(err => {
       // debugger;
     });
-    })
-    this.setState({pets: pets})
+    
+    this.setState({pets: pet})
   }
 
   logout() {
