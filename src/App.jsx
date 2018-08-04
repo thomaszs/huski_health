@@ -55,7 +55,7 @@ class App extends Component {
       $.ajax('http://localhost:8080/api/pets/', {
         method: 'POST',
         data: {
-          userId: 1, 
+          userId: 2, 
         }, 
         success: (result) => {
           // console.log(result); 
@@ -97,7 +97,7 @@ class App extends Component {
     $.ajax('http://localhost:8080/api/pets/', {
       method: 'POST',
       data: {
-        userId: 1, 
+        userId: 2, 
       }, 
       success: (result) => {
         this.setState({pets: result})
@@ -114,7 +114,7 @@ class App extends Component {
     $.ajax('http://localhost:8080/api/pets/', {
       method: 'POST',
       data: {
-        userId: 1, 
+        userId: 2, 
       }, 
       success: (result) => {
         this.setState({pets: result})
