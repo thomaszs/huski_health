@@ -23,6 +23,7 @@
     "react-popupbox": "^2.0.8",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
+    "sweetalert": "^2.1.0",
     "victory": "^30.1.0",
     "what-dog": "^1.0.4"
   },

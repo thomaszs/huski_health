@@ -5,11 +5,12 @@ import $ from 'jquery';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import moment from 'moment';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
-import 'react-day-picker/lib/style.css';
+import '../css/daypicker.css';
 import MomentLocaleUtils, {
   formatDate,
   parseDate,
 } from 'react-day-picker/moment';
+import swal from 'sweetalert'
 
 const dogBreed = require('what-dog');
 
@@ -50,7 +51,11 @@ class NewPetForm extends Component {
 
   }
   addNewPet(){ //logic to determine if it was successfully added or not
-    alert('Your new pet was successfully added!')
+    swal({
+      title: "Yay!",
+      icon: "success",
+      text:'Your new pet was successfully added!'
+    })
   } 
 
   handlePetNameChange(e) {
@@ -194,8 +199,10 @@ class NewPetForm extends Component {
                         <DayPickerInput
                           // formatDate={formatDate}
                           // parseDate={parseDate}
-                          placeholder={`${formatDate(new Date())}`}
+                          placeholder={`${formatDate(new Date())}` }
+                          style={{color:"#000"}}
                           onDayChange={this.handleBirthdayChange}
+                          
                           //content={this.state.birthday} 
                         />
 
