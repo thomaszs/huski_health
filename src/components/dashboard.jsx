@@ -5,6 +5,7 @@ import NavBar from "./NavBar.jsx";
 import PetProfile from "./PetProfile.jsx";
 import Timeline from "./Timeline.jsx";
 import PetChart from "./PetChart.jsx";
+// import getVets from './Vets.jsx'
 
 
 import StatusBar from "./StatusBar.jsx";
@@ -53,12 +54,10 @@ class Dashboard extends Component {
       error: function (err) {
         console.log("It doesnt work");
       }
-    // this.fetchData();
-    this.getVets();
     })
   }
   componentDidUpdate() {
-    this.getVets();
+    // this.getVets();
   }
 
 
@@ -111,17 +110,18 @@ class Dashboard extends Component {
                   onNewActivity={this.onNewActivity}
                 />
               </div>
-              <StatusBar 
-              pet={this.state.pet} 
-              activities={this.state.weights} 
-              getLatestPetWeight={this.props.getLatestPetWeight} 
-              weight={this.props.weight} />
+              <StatusBar
+                pet={this.state.pet}
+                activities={this.state.weights}
+                getLatestPetWeight={this.props.getLatestPetWeight}
+                weight={this.props.weight} />
             </div>
           </div>
         </div>
-        );
-      }
-      }
-    
-    withRouter(Dashboard);
-    export default Dashboard;
+      </div>
+    );
+  }
+}
+
+withRouter(Dashboard);
+export default Dashboard;
