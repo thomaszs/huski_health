@@ -93,7 +93,7 @@ module.exports = function knexData(knex) {
           if (err) {
             return err
           } else {
-            // console.log(result[0])
+            console.log(result)
             return result
           }
     })

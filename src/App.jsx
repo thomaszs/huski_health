@@ -72,7 +72,6 @@ class App extends Component {
         console.log("Yes, it worked");
         let user = result[0]
         this.updateUser(user)
-        // console.log(this.state.currentUser)
       },
       error: function(err) {
         console.log("It doesnt work")
@@ -133,9 +132,8 @@ class App extends Component {
   }
 
   logout() {
-    cookies.remove('hh')
-    this.setState({currentUser: ""})
-    // browserHistory.push('/')
+    // cookies.remove('hh')
+    this.setState({currentUser: ''})
   }
 
   componentWillMount() {
@@ -153,13 +151,13 @@ class App extends Component {
         <div>
         <Router>
           <div>
-            <NavBar/>
+            <NavBar currentUser={this.state.currentUser} logout={this.logout}/>
             <Switch>
             <this.PropsRoute exact path="/" component={Homepage}/>
             <this.PropsRoute exact path="/signup" component={SignUp} updateUser={this.updateUser}/>
             <this.PropsRoute exact path="/login" component={Login} setUser={this.setUser}/>
             <this.PropsRoute exact path="/pets" component={Homepage} pets={this.state.pets} />
-            <this.PropsRoute exact path="/pets/new" component={NewPetForm} addNewPetRender={this.addNewPetRender}/>
+            <this.PropsRoute exact path="/pets/new" component={Homepage} addNewPetRender={this.addNewPetRender}/>
             <this.PropsRoute exact path='/pet/:id' component={Homepage} />
             </Switch>
         </div>
@@ -171,19 +169,14 @@ class App extends Component {
       <div>
       <Router>
         <div>
-          <NavBar logout={this.logout}/>
+          <NavBar currentUser={this.state.currentUser} logout={this.logout}/>
           <Switch>
-          {/* <this.PropsRoute exact path="/" component={Homepage}/> */}
           <this.PropsRoute exact path="/signup" component={SignUp} setUser={this.setUser}/>
           <this.PropsRoute exact path="/login" component={Login} setUser={this.setUser}/>
-          <this.PropsRoute exact path="/pets" component={Pets} pets={this.state.pets} />
+          <this.PropsRoute exact path="/pets" component={Pets} pets={this.state.pets}  />
           <this.PropsRoute exact path="/pets/new" component={NewPetForm} addNewPetRender={this.addNewPetRender} />
-          {/* <this.PropsRoute exact path='/pet/:id/profile' component={PetProfile} pets={this.state.pets}/> */}
-          {/* <this.PropsRoute exact path='/pet/:id/dashboard' component={Dashboard} pets={this.state.pets}/> */}
           <this.PropsRoute exact path="/" component={Pets} pets={this.state.pets}  />
-          {/* <this.PropsRoute exact path='/pet/:id/profile' component={PetProfile} updatePet={this.updatePet}/> */}
           <this.PropsRoute exact path='/pet/:id' component={Dashboard} updatePet={this.updatePet} editPetInfo={this.editPetInfo}/>
-          {/* <this.PropsRoute exact path='/pet/:id/activity' component={Activity} /> */}
           </Switch>
       </div>
       </Router>

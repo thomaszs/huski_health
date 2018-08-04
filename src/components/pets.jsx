@@ -7,7 +7,7 @@ export default function Pets(props) {
 
     const petCards = props.pets.map((pet) => {
         return (
-            <PetCard pet={pet} key={pet.id} />
+            <PetCard pet={pet} key={pet.id}  />
         )
     });
 
@@ -26,3 +26,4 @@ export default function Pets(props) {
 
     )
 }
+

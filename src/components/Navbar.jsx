@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import mainLogo from '../huski-health.png'
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
+import Cookies from 'universal-cookie';
+
+
 
 
 export default class NavBar extends Component {
@@ -8,12 +11,24 @@ export default class NavBar extends Component {
     super(props)
 
     this.onClickLogout = this.onClickLogout.bind(this)
+    this.buttons = this.buttons.bind(this)
   }
 
   onClickLogout(event) {
+    const cookies = new Cookies();
     event.preventDefault()
+    cookies.remove('hh')
     this.props.logout()
   }
+
+  buttons = function() {
+    console.log(this.props.currentUser)
+    if (this.props.currentUser) {
+    return  <button onClick={this.onClickLogout} className="btn btn-sm btn-warning" style={{ float: "right", marginTop: "10px" }}>Logout</button>
+    } else {
+      return <Link to={`/signup`}><button className="btn btn-sm btn-warning" style={{ float: "right", marginTop: "10px" }}>Sign Up</button></Link>
+    };
+}
 
   render() {
   return (
@@ -28,8 +43,7 @@ export default class NavBar extends Component {
                 <Link to={`/pets`} >Home</Link>
                 </li>
               </ul>
-              <Link to={`/signup`}><button className="btn btn-sm btn-warning" style={{ float: "right", marginTop: "10px" }}>Sign Up</button></Link>
-              <button onClick={this.onClickLogout} className="btn btn-sm btn-warning" style={{ float: "right", marginTop: "10px" }}>Logout</button>
+              {this.buttons()}
             </div>
         </div>
       </div>
