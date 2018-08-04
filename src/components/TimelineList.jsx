@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ActivityItem from "./ActivityItem.jsx";
-import Activity from './Activity.jsx'
+
 
 export default function TimelineList(props) {
   const activities = props.activities.map(activity => {

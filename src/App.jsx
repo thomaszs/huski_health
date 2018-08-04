@@ -11,6 +11,7 @@ import SignUp from './components/SignUp'
 import Login from './components/Login'
 import Activity from './components/Activity';
 import NewPetForm from './components/NewPetForm';
+import Vets from './components/Vets'
 
 
 import './css/homepage.css';
@@ -54,7 +55,7 @@ class App extends Component {
       $.ajax('http://localhost:8080/api/pets/', {
         method: 'POST',
         data: {
-          userId: 2, 
+          userId: 1, 
         }, 
         success: (result) => {
           // console.log(result); 
@@ -96,7 +97,7 @@ class App extends Component {
     $.ajax('http://localhost:8080/api/pets/', {
       method: 'POST',
       data: {
-        userId: 2, 
+        userId: 1, 
       }, 
       success: (result) => {
         this.setState({pets: result})
@@ -113,7 +114,7 @@ class App extends Component {
     $.ajax('http://localhost:8080/api/pets/', {
       method: 'POST',
       data: {
-        userId: 2, 
+        userId: 1, 
       }, 
       success: (result) => {
         this.setState({pets: result})
@@ -150,6 +151,7 @@ class App extends Component {
           {/* <this.PropsRoute exact path='/pet/:id/profile' component={PetProfile} updatePet={this.updatePet}/> */}
           <this.PropsRoute exact path='/pet/:id' component={Dashboard} updatePet={this.updatePet} editPetInfo={this.editPetInfo}/>
           {/* <this.PropsRoute exact path='/pet/:id/activity' component={Activity} /> */}
+          <this.PropsRoute exact path='/vets' component={Vets}/>
           </Switch>
       </div>
       </Router>
