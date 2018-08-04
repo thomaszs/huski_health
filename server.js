@@ -18,6 +18,7 @@ app.use(function (req, res, next) {
     next();
 });
 app.use(fileUpload())
+app.use('/public', express.static(__dirname + '/public'))
 
 app.use(bodyParser.urlencoded({
     extended: true
