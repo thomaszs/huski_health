@@ -15,6 +15,9 @@ export default function NavBar(props) {
                 <li>             
                 <Link to={`/pets`} >Home</Link>
                 </li>
+                <li>
+                  <Link to={'/vets'}> Find A Vet </Link>
+                  </li>
               </ul>
               <Link to={`/signup`}><button className="btn btn-sm btn-warning" style={{ float: "right", marginTop: "10px" }}>Sign Up</button></Link>
             </div>
