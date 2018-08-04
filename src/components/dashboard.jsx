@@ -6,6 +6,8 @@ import PetProfile from "./PetProfile.jsx";
 import Timeline from "./Timeline.jsx";
 import PetChart from "./PetChart.jsx";
 import StatusBar from "./StatusBar.jsx";
+import ChatBot from 'react-simple-chatbot';
+
 // import NewPetForm from "./NewPetForm.jsx";
 
 
@@ -104,6 +106,15 @@ class Dashboard extends Component {
             />
           </div>
         </div>
+        <ChatBot
+  steps={[
+    {
+      id: 'hello-world',
+      message: 'Hello World!',
+      end: true,
+    },
+  ]}
+/>
       </div>
     );
   }
