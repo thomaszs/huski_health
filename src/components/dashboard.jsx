@@ -5,8 +5,11 @@ import NavBar from "./NavBar.jsx";
 import PetProfile from "./PetProfile.jsx";
 import Timeline from "./Timeline.jsx";
 import PetChart from "./PetChart.jsx";
+
+
 import StatusBar from "./StatusBar.jsx";
 import NewPetForm from "./NewPetForm.jsx";
+import axios from 'axios'
 var map;
 var service;
 var infowindow;
@@ -16,7 +19,9 @@ var infowindow;
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = { loading: true };
+    this.state = { loading: true,
+    weights: [{}]
+  };
     this.onNewActivity = this.onNewActivity.bind(this);
     this.getVets = this.getVets.bind(this);
   }
@@ -48,7 +53,7 @@ class Dashboard extends Component {
         console.log("It doesnt work");
       }
     });
-
+    // this.fetchData();
     this.getVets();
   }
 
@@ -133,7 +138,7 @@ class Dashboard extends Component {
                 <div ref="mapEl" />
               </div>
               </div>
-              <StatusBar pet={this.state.pet} activities={this.state.activities} getLatestPetWeight={this.props.getLatestPetWeight}/>
+              <StatusBar pet={this.state.pet} activities={this.state.weights} getLatestPetWeight={this.props.getLatestPetWeight} weight={this.props.weight}/>
           </div>
         </div>
       </div>

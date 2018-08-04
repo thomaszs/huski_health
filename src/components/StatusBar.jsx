@@ -34,7 +34,7 @@ export default class StatusBar extends Component {
     const date = this.state.data.created_at
     const dateFromNow = moment(date).fromNow();
     const notes = this.state.data.notes
-    const weight = this.props.pet.weight
+    
     
   return (
     <fragment className="col-lg-3">
@@ -45,7 +45,7 @@ export default class StatusBar extends Component {
             <h2>Current Weight</h2>
           </div>
           <div className="chart-stage" id="chart-05">
-            <h1>{weight}lbs <i className="fas fa-weight" style={{ float: "right" }}></i></h1>
+            <h1>{this.props.weights}lbs <i className="fas fa-weight" style={{ float: "right" }}></i></h1>
           </div>
           <div className="chart-notes">
           </div>

@@ -19,6 +19,7 @@ export default class PetCard extends Component {
     this.onClickTypeActivity = this.onClickTypeActivity.bind(this)
     this.onClickTypeFeeding = this.onClickTypeFeeding.bind(this)
     this.onClickTypeWeight = this.onClickTypeWeight.bind(this)
+    this.fetchData = this.fetchData.bind(this)
 
   }
 
@@ -73,7 +74,7 @@ export default class PetCard extends Component {
       <div className="col-sm-4">
         <div className="chart-wrapper">
           <div className="chart-title">
-            <Link to={`/pet/${this.props.pet.id}`}><h1>{this.props.pet.name}</h1></Link>
+            <Link to={`/pet/${this.props.pet.id}`} weight={this.state.weights}><h1>{this.props.pet.name}</h1></Link>
           </div>
           <div className="chart-stage">
             <div className="card" style={{ width: "100%" }}>
