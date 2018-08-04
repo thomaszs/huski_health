@@ -2,15 +2,20 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import moment from 'moment';
 
+
 export default class StatusBar extends Component {
   constructor(props){
   super(props);
 
-  
+  this.getLatestPetWeight = this.getLatestPetWeight.bind(this)  
   }
+
+
   componentWillMount() {
     this.getLatestFeeding();
     this.setState({data: {created_at: ""}})
+    this.getLatestPetWeight();
+
   }
   getLatestFeeding() {
     const { pet: { id } = {} } = this.props;
@@ -25,13 +30,33 @@ export default class StatusBar extends Component {
       // debugger;
     });
   }
+ 
+  getLatestPetWeight() {
+    const { pet: { id } = {} } = this.props;
+    $.get(`http://localhost:8080/api/pets/${ id }/latestweights`)
+    .then(weight => {
+      console.log("DATA WEIGHT", weight)
+      if (weight[0] === undefined) {
+        weight[0].notes = ""
+      }
+      this.setState({weight: weight[0].notes})
+    })
+    .catch(err => {
+      // debugger;
+    });
+  }
+
+
+
   render() {
     const lastActive = (this.props.activities[0] && moment(this.props.activities[0].created_at).fromNow()) || "No Activites"
     const activityNotes = (this.props.activities[0] && this.props.activities[0].notes) || ""
     const date = this.state.data.created_at
     const dateFromNow = moment(date).fromNow();
     const notes = this.state.data.notes
-    const weight = this.props.pet.weight
+    const weight = this.state.weight
+    
+    
   return (
     <fragment className="col-lg-3">
     <div className="row">
@@ -41,7 +66,7 @@ export default class StatusBar extends Component {
             <h2>Current Weight</h2>
           </div>
           <div className="chart-stage" id="chart-05">
-            <h1>{weight}lbs <i className="fas fa-weight" style={{ float: "right" }}></i></h1>
+            <h1>{weight} lbs <i className="fas fa-weight" style={{ float: "right" }}></i></h1>
           </div>
           <div className="chart-notes">
           </div>

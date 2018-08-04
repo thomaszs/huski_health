@@ -31,7 +31,7 @@ class NewPetForm extends Component {
       note: "",
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.handleClearForm = this.handleClearForm.bind(this);
+    // this.handleClearForm = this.handleClearForm.bind(this);
     this.handlePetNameChange = this.handlePetNameChange.bind(this);
     this.handleSpeciesSelection = this.handleSpeciesSelection.bind(this);
     this.handleGenderSelection = this.handleGenderSelection.bind(this);
@@ -74,19 +74,19 @@ class NewPetForm extends Component {
   handleNoteChange(e) {
     this.setState({ note: e.target.value }, () => console.log('note:', this.state.note));
   }
-  handleClearForm(e) {
-    e.preventDefault();
-    this.setState({
-      petName: "",
-      species: [],
-      gender: [],
-      birthday: "",
-      weight: "",
-      breed: undefined,
-      image: "",
-      note: ""
-    });
-  }
+  // handleClearForm(e) {
+  //   e.preventDefault();
+  //   this.setState({
+  //     petName: "",
+  //     species: [],
+  //     gender: [],
+  //     birthday: "",
+  //     weight: "",
+  //     breed: undefined,
+  //     image: "",
+  //     note: ""
+  //   });
+  // }
   handleFormSubmit(e) {
     e.preventDefault();
     const addNewPetRender = this.props.addNewPetRender
@@ -97,7 +97,7 @@ class NewPetForm extends Component {
       species: this.state.species,
       gender: this.state.gender,
       birthday: this.state.birthday,
-      weight: this.state.weight,
+      // weight: this.state.weight,
       breed: this.state.breed,
       accountID: this.props.currentUser.id,
       image: this.state.image,
@@ -136,7 +136,7 @@ class NewPetForm extends Component {
       }
     });
     console.log(e)
-    this.handleClearForm(e);
+    // this.handleClearForm(e);
   }
 
   render() {
@@ -177,12 +177,12 @@ class NewPetForm extends Component {
                           selectedOptions={this.state.gender} />
 
                         <DayPickerInput
-                          placeholder={`${formatDate(new Date())}`}
+                          placeholder={'Please select birthday'}
                           style={{ color: "#000" }}
                           onDayChange={this.handleBirthdayChange}
                         />
 
-                        <SingleInput
+                        {/* <SingleInput
                           inputType={'text'}
                           title={'Weight'}
                           name={'weight'}
@@ -195,7 +195,7 @@ class NewPetForm extends Component {
                           title={'Breed'}
                           name={'breed'}
                           controlFunc={this.handleBreedChange}
-                          content={this.state.breed} />
+                          content={this.state.breed} /> */}
 
                         <SingleInput
                           inputType={'text'}
@@ -209,9 +209,9 @@ class NewPetForm extends Component {
                           type="submit"
                           className="btn btn-primary float-right"
                           value="Submit" /></Link>
-                        <button
+                        {/* <button
                           className="btn btn-link float-left"
-                          onClick={this.handleClearForm}>Clear form</button>
+                          onClick={this.handleClearForm}>Clear form</button> */}
                       </table>
                     </form>
                   </div>
