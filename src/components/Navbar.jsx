@@ -43,6 +43,9 @@ export default class NavBar extends Component {
                 <li>             
                 <Link to={`/pets`} >Home</Link>
                 </li>
+                <li>
+                  <Link to={'/vets'}> Find A Vet </Link>
+                  </li>
               </ul>
               {this.buttons()}
             </div>

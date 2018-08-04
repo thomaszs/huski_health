@@ -10,6 +10,7 @@ class PetProfile extends Component {
       pet: this.props.pet,
       petName: this.props.pet.name,
       petWeight: this.props.pet.weight,
+      petNotes: this.props.pet.notes,
       isEditing: false
     }
     this.toggleEdit = this.toggleEdit.bind(this);
@@ -17,6 +18,7 @@ class PetProfile extends Component {
     this.savePetProfile = this.savePetProfile.bind(this);
     this.onChangePetName = this.onChangePetName.bind(this);
     this.onChangePetWeight = this.onChangePetWeight.bind(this);
+    this.onChangePetNotes = this.onChangePetNotes.bind(this); 
     // this.onChangePetBreed = this.onChangePetBreed.bind(this);
   }
 
@@ -36,7 +38,8 @@ class PetProfile extends Component {
       data: {
         id: this.props.pet.id,
         newPetName: this.state.petName,
-        newPetWeight: this.state.petWeight
+        newPetWeight: this.state.petWeight, 
+        newPetNotes: this.state.petNotes,
         // newPetBreed: this.state.pet.breed
       },
       success: (result) => {
@@ -53,6 +56,11 @@ class PetProfile extends Component {
   onChangePetName(event) {
     event.preventDefault()
     this.setState({ petName: event.target.value })
+  }
+
+  onChangePetNotes(event){
+    event.preventDefault(); 
+    this.setState({petNotes: event.target.value})
   }
 
   onChangePetWeight(event) {
@@ -83,7 +91,7 @@ class PetProfile extends Component {
                           {/* <label>Age:</label><input type="text" className="form-control" name="age" /><br/> */}
                           {/* <label>Birthday:</label><input type="text" className="form-control" name="birthday" /><br/> */}
                           {/* <label>Breed:</label><input type="text" className="form-control" name="breed" defaultValue={this.state.pet.breed} onChange={this.onChangePetBreed} /><br/> */}
-                          <label>Notes:</label> <input type="text" className="form-control" name="notes" /><br/>
+                          <label>Notes:</label> <input type="text" className="form-control" name="notes" defaultValue={this.state.petNotes} onChange={this.onChangePetNotes} /><br/>
                           <button type="button" className="btn btn-primary" onClick={this.savePetProfile}>Save</button>
                         </form>
                         </tbody>
@@ -120,7 +128,7 @@ class PetProfile extends Component {
                 </div>
                 <div className="container-row">
                   <p>Notes: </p>
-                  <p>{this.state.pet.notes}</p>
+                  <p>{this.state.petNotes}</p>
                 </div>
                 <div className="container-row">
                     <button type="button" className="btn btn-warning" onClick={this.editPetProfile}>Edit Profile</button>

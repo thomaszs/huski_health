@@ -30,7 +30,8 @@ module.exports = function knexData(knex) {
           'id': data.id
         }).update({
           'name': data.newPetName, 
-          'weight': data.newPetWeight
+          'weight': data.newPetWeight,
+          'notes': data.newPetNotes, 
           // 'breed': data.newPetBreed
         }).returning('id', 'name','weight', 'date_of_birth', 'gender', 'breed', 'img', 'notes', 'species', 'account_id')
       },
@@ -46,7 +47,8 @@ module.exports = function knexData(knex) {
           'weight': data.weight,
           'breed': data.breed,
           'img': data.image,
-          'account_id': data.accountID
+          'account_id': data.accountID,
+          'notes':data.note
         }).then(console.log("CHANGED"))
       },
 

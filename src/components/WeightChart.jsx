@@ -166,7 +166,7 @@ const petWeightRange =
               xPadding: 3,
               position: "right",
               backgroundColor: '#1E212F',
-              yAdjust: 10,
+              yAdjust: -10,
               fontColor: 'rgba(75,192,192,1)'
             },
             id: 'a-line-1', // optional
@@ -184,7 +184,7 @@ const petWeightRange =
               xPadding: 3,
               position: "right",
               backgroundColor: '#1E212F',
-              yAdjust: -10,
+              yAdjust: 10,
               fontColor: 'rgba(75,192,192,1)'
             },
             id: 'a-line-2', // optional
