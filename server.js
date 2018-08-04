@@ -145,6 +145,19 @@ app.post('/api/pet/new', (req, res) => {
     }
  })
 
+ app.post('/api/upload', (req, res, next) => {
+    console.log(req.body);
+    let imageFile = req.files.file;
+  console.log(imageFile)
+    imageFile.mv(`${__dirname}/public/${req.body.filename}.jpg`, function(err) {
+      if (err) {
+        return res.status(500).send(err);
+      }
+      res.json({file: `public/${req.body.filename}.jpg`})
+    });
+  
+  })
+
 
 app.listen(PORT, () => {
     console.log("Example app listening on port " + PORT);

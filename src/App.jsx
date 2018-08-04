@@ -12,6 +12,7 @@ import SignUp from './components/SignUp'
 import Login from './components/Login'
 import Activity from './components/Activity';
 import NewPetForm from './components/NewPetForm';
+import FileUpload from './components/FileUpload';
 
 
 import './css/homepage.css';
@@ -166,6 +167,7 @@ class App extends Component {
           <NavBar currentUser={this.state.currentUser} logout={this.logout}/>
           <Switch>
           <this.PropsRoute exact path="/signup" component={SignUp} setUser={this.setUser}/>
+          <this.PropsRoute exact path="/files" component={FileUpload} setUser={this.setUser}/>
           <this.PropsRoute exact path="/login" component={Login} setUser={this.setUser}/>
           <this.PropsRoute exact path="/pets" component={Pets} pets={this.state.pets}  />
           <this.PropsRoute exact path="/pets/new" component={NewPetForm} addNewPetRender={this.addNewPetRender} />
