@@ -10,12 +10,14 @@ const knexConfig = require("./knexfile");
 const knex = require("knex")(knexConfig[ENV]);
 const database = require("./database")(knex);
 const bodyParser = require("body-parser");
+const fileUpload = require('express-fileupload');
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+app.use(fileUpload())
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -35,7 +37,8 @@ app.post('/api/pets/:id', (req, res) => {
     console.log("HELLO HELLO HELLO", req.body)
     database.editPet(req.body)
         .then(function (result) {
-            return res.sendStatus(204)
+            console.log(result)
+            // res.send(result)
         })
 })
 
@@ -92,9 +95,10 @@ app.get('/api/pets/:id/feeding', (req, res) => {
         })
 })
 
-app.post('/api/pets/', (req, res) => {
-    database.getPets(req.body.userId)
+app.get('/api/pets/:id', (req, res) => {
+    database.getPets(req.params.id)
         .then(function (result) {
+            console.log("GET PETS FUNCTION", result)
             res.send(result)
         })
 })
@@ -107,12 +111,53 @@ app.post('/api/pet/', (req, res) => {
 })
 
 app.post('/api/pet/new', (req, res) => {
-    // console.log(req.body)
     database.newPet(req.body)
         .then(function (result) {
             res.send(result)
         })
 })
+
+ app.post('/api/signup', async (req, res) => {
+    let user = await database.verifySignup(req.body)
+    if (!user.length) {
+     let newUser = await database.insertAccount(req.body)
+     res.send(newUser)
+    } else {
+        res.send('already found')
+    }
+ })
+
+ app.post('/api/login', async (req, res) => {
+    let user = await database.verifyLogin(req.body)
+    console.log(user)
+    if (user.length) {
+        res.send(user)
+    } else {
+        res.send("no user found")
+    }
+ })
+
+ app.get('/api/user/:id', async (req, res) => {
+    let user = await database.getUser(req.params.id)
+    if (user.length) {
+        res.send(user)
+    } else {
+        res.send("no user found")
+    }
+ })
+
+ app.post('/api/upload', (req, res, next) => {
+    console.log(req.body);
+    let imageFile = req.files.file;
+  console.log(imageFile)
+    imageFile.mv(`${__dirname}/public/${req.body.filename}.jpg`, function(err) {
+      if (err) {
+        return res.status(500).send(err);
+      }
+      res.json({file: `public/${req.body.filename}.jpg`})
+    });
+  
+  })
 
 
 app.listen(PORT, () => {

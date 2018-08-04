@@ -43,7 +43,7 @@ class PetProfile extends Component {
         // newPetBreed: this.state.pet.breed
       },
       success: (result) => {
-        this.props.editPetInfo();
+        this.props.editPetInfo(result);
       },
       error: function (err) {
         console.log("It doesnt work")
@@ -120,7 +120,6 @@ class PetProfile extends Component {
             <div className="profile-container">
                 <div className="container-row">
                   <p>Birthday: </p>
-                  {/* moment(Date.parse(day)).format("MMM Do, YYYY")}) */}
                   <p>{moment(Date.parse(this.state.pet.date_of_birth)).format("MMM Do, YYYY")}</p>
                 </div>
                 <div className="container-row">

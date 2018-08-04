@@ -9,7 +9,6 @@ import StatusBar from "./StatusBar.jsx";
 // import NewPetForm from "./NewPetForm.jsx";
 
 
-// import PetActivity from 'PetActivity.jsx';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -109,5 +108,5 @@ class Dashboard extends Component {
     );
   }
 }
-withRouter(Dashboard);
+
 export default Dashboard;

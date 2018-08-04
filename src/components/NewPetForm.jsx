@@ -99,7 +99,7 @@ class NewPetForm extends Component {
       birthday: this.state.birthday,
       weight: this.state.weight,
       breed: this.state.breed,
-      accountID: 2,
+      accountID: this.props.currentUser.id,
       image: this.state.image,
       note: this.state.note
     };
@@ -109,9 +109,10 @@ class NewPetForm extends Component {
       data: { dogUrl: this.state.image, },
       success: function (result) {
         console.log("Yes, it worked");
-        console.log(result); 
+        // console.log(result); 
         newPetInfo.breed = result.doggyData.breed;
         newPetInfo.note = result.doggyData.about;
+        console.log()
         $.ajax('http://localhost:8080/api/pet/new', {
           method: 'POST',
           data: newPetInfo,
