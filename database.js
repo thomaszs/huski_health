@@ -33,7 +33,8 @@ module.exports = function knexData(knex) {
           'id': data.id
         }).update({
           'name': data.newPetName, 
-          'weight': data.newPetWeight
+          'weight': data.newPetWeight,
+          'notes': data.newPetNotes, 
           // 'breed': data.newPetBreed
         })
       },

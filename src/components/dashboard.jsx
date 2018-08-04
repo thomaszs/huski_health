@@ -6,10 +6,8 @@ import PetProfile from "./PetProfile.jsx";
 import Timeline from "./Timeline.jsx";
 import PetChart from "./PetChart.jsx";
 import StatusBar from "./StatusBar.jsx";
-import NewPetForm from "./NewPetForm.jsx";
-var map;
-var service;
-var infowindow;
+// import NewPetForm from "./NewPetForm.jsx";
+
 
 // import PetActivity from 'PetActivity.jsx';
 
@@ -18,7 +16,7 @@ class Dashboard extends Component {
     super(props);
     this.state = { loading: true };
     this.onNewActivity = this.onNewActivity.bind(this);
-    this.getVets = this.getVets.bind(this);
+    
   }
 
   componentDidMount() {
@@ -48,42 +46,10 @@ class Dashboard extends Component {
         console.log("It doesnt work");
       }
     });
-
-    this.getVets();
   }
 
-  componentDidUpdate() {
-    this.getVets();
-  }
 
-  getVets() {
-    const { mapEl } = this.refs;
-    const google = window.google;
 
-    if (mapEl) {
-      var pyrmont = new google.maps.LatLng(49.281200, -123.114843);
-
-      map = new google.maps.Map(mapEl, {
-        center: pyrmont,
-        zoom: 15
-      });
-
-      var request = {
-        location: pyrmont,
-        radius: "500",
-        keyword: "veterinarian",
-        
-      };
-
-      service = new google.maps.places.PlacesService(map);
-      service.nearbySearch(request, callback);
-    }
-
-    function callback(results, status) {
-      console.log("GOOGLE MAPSS")
-      console.log("RESULTSS FROM GOOGLE MAPS", results)
-    }
-  }
 
   // Once user submits an activity, it should set the state of activities to the new state.
   // oldActivityState + newActivity = newActityState
@@ -131,10 +97,12 @@ class Dashboard extends Component {
                   activities={this.state.activities}
                   onNewActivity={this.onNewActivity}
                 />
-                <div ref="mapEl" />
               </div>
-              </div>
-              <StatusBar pet={this.state.pet} activities={this.state.activities}/>
+            </div>
+            <StatusBar
+              pet={this.state.pet}
+              activities={this.state.activities}
+            />
           </div>
         </div>
       </div>
