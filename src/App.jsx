@@ -150,7 +150,7 @@ class App extends Component {
             <NavBar currentUser={this.state.currentUser} logout={this.logout}/>
             <Switch>
             <this.PropsRoute exact path="/" component={Homepage}/>
-            <this.PropsRoute exact path="/signup" component={SignUp} updateUser={this.updateUser}/>
+            <this.PropsRoute exact path="/signup" component={SignUp} setUser={this.setUser}/>
             <this.PropsRoute exact path="/login" component={Login} setUser={this.setUser}/>
             <this.PropsRoute exact path="/pets" component={Homepage} pets={this.state.pets} />
             <this.PropsRoute exact path="/pets/new" component={Homepage} addNewPetRender={this.addNewPetRender}/>
