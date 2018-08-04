@@ -20,7 +20,9 @@ export default class Pets extends Component {
     // });
 
     componentDidMount(){
-        axios.post('http://localhost:8080/api/pets/', {userId: 2}) 
+        axios.get(`http://localhost:8080/api/pets/${this.props.currentUser.id}`, {
+            params: {userId: this.props.currentUser}
+        }) 
           .then(response => {
             console.log(response);
             this.setState( { pets: response.data })

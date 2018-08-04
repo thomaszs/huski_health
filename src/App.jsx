@@ -204,7 +204,7 @@ class App extends Component {
           <this.PropsRoute exact path="/signup" component={SignUp} setUser={this.setUser}/>
           <this.PropsRoute exact path="/files" component={FileUpload} setUser={this.setUser}/>
           <this.PropsRoute exact path="/login" component={Login} setUser={this.setUser}/>
-          <this.PropsRoute exact path="/pets" component={Pets} pets={this.state.pets}  />
+          <this.PropsRoute exact path="/pets" component={Pets} pets={this.state.pets} currentUser={this.state.currentUser} />
           <this.PropsRoute exact path="/pets/new" component={NewPetForm} addNewPetRender={this.addNewPetRender} currentUser={this.state.currentUser} />
           <this.PropsRoute exact path="/" component={Pets} pets={this.state.pets}  />
           <this.PropsRoute exact path='/pet/:id' component={Dashboard} getLatestPetWeight={this.getLatestPetWeight} updatePet={this.updatePet} editPetInfo={this.editPetInfo}/>
