@@ -49,7 +49,8 @@ module.exports = function knexData(knex) {
           'weight': data.weight,
           'breed': data.breed,
           'img': data.image,
-          'account_id': data.accountID
+          'account_id': data.accountID,
+          'notes':data.note
         }).then(console.log("CHANGED"))
       },
 
