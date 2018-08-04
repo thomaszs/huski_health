@@ -1,9 +1,36 @@
 import React, { Component } from 'react';
 import mainLogo from '../huski-health.png'
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 
-export default function NavBar(props) {
+
+export default class NavBar extends Component {
+  constructor(props) {
+    super(props)
+
+    this.onClickLogout = this.onClickLogout.bind(this)
+    this.buttons = this.buttons.bind(this)
+  }
+
+  onClickLogout(event) {
+    // const cookies = new Cookies();
+    event.preventDefault()
+    cookies.remove('hh', { path: '/' });
+    this.props.logout()
+  }
+
+  buttons = function() {
+    console.log(this.props.currentUser)
+    if (cookies.get('hh')) {
+    return  <button onClick={this.onClickLogout} className="btn btn-sm btn-warning" style={{ float: "right", marginTop: "10px" }}>Logout</button>
+    } else {
+      return <Link to={`/signup`}><button className="btn btn-sm btn-warning" style={{ float: "right", marginTop: "10px" }}>Sign Up</button></Link>
+    };
+}
+
+  render() {
   return (
     <div>
       <div className="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -19,11 +46,12 @@ export default function NavBar(props) {
                   <Link to={'/vets'}> Find A Vet </Link>
                   </li>
               </ul>
-              <Link to={`/signup`}><button className="btn btn-sm btn-warning" style={{ float: "right", marginTop: "10px" }}>Sign Up</button></Link>
+              {this.buttons()}
             </div>
         </div>
       </div>
     </div>
   );
+}
 }
 
