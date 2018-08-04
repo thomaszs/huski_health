@@ -25,6 +25,9 @@ export default class StatusBar extends Component {
       // debugger;
     });
   }
+
+
+
   render() {
     const lastActive = (this.props.activities[0] && moment(this.props.activities[0].created_at).fromNow()) || "No Activites"
     const activityNotes = (this.props.activities[0] && this.props.activities[0].notes) || ""
@@ -32,6 +35,7 @@ export default class StatusBar extends Component {
     const dateFromNow = moment(date).fromNow();
     const notes = this.state.data.notes
     const weight = this.props.pet.weight
+    
   return (
     <fragment className="col-lg-3">
     <div className="row">

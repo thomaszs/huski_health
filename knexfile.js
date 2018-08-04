@@ -12,6 +12,7 @@ module.exports = {
       port     : process.env.DB_PORT,
       ssl      : process.env.DB_SSL
     },
+    debug: true,
 
     migrations: {
       directory: './db/migrations',

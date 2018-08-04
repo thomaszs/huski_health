@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "ajax": "0.0.4",
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "bootstrap": "^3.3.7",
     "chart.js": "^2.7.2",

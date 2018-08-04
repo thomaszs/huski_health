@@ -124,7 +124,7 @@ class Dashboard extends Component {
             </div>
             <div className="col-sm-9 col-lg-6">
               <div>
-                <PetChart pet={this.state.pet} />
+                <PetChart pet={this.state.pet} getLatestPetWeight={this.props.getLatestPetWeight}/>
                 <Timeline
                   pet={this.state.pet}
                   activities={this.state.activities}
@@ -133,7 +133,7 @@ class Dashboard extends Component {
                 <div ref="mapEl" />
               </div>
               </div>
-              <StatusBar pet={this.state.pet} activities={this.state.activities}/>
+              <StatusBar pet={this.state.pet} activities={this.state.activities} getLatestPetWeight={this.props.getLatestPetWeight}/>
           </div>
         </div>
       </div>

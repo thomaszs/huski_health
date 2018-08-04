@@ -17,6 +17,7 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -76,6 +77,23 @@ app.get('/api/pets/:id/weights', (req, res) => {
         })
 })
 
+app.get('/api/pets/:id/latestweights', (req, res) => {
+    database.getLatestPetWeight(req.params.id).then((weight) => {
+            // console.log('WEIGHTS >>>', weight);
+            if (weight) {
+                return res.json(weight);
+            } else {
+                return res.json({
+                    error: 'No Weights found'
+                });
+            }
+
+        })
+        .catch(err => {
+            console.log('ERROR', err);
+        })
+})
+
 app.get('/api/pets/:id/feeding', (req, res) => {
     database.getPetFeeding(req.params.id).then(function (result){
             console.log('FEEDING >>>', result);
@@ -93,6 +111,7 @@ app.get('/api/pets/:id/feeding', (req, res) => {
 })
 
 app.post('/api/pets/', (req, res) => {
+    console.log('debug:', req.body, req.body.userId)
     database.getPets(req.body.userId)
         .then(function (result) {
             res.send(result)

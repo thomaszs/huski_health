@@ -191,7 +191,8 @@ class WeightChart extends React.Component {
       defaultMinWeight: petRange ? petRange[0] : 10,
       defaultMaxWeight: petRange ? petRange[1] : 20,
       options: props.options,
-      graphSettings: props.graphSettings
+      graphSettings: props.graphSettings,
+      weight: this.props.pet.weight
     }; 
 
     this.getLatestGraphData = this.getLatestGraphData.bind(this);
@@ -234,9 +235,13 @@ class WeightChart extends React.Component {
       newWeight.push(i.notes)
       }
       graphSettings.datasets[0].data = newWeight
+      const latestWeight = newWeight.slice(-1)[0]
+      console.log("NEW WEIGHT", newWeight.slice(-1)[0], "ID", this.props.pet.id)
       console.log(graphSettings.datasets[0].data)
       // graphSettings.datasets[0].data.push(+data[0].notes) 
       this.setState({ graphSettings });
+      this.setState({weight: latestWeight});
+      this.props.getLatestPetWeight()
     })
     .catch(err => {
       debugger;

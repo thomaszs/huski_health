@@ -4,13 +4,15 @@ import PetProfile from './PetProfile'
 import Dashboard from './Dashboard'
 import Event from './Activity';
 import $ from 'jquery'; 
+import axios from 'axios'
  
 export default class PetCard extends Component {
   constructor(props) {
     super(props)
     this.state = {
       showPopup: false,
-      type: ""
+      type: "",
+      weights: [{}]
     };
 
     this.togglePopup = this.togglePopup.bind(this)
@@ -19,6 +21,20 @@ export default class PetCard extends Component {
     this.onClickTypeWeight = this.onClickTypeWeight.bind(this)
 
   }
+
+  componentDidMount(){
+    this.fetchData();
+  }
+  fetchData(){
+    axios.get(`http://localhost:8080/api/pets/${this.props.pet.id}/weights/`, {userId: 2}) 
+      .then(response => {
+        console.log('----',response);
+        this.setState( { weights: response.data })
+      })
+      .catch(error => {
+        console.log(error);
+      });
+}
   togglePopup() {
     this.setState({
       showPopup: !this.state.showPopup
@@ -67,8 +83,8 @@ export default class PetCard extends Component {
               </div>
               <div className="container-profile" style={{ padding: "10px" }}>
                   <div className="container-row">
-                    <p>Pet Weight: </p>
-                    <p>{this.props.pet.weight}</p>
+                    <p>Pet Weightz: </p>
+                    <p>{this.state.weights.length ? this.state.weights[0].notes : 'no weights'}</p>
                   </div>
                   <div className="container-row">
                     <p>Last Fed: </p>
@@ -87,7 +103,13 @@ export default class PetCard extends Component {
             </div>
           </div>
           {this.state.showPopup ? 
-          <Event text='Close Me' type={this.state.type} pet={this.props.pet} closePopup={this.togglePopup.bind(this)} onNewActivity={this.onNewActivity}/>
+          <Event
+            text='Close Me'
+            type={this.state.type}
+            pet={this.props.pet}
+            closePopup={this.togglePopup.bind(this)}
+            onNewActivity={this.onNewActivity}
+          />
           : null
           }
         </div>
