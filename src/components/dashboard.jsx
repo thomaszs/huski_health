@@ -10,6 +10,7 @@ import PetChart from "./PetChart.jsx";
 
 import StatusBar from "./StatusBar.jsx";
 import NewPetForm from "./NewPetForm.jsx";
+
 import axios from 'axios'
 var map;
 var service;
@@ -109,12 +110,13 @@ class Dashboard extends Component {
                   onNewActivity={this.onNewActivity}
                 />
               </div>
-              <StatusBar
+
+            </div>
+            <StatusBar
                 pet={this.state.pet}
                 activities={this.state.weights}
                 getLatestPetWeight={this.props.getLatestPetWeight}
                 weight={this.props.weight} />
-            </div>
           </div>
         </div>
       </div>
