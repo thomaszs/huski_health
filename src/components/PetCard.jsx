@@ -83,7 +83,7 @@ export default class PetCard extends Component {
               <div className="card-body">
               </div>
               <div className="container-profile" style={{ padding: "10px" }}>
-                  <div className="container-row">
+                  {/* <div className="container-row">
                     <p>Pet Weightz: </p>
                     <p>{this.state.weights.length ? this.state.weights[0].notes : 'no weights'}</p>
                   </div>
@@ -94,7 +94,7 @@ export default class PetCard extends Component {
                   <div className="container-row">
                     <p>Last Active: </p>
                     <p>Date of last activity</p>
-                  </div>
+                  </div> */}
                   </div>
                 <div className="card-body-buttons">
                   <button  onClick={this.onClickTypeFeeding}   className="btn btn-warning" href="#">Feed Me</button>
