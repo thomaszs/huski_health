@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import mainLogo from '../huski-health.png'
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 import Cookies from 'universal-cookie';
-
+const cookies = new Cookies();
 
 
 
@@ -15,16 +15,15 @@ export default class NavBar extends Component {
   }
 
   onClickLogout(event) {
-    const cookies = new Cookies();
+    // const cookies = new Cookies();
     event.preventDefault()
-    // cookies.remove('hh')
     cookies.remove('hh', { path: '/' });
     this.props.logout()
   }
 
   buttons = function() {
     console.log(this.props.currentUser)
-    if (this.props.currentUser) {
+    if (cookies.get('hh')) {
     return  <button onClick={this.onClickLogout} className="btn btn-sm btn-warning" style={{ float: "right", marginTop: "10px" }}>Logout</button>
     } else {
       return <Link to={`/signup`}><button className="btn btn-sm btn-warning" style={{ float: "right", marginTop: "10px" }}>Sign Up</button></Link>

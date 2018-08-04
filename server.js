@@ -98,6 +98,7 @@ app.get('/api/pets/:id/feeding', (req, res) => {
 app.get('/api/pets/:id', (req, res) => {
     database.getPets(req.params.id)
         .then(function (result) {
+            console.log("GET PETS FUNCTION", result)
             res.send(result)
         })
 })

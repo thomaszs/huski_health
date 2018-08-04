@@ -11,11 +11,8 @@
     "chartjs-plugin-annotation": "^0.5.7",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
-<<<<<<< HEAD
     "express-fileupload": "^0.4.0",
-=======
     "google-map-react": "^1.0.6",
->>>>>>> 39a42c5a7cf230be4c14f4ba3c90a9575a65131e
     "jquery": "^3.3.1",
     "knex": "^0.15.2",
     "moment": "^2.22.2",
