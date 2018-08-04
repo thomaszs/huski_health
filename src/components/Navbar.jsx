@@ -17,7 +17,8 @@ export default class NavBar extends Component {
   onClickLogout(event) {
     const cookies = new Cookies();
     event.preventDefault()
-    cookies.remove('hh')
+    // cookies.remove('hh')
+    cookies.remove('hh', { path: '/' });
     this.props.logout()
   }
 

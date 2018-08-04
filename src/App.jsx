@@ -99,11 +99,8 @@ class App extends Component {
   //Given that editPetProfile Button has been triggered, make ajax call for new pets info and set the state
   editPetInfo() {
     console.log("calling editPetInfo function to set new pet info state")
-    $.ajax('http://localhost:8080/api/pets/', {
-      method: 'POST',
-      data: {
-        userId: this.state.currentUser.id
-      }, 
+    $.ajax(`http://localhost:8080/api/pets/${this.state.currentUser.id}`, {
+      method: 'GET',
       success: (result) => {
         this.setState({pets: result})
         console.log("New Pet State after edit:",this.state.pets)
@@ -116,11 +113,8 @@ class App extends Component {
   // TESTING GIT COMMIT 
   addNewPetRender() {
     console.log("calling editPetInfo function to set new pet info state")
-    $.ajax('http://localhost:8080/api/pets/', {
-      method: 'POST',
-      data: {
-        userId: this.state.currentUser.id 
-      }, 
+    $.ajax(`http://localhost:8080/api/pets/${this.state.currentUser.id}`, {
+      method: 'GET',
       success: (result) => {
         this.setState({pets: result})
         console.log("New Pet State after edit:", this.state.pets)
