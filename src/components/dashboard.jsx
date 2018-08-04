@@ -19,11 +19,12 @@ var infowindow;
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = { loading: true,
-    weights: [{}]
-  };
+    this.state = {
+      loading: true,
+      weights: [{}]
+    };
     this.onNewActivity = this.onNewActivity.bind(this);
-    this.getVets = this.getVets.bind(this);
+
   }
 
   componentDidMount() {
@@ -44,50 +45,24 @@ class Dashboard extends Component {
             this.setState({ activities: result, loading: false });
             console.log("ADDING ACTIVITIES?", this.state.activities);
           },
-          error: function(err) {
+          error: function (err) {
             console.log("Error, can not get pet activities upon intial load.");
           }
         });
       },
-      error: function(err) {
+      error: function (err) {
         console.log("It doesnt work");
       }
-    });
     // this.fetchData();
     this.getVets();
+    })
   }
-
   componentDidUpdate() {
     this.getVets();
   }
 
-  getVets() {
-    const { mapEl } = this.refs;
-    const google = window.google;
 
-    if (mapEl) {
-      var pyrmont = new google.maps.LatLng(49.281200, -123.114843);
 
-      map = new google.maps.Map(mapEl, {
-        center: pyrmont,
-        zoom: 15
-      });
-
-      var request = {
-        location: pyrmont,
-        radius: "500",
-        type: ["veterinarian"]
-      };
-
-      service = new google.maps.places.PlacesService(map);
-      service.nearbySearch(request, callback);
-    }
-
-    function callback(results, status) {
-      console.log("GOOGLE MAPSS")
-      console.log("RESULTSS FROM GOOGLE MAPS", results)
-    }
-  }
 
   // Once user submits an activity, it should set the state of activities to the new state.
   // oldActivityState + newActivity = newActityState
@@ -100,7 +75,7 @@ class Dashboard extends Component {
       success: result => {
         this.setState({ activities: result });
       },
-      error: function(err) {
+      error: function (err) {
         console.log(
           "Error, can not make ajax request to get new activity List"
         );
@@ -129,21 +104,24 @@ class Dashboard extends Component {
             </div>
             <div className="col-sm-9 col-lg-6">
               <div>
-                <PetChart pet={this.state.pet} getLatestPetWeight={this.props.getLatestPetWeight}/>
+                <PetChart pet={this.state.pet} getLatestPetWeight={this.props.getLatestPetWeight} />
                 <Timeline
                   pet={this.state.pet}
                   activities={this.state.activities}
                   onNewActivity={this.onNewActivity}
                 />
-                <div ref="mapEl" />
               </div>
-              </div>
-              <StatusBar pet={this.state.pet} activities={this.state.weights} getLatestPetWeight={this.props.getLatestPetWeight} weight={this.props.weight}/>
+              <StatusBar 
+              pet={this.state.pet} 
+              activities={this.state.weights} 
+              getLatestPetWeight={this.props.getLatestPetWeight} 
+              weight={this.props.weight} />
+            </div>
           </div>
         </div>
-      </div>
-    );
-  }
-}
-withRouter(Dashboard);
-export default Dashboard;
+        );
+      }
+      }
+    
+    withRouter(Dashboard);
+    export default Dashboard;

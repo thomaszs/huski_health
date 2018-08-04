@@ -12,6 +12,7 @@ import SignUp from './components/SignUp'
 import Login from './components/Login'
 import Activity from './components/Activity';
 import NewPetForm from './components/NewPetForm';
+import Vets from './components/Vets'
 
 
 import './css/homepage.css';
@@ -182,6 +183,7 @@ class App extends Component {
           {/* <this.PropsRoute exact path='/pet/:id/profile' component={PetProfile} updatePet={this.updatePet}/> */}
           <this.PropsRoute exact path='/pet/:id' component={Dashboard} getLatestPetWeight={this.getLatestPetWeight} updatePet={this.updatePet} editPetInfo={this.editPetInfo}/>
           {/* <this.PropsRoute exact path='/pet/:id/activity' component={Activity} /> */}
+          <this.PropsRoute exact path='/vets' component={Vets}/>
           </Switch>
       </div>
       </Router>
