@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import $ from "jquery";
 import axios from 'axios';
+import { Document } from 'react-pdf/dist/entry.webpack';
 
 export default class FileUpload extends Component {
 constructor(props) {
@@ -21,9 +21,8 @@ handleUploadImage(ev) {
     const data = new FormData();
     data.append('file', this.uploadInput.files[0]);
     data.append('filename', this.fileName.value);
-    axios.post('http://localhost:8080/api/upload', data)
+    axios.post('http://localhost:8080/api/uploadimage', data)
       .then((response) => {
-          console.log(response)
           console.log(response.data)
         this.setImage(`http://localhost:8080/${response.data.file}`)
       })
@@ -31,6 +30,21 @@ handleUploadImage(ev) {
         console.log(error);
       });
   }
+
+//   handleUploadPdf(ev) {
+//     ev.preventDefault();
+//     const data = new FormData();
+//     data.append('file', this.uploadInput.files[0]);
+//     data.append('filename', this.fileName.value);
+//     axios.post('http://localhost:8080/api/uploadpdf', data)
+//       .then((response) => {
+//           console.log(response.data)
+//         this.setImage(`http://localhost:8080/${response.data.file}`)
+//       })
+//       .catch(function (error) {
+//         console.log(error);
+//       });
+//   }
    
    render() {
      return(
@@ -51,4 +65,4 @@ handleUploadImage(ev) {
        </div>
      )
    }
- }
+}

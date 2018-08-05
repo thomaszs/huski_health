@@ -99,7 +99,26 @@ module.exports = function knexData(knex) {
             return result
           }
     })
-  }
+  },
+
+    insertFile: function (file) {
+    return knex('files').insert({
+         filename: file,
+         pet_id: 1,
+         type: 'pdf'
+       }).returning('filename').then(function(result) {
+        console.log(result);
+      })
+   },
+
+     getFiles: function (petid) {
+   return knex('files').where({
+    pet_id: petid
+    }).then(function(result) {
+    console.log("GET FILES", result)
+    return result;
+  })
+}
   
     }
   }

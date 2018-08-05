@@ -147,18 +147,39 @@ app.post('/api/pet/new', (req, res) => {
     }
  })
 
- app.post('/api/upload', (req, res, next) => {
+ app.post('/api/uploadimage', (req, res, next) => {
     console.log(req.body);
     let imageFile = req.files.file;
   console.log(imageFile)
-    imageFile.mv(`${__dirname}/public/${req.body.filename}.jpg`, function(err) {
+    imageFile.mv(`${__dirname}/public/image/${req.body.filename}.jpg`, function(err) {
       if (err) {
         return res.status(500).send(err);
       }
-      res.json({file: `public/${req.body.filename}.jpg`})
+      res.json({file: `public/image/${req.body.filename}.jpg`})
     });
-  
   })
+
+  app.post('/api/uploadpdf', (req, res, next) => {
+    console.log(req.body);
+    let pdfFile = req.files.file;
+    pdfFile.mv(`${__dirname}/public/pdf/${req.body.filename}.pdf`, function(err) {
+      if (err) {
+        return res.status(500).send(err);
+      }
+      let pdf = `public/pdf/${req.body.filename}.pdf`
+      database.insertFile(pdf)
+      res.json({file: pdf})
+    });
+  })
+
+  app.get('/api/pdf/:id', async (req, res, next) => {
+    let petid = req.params.id;
+    console.log(petid)
+      let files = await database.getFiles(petid)
+    //   let pdf = `public/pdf/${filename}.pdf`
+    console.log(files)
+      res.send(files)
+    });
 
 
 app.listen(PORT, () => {
