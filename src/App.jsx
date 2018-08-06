@@ -22,6 +22,7 @@ import './css/keen-static.css';
 import './css/timeline.css';
 import './css/keen-dashboards.css';
 import './css/daypicker.css';
+import './css/vets.css';
 const cookies = new Cookies();
 
 
