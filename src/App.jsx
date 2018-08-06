@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-// import axios from 'axios'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Cookies from 'universal-cookie';
 
 import Dashboard from './components/Dashboard';
 import Pets from './components/Pets';
 import NavBar from './components/NavBar';
-import PetProfile from './components/PetProfile';
+// import PetProfile from './components/PetProfile';
 import Homepage from './components/Homepage';
 import SignUp from './components/SignUp'
 import Login from './components/Login'
@@ -33,11 +32,11 @@ class App extends Component {
       currentUser: {},
       pets: [
         {
-          id: "1",
-          name: "Leonard",
-          birthday: "April 8, 2012",
+          id: "",
+          name: "",
+          birthday: "",
           age: 6,
-          weight: "22",
+          weight: "",
           breed: "Egyptian Mau",
           owner: "Lexi",
           notes: "These are some notes about my fat cat named Leonard."

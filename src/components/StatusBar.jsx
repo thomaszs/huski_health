@@ -50,7 +50,7 @@ export default class StatusBar extends Component {
 
   render() {
     const lastActive = (this.props.active[0] && moment(this.props.active[0].created_at).fromNow()) || "No Activites"
-    const activityNotes = (this.props.activities[0] && this.props.activities[0].notes) || ""
+    const activityNotes = (this.props.active[0] && this.props.active[0].notes) || ""
     const date = this.state.data.created_at
     const dateFromNow = moment(date).fromNow();
     const notes = this.state.data.notes
@@ -104,8 +104,7 @@ export default class StatusBar extends Component {
           <h2>Did you know...</h2>
         </div>
         <div className="chart-stage" id="chart-03">
-          <p>Frequencies of 20 to 50 Hertz are helpful in speeding the healing process of bone injuries. Cat's purr vibrations
-            which range from 20 – 140 Hertz, can help heal soft tissue injuries to ligaments, tendons and muscles.
+          <p>Dogs and humans have the same type of slow wave sleep (SWS) and rapid eye movement (REM) and during this REM stage dogs can dream. The twitching and paw movements that occur during their sleep are signs that your pet is dreaming.
       </p>
         </div>
         <div className="chart-notes">

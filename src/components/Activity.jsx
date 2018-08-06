@@ -35,7 +35,6 @@ export default class Event extends React.Component {
             }
             
             return this.props.closePopup()
-            // console.log("Yes, it worked");
 
           },
           error: function (err) {
