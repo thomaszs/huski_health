@@ -160,26 +160,32 @@ app.post('/api/pet/new', (req, res) => {
   })
 
   app.post('/api/uploadpdf', (req, res, next) => {
-    console.log(req.body);
+    console.log("PDF UPLOAD", req.body);
     let pdfFile = req.files.file;
     pdfFile.mv(`${__dirname}/public/pdf/${req.body.filename}.pdf`, function(err) {
       if (err) {
         return res.status(500).send(err);
       }
       let pdf = `public/pdf/${req.body.filename}.pdf`
-      database.insertFile(pdf)
+      database.insertFile(pdf, req.body.petid)
       res.json({file: pdf})
     });
   })
 
   app.get('/api/pdf/:id', async (req, res, next) => {
-    let petid = req.params.id;
-    console.log(petid)
-      let files = await database.getFiles(petid)
+      let files = await database.getFiles(req.params.id)
     //   let pdf = `public/pdf/${filename}.pdf`
     console.log(files)
       res.send(files)
     });
+
+    app.get('/api/record/:id', async (req, res, next) => {
+        console.log("GET RECORD IS RUNNINZG")
+        let file = await database.getFile(req.params.id)
+      //   let pdf = `public/pdf/${filename}.pdf`
+      console.log(file)
+        res.send(file)
+      });
 
 
 app.listen(PORT, () => {

@@ -101,10 +101,10 @@ module.exports = function knexData(knex) {
     })
   },
 
-    insertFile: function (file) {
+    insertFile: function (file, petid) {
     return knex('files').insert({
          filename: file,
-         pet_id: 1,
+         pet_id: petid,
          type: 'pdf'
        }).returning('filename').then(function(result) {
         console.log(result);
@@ -112,12 +112,21 @@ module.exports = function knexData(knex) {
    },
 
      getFiles: function (petid) {
-   return knex('files').where({
-    pet_id: petid
-    }).then(function(result) {
-    console.log("GET FILES", result)
-    return result;
+      return knex('files').where({
+        pet_id: petid
+      }).then(function(result) {
+        console.log("GET FILES", result)
+        return result;
   })
+},
+
+  getFile: function (id) {
+  return knex('files').where({
+   id: id
+   }).then(function(result) {
+   console.log("GET FILE", result)
+   return result;
+ })
 }
   
     }
