@@ -37,7 +37,7 @@ constructor(props) {
         if (this.state.files.length) {
         const pdfs = this.state.files.map((file) => {
             return (
-            <Link to={`/record/${file.id}`}><button>{file.filename}</button></Link>
+            <Link to={`/record/${file.id}`}><button>{file.name}</button></Link>
             )
             })
         return (

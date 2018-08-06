@@ -154,9 +154,12 @@ class App extends Component {
             <this.PropsRoute exact path="/" component={Homepage}/>
             <this.PropsRoute exact path="/signup" component={SignUp} setUser={this.setUser}/>
             <this.PropsRoute exact path="/login" component={Login} setUser={this.setUser}/>
+            <this.PropsRoute exact path="/records/:id" component={Homepage} />
+            <this.PropsRoute exact path="/record/:id" component={Homepage} />
             <this.PropsRoute exact path="/pets" component={Homepage} pets={this.state.pets} />
             <this.PropsRoute exact path="/pets/new" component={Homepage} addNewPetRender={this.addNewPetRender}/>
-            <this.PropsRoute exact path='/pet/:id' component={Dashboard} />
+            <this.PropsRoute exact path='/pet/:id' component={Homepage} />
+            <this.PropsRoute exact path='/vets' component={Homepage}/>
             </Switch>
         </div>
         </Router>

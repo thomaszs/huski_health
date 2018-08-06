@@ -40,7 +40,8 @@ exports.up = function (knex, Promise) {
       return knex.schema.createTable('files', function (table) {
       table.increments('id');
       table.string('type', 255);
-      table.string('filename', 255);
+      table.string('name', 255);
+      table.string('filepath', 255);
       table.dateTime('created_at').defaultTo(knex.fn.now());
       table.integer('pet_id').unsigned();
    //    table.foreign('pet_id').references('pets.id');

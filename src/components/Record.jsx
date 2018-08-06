@@ -17,7 +17,7 @@ export default class Record extends Component {
 }
 
 
-  componentWillMount() {
+  componentDidMount() {
       console.log(this.props.match.params.id)
     axios.get(`http://localhost:8080/api/record/${this.props.match.params.id}`, {
         params: {
@@ -25,7 +25,7 @@ export default class Record extends Component {
         }
     }).then((response) => {
           console.log(response.data)
-        this.setState({pdf: `http://localhost:8080/${response.data[0].filename}`})
+        this.setState({pdf: `http://localhost:8080/${response.data[0].filepath}`})
       })
       .catch(function (error) {
         console.log(error);

@@ -101,12 +101,13 @@ module.exports = function knexData(knex) {
     })
   },
 
-    insertFile: function (file, petid) {
+    insertFile: function (filename, petid, filepath) {
     return knex('files').insert({
-         filename: file,
+         name: filename,
          pet_id: petid,
+         filepath: filepath,
          type: 'pdf'
-       }).returning('filename').then(function(result) {
+       }).returning('filepath').then(function(result) {
         console.log(result);
       })
    },

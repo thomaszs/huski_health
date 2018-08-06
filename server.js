@@ -167,7 +167,7 @@ app.post('/api/pet/new', (req, res) => {
         return res.status(500).send(err);
       }
       let pdf = `public/pdf/${req.body.filename}.pdf`
-      database.insertFile(pdf, req.body.petid)
+      database.insertFile(req.body.filename, req.body.petid, pdf)
       res.json({file: pdf})
     });
   })
