@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import moment from 'moment';
 
+const dogFacts = ['Grapes and raisins even in small amounts can cause kidney failure in dogs.', 'According to legend, the dog rescued on Noah\'s Ark was the Afghan Hound.', 'At age one, dogs have the same level of physical development that humans have at age 15.', 'Dogs have two times the amount of muscles in their ears than humans.', 'A dogs\' first sense to develop is touch.']
+
+function randomItem(items)
+{
+return items[Math.floor(Math.random()*items.length)];
+}
 
 export default class StatusBar extends Component {
   constructor(props){
@@ -104,7 +110,7 @@ export default class StatusBar extends Component {
           <h2>Did you know...</h2>
         </div>
         <div className="chart-stage" id="chart-03">
-          <p>Dogs and humans have the same type of slow wave sleep (SWS) and rapid eye movement (REM) and during this REM stage dogs can dream. The twitching and paw movements that occur during their sleep are signs that your pet is dreaming.
+          <p>{randomItem(dogFacts)}
       </p>
         </div>
         <div className="chart-notes">

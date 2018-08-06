@@ -89,7 +89,7 @@ export default class PetCard extends Component {
                   </div>
                   <div className="container-row">
                     <p>Last Fed: </p>
-                    <p>Date of last fed</p>
+                    <p>{this.props.pet}</p>
                   </div>
                   <div className="container-row">
                     <p>Last Active: </p>
