@@ -1,0 +1,9 @@
+div.information {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+p.pages {
+    color: blue;
+}

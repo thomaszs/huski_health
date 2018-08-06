@@ -18,6 +18,7 @@ app.use(function (req, res, next) {
     next();
 });
 app.use(fileUpload())
+app.use('/public', express.static(__dirname + '/public'))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
@@ -164,18 +165,45 @@ app.post('/api/pet/new', (req, res) => {
     }
  })
 
- app.post('/api/upload', (req, res, next) => {
+ app.post('/api/uploadimage', (req, res, next) => {
     console.log(req.body);
     let imageFile = req.files.file;
   console.log(imageFile)
-    imageFile.mv(`${__dirname}/public/${req.body.filename}.jpg`, function(err) {
+    imageFile.mv(`${__dirname}/public/image/${req.body.filename}.jpg`, function(err) {
       if (err) {
         return res.status(500).send(err);
       }
-      res.json({file: `public/${req.body.filename}.jpg`})
+      res.json({file: `public/image/${req.body.filename}.jpg`})
     });
-  
   })
+
+  app.post('/api/uploadpdf', (req, res, next) => {
+    console.log("PDF UPLOAD", req.body);
+    let pdfFile = req.files.file;
+    pdfFile.mv(`${__dirname}/public/pdf/${req.body.filename}.pdf`, function(err) {
+      if (err) {
+        return res.status(500).send(err);
+      }
+      let pdf = `public/pdf/${req.body.filename}.pdf`
+      database.insertFile(req.body.filename, req.body.petid, pdf)
+      res.json({file: pdf})
+    });
+  })
+
+  app.get('/api/pdf/:id', async (req, res, next) => {
+      let files = await database.getFiles(req.params.id)
+    //   let pdf = `public/pdf/${filename}.pdf`
+    console.log(files)
+      res.send(files)
+    });
+
+    app.get('/api/record/:id', async (req, res, next) => {
+        console.log("GET RECORD IS RUNNINZG")
+        let file = await database.getFile(req.params.id)
+      //   let pdf = `public/pdf/${filename}.pdf`
+      console.log(file)
+        res.send(file)
+      });
 
 
 app.listen(PORT, () => {

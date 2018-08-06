@@ -13,7 +13,10 @@ import Login from './components/Login'
 import Activity from './components/Activity';
 import NewPetForm from './components/NewPetForm';
 import FileUpload from './components/FileUpload';
+import PdfUpload from './components/PdfUpload';
 import Vets from './components/Vets'
+import Records from './components/Records'
+import Record from './components/Record'
 
 
 import './css/homepage.css';
@@ -163,7 +166,6 @@ class App extends Component {
   }
 
   logout() {
-    // cookies.remove('hh')
     this.setState({currentUser: ''})
   }
 
@@ -187,9 +189,12 @@ class App extends Component {
             <this.PropsRoute exact path="/" component={Homepage}/>
             <this.PropsRoute exact path="/signup" component={SignUp} setUser={this.setUser}/>
             <this.PropsRoute exact path="/login" component={Login} setUser={this.setUser}/>
+            <this.PropsRoute exact path="/records/:id" component={Homepage} />
+            <this.PropsRoute exact path="/record/:id" component={Homepage} />
             <this.PropsRoute exact path="/pets" component={Homepage} pets={this.state.pets} />
             <this.PropsRoute exact path="/pets/new" component={Homepage} addNewPetRender={this.addNewPetRender}/>
             <this.PropsRoute exact path='/pet/:id' component={Homepage} />
+            <this.PropsRoute exact path='/vets' component={Homepage}/>
             </Switch>
         </div>
         </Router>
@@ -203,7 +208,9 @@ class App extends Component {
           <NavBar currentUser={this.state.currentUser} logout={this.logout}/>
           <Switch>
           <this.PropsRoute exact path="/signup" component={SignUp} setUser={this.setUser}/>
-          <this.PropsRoute exact path="/files" component={FileUpload} setUser={this.setUser}/>
+          {/* <this.PropsRoute exact path="/files" component={FileUpload} setUser={this.setUser}/> */}
+          <this.PropsRoute exact path="/records/:id" component={Records} />
+          <this.PropsRoute exact path="/record/:id" component={Record} />
           <this.PropsRoute exact path="/login" component={Login} setUser={this.setUser}/>
           <this.PropsRoute exact path="/pets" component={Pets} pets={this.state.pets} currentUser={this.state.currentUser} />
           <this.PropsRoute exact path="/pets/new" component={NewPetForm} addNewPetRender={this.addNewPetRender} currentUser={this.state.currentUser} />

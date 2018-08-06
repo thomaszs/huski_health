@@ -99,6 +99,7 @@ export default class PetCard extends Component {
                 <div className="card-body-buttons">
                   <button  onClick={this.onClickTypeFeeding}   className="btn btn-warning" href="#">Feed Me</button>
                   <button  onClick={this.onClickTypeWeight}   className="btn btn-activity" href="#">Update Weight</button>
+                  <Link to={`/records/${this.props.pet.id}`} style={{float: "right"}}>Records</Link>
                 </div>
               </div>
             </div>
