@@ -1,10 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Line} from 'react-chartjs-2';
 import 'chartjs-plugin-annotation';
 import $ from 'jquery';
-// import { render } from 'react-dom';
-// import ReactDOM from 'react-dom';
-// import { VictoryChart, VictoryLabel, VictoryLine, VictoryAxis, VictoryTheme, VictoryStack, VictoryScatter, VictoryVoronoiContainer, VictoryGroup, VictoryTooltip } from 'victory';
 
 const petWeightRange = 
     {

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import React from "react";
+// import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 export default function ActivityItem(props) {
   return (
@@ -9,7 +9,7 @@ export default function ActivityItem(props) {
       </div>
       <div className="timeline__post">
         <div className="timeline__content">
-          {props.notes}<i class="fas fa-trash-alt" style={{float:"right"}}></i>
+          {props.notes}<i className="fas fa-trash-alt" style={{float:"right"}}></i>
         </div>
       </div>
     </div>

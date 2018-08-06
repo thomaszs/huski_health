@@ -9,12 +9,12 @@ import PetChart from "./PetChart.jsx";
 
 
 import StatusBar from "./StatusBar.jsx";
-import NewPetForm from "./NewPetForm.jsx";
+// import NewPetForm from "./NewPetForm.jsx";
 
-import axios from 'axios'
-var map;
-var service;
-var infowindow;
+// import axios from 'axios'
+// var map;
+// var service;
+// var infowindow;
 
 
 class Dashboard extends Component {

@@ -58,7 +58,7 @@ export default class StatusBar extends Component {
     
     
   return (
-    <fragment className="col-lg-3">
+    <div className="col-lg-3">
     <div className="row">
       <div className="col-sm-3 col-lg-12">
         <div className="chart-wrapper">
@@ -113,7 +113,7 @@ export default class StatusBar extends Component {
       </div>
     </div>
     </div>
-    </fragment>
+    </div>
     
     );
   }

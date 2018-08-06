@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import CheckBox from './CheckBox';
 import SingleInput from './SingleInput';
 import $ from 'jquery';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import moment from 'moment';
+import { Link } from "react-router-dom";
+// import moment from 'moment';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
-import '../css/daypicker.css';
-import MomentLocaleUtils, {
-  formatDate,
-  parseDate,
-} from 'react-day-picker/moment';
+// import '../css/daypicker.css';
+// import MomentLocaleUtils, {
+//   formatDate,
+//   parseDate,
+// } from 'react-day-picker/moment';
 import swal from 'sweetalert'
 
-const dogBreed = require('what-dog');
+// const dogBreed = require('what-dog');
 
 class NewPetForm extends Component {
   constructor(props) {
@@ -140,7 +140,7 @@ class NewPetForm extends Component {
   }
 
   render() {
-    const { birthday } = this.state;
+    // const { birthday } = this.state;
     return (
       <div>
         <div className="container">

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import $ from "jquery";
+// import $ from "jquery";
 import axios from 'axios';
 
 export default class FileUpload extends Component {
@@ -41,7 +41,7 @@ handleUploadImage(ev) {
            </div>
            <button className="btn btn-success" type>Upload</button>
            <div>
-           <img className="card-img-top responsive" style={{ width: "100%" }} src={this.state.imageURL}/>
+           <img className="card-img-top responsive" style={{ width: "100%" }} src={this.state.imageURL} alt="uploaded file"/>
          </div>
          </form>
        </div>

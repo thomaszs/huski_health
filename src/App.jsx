@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import axios from 'axios'
-import { BrowserRouter as Router, Route, Link, Switch , Redirect} from "react-router-dom";
+// import axios from 'axios'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Cookies from 'universal-cookie';
 
 import Dashboard from './components/Dashboard';
 import Pets from './components/Pets';
 import NavBar from './components/NavBar';
-import PetProfile from './components/PetProfile';
+// import PetProfile from './components/PetProfile';
 import Homepage from './components/Homepage';
 import SignUp from './components/SignUp'
 import Login from './components/Login'
-import Activity from './components/Activity';
+// import Activity from './components/Activity';
 import NewPetForm from './components/NewPetForm';
 import FileUpload from './components/FileUpload';
 import Vets from './components/Vets'

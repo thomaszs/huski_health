@@ -1,7 +1,7 @@
 import React, {Fragment, Component} from 'react';
 import PetCard from './PetCard';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import getLatestPetWeight from '../App'
+// import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+// import getLatestPetWeight from '../App'
 import axios from 'axios'
 
 export default class Pets extends Component {
