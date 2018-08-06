@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import PetProfile from './PetProfile'
-import Dashboard from './Dashboard'
+import { Link } from "react-router-dom";
+// import PetProfile from './PetProfile'
+// import Dashboard from './Dashboard'
 import Event from './Activity';
-import $ from 'jquery'; 
+// import $ from 'jquery'; 
 import axios from 'axios'
  
 export default class PetCard extends Component {
@@ -99,6 +99,7 @@ export default class PetCard extends Component {
                 <div className="card-body-buttons">
                   <button  onClick={this.onClickTypeFeeding}   className="btn btn-warning" href="#">Feed Me</button>
                   <button  onClick={this.onClickTypeWeight}   className="btn btn-activity" href="#">Update Weight</button>
+                  <Link to={`/records/${this.props.pet.id}`} style={{float: "right"}}>Records</Link>
                 </div>
               </div>
             </div>

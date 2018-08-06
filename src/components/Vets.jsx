@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
+import SimpleMap from "./Map.jsx";
+
+
 
 class Vets extends Component {
   constructor(props) {
     super(props);
-    this.getVetsId = this.getVetsId.bind(this);
     this.state = {
       vets: []
     };
+    this.getVetsId = this.getVetsId.bind(this);
   }
 
   componentDidMount() {
@@ -36,30 +39,81 @@ class Vets extends Component {
       service.nearbySearch(request, (results, status) => {
         var request2 = {
           placeId: results[0].place_id,
-          fields: ["name", "rating", "formatted_phone_number", "geometry"]
+          fields: ["name", "rating", "formatted_phone_number", "geometry", "formatted_address"]
         };
 
         const service2 = new google.maps.places.PlacesService(map);
         service2.getDetails(request2, (results2, status) => {
           this.setState({ vets: results2 });
           console.log("Result of Vets2 from Google Places Api:", results2);
-          console.log("Coordinates1", this.state.vets.geometry.location.lat() )
-          console.log("Coordinates1", this.state.vets.geometry.location.lng() )
+          console.log("Coordinates1", this.state.vets.geometry.location.lat())
+          console.log("Coordinates1", this.state.vets.geometry.location.lng())
           console.log("Coordinates2", this.state.vets.geometry)
         });
       });
     }
   }
-  
+
+
   render() {
     return (
       <div>
-        <h1> Nearby Vets. </h1>
-        <p>Name: {this.state.vets.name} </p>
-        <a href="tel:+1(778)995-2295"> {this.state.vets.formatted_phone_number} </a>
-        <p>Rating: {this.state.vets.rating} </p>
-        <div ref="mapEl" />
-        <img src="https://maps.googleapis.com/maps/api/staticmap?center=49.2812,-123.114843&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:A%7C49.276331,-123.1143591&key=AIzaSyBzUa58duivm90HMoCzjaj02ow0krsvkn8"/>
+        <h1> Nearby Vets </h1>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-sm-4">
+              <div className="chart-wrapper">
+                <div className="chart-title">
+                  <h2>{this.state.vets.name} </h2>
+                </div>
+                <div className="chart-stage">
+                  <div className="container-profile">
+                    <div className="container-vets">
+                      <p className="vets-label"> Phone Number: <a href="tel:+1(778)995-2295"> {this.state.vets.formatted_phone_number} </a></p>
+                      <p className="vets-label">Rating: <a>{this.state.vets.rating} </a></p>
+                      <p className="vets-label">Address:</p>
+                      <p> {this.state.vets.formatted_address} </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="chart-wrapper">
+                <div className="chart-title">
+                  <h2>Animal Medical Clinic </h2>
+                </div>
+                <div className="chart-stage">
+                  <div className="container-profile">
+                    <div className="container-vets">
+                      <p className="vets-label"> Phone Number: <a href="tel:+1(778)995-2295"> (604)628-9699 </a></p>
+                      <p className="vets-label">Rating: <a> 4.3 </a></p>
+                      <p className="vets-label">Address:</p>
+                      <p> 1338 W Georgia St, Vancouver, BC V6E 4S2 </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="chart-wrapper">
+                <div className="chart-title">
+                  <h2>Urban Animal Hospital </h2>
+                </div>
+                <div className="chart-stage">
+                  <div className="container-profile">
+                    <div className="container-vets">
+                      <p className="vets-label"> Phone Number: <a href="tel:+1(778)995-2295"> (604)684-3632 </a></p>
+                      <p className="vets-label">Rating: <a> 4.2 </a></p>
+                      <p className="vets-label">Address:</p>
+                      <p> 1032 Davie St, Vancouver, BC V6E 1M3 </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div ref="mapEl" />
+            <div className="col-sm-8">
+              <SimpleMap />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

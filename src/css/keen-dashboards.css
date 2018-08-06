@@ -2,6 +2,7 @@ div.card-body-buttons {
   display: flex;
   flex-direction: row; 
   justify-content: space-evenly;
+  margin-bottom: 10px;
 }
 
 .keen-dashboard {
@@ -102,7 +103,7 @@ div.card-body-buttons {
 
 .responsive {
   width:230px;
-  height:330px;
+  height:430px;
 }
 
 .container-profile {
@@ -117,8 +118,31 @@ div.card-body-buttons {
   font-size: large;
 }
 
+.container-vets {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: medium;
+  flex-direction: column;
+}
+
 .container-row p {
   flex: 1;
+}
+
+.container-vets p {
+  flex: 1;
+  align-self: flex-start;
+}
+
+.vets-label {
+  color: #FF9400;
+}
+
+@media screen and (max-width: 767) {
+  .container-row {
+    font-size: medium;
+  }
 }
 
 @media screen and (max-width: 1331) and (min-width: 1030) {

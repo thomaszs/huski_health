@@ -55,8 +55,8 @@ export default class StatusBar extends Component {
 
 
   render() {
-    const lastActive = (this.props.activities[0] && moment(this.props.activities[0].created_at).fromNow()) || "No Activites"
-    const activityNotes = (this.props.activities[0] && this.props.activities[0].notes) || ""
+    const lastActive = (this.props.active[0] && moment(this.props.active[0].created_at).fromNow()) || "No Activites"
+    const activityNotes = (this.props.active[0] && this.props.active[0].notes) || ""
     const date = this.state.data.created_at
     const dateFromNow = moment(date).fromNow();
     const notes = this.state.data.notes
@@ -64,7 +64,7 @@ export default class StatusBar extends Component {
     
     
   return (
-    <fragment className="col-lg-3">
+    <div className="col-lg-3">
     <div className="row">
       <div className="col-sm-3 col-lg-12">
         <div className="chart-wrapper">
@@ -118,7 +118,7 @@ export default class StatusBar extends Component {
       </div>
     </div>
     </div>
-    </fragment>
+    </div>
     
     );
   }

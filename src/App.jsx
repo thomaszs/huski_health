@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import axios from 'axios'
-import { BrowserRouter as Router, Route, Link, Switch , Redirect} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Cookies from 'universal-cookie';
 
 import Dashboard from './components/Dashboard';
 import Pets from './components/Pets';
 import NavBar from './components/NavBar';
-import PetProfile from './components/PetProfile';
+// import PetProfile from './components/PetProfile';
 import Homepage from './components/Homepage';
 import SignUp from './components/SignUp'
 import Login from './components/Login'
 import Activity from './components/Activity';
 import NewPetForm from './components/NewPetForm';
 import FileUpload from './components/FileUpload';
+import PdfUpload from './components/PdfUpload';
 import Vets from './components/Vets'
+import Records from './components/Records'
+import Record from './components/Record'
 
 
 import './css/homepage.css';
@@ -33,11 +35,11 @@ class App extends Component {
       currentUser: {},
       pets: [
         {
-          id: "1",
-          name: "Leonard",
-          birthday: "April 8, 2012",
+          id: "",
+          name: "",
+          birthday: "",
           age: 6,
-          weight: "22",
+          weight: "",
           breed: "Egyptian Mau",
           owner: "Lexi",
           notes: "These are some notes about my fat cat named Leonard."
@@ -164,7 +166,6 @@ class App extends Component {
   }
 
   logout() {
-    // cookies.remove('hh')
     this.setState({currentUser: ''})
   }
 
@@ -188,9 +189,12 @@ class App extends Component {
             <this.PropsRoute exact path="/" component={Homepage}/>
             <this.PropsRoute exact path="/signup" component={SignUp} setUser={this.setUser}/>
             <this.PropsRoute exact path="/login" component={Login} setUser={this.setUser}/>
+            <this.PropsRoute exact path="/records/:id" component={Homepage} />
+            <this.PropsRoute exact path="/record/:id" component={Homepage} />
             <this.PropsRoute exact path="/pets" component={Homepage} pets={this.state.pets} />
             <this.PropsRoute exact path="/pets/new" component={Homepage} addNewPetRender={this.addNewPetRender}/>
             <this.PropsRoute exact path='/pet/:id' component={Homepage} />
+            <this.PropsRoute exact path='/vets' component={Homepage}/>
             </Switch>
         </div>
         </Router>
@@ -204,13 +208,15 @@ class App extends Component {
           <NavBar currentUser={this.state.currentUser} logout={this.logout}/>
           <Switch>
           <this.PropsRoute exact path="/signup" component={SignUp} setUser={this.setUser}/>
-          <this.PropsRoute exact path="/files" component={FileUpload} setUser={this.setUser}/>
+          {/* <this.PropsRoute exact path="/files" component={FileUpload} setUser={this.setUser}/> */}
+          <this.PropsRoute exact path="/records/:id" component={Records} />
+          <this.PropsRoute exact path="/record/:id" component={Record} />
           <this.PropsRoute exact path="/login" component={Login} setUser={this.setUser}/>
           <this.PropsRoute exact path="/pets" component={Pets} pets={this.state.pets} currentUser={this.state.currentUser} />
           <this.PropsRoute exact path="/pets/new" component={NewPetForm} addNewPetRender={this.addNewPetRender} currentUser={this.state.currentUser} />
           <this.PropsRoute exact path="/" component={Pets} pets={this.state.pets}  />
           <this.PropsRoute exact path='/pet/:id' component={Dashboard} getLatestPetWeight={this.getLatestPetWeight} updatePet={this.updatePet} editPetInfo={this.editPetInfo}/>
-          {/* <this.PropsRoute exact path='/pet/:id/activity' component={Activity} /> */}
+          <this.PropsRoute exact path='/pet/:id/activity' component={Activity} />
           <this.PropsRoute exact path='/vets' component={Vets}/>
           </Switch>
       </div>

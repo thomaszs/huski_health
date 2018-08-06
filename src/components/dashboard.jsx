@@ -5,6 +5,7 @@ import NavBar from "./NavBar.jsx";
 import PetProfile from "./PetProfile.jsx";
 import Timeline from "./Timeline.jsx";
 import PetChart from "./PetChart.jsx";
+<<<<<<< HEAD
 
 // import getVets from './Vets.jsx'
 
@@ -20,6 +21,10 @@ var map;
 var service;
 var infowindow;
 
+=======
+
+import StatusBar from "./StatusBar.jsx";
+>>>>>>> 1792d16c586d29bc170cc2a0680dea85c2fb9589
 
 class Dashboard extends Component {
   constructor(props) {
@@ -38,7 +43,7 @@ class Dashboard extends Component {
         id: this.props.match.params.id
       },
       success: result => {
-        console.log("First, grab pet info.");
+        //call to get pet information
         this.setState({ pet: result[0] });
         $.ajax("http://localhost:8080/api/pets/activities", {
           method: "GET",
@@ -47,7 +52,6 @@ class Dashboard extends Component {
           },
           success: result => {
             this.setState({ activities: result, loading: false });
-            console.log("ADDING ACTIVITIES?", this.state.activities);
           },
           error: function (err) {
             console.log("Error, can not get pet activities upon intial load.");
@@ -55,12 +59,10 @@ class Dashboard extends Component {
         });
       },
       error: function (err) {
-        console.log("It doesnt work");
       }
     })
   }
   componentDidUpdate() {
-    // this.getVets();
   }
 
 
@@ -91,7 +93,6 @@ class Dashboard extends Component {
     }
     return (
       <div>
-        <NavBar />
         <div className="container-fluid">
           <div className="row">
             <div className="col-sm-3">
@@ -118,6 +119,7 @@ class Dashboard extends Component {
             <StatusBar
                 pet={this.state.pet}
                 activities={this.state.weights}
+                active={this.state.activities}
                 getLatestPetWeight={this.props.getLatestPetWeight}
                 weight={this.props.weight} />
           </div>

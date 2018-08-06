@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import mainLogo from '../huski-health.png'
-import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
@@ -33,8 +33,9 @@ export default class NavBar extends Component {
       return <Link to={`/signup`}><button 
       className="btn btn-sm btn-warning" 
       style={{ float: "right", marginTop: "10px" }}
-      >Sign Up</button></Link>
-    };
+      >
+      Sign Up</button></Link>
+    }
   }
 
   render() {
