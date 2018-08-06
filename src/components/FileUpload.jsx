@@ -44,8 +44,8 @@ handleUploadImage(ev) {
            </div>
            <button className="btn btn-success" type>Upload</button>
          </form>
-         <div>
-           <img className="card-img-top responsive" style={{ width: "100%" }} src={this.state.imageURL}/>
+           <div>
+           <img className="card-img-top responsive" style={{ width: "100%" }} src={this.state.imageURL} alt="uploaded file"/>
          </div>
        </div>
      )

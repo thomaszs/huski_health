@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { BrowserRouter as Router, Route, Link, Switch , Redirect} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Cookies from 'universal-cookie';
 
 import Dashboard from './components/Dashboard';
 import Pets from './components/Pets';
 import NavBar from './components/NavBar';
-import PetProfile from './components/PetProfile';
+// import PetProfile from './components/PetProfile';
 import Homepage from './components/Homepage';
 import SignUp from './components/SignUp'
 import Login from './components/Login'
@@ -35,11 +35,11 @@ class App extends Component {
       currentUser: {},
       pets: [
         {
-          id: "1",
-          name: "Leonard",
-          birthday: "April 8, 2012",
+          id: "",
+          name: "",
+          birthday: "",
           age: 6,
-          weight: "22",
+          weight: "",
           breed: "Egyptian Mau",
           owner: "Lexi",
           notes: "These are some notes about my fat cat named Leonard."
@@ -70,6 +70,8 @@ class App extends Component {
   });
 }
 
+
+
     setUser(cookieId) {
      $.ajax(`http://localhost:8080/api/user/${cookieId}`, {
       method: 'GET',
@@ -83,7 +85,10 @@ class App extends Component {
         }
     });
   }
-  
+
+  componentDidMount() {
+  this.getLatestPetWeight();
+  }
 
   renderMergedProps(component, ...rest) {
     const finalProps = Object.assign({}, ...rest);
@@ -128,6 +133,36 @@ class App extends Component {
         console.log("Cannot reset state of pets after edit")
         }
     })
+  }
+
+  getPetWeight(newPetWeight, petid) {
+    let pets = this.state.pets;
+    
+    pets.forEach(function(pet) {
+      if (pet.id === petid) {
+        return pet.weight = newPetWeight
+      }
+    })
+    this.setState({pets: pets})
+    console.log("PETS", pets)
+  }
+
+  getLatestPetWeight(){
+    let pet = this.state.pets[0];
+    console.log("PETS", this.state.pets)
+    // pets.forEach(function(pet) { 
+    $.get(`http://localhost:8080/api/pets/${ pet.id }/latestweights`)
+    .then(data => {
+      if (data[0] === undefined) {
+        return
+      }
+      return pet.weight = data[0].notes;
+    })
+    .catch(err => {
+      // debugger;
+    });
+    
+    this.setState({pets: pet})
   }
 
   logout() {
@@ -177,11 +212,11 @@ class App extends Component {
           <this.PropsRoute exact path="/records/:id" component={Records} />
           <this.PropsRoute exact path="/record/:id" component={Record} />
           <this.PropsRoute exact path="/login" component={Login} setUser={this.setUser}/>
-          <this.PropsRoute exact path="/pets" component={Pets} pets={this.state.pets}  />
+          <this.PropsRoute exact path="/pets" component={Pets} pets={this.state.pets} currentUser={this.state.currentUser} />
           <this.PropsRoute exact path="/pets/new" component={NewPetForm} addNewPetRender={this.addNewPetRender} currentUser={this.state.currentUser} />
           <this.PropsRoute exact path="/" component={Pets} pets={this.state.pets}  />
-          <this.PropsRoute exact path='/pet/:id' component={Dashboard} updatePet={this.updatePet} editPetInfo={this.editPetInfo}/>
-          {/* <this.PropsRoute exact path='/pet/:id/activity' component={Activity} /> */}
+          <this.PropsRoute exact path='/pet/:id' component={Dashboard} getLatestPetWeight={this.getLatestPetWeight} updatePet={this.updatePet} editPetInfo={this.editPetInfo}/>
+          <this.PropsRoute exact path='/pet/:id/activity' component={Activity} />
           <this.PropsRoute exact path='/vets' component={Vets}/>
           </Switch>
       </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Cookies from 'universal-cookie';
 
 export default class SignUp extends Component {
@@ -60,7 +60,7 @@ export default class SignUp extends Component {
             console.log(cookies.get('hh'));
             let userId = cookies.get('hh')
             this.props.setUser(userId);
-            {this.props.history.push('/pets')}
+            this.props.history.push('/pets')
               }
           },
           error: function (err) {
