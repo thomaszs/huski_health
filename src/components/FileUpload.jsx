@@ -31,20 +31,6 @@ handleUploadImage(ev) {
       });
   }
 
-//   handleUploadPdf(ev) {
-//     ev.preventDefault();
-//     const data = new FormData();
-//     data.append('file', this.uploadInput.files[0]);
-//     data.append('filename', this.fileName.value);
-//     axios.post('http://localhost:8080/api/uploadpdf', data)
-//       .then((response) => {
-//           console.log(response.data)
-//         this.setImage(`http://localhost:8080/${response.data.file}`)
-//       })
-//       .catch(function (error) {
-//         console.log(error);
-//       });
-//   }
    
    render() {
      return(
@@ -53,7 +39,6 @@ handleUploadImage(ev) {
            <div className="form-group">
              <input className="form-control"  ref={(ref) => { this.uploadInput = ref; }} type="file" />
            </div>
- 
            <div className="form-group">
              <input className="form-control" ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Optional name for the file" />
            </div>
