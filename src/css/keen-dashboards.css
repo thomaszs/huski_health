@@ -118,8 +118,25 @@ div.card-body-buttons {
   font-size: large;
 }
 
+.container-vets {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: medium;
+  flex-direction: column;
+}
+
 .container-row p {
   flex: 1;
+}
+
+.container-vets p {
+  flex: 1;
+  align-self: flex-start;
+}
+
+.vets-label {
+  color: #FF9400;
 }
 
 @media screen and (max-width: 767) {

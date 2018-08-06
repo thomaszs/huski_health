@@ -78,7 +78,7 @@ class PetProfile extends Component {
               <div className="chart-title">
                 <div id="profile">
                   <h1>{this.state.petName}</h1>
-                  <img className="pet-img" style={{ width: "100%" }} src={this.state.pet.img} />
+                  <img className="pet-img" style={{ width: "100%" }} src={this.state.pet.img} alt="pet profile" />
                   {/*Consider creating a EditPetProfile.jsx component. Will need to make ajax post request to the server to save new pet information*/}
                   <div className="chart-notes">
                     <div className="form-group">

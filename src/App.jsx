@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import axios from 'axios'
-import { BrowserRouter as Router, Route, Link, Switch , Redirect} from "react-router-dom";
+// import axios from 'axios'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Cookies from 'universal-cookie';
 
 import Dashboard from './components/Dashboard';
@@ -210,7 +210,7 @@ class App extends Component {
           <this.PropsRoute exact path="/pets/new" component={NewPetForm} addNewPetRender={this.addNewPetRender} currentUser={this.state.currentUser} />
           <this.PropsRoute exact path="/" component={Pets} pets={this.state.pets}  />
           <this.PropsRoute exact path='/pet/:id' component={Dashboard} getLatestPetWeight={this.getLatestPetWeight} updatePet={this.updatePet} editPetInfo={this.editPetInfo}/>
-          {/* <this.PropsRoute exact path='/pet/:id/activity' component={Activity} /> */}
+          <this.PropsRoute exact path='/pet/:id/activity' component={Activity} />
           <this.PropsRoute exact path='/vets' component={Vets}/>
           </Switch>
       </div>

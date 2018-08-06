@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import PetProfile from './PetProfile'
-import Dashboard from './Dashboard'
+import { Link } from "react-router-dom";
+// import PetProfile from './PetProfile'
+// import Dashboard from './Dashboard'
 import Event from './Activity';
-import $ from 'jquery'; 
+// import $ from 'jquery'; 
 import axios from 'axios'
  
 export default class PetCard extends Component {
