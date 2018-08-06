@@ -5,11 +5,12 @@ import NavBar from "./NavBar.jsx";
 import PetProfile from "./PetProfile.jsx";
 import Timeline from "./Timeline.jsx";
 import PetChart from "./PetChart.jsx";
-// import getVets from './Vets.jsx'
 
+// import getVets from './Vets.jsx'
 
 import StatusBar from "./StatusBar.jsx";
 import ChatBot from 'react-simple-chatbot';
+import Example from './ChatBot.jsx'
 
 // import NewPetForm from "./NewPetForm.jsx";
 import NewPetForm from "./NewPetForm.jsx";
@@ -28,9 +29,8 @@ class Dashboard extends Component {
       weights: [{}]
     };
     this.onNewActivity = this.onNewActivity.bind(this);
-
-  }
-
+  };
+  
   componentDidMount() {
     $.ajax("http://localhost:8080/api/pet/", {
       method: "POST",
@@ -122,15 +122,7 @@ class Dashboard extends Component {
                 weight={this.props.weight} />
           </div>
         </div>
-        <ChatBot
-  steps={[
-    {
-      id: 'hello-world',
-      message: 'Hello World!',
-      end: true,
-    },
-  ]}
-/>
+        <Example />
       </div>
     );
   }
