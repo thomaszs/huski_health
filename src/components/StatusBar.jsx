@@ -49,7 +49,7 @@ export default class StatusBar extends Component {
 
 
   render() {
-    const lastActive = (this.props.activities[0] && moment(this.props.activities[0].created_at).fromNow()) || "No Activites"
+    const lastActive = (this.props.active[0] && moment(this.props.active[0].created_at).fromNow()) || "No Activites"
     const activityNotes = (this.props.activities[0] && this.props.activities[0].notes) || ""
     const date = this.state.data.created_at
     const dateFromNow = moment(date).fromNow();

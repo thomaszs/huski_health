@@ -7,11 +7,11 @@ import Cookies from 'universal-cookie';
 import Dashboard from './components/Dashboard';
 import Pets from './components/Pets';
 import NavBar from './components/NavBar';
-// import PetProfile from './components/PetProfile';
+import PetProfile from './components/PetProfile';
 import Homepage from './components/Homepage';
 import SignUp from './components/SignUp'
 import Login from './components/Login'
-// import Activity from './components/Activity';
+import Activity from './components/Activity';
 import NewPetForm from './components/NewPetForm';
 import FileUpload from './components/FileUpload';
 import Vets from './components/Vets'
@@ -22,7 +22,6 @@ import './css/keen-static.css';
 import './css/timeline.css';
 import './css/keen-dashboards.css';
 import './css/daypicker.css';
-import './css/vets.css';
 const cookies = new Cookies();
 
 
@@ -211,7 +210,7 @@ class App extends Component {
           <this.PropsRoute exact path="/pets/new" component={NewPetForm} addNewPetRender={this.addNewPetRender} currentUser={this.state.currentUser} />
           <this.PropsRoute exact path="/" component={Pets} pets={this.state.pets}  />
           <this.PropsRoute exact path='/pet/:id' component={Dashboard} getLatestPetWeight={this.getLatestPetWeight} updatePet={this.updatePet} editPetInfo={this.editPetInfo}/>
-          {/* <this.PropsRoute exact path='/pet/:id/activity' component={Activity} /> */}
+          <this.PropsRoute exact path='/pet/:id/activity' component={Activity} />
           <this.PropsRoute exact path='/vets' component={Vets}/>
           </Switch>
       </div>

@@ -115,6 +115,7 @@ class Dashboard extends Component {
             <StatusBar
                 pet={this.state.pet}
                 activities={this.state.weights}
+                active={this.state.activities}
                 getLatestPetWeight={this.props.getLatestPetWeight}
                 weight={this.props.weight} />
           </div>
