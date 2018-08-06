@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import moment from 'moment';
 
+const dogFacts = ['Grapes and raisins even in small amounts can cause kidney failure in dogs.', 'According to legend, the dog rescued on Noah\'s Ark was the Afghan Hound.', 'At age one, dogs have the same level of physical development that humans have at age 15.', 'Dogs have two times the amount of muscles in their ears than humans.', 'A dogs\' first sense to develop is touch.']
+
+function randomItem(items)
+{
+return items[Math.floor(Math.random()*items.length)];
+}
 
 export default class StatusBar extends Component {
   constructor(props){
@@ -104,8 +110,7 @@ export default class StatusBar extends Component {
           <h2>Did you know...</h2>
         </div>
         <div className="chart-stage" id="chart-03">
-          <p>Frequencies of 20 to 50 Hertz are helpful in speeding the healing process of bone injuries. Cat's purr vibrations
-            which range from 20 – 140 Hertz, can help heal soft tissue injuries to ligaments, tendons and muscles.
+          <p>{randomItem(dogFacts)}
       </p>
         </div>
         <div className="chart-notes">
