@@ -5,17 +5,8 @@ import NavBar from "./NavBar.jsx";
 import PetProfile from "./PetProfile.jsx";
 import Timeline from "./Timeline.jsx";
 import PetChart from "./PetChart.jsx";
-// import getVets from './Vets.jsx'
-
 
 import StatusBar from "./StatusBar.jsx";
-// import NewPetForm from "./NewPetForm.jsx";
-
-// import axios from 'axios'
-// var map;
-// var service;
-// var infowindow;
-
 
 class Dashboard extends Component {
   constructor(props) {
@@ -35,7 +26,7 @@ class Dashboard extends Component {
         id: this.props.match.params.id
       },
       success: result => {
-        console.log("First, grab pet info.");
+        //call to get pet information
         this.setState({ pet: result[0] });
         $.ajax("http://localhost:8080/api/pets/activities", {
           method: "GET",
@@ -44,7 +35,6 @@ class Dashboard extends Component {
           },
           success: result => {
             this.setState({ activities: result, loading: false });
-            console.log("ADDING ACTIVITIES?", this.state.activities);
           },
           error: function (err) {
             console.log("Error, can not get pet activities upon intial load.");
@@ -52,12 +42,10 @@ class Dashboard extends Component {
         });
       },
       error: function (err) {
-        console.log("It doesnt work");
       }
     })
   }
   componentDidUpdate() {
-    // this.getVets();
   }
 
 
@@ -88,7 +76,6 @@ class Dashboard extends Component {
     }
     return (
       <div>
-        <NavBar />
         <div className="container-fluid">
           <div className="row">
             <div className="col-sm-3">

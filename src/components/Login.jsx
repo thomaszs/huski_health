@@ -40,7 +40,6 @@ export default class SignUp extends Component {
                     if (result === 'no user found') {
                         alert("No user found")
                      } else {
-                    console.log("Yes, it worked");
                     let user = result[0];
                     cookies.set('hh', user.id, { path: '/' });
                     let userId = cookies.get('hh')
