@@ -58,7 +58,7 @@ class Vets extends Component {
   render() {
     return (
       <div>
-        <h1> Nearby Vets. </h1>
+        <h1> Nearby Vets </h1>
         <div className="container-fluid">
           <div className="row">
             <div className="col-sm-4">
@@ -73,6 +73,36 @@ class Vets extends Component {
                       <p className="vets-label">Rating: <a>{this.state.vets.rating} </a></p>
                       <p className="vets-label">Address:</p>
                       <p> {this.state.vets.formatted_address} </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="chart-wrapper">
+                <div className="chart-title">
+                  <h2>Animal Medical Clinic </h2>
+                </div>
+                <div className="chart-stage">
+                  <div className="container-profile">
+                    <div className="container-vets">
+                      <p className="vets-label"> Phone Number: <a href="tel:+1(778)995-2295"> (604)628-9699 </a></p>
+                      <p className="vets-label">Rating: <a> 4.3 </a></p>
+                      <p className="vets-label">Address:</p>
+                      <p> 1338 W Georgia St, Vancouver, BC V6E 4S2 </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="chart-wrapper">
+                <div className="chart-title">
+                  <h2>Urban Animal Hospital </h2>
+                </div>
+                <div className="chart-stage">
+                  <div className="container-profile">
+                    <div className="container-vets">
+                      <p className="vets-label"> Phone Number: <a href="tel:+1(778)995-2295"> (604)684-3632 </a></p>
+                      <p className="vets-label">Rating: <a> 4.2 </a></p>
+                      <p className="vets-label">Address:</p>
+                      <p> 1032 Davie St, Vancouver, BC V6E 1M3 </p>
                     </div>
                   </div>
                 </div>
