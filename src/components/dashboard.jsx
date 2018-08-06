@@ -5,7 +5,6 @@ import NavBar from "./NavBar.jsx";
 import PetProfile from "./PetProfile.jsx";
 import Timeline from "./Timeline.jsx";
 import PetChart from "./PetChart.jsx";
-<<<<<<< HEAD
 
 // import getVets from './Vets.jsx'
 
@@ -20,11 +19,6 @@ import axios from 'axios'
 var map;
 var service;
 var infowindow;
-
-=======
-
-import StatusBar from "./StatusBar.jsx";
->>>>>>> 1792d16c586d29bc170cc2a0680dea85c2fb9589
 
 class Dashboard extends Component {
   constructor(props) {
