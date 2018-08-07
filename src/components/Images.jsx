@@ -13,11 +13,8 @@ constructor(props) {
 }
 
     retrieveImages() {
-        axios.get(`http://localhost:8080/api/images/${this.props.match.params.id}`, {
-        params: {
-            id: this.props.match.params.id
-        }
-    }).then((response) => {
+        axios.get(`http://localhost:8080/api/images/${this.props.match.params.id}`)
+    .then((response) => {
        console.log("Yes, it worked RECORDS");
        console.log(response.data)
        this.setState({images: response.data})
