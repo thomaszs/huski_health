@@ -42,7 +42,7 @@ export default class Pets extends Component {
         return (
             <Fragment>
                 <div className="row">
-                    <h1><a className="btn-new-pet" href="http://localhost:3000/pets/new"><Demo />Add New Pet</a></h1>
+                    <h1><a className="btn-new-pet" href="http://localhost:3000/pets/new"><Demo /><small>Add New Pet</small></a></h1>
                 </div>
                 <div className="row-pets">
                     {this.state.pets.map(pet => (

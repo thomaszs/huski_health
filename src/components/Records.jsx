@@ -39,9 +39,10 @@ export default class Records extends Component {
                 return (
                         <div className="col-sm-3">
                             <div className="chart-wrapper">
-                                <div className="chart-stage" style={{display:"flex"}}>
-                                    <Link to={`/record/${file.id}`}><button className="btn btn-warning"style={{margin:"12px"}}>View</button></Link>
-                                    <h2 style={{padding:"5px"}}>{file.name}</h2>
+                                <div className="chart-stage" style={{display:"flex", flexDirection:"column", justifyContent:"center"}}>
+                                <div><h1><i class="far fa-file-pdf" style={{fontSize:"3em"}}></i></h1></div>
+                                    <div><h2 style={{padding:"5px"}}>{file.name}</h2></div>
+                                    <div><Link to={`/record/${file.id}`}><button className="btn btn-warning"style={{float:"right", margin:"5px"}}>View</button></Link></div>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +52,9 @@ export default class Records extends Component {
                 <div>
                     <PdfUpload retrieveFiles={this.retrieveFiles} petid={this.props.match.params.id} />
                     <div>
+                        <div className="container-row" style={{marginLeft:"40px", marginRight:"40px"}}>
                         {pdfs}
+                        </div>
                     </div>
                 </div>
             )

@@ -49,21 +49,21 @@ export default class PdfUpload extends Component {
       // <div>
       <div>
         <h1>Records</h1>
-      <div className="container">
-            <div className="chart-wrapper" style={{ marginTop: "20px", padding: "15px" }}>
-              <div className="chart-stage">
-                <form onSubmit={this.handleUploadPdf}>
-                  <div className="form-group">
-                    <input className="form-control" ref={(ref) => { this.uploadInput = ref; }} type="file" />
-                  </div>
-                  <div className="form-group">
-                    <input className="form-control" ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Optional name for the file" />
-                  </div>
-                  <button className="btn btn-success" type>Upload</button>
-                </form>
-              </div>
+        <div className="container">
+          <div className="chart-wrapper" style={{ marginTop: "20px", padding: "15px" }}>
+            <div className="chart-stage">
+              <form onSubmit={this.handleUploadPdf}>
+                <div className="form-group">
+                  <input className="form-control" ref={(ref) => { this.uploadInput = ref; }} type="file" />
+                </div>
+                <div className="form-group">
+                  <input className="form-control" ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Optional name for the file" />
+                </div>
+                <button className="btn btn-success" type>Upload</button>
+              </form>
             </div>
-      </div>
+          </div>
+        </div>
       </div>
       /* <Document
         file={this.state.pdf}
