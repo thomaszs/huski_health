@@ -10,23 +10,20 @@ export default class Records extends Component {
         this.state = { files: [] }
         this.retrieveFiles = this.retrieveFiles.bind(this);
     }
-
-
-    // componentWillMount() {
-    retrieveFiles() {
-        axios.get(`http://localhost:8080/api/pdf/${this.props.match.params.id}`, {
-            params: {
-                id: this.props.match.params.id
-            }
-        }).then((response) => {
-            console.log("Yes, it worked RECORDS");
-            console.log(response.data)
-            this.setState({ files: response.data })
-            console.log(this.state.files)
-        }).catch((error) => {
-            console.log(this.props.match.id)
-            console.log(error);
-        })
+            retrieveFiles() {
+    axios.get(`http://localhost:8080/api/pdf/${this.props.match.params.id}`, {
+        params: {
+            id: this.props.match.params.id
+        }
+    }).then((response) => {
+       console.log("Yes, it worked RECORDS");
+       console.log(response.data)
+       this.setState({files: response.data})
+       console.log(this.state.files)
+     }).catch((error) => {
+         console.log(this.props.match.id)
+        console.log(error);
+      })
     }
 
     componentDidMount() {
