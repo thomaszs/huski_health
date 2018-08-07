@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import PetCard from './PetCard';
 import axios from 'axios'
+import Cookies from 'universal-cookie';
 import FileUpload from './FileUpload';
 import { render } from 'react-dom'
 import {
@@ -26,9 +27,9 @@ export default class Pets extends Component {
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:8080/api/pets/${this.props.currentUser.id}`, {
-            params: { userId: this.props.currentUser }
-        })
+        const cookies = new Cookies();
+        let userId = cookies.get('hh')
+        axios.get(`http://localhost:8080/api/pets/${userId}`)
             .then(response => {
                 console.log(response);
                 this.setState({ pets: response.data })

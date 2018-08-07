@@ -9,7 +9,7 @@ export default class FileUpload extends Component {
       uploadStatus: false
     }
     this.handleUploadImage = this.handleUploadImage.bind(this);
-}
+  }
 
   handleUploadImage(ev) {
     ev.preventDefault();
@@ -19,7 +19,7 @@ export default class FileUpload extends Component {
     data.append('petid', this.props.petid);
     axios.post('http://localhost:8080/api/uploadimage', data)
       .then((response) => {
-          console.log(response.data)
+        console.log(response.data)
         this.props.retrieveImages()
       })
       .catch(function (error) {
@@ -27,19 +27,26 @@ export default class FileUpload extends Component {
       });
   }
 
-   render() {
-     return(
-       <div className="container chart-wrapper">
-         <form onSubmit={this.handleUploadImage}>
-           <div className="form-group">
-             <input className="form-control"  ref={(ref) => { this.uploadInput = ref; }} type="file" />
-           </div>
-           <div className="form-group">
-             <input className="form-control" ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Optional name for the file" />
-           </div>
-           <button className="btn btn-success" type>Upload</button>
-         </form>
-       </div>
-     )
-   }
+  render() {
+    return (
+      <div>
+        <h1>Images</h1>
+        <div className="container">
+          <div className="chart-wrapper" style={{ marginTop: "20px", padding: "15px" }}>
+            <div className="chart-stage">
+              <form onSubmit={this.handleUploadImage}>
+                <div className="form-group">
+                  <input className="form-control" ref={(ref) => { this.uploadInput = ref; }} type="file" />
+                </div>
+                <div className="form-group">
+                  <input className="form-control" ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Optional name for the file" />
+                </div>
+                <button className="btn btn-success" type>Upload</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
