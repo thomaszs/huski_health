@@ -2,6 +2,20 @@ import React, { Fragment, Component } from 'react';
 import PetCard from './PetCard';
 import axios from 'axios'
 import FileUpload from './FileUpload';
+import { render } from 'react-dom'
+import {
+    PlusButton,
+} from 'react-svg-buttons'
+
+const Demo = () => (
+    <div>
+        <PlusButton 
+          size={50}
+          thickness={2}
+          color="#FF9400"
+        />
+    </div>
+)
 
 export default class Pets extends Component {
     constructor(props) {
@@ -28,7 +42,7 @@ export default class Pets extends Component {
         return (
             <Fragment>
                 <div className="row">
-                    <h1><a className="btn-new-pet" href="http://localhost:3000/pets/new">Add New Pet<strong>+</strong></a></h1>
+                    <h1><a className="btn-new-pet" href="http://localhost:3000/pets/new"><Demo />Add New Pet</a></h1>
                 </div>
                 <div className="row-pets">
                     {this.state.pets.map(pet => (
