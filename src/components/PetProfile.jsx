@@ -38,9 +38,7 @@ class PetProfile extends Component {
       data: {
         id: this.props.pet.id,
         newPetName: this.state.petName,
-        newPetWeight: this.state.petWeight, 
         newPetNotes: this.state.petNotes,
-        // newPetBreed: this.state.pet.breed
       },
       success: (result) => {
         this.props.editPetInfo(result);
@@ -78,7 +76,7 @@ class PetProfile extends Component {
               <div className="chart-title">
                 <div id="profile">
                   <h1>{this.state.petName}</h1>
-                  <img className="pet-img" style={{ width: "100%" }} src={this.state.pet.img} />
+                  <img className="pet-img" style={{ width: "100%" }} src={this.state.pet.img} alt="pet profile" />
                   {/*Consider creating a EditPetProfile.jsx component. Will need to make ajax post request to the server to save new pet information*/}
                   <div className="chart-notes">
                     <div className="form-group">
@@ -130,7 +128,7 @@ class PetProfile extends Component {
                   <p>Notes: </p>
                   <p>{this.state.petNotes}</p>
                 </div>
-                <div className="container-row">
+                <div className="container-row" style={{marginTop: "20px", marginBottom: "10px"}}>
                     <button type="button" className="btn btn-warning" onClick={this.editPetProfile}>Edit Profile</button>
                 </div>
             </div>

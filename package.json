@@ -28,6 +28,8 @@
     "react-popupbox": "^2.0.8",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
+    "react-simple-chatbot": "^0.3.6",
+    "styled-components": "^3.4.0",
     "sweetalert": "^2.1.0",
     "universal-cookie": "^2.2.0",
     "universal-cookie-express": "^2.2.0",

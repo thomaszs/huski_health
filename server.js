@@ -20,6 +20,7 @@ app.use(function (req, res, next) {
 app.use(fileUpload())
 app.use('/public', express.static(__dirname + '/public'))
 
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -68,6 +69,23 @@ app.get('/api/pets/:id/weights', (req, res) => {
             // console.log('WEIGHTS >>>', weights);
             if (weights) {
                 return res.json(weights);
+            } else {
+                return res.json({
+                    error: 'No Weights found'
+                });
+            }
+
+        })
+        .catch(err => {
+            console.log('ERROR', err);
+        })
+})
+
+app.get('/api/pets/:id/latestweights', (req, res) => {
+    database.getLatestPetWeight(req.params.id).then((weight) => {
+            // console.log('WEIGHTS >>>', weight);
+            if (weight) {
+                return res.json(weight);
             } else {
                 return res.json({
                     error: 'No Weights found'

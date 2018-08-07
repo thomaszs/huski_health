@@ -1,29 +1,40 @@
-import React from 'react';
+import React, { Fragment, Component } from 'react';
 import PetCard from './PetCard';
-import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
+import axios from 'axios'
 
+export default class Pets extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            pets: []
+        }
+    }
 
-export default function Pets(props) {
+    componentDidMount() {
+        axios.get(`http://localhost:8080/api/pets/${this.props.currentUser.id}`, {
+            params: { userId: this.props.currentUser }
+        })
+            .then(response => {
+                console.log(response);
+                this.setState({ pets: response.data })
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
 
-    const petCards = props.pets.map((pet) => {
+    render() {
         return (
-            <PetCard pet={pet} key={pet.id}  />
+            <Fragment>
+                <div className="row">
+                    <h1><a className="btn-new-pet" href="http://localhost:3000/pets/new">Add New Pet<strong>+</strong></a></h1>
+                </div>
+                <div className="row-pets">
+                    {this.state.pets.map(pet => (
+                        <PetCard pet={pet} key={pet.id} />
+                    ))}
+                </div>
+            </Fragment>
         )
-    });
-
-
-    return (
-        <fragment>
-            <div className="row">
-                <h1><a className="btn-new-pet" href="http://localhost:3000/pets/new">Add New Pet<strong>+</strong></a></h1>
-            </div>
-            <div className="row-pets">
-                {/* for n of pets, render PetCard */}
-                {petCards}
-
-            </div>
-        </fragment>
-
-    )
+    }
 }
-

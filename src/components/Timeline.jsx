@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import ActivityItem from "./ActivityItem.jsx";
-import Activity from './Activity.jsx';
+// import ActivityItem from "./ActivityItem.jsx";
+// import Activity from './Activity.jsx';
 import Event from './Activity';
 import TimelineList from './TimelineList.jsx'
 
