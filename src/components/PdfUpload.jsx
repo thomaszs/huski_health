@@ -49,7 +49,6 @@ export default class PdfUpload extends Component {
             </div>
           </div>
         </div>
-        <button className="btn btn-success">Upload</button>
       </div>
     )
   }
