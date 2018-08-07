@@ -24,10 +24,12 @@ exports.seed = function(knex, Promise) {
       ])
     }).then( () =>  {
       return knex('pets').insert([
-        {name: 'Otis', date_of_birth: 'Fri Aug 03 2018 12:00:00 GMT-0700 (Pacific Daylight Time)', gender: 'Male', breed: 'French Bulldog', img: 'http://animalsee.club/wp-content/uploads/Bulldog-Puppies-frenchie-puppies-ideas-on-pinterest-french-bulldog-puppy-otis-youtube-french-Cute-Black-French-Bulldog-Puppies-bulldog-puppy-otis-youtube.jpg',
+        {name: 'Otis', date_of_birth: 'Fri Aug 03 2016 12:00:00 GMT-0700 (Pacific Daylight Time)', gender: 'Male', breed: 'French Bulldog', img: 'http://animalsee.club/wp-content/uploads/Bulldog-Puppies-frenchie-puppies-ideas-on-pinterest-french-bulldog-puppy-otis-youtube-french-Cute-Black-French-Bulldog-Puppies-bulldog-puppy-otis-youtube.jpg',
         notes: 'Playful, can be stubborn, warms to strangers quickly', species: 'Dog', account_id: 1, weight: 10},
-        {name: 'Roopert', date_of_birth: '04/13/1995', gender: 'male', breed: 'mutt', img: 'https://pbs.twimg.com/profile_images/948761950363664385/Fpr2Oz35_400x400.jpg',
-        notes: 'shocked', species: 'doggo', account_id: 1, weight: 30}
+        {name: 'Morley', date_of_birth: 'Fri Feb 18 2011 12:00:00 GMT-0700 (Pacific Daylight Time)', gender: 'Male', breed: 'Golden Retriever', img: 'https://i.imgur.com/QuXblyh.jpg',
+        notes: 'Gets along with just about everyone, strong & active, gentle & eager to please', species: 'Dog', account_id: 1, weight: 85},
+        {name: 'Leonard', date_of_birth: 'Sun Apr 08 2012 12:00:00 GMT-0700 (Pacific Daylight Time)', gender: 'Male', breed: 'Egyptian Mau', img: 'https://i.imgur.com/EwoTgw7.jpg',
+        notes: 'Gentle and reserved, love people and desires attention, always hungry.', species: 'Cat', account_id: 1, weight: 22},
       ])
       }).then( () => {
       return knex('history').insert([

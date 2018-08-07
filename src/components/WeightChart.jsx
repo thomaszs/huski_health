@@ -113,7 +113,8 @@ const petWeightRange =
       "Domestic Cat": [8, 10],
       "Persian": [7, 12],
       "Siamese": [5, 10],
-      "Maine Coon": [10, 25]
+      "Maine Coon": [10, 25],
+      "Egyptian Mau": [12, 18]
     }
     // for (const key in petWeightRange) {
     //   const rangeArray = petWeightRange[key].split('–');
