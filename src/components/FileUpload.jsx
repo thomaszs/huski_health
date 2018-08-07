@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import { Document } from 'react-pdf/dist/entry.webpack';
 
 export default class FileUpload extends Component {
 constructor(props) {
@@ -8,12 +7,6 @@ constructor(props) {
     this.state = {imageURL: null,
     uploadStatus: false}
     this.handleUploadImage = this.handleUploadImage.bind(this);
-    this.setImage = this.setImage.bind(this);
-}
-
-setImage(image) {
-    this.setState({imageURL: image})
-    console.log(this.state.imageURL)
 }
 
 handleUploadImage(ev) {
@@ -21,10 +14,11 @@ handleUploadImage(ev) {
     const data = new FormData();
     data.append('file', this.uploadInput.files[0]);
     data.append('filename', this.fileName.value);
+    data.append('petid', this.props.petid);
     axios.post('http://localhost:8080/api/uploadimage', data)
       .then((response) => {
           console.log(response.data)
-        this.setImage(`http://localhost:8080/${response.data.file}`)
+        this.props.retrieveImages()
       })
       .catch(function (error) {
         console.log(error);
@@ -44,9 +38,6 @@ handleUploadImage(ev) {
            </div>
            <button className="btn btn-success" type>Upload</button>
          </form>
-           <div>
-           <img className="card-img-top responsive" style={{ width: "100%" }} src={this.state.imageURL} alt="uploaded file"/>
-         </div>
        </div>
      )
    }

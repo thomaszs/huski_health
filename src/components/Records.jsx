@@ -12,7 +12,6 @@ constructor(props) {
 }
 
 
-        // componentWillMount() {
             retrieveFiles() {
     axios.get(`http://localhost:8080/api/pdf/${this.props.match.params.id}`, {
         params: {
@@ -37,7 +36,7 @@ constructor(props) {
         if (this.state.files.length) {
         const pdfs = this.state.files.map((file) => {
             return (
-            <Link to={`/record/${file.id}`}><button>{file.name}</button></Link>
+            <Link key={file.id} to={`/record/${file.id}`}><button>{file.name}</button></Link>
             )
             })
         return (

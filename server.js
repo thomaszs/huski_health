@@ -166,16 +166,24 @@ app.post('/api/pet/new', (req, res) => {
  })
 
  app.post('/api/uploadimage', (req, res, next) => {
-    console.log(req.body);
+    console.log("REQ BODY", req.body);
     let imageFile = req.files.file;
   console.log(imageFile)
     imageFile.mv(`${__dirname}/public/image/${req.body.filename}.jpg`, function(err) {
       if (err) {
         return res.status(500).send(err);
       }
-      res.json({file: `public/image/${req.body.filename}.jpg`})
+      let image = `public/image/${req.body.filename}.jpg`;
+      database.insertImage(req.body.filename, req.body.petid, image)
+      res.json({file: image})
     });
   })
+
+  app.get('/api/images/:id', async (req, res, next) => {
+    let images = await database.getImages(req.params.id)
+  console.log(images)
+    res.send(images)
+  });
 
   app.post('/api/uploadpdf', (req, res, next) => {
     console.log("PDF UPLOAD", req.body);
@@ -189,6 +197,7 @@ app.post('/api/pet/new', (req, res) => {
       res.json({file: pdf})
     });
   })
+
 
   app.get('/api/pdf/:id', async (req, res, next) => {
       let files = await database.getFiles(req.params.id)

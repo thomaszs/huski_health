@@ -19,11 +19,8 @@ export default class Record extends Component {
 
   componentDidMount() {
       console.log(this.props.match.params.id)
-    axios.get(`http://localhost:8080/api/record/${this.props.match.params.id}`, {
-        params: {
-            id: this.props.match.params.id
-        }
-    }).then((response) => {
+    axios.get(`http://localhost:8080/api/record/${this.props.match.params.id}`)
+    .then((response) => {
           console.log(response.data)
         this.setState({pdf: `http://localhost:8080/${response.data[0].filepath}`})
       })
@@ -38,20 +35,23 @@ export default class Record extends Component {
 
   onClickNextPage(event) {
     event.preventDefault()
-    let nextPage = this.state.pageNumber + 1;
-    this.setState({pageNumber:  nextPage});
+    this.setState(prevState => ({ pageNumber: prevState.pageNumber + 1 }))
 }
 
   onClickPreviousPage(event) {
     event.preventDefault()
-    let prevPage = this.state.pageNumber - 1;
-    this.setState({pageNumber:  prevPage});
+    this.setState(prevState => ({ pageNumber: prevState.pageNumber - 1 }))
   }
  
   render() {
     const { pageNumber, numPages } = this.state;
+    // const pages = for (let i = 1; i > numPages; i++) {
+    //     return (
+    //         <Page pageNumber ={i} />
+    //     )
+    // }
+
     return (
-        // <div>
         <div className="container">
         <div className="pdf">
         <Document
@@ -61,12 +61,11 @@ export default class Record extends Component {
         </Document>
         </div>
         <div className="information">
-        <button onClick={this.onClickPreviousPage}  className="btn btn-success" type>Previous Page</button>
+        <button onClick={this.onClickPreviousPage}  className="btn btn-success">Previous Page</button>
         <p className="pages">Page {pageNumber} of {numPages}</p>
-        <button onClick={this.onClickNextPage}  className="btn btn-success" type>Next Page</button>
+        <button onClick={this.onClickNextPage}  className="btn btn-success">Next Page</button>
         </div>
     //   </div>
-        // </div>
     )
   }
 }
