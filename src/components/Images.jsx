@@ -37,6 +37,7 @@ constructor(props) {
             const images = this.state.images.map((image) => {
                 return (
                     <div className="column">
+                    <h3>{image.name}</h3>
                         <img className="card-img-top responsive" style={{ width: "100%" }} src={`http://localhost:8080/${image.filepath}`}/>
                         </div>
                        )

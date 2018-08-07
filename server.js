@@ -169,11 +169,11 @@ app.post('/api/pet/new', (req, res) => {
     console.log("REQ BODY", req.body);
     let imageFile = req.files.file;
   console.log(imageFile)
-    imageFile.mv(`${__dirname}/public/images/${req.body.filename}.jpg`, function(err) {
+    imageFile.mv(`${__dirname}/public/image/${req.body.filename}.jpg`, function(err) {
       if (err) {
         return res.status(500).send(err);
       }
-      let image = `public/images/${req.body.filename}.jpg`;
+      let image = `public/image/${req.body.filename}.jpg`;
       database.insertImage(req.body.filename, req.body.petid, image)
       res.json({file: image})
     });
