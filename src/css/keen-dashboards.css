@@ -139,6 +139,17 @@ div.card-body-buttons {
   color: #FF9400;
 }
 
+.rsc-header-title {
+  color: #000;
+  font-weight: 500;
+  font-size: large;
+  margin-left: 10px;
+}
+
+.hLGSaN {
+  height: 55px;
+}
+
 @media screen and (max-width: 767) {
   .container-row {
     font-size: medium;

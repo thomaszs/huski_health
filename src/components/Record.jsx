@@ -51,7 +51,6 @@ export default class Record extends Component {
   render() {
     const { pageNumber, numPages } = this.state;
     return (
-      // <div>
       <div className="container">
         <div className="pdf">
           <Document
@@ -60,14 +59,12 @@ export default class Record extends Component {
             <Page pageNumber={pageNumber} />
           </Document>
         </div>
-        <div className="information">          
+        <div className="information">
           <button onClick={this.onClickPreviousPage} className="btn btn-info" type>Previous Page</button>
-          
           <p className="pages">Page {pageNumber} of {numPages}</p>
-        
           <button onClick={this.onClickNextPage} className="btn btn-info" type>Next Page</button>
+        </div>
       </div>
-        // </div>
     )
   }
 }
