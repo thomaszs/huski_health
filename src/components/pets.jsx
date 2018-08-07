@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import PetCard from './PetCard';
 import axios from 'axios'
+import FileUpload from './FileUpload';
 
 export default class Pets extends Component {
     constructor(props) {
