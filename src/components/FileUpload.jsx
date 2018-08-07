@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import axios from 'axios';
 
 export default class FileUpload extends Component {
-constructor(props) {
+  constructor(props) {
     super(props)
-    this.state = {imageURL: null,
-    uploadStatus: false}
+    this.state = {
+      imageURL: null,
+      uploadStatus: false
+    }
     this.handleUploadImage = this.handleUploadImage.bind(this);
-}
+  }
 
-handleUploadImage(ev) {
+  handleUploadImage(ev) {
     ev.preventDefault();
     const data = new FormData();
     data.append('file', this.uploadInput.files[0]);
@@ -17,7 +19,7 @@ handleUploadImage(ev) {
     data.append('petid', this.props.petid);
     axios.post('http://localhost:8080/api/uploadimage', data)
       .then((response) => {
-          console.log(response.data)
+        console.log(response.data)
         this.props.retrieveImages()
       })
       .catch(function (error) {
@@ -25,20 +27,26 @@ handleUploadImage(ev) {
       });
   }
 
-   
-   render() {
-     return(
-       <div class="container">
-         <form onSubmit={this.handleUploadImage}>
-           <div className="form-group">
-             <input className="form-control"  ref={(ref) => { this.uploadInput = ref; }} type="file" />
-           </div>
-           <div className="form-group">
-             <input className="form-control" ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Optional name for the file" />
-           </div>
-           <button className="btn btn-success" type>Upload</button>
-         </form>
-       </div>
-     )
-   }
+  render() {
+    return (
+      <div>
+        <h1>Images</h1>
+        <div className="container">
+          <div className="chart-wrapper" style={{ marginTop: "20px", padding: "15px" }}>
+            <div className="chart-stage">
+              <form onSubmit={this.handleUploadImage}>
+                <div className="form-group">
+                  <input className="form-control" ref={(ref) => { this.uploadInput = ref; }} type="file" />
+                </div>
+                <div className="form-group">
+                  <input className="form-control" ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Optional name for the file" />
+                </div>
+                <button className="btn btn-success" type>Upload</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
