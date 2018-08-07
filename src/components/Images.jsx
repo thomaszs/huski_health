@@ -12,21 +12,18 @@ export default class Records extends Component {
     this.retrieveImages = this.retrieveImages.bind(this);
   }
 
-  retrieveImages() {
-    axios.get(`http://localhost:8080/api/images/${this.props.match.params.id}`, {
-      params: {
-        id: this.props.match.params.id
-      }
-    }).then((response) => {
-      console.log("Yes, it worked RECORDS");
-      console.log(response.data)
-      this.setState({ images: response.data })
-      console.log(this.state.images)
-    }).catch((error) => {
-      console.log(this.props.match.params.id)
-      console.log(error);
-    })
-  }
+    retrieveImages() {
+        axios.get(`http://localhost:8080/api/images/${this.props.match.params.id}`)
+    .then((response) => {
+       console.log("Yes, it worked RECORDS");
+       console.log(response.data)
+       this.setState({images: response.data})
+       console.log(this.state.images)
+     }).catch((error) => {
+         console.log(this.props.match.params.id)
+        console.log(error);
+      })
+    }
 
   componentDidMount() {
     this.retrieveImages();
