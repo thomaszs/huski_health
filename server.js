@@ -181,7 +181,6 @@ app.post('/api/pet/new', (req, res) => {
 
   app.get('/api/images/:id', async (req, res, next) => {
     let images = await database.getImages(req.params.id)
-  //   let pdf = `public/pdf/${filename}.pdf`
   console.log(images)
     res.send(images)
   });
