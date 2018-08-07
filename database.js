@@ -101,6 +101,27 @@ module.exports = function knexData(knex) {
     })
   },
 
+  insertImage: function (filename, petid, filepath) {
+    return knex('files').insert({
+         name: filename,
+         pet_id: petid,
+         filepath: filepath,
+         type: 'image'
+       }).returning('filepath').then(function(result) {
+        console.log(result);
+      })
+   },
+
+  getImages: function (petid) {
+    return knex('files').where({
+      pet_id: petid,
+      type: 'image'
+    }).then(function(result) {
+      console.log("GET IMAGES", result)
+      return result;
+})
+  },
+
     insertFile: function (filename, petid, filepath) {
     return knex('files').insert({
          name: filename,
@@ -114,7 +135,8 @@ module.exports = function knexData(knex) {
 
      getFiles: function (petid) {
       return knex('files').where({
-        pet_id: petid
+        pet_id: petid,
+        type: 'pdf'
       }).then(function(result) {
         console.log("GET FILES", result)
         return result;
