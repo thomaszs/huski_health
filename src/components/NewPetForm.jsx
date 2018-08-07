@@ -169,7 +169,7 @@ class NewPetForm extends Component {
                           selectedOptions={this.state.species} />
 
                         <CheckBox
-                          title={'Is your pet a boy or a girl?'}
+                          title={'Is your pet male or female?'}
                           setName={'gender'}
                           controlFunc={this.handleGenderSelection}
                           type={'radio'}
