@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Event from './Activity';
 // import $ from 'jquery'; 
 import axios from 'axios'
+import FileUpload from './FileUpload';
  
 export default class PetCard extends Component {
   constructor(props) {
@@ -99,7 +100,7 @@ export default class PetCard extends Component {
                 <div className="card-body-buttons">
                   <button  onClick={this.onClickTypeFeeding}   className="btn btn-warning" href="#">Feed Me</button>
                   <button  onClick={this.onClickTypeWeight}   className="btn btn-activity" href="#">Update Weight</button>
-                  <Link to={`/records/${this.props.pet.id}`} style={{float: "right"}}>Records</Link>
+                  <button className="btn btn-info"><Link to={`/records/${this.props.pet.id}`} style={{float: "right"}}>Records</Link></button>
                   <Link to={`/images/${this.props.pet.id}`} style={{float: "right"}}>Images</Link>
                 </div>
               </div>

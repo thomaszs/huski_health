@@ -179,6 +179,7 @@ class Example extends Component {
         floatingStyle={{
           right: 'initial',
           transformOrigin: 'left',
+          marginLeft: '20px',
         }}
       />
         </ThemeProvider>

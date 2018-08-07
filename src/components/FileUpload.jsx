@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import axios from 'axios';
 
 export default class FileUpload extends Component {
-constructor(props) {
+  constructor(props) {
     super(props)
-    this.state = {imageURL: null,
-    uploadStatus: false}
+    this.state = {
+      imageURL: null,
+      uploadStatus: false
+    }
     this.handleUploadImage = this.handleUploadImage.bind(this);
 }
 
-handleUploadImage(ev) {
+  handleUploadImage(ev) {
     ev.preventDefault();
     const data = new FormData();
     data.append('file', this.uploadInput.files[0]);
@@ -25,10 +27,9 @@ handleUploadImage(ev) {
       });
   }
 
-   
    render() {
      return(
-       <div class="container">
+       <div className="container chart-wrapper">
          <form onSubmit={this.handleUploadImage}>
            <div className="form-group">
              <input className="form-control"  ref={(ref) => { this.uploadInput = ref; }} type="file" />

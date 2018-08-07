@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 
- 
 export default class PdfUpload extends Component {
-    constructor(props) {
+  constructor(props) {
     super(props)
-  this.state = {
-    pdf: null,
-    numPages: null,
-    pageNumber: 1,
+    this.state = {
+      pdf: null,
+      numPages: null,
+      pageNumber: 1,
+    }
+    this.handleUploadPdf = this.handleUploadPdf.bind(this)
   }
-  this.handleUploadPdf = this.handleUploadPdf.bind(this)
-}
 
   handleUploadPdf(ev) {
     ev.preventDefault();
@@ -20,6 +19,7 @@ export default class PdfUpload extends Component {
     data.append('file', this.uploadInput.files[0]);
     data.append('filename', this.fileName.value);
     data.append('petid', this.props.petid)
+    
     console.log("TESTING",this.uploadInput.files[0])
     axios.post('http://localhost:8080/api/uploadpdf', data) 
   .then((response) => {
@@ -30,19 +30,26 @@ export default class PdfUpload extends Component {
         console.log(error);
       });
   }
- 
   render() {
     return (
+      <div>
+        <h1>Records</h1>
         <div className="container">
-        <form onSubmit={this.handleUploadPdf}>
-        <div className="form-group">
-          <input className="form-control"  ref={(ref) => { this.uploadInput = ref; }} type="file" />
-        </div>
-        <div className="form-group">
-          <input className="form-control" ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Optional name for the file" />
+          <div className="chart-wrapper" style={{ marginTop: "20px", padding: "15px" }}>
+            <div className="chart-stage">
+              <form onSubmit={this.handleUploadPdf}>
+                <div className="form-group">
+                  <input className="form-control" ref={(ref) => { this.uploadInput = ref; }} type="file" />
+                </div>
+                <div className="form-group">
+                  <input className="form-control" ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Optional name for the file" />
+                </div>
+                <button className="btn btn-success" type>Upload</button>
+              </form>
+            </div>
+          </div>
         </div>
         <button className="btn btn-success">Upload</button>
-      </form>
       </div>
     )
   }
