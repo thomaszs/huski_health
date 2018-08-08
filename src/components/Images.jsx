@@ -44,7 +44,7 @@ export default class Records extends Component {
         )
       })
       return (
-        <div class="container">
+        <div className="container">
           <div>
             <FileUpload petid={this.props.match.params.id} retrieveImages={this.retrieveImages} />
           </div>
@@ -55,7 +55,7 @@ export default class Records extends Component {
       )
     } else {
       return (
-        <div class="container">
+        <div className="container">
           <FileUpload petid={this.props.match.params.id} retrieveImages={this.retrieveImages} />
         </div>
       )
