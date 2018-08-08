@@ -33,22 +33,22 @@ exports.seed = function(knex, Promise) {
       ])
       }).then( () => {
       return knex('history').insert([
-        {type: 'activity', notes: 'took for a walk', profile_id: 1, pet_id: 1},
-        {type: 'food', notes: 'fed steak', profile_id: 1, pet_id: 1},
-        {type: 'weight', notes: '5', profile_id: 2, pet_id: 1},
-        {type: 'activity', notes: 'took for a walk', profile_id: 2, pet_id: 2},
-        {type: 'weight', notes: '5', profile_id: 2, pet_id: 2},
-        {type: 'weight', notes: '5', profile_id: 3, pet_id: 3},
-        {type: 'weight', notes: '8', profile_id: 2, pet_id: 1},
-        {type: 'weight', notes: '10', profile_id: 2, pet_id: 1},
-        {type: 'weight', notes: '12', profile_id: 2, pet_id: 1},
-        {type: 'weight', notes: '11', profile_id: 2, pet_id: 1},
-        {type: 'weight', notes: '18', profile_id: 2, pet_id: 1},
-        {type: 'weight', notes: '15', profile_id: 2, pet_id: 1},
-        {type: 'weight', notes: '20', profile_id: 2, pet_id: 1},
-        {type: 'weight', notes: '20', profile_id: 2, pet_id: 1},
-        {type: 'weight', notes: '21', profile_id: 2, pet_id: 1},
-        {type: 'weight', notes: '22', profile_id: 2, pet_id: 1},
+        {type: 'Activity', notes: 'took for a walk', profile_id: 1, pet_id: 1},
+        {type: 'Feeding', notes: 'fed steak', profile_id: 1, pet_id: 1},
+        {type: 'Weight', notes: '5', profile_id: 2, pet_id: 1},
+        {type: 'Activity', notes: 'took for a walk', profile_id: 2, pet_id: 2},
+        {type: 'Weight', notes: '5', profile_id: 2, pet_id: 2},
+        {type: 'Weight', notes: '5', profile_id: 3, pet_id: 3},
+        {type: 'Weight', notes: '8', profile_id: 2, pet_id: 1},
+        {type: 'Weight', notes: '10', profile_id: 2, pet_id: 1},
+        {type: 'Weight', notes: '12', profile_id: 2, pet_id: 1},
+        {type: 'Weight', notes: '11', profile_id: 2, pet_id: 1},
+        {type: 'Weight', notes: '18', profile_id: 2, pet_id: 1},
+        {type: 'Weight', notes: '15', profile_id: 2, pet_id: 1},
+        {type: 'Weight', notes: '20', profile_id: 2, pet_id: 1},
+        {type: 'Weight', notes: '20', profile_id: 2, pet_id: 1},
+        {type: 'Weight', notes: '21', profile_id: 2, pet_id: 1},
+        {type: 'Weight', notes: '22', profile_id: 2, pet_id: 1},
       ])
     })
     });

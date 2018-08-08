@@ -121,7 +121,6 @@ module.exports = function knexData(knex) {
       pet_id: petid,
       type: 'image'
     }).then(function(result) {
-      console.log("GET IMAGES", result)
       return result;
 })
   },
@@ -133,7 +132,6 @@ module.exports = function knexData(knex) {
          filepath: filepath,
          type: 'pdf'
        }).returning('filepath').then(function(result) {
-        console.log(result);
       })
    },
 
@@ -142,7 +140,6 @@ module.exports = function knexData(knex) {
         pet_id: petid,
         type: 'pdf'
       }).then(function(result) {
-        console.log("GET FILES", result)
         return result;
   })
 },
@@ -151,7 +148,6 @@ module.exports = function knexData(knex) {
   return knex('files').where({
    id: id
    }).then(function(result) {
-   console.log("GET FILE", result)
    return result;
  })
 }
