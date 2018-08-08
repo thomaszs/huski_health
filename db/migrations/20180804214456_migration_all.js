@@ -30,7 +30,7 @@ exports.up = function (knex, Promise) {
          table.increments('id');
          table.string('type', 255);
          table.string('notes', 255);
-         table.dateTime('created_at').defaultTo(knex.fn.now());
+         table.dateTime('created_at').defaultTo(knex.raw('now()'));
          table.integer('profile_id').unsigned();
       //    table.foreign('profile_id').references('profiles.id');
          table.integer('pet_id').unsigned();
@@ -42,7 +42,7 @@ exports.up = function (knex, Promise) {
       table.string('type', 255);
       table.string('name', 255);
       table.string('filepath', 255);
-      table.dateTime('created_at').defaultTo(knex.fn.now());
+      table.dateTime('created_at').defaultTo(knex.raw('now()'))
       table.integer('pet_id').unsigned();
    //    table.foreign('pet_id').references('pets.id');
   })

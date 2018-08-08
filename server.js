@@ -149,14 +149,14 @@ app.post('/api/pet/new', (req, res) => {
     }
  })
 
- app.post('/api/uploadimage', (req, res, next) => {
+ app.post('/api/uploadimage', async (req, res, next) => {
+    let image = `public/image/${req.body.filename}.jpg`;
+    await database.insertImage(req.body.filename, req.body.petid, image)
     let imageFile = req.files.file;
     imageFile.mv(`${__dirname}/public/image/${req.body.filename}.jpg`, function(err) {
       if (err) {
         return res.status(500).send(err);
       }
-      let image = `public/image/${req.body.filename}.jpg`;
-      database.insertImage(req.body.filename, req.body.petid, image)
       res.json({file: image})
     });
   })
@@ -166,14 +166,14 @@ app.post('/api/pet/new', (req, res) => {
     res.send(images)
   });
 
-  app.post('/api/uploadpdf', (req, res, next) => {
+  app.post('/api/uploadpdf', async (req, res, next) => {
+    let pdf = `public/pdf/${req.body.filename}.pdf`
+    await database.insertFile(req.body.filename, req.body.petid, pdf)
     let pdfFile = req.files.file;
     pdfFile.mv(`${__dirname}/public/pdf/${req.body.filename}.pdf`, function(err) {
       if (err) {
         return res.status(500).send(err);
       }
-      let pdf = `public/pdf/${req.body.filename}.pdf`
-      database.insertFile(req.body.filename, req.body.petid, pdf)
       res.json({file: pdf})
     });
   })

@@ -40,7 +40,7 @@ export default class FileUpload extends Component {
                 <div className="form-group">
                   <input className="form-control" ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Optional name for the file" />
                 </div>
-                <button className="btn btn-success" type>Upload</button>
+                <button className="btn btn-success">Upload</button>
               </form>
             </div>
           </div>
