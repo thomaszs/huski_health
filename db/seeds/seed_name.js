@@ -1,4 +1,3 @@
-
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('accounts').del()
@@ -30,25 +29,40 @@ exports.seed = function(knex, Promise) {
         notes: 'Gets along with just about everyone, strong & active, gentle & eager to please', species: 'Dog', account_id: 1, weight: 85},
         {name: 'Leonard', date_of_birth: 'Sun Apr 08 2012 12:00:00 GMT-0700 (Pacific Daylight Time)', gender: 'Male', breed: 'Egyptian Mau', img: 'https://i.imgur.com/EwoTgw7.jpg',
         notes: 'Gentle and reserved, love people and desires attention, always hungry.', species: 'Cat', account_id: 1, weight: 22},
+        {name: 'Juca', date_of_birth: 'Sat Feb 03 2010 12:00:00 GMT-0700 (Pacific Daylight Time)', gender: 'Male', breed: 'French Bulldog', img: 'https://i.imgur.com/SdN4xWX.jpg',
+        notes: 'Playful, can be stubborn, warms to strangers quickly', species: 'Dog', account_id: 1, weight: 20},
       ])
       }).then( () => {
       return knex('history').insert([
-        {type: 'activity', notes: 'took for a walk', profile_id: 1, pet_id: 1},
-        {type: 'food', notes: 'fed steak', profile_id: 1, pet_id: 1},
-        {type: 'weight', notes: '5', profile_id: 2, pet_id: 1},
-        {type: 'activity', notes: 'took for a walk', profile_id: 2, pet_id: 2},
-        {type: 'weight', notes: '5', profile_id: 2, pet_id: 2},
-        {type: 'weight', notes: '5', profile_id: 3, pet_id: 3},
-        {type: 'weight', notes: '8', profile_id: 2, pet_id: 1},
-        {type: 'weight', notes: '10', profile_id: 2, pet_id: 1},
-        {type: 'weight', notes: '12', profile_id: 2, pet_id: 1},
-        {type: 'weight', notes: '11', profile_id: 2, pet_id: 1},
-        {type: 'weight', notes: '18', profile_id: 2, pet_id: 1},
-        {type: 'weight', notes: '15', profile_id: 2, pet_id: 1},
-        {type: 'weight', notes: '20', profile_id: 2, pet_id: 1},
-        {type: 'weight', notes: '20', profile_id: 2, pet_id: 1},
-        {type: 'weight', notes: '21', profile_id: 2, pet_id: 1},
-        {type: 'weight', notes: '22', profile_id: 2, pet_id: 1},
+        //Otis pet.id = 1, Morley pet.id = 2
+        {type: 'Activity', notes: 'Barked at birds outside the window', profile_id: 1, pet_id: 1},
+        {type: 'Feeding', notes: 'steak & lobster', profile_id: 1, pet_id: 1},
+        {type: 'Weight', notes: '35', profile_id: 2, pet_id: 1},
+        {type: 'Weight', notes: '30', profile_id: 2, pet_id: 1},
+        {type: 'Weight', notes: '28', profile_id: 2, pet_id: 1},
+        {type: 'Weight', notes: '27', profile_id: 2, pet_id: 1},
+        {type: 'Weight', notes: '26', profile_id: 2, pet_id: 1},
+        {type: 'Weight', notes: '26', profile_id: 2, pet_id: 1},
+        {type: 'Weight', notes: '25', profile_id: 2, pet_id: 1},
+        {type: 'Activity', notes: 'Chased his tail for 1 hr', profile_id: 2, pet_id: 2},
+        {type: 'Feeding', notes: 'Duck Confit', profile_id: 1, pet_id: 2},
+        {type: 'Weight', notes: '90', profile_id: 2, pet_id: 2},
+        {type: 'Weight', notes: '85', profile_id: 2, pet_id: 2},
+        {type: 'Weight', notes: '80', profile_id: 2, pet_id: 2},
+        {type: 'Weight', notes: '78', profile_id: 2, pet_id: 2},
+        {type: 'Weight', notes: '74', profile_id: 2, pet_id: 2},
+        {type: 'Weight', notes: '74', profile_id: 2, pet_id: 2},
+        {type: 'Weight', notes: '73', profile_id: 2, pet_id: 2},
+        {type: 'Weight', notes: '72', profile_id: 2, pet_id: 2},
+        {type: 'Activity', notes: 'Watched Netfix with Lexi', profile_id: 2, pet_id: 3},
+        {type: 'Feeding', notes: 'salmon & caviar', profile_id: 1, pet_id: 3},
+        {type: 'Weight', notes: '22', profile_id: 2, pet_id: 3},
+        {type: 'Weight', notes: '20', profile_id: 2, pet_id: 3},
+        {type: 'Weight', notes: '19', profile_id: 2, pet_id: 3},
+        {type: 'Weight', notes: '17', profile_id: 2, pet_id: 3},
+        {type: 'Weight', notes: '17', profile_id: 2, pet_id: 3},
+        {type: 'Weight', notes: '16', profile_id: 2, pet_id: 3},
+        {type: 'Weight', notes: '16', profile_id: 2, pet_id: 3}, 
       ])
     })
     });

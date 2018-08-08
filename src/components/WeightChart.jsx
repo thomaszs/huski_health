@@ -10,6 +10,7 @@ const petWeightRange =
       "Alaskan Malamute": [70, 95],
       "American Eskimo Dog": [18, 35],
       "American Staffordshire Terrier": [55, 65],
+      "Anatolian Shepherd Dog": [90, 150],
       "Australian Cattle Dog": [30, 35],
       "Australian Shepherd": [40, 65],
       "Basenji": [20, 25],
