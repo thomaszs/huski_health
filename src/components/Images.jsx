@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 import FileUpload from './FileUpload';
-
 import '../css/images.css';
 
 export default class Records extends Component {
@@ -15,12 +14,8 @@ export default class Records extends Component {
     retrieveImages() {
         axios.get(`http://localhost:8080/api/images/${this.props.match.params.id}`)
     .then((response) => {
-       console.log("Yes, it worked RECORDS");
-       console.log(response.data)
        this.setState({images: response.data})
-       console.log(this.state.images)
      }).catch((error) => {
-         console.log(this.props.match.params.id)
         console.log(error);
       })
     }

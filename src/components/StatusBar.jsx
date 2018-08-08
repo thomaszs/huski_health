@@ -16,7 +16,6 @@ export default class StatusBar extends Component {
   this.getLatestPetWeight = this.getLatestPetWeight.bind(this)  
   }
 
-
   componentWillMount() {
     this.getLatestFeeding();
     this.setState({data: {created_at: ""}})
@@ -33,7 +32,7 @@ export default class StatusBar extends Component {
       this.setState({data: data[0]})
     })
     .catch(err => {
-      // debugger;
+      console.log(err);
     });
   }
  
@@ -41,18 +40,15 @@ export default class StatusBar extends Component {
     const { pet: { id } = {} } = this.props;
     $.get(`http://localhost:8080/api/pets/${ id }/latestweights`)
     .then(weight => {
-      console.log("DATA WEIGHT", weight)
       if (weight[0] === undefined) {
         weight[0].notes = ""
       }
       this.setState({weight: weight[0].notes})
     })
     .catch(err => {
-      // debugger;
+      console.log(err);
     });
   }
-
-
 
   render() {
     const lastActive = (this.props.active[0] && moment(this.props.active[0].created_at).fromNow()) || "No Activites"
@@ -61,7 +57,6 @@ export default class StatusBar extends Component {
     const dateFromNow = moment(date).fromNow();
     const notes = this.state.data.notes
     const weight = this.state.weight
-    
     
   return (
     <div className="col-lg-3">
@@ -118,8 +113,7 @@ export default class StatusBar extends Component {
       </div>
     </div>
     </div>
-    </div>
-    
+    </div> 
     );
   }
 }

@@ -3,23 +3,14 @@ import CheckBox from './CheckBox';
 import SingleInput from './SingleInput';
 import $ from 'jquery';
 import { Link } from "react-router-dom";
-// import moment from 'moment';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
-// import '../css/daypicker.css';
-// import MomentLocaleUtils, {
-//   formatDate,
-//   parseDate,
-// } from 'react-day-picker/moment';
 import swal from 'sweetalert'
-
-// const dogBreed = require('what-dog');
 
 class NewPetForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       petName: "",
-      // age: 0,
       speciesOptions: ["dog", "cat"],
       species: [],
       genderOptions: ["male", "female"],
@@ -31,7 +22,6 @@ class NewPetForm extends Component {
       note: "",
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    // this.handleClearForm = this.handleClearForm.bind(this);
     this.handlePetNameChange = this.handlePetNameChange.bind(this);
     this.handleSpeciesSelection = this.handleSpeciesSelection.bind(this);
     this.handleGenderSelection = this.handleGenderSelection.bind(this);
@@ -42,7 +32,7 @@ class NewPetForm extends Component {
     this.addNewPet = this.addNewPet.bind(this);
 
   }
-  addNewPet() { 
+  addNewPet() {
     swal({
       title: "Yay!",
       icon: "success",
@@ -51,42 +41,30 @@ class NewPetForm extends Component {
   }
 
   handlePetNameChange(e) {
-    this.setState({ petName: e.target.value }, () => console.log('name:', this.state.petName));
+    this.setState({ petName: e.target.value });
   }
   handleSpeciesSelection(e) {
-    this.setState({ species: [e.target.value] }, () => console.log('species', this.state.species));
+    this.setState({ species: [e.target.value] });
   }
   handleGenderSelection(e) {
-    this.setState({ gender: [e.target.value] }, () => console.log('gender', this.state.gender));
+    this.setState({ gender: [e.target.value] });
   }
   handleBirthdayChange(day) {
-    this.setState({ birthday: day }, () => console.log('birthday:', this.state.birthday));
+    this.setState({ birthday: day });
   }
   handleWeightChange(e) {
-    this.setState({ weight: e.target.value }, () => console.log('weight:', this.state.petName));
+    this.setState({ weight: e.target.value });
   }
   handleBreedChange(e) {
-    this.setState({ breed: e.target.value }, () => console.log('breed:', this.state.breed));
+    this.setState({ breed: e.target.value });
   }
   handleImageChange(e) {
-    this.setState({ image: e.target.value }, () => console.log('image url:', this.state.image));
+    this.setState({ image: e.target.value });
   }
   handleNoteChange(e) {
-    this.setState({ note: e.target.value }, () => console.log('note:', this.state.note));
+    this.setState({ note: e.target.value });
   }
-  // handleClearForm(e) {
-  //   e.preventDefault();
-  //   this.setState({
-  //     petName: "",
-  //     species: [],
-  //     gender: [],
-  //     birthday: "",
-  //     weight: "",
-  //     breed: undefined,
-  //     image: "",
-  //     note: ""
-  //   });
-  // }
+
   handleFormSubmit(e) {
     e.preventDefault();
     const addNewPetRender = this.props.addNewPetRender
@@ -97,50 +75,38 @@ class NewPetForm extends Component {
       species: this.state.species,
       gender: this.state.gender,
       birthday: this.state.birthday,
-      // weight: this.state.weight,
       breed: this.state.breed,
       accountID: this.props.currentUser.id,
       image: this.state.image,
       note: this.state.note
     };
-
+    //Use ajax call to use image url to determine dog breed
     $.ajax('http://localhost:8080/api/whatDog', {
       method: 'POST',
       data: { dogUrl: this.state.image, },
       success: function (result) {
-        console.log("Yes, it worked");
-        // console.log(result); 
         newPetInfo.breed = result.doggyData.breed;
         newPetInfo.note = result.doggyData.about;
-        console.log()
         $.ajax('http://localhost:8080/api/pet/new', {
           method: 'POST',
           data: newPetInfo,
           success: function (result) {
-            console.log("Added new pet");
-            console.log(result); 
-            console.log(this)
             addNewPetRender();
             addNewPet();
             browserHistory.push('/pets')
           },
           error: function (err) {
             console.log(err)
-            console.log("It doesnt work")
           }
         });
       },
       error: function (err) {
         console.log(err)
-        console.log("It doesnt work")
       }
     });
-    console.log(e)
-    // this.handleClearForm(e);
   }
 
   render() {
-    // const { birthday } = this.state;
     return (
       <div>
         <div className="container">
@@ -159,7 +125,6 @@ class NewPetForm extends Component {
                           controlFunc={this.handlePetNameChange}
                           content={this.state.petName}
                           placeholder={'Type in your furry friend\'s name'} />
-
                         <CheckBox
                           title={'Is your pet a dog or a cat?'}
                           setName={'species'}
@@ -167,7 +132,6 @@ class NewPetForm extends Component {
                           type={'radio'}
                           options={this.state.speciesOptions}
                           selectedOptions={this.state.species} />
-
                         <CheckBox
                           title={'Is your pet male or female?'}
                           setName={'gender'}
@@ -175,28 +139,11 @@ class NewPetForm extends Component {
                           type={'radio'}
                           options={this.state.genderOptions}
                           selectedOptions={this.state.gender} />
-
                         <DayPickerInput
                           placeholder={'Please select birthday'}
                           style={{ color: "#000" }}
                           onDayChange={this.handleBirthdayChange}
                         />
-
-                        {/* <SingleInput
-                          inputType={'text'}
-                          title={'Weight'}
-                          name={'weight'}
-                          controlFunc={this.handleWeightChange}
-                          content={this.state.weight}
-                          placeholder={'Enter your pet\'s weight in lbs'} />
-
-                        <SingleInput
-                          inputType={'text'}
-                          title={'Breed'}
-                          name={'breed'}
-                          controlFunc={this.handleBreedChange}
-                          content={this.state.breed} /> */}
-
                         <SingleInput
                           inputType={'text'}
                           title={'Image'}
@@ -204,14 +151,10 @@ class NewPetForm extends Component {
                           controlFunc={this.handleImageChange}
                           content={this.state.image}
                           placeholder={'Enter image url to find out your pet\'s breed'} />
-
                         <Link to={`/pets`}><input onClick={this.handleFormSubmit}
                           type="submit"
                           className="btn btn-primary float-right"
                           value="Submit" /></Link>
-                        {/* <button
-                          className="btn btn-link float-left"
-                          onClick={this.handleClearForm}>Clear form</button> */}
                       </table>
                     </form>
                   </div>

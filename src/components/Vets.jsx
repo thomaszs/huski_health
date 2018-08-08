@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import SimpleMap from "./Map.jsx";
 
-
-
 class Vets extends Component {
   constructor(props) {
     super(props);
@@ -45,15 +43,10 @@ class Vets extends Component {
         const service2 = new google.maps.places.PlacesService(map);
         service2.getDetails(request2, (results2, status) => {
           this.setState({ vets: results2 });
-          console.log("Result of Vets2 from Google Places Api:", results2);
-          console.log("Coordinates1", this.state.vets.geometry.location.lat())
-          console.log("Coordinates1", this.state.vets.geometry.location.lng())
-          console.log("Coordinates2", this.state.vets.geometry)
         });
       });
     }
   }
-
 
   render() {
     return (

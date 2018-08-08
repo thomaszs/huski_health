@@ -20,7 +20,6 @@ export default class Event extends React.Component {
 
       saveEvent(event) {
         event.preventDefault();
-        console.log()
         $.ajax(`http://localhost:8080/api/pets/${this.props.pet.id}/activity`, {
           method: 'POST',
           data: {
@@ -38,7 +37,7 @@ export default class Event extends React.Component {
 
           },
           error: function (err) {
-            console.log("It doesnt work")
+            console.log(err)
           }
         });
     }

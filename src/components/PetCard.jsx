@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-// import PetProfile from './PetProfile'
-// import Dashboard from './Dashboard'
 import Event from './Activity';
-// import $ from 'jquery'; 
 import axios from 'axios'
 import FileUpload from './FileUpload';
- 
+
 export default class PetCard extends Component {
   constructor(props) {
     super(props)
@@ -24,19 +21,18 @@ export default class PetCard extends Component {
 
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.fetchData();
   }
-  fetchData(){
-    axios.get(`http://localhost:8080/api/pets/${this.props.pet.id}/weights/`, {userId: 2}) 
+  fetchData() {
+    axios.get(`http://localhost:8080/api/pets/${this.props.pet.id}/weights/`)
       .then(response => {
-        console.log('----',response);
-        this.setState( { weights: response.data })
+        this.setState({ weights: response.data })
       })
       .catch(error => {
         console.log(error);
       });
-}
+  }
   togglePopup() {
     this.setState({
       showPopup: !this.state.showPopup
@@ -44,7 +40,6 @@ export default class PetCard extends Component {
   }
 
   onClickTypeActivity() {
-    console.log("CLICKED")
     this.setState({
       type: "Activity",
       showPopup: !this.state.showPopup
@@ -52,7 +47,6 @@ export default class PetCard extends Component {
   }
 
   onClickTypeFeeding() {
-    console.log("CLICKED")
     this.setState({
       type: "Feeding",
       showPopup: !this.state.showPopup
@@ -60,18 +54,14 @@ export default class PetCard extends Component {
   }
 
   onClickTypeWeight() {
-    console.log("CLICKED")
     this.setState({
       type: "Weight",
       showPopup: !this.state.showPopup
     });
   }
 
-  
-
   render() {
     return (
-                  
       <div className="col-sm-4">
         <div className="chart-wrapper">
           <div className="chart-title">
@@ -79,34 +69,22 @@ export default class PetCard extends Component {
           </div>
           <div className="chart-stage">
             <div className="card" style={{ width: "100%" }}>
-              <img className="card-img-top responsive" style={{ width: "100%", objectFit:"cover" }} src={this.props.pet.img}
+              <img className="card-img-top responsive" style={{ width: "100%", objectFit: "cover" }} src={this.props.pet.img}
                 alt="Card cap" ></img>
               <div className="card-body">
               </div>
               <div className="container-profile" style={{ padding: "10px" }}>
-                  {/* <div className="container-row">
-                    <p>Pet Weightz: </p>
-                    <p>{this.state.weights.length ? this.state.weights[0].notes : 'no weights'}</p>
-                  </div>
-                  <div className="container-row">
-                    <p>Last Fed: </p>
-                    <p>{this.props.pet}</p>
-                  </div>
-                  <div className="container-row">
-                    <p>Last Active: </p>
-                    <p>Date of last activity</p>
-                  </div> */}
-                  </div>
-                <div className="card-body-buttons">
-                  <button  onClick={this.onClickTypeFeeding}   className="btn btn-activity" href="#">Feed Me</button>
-                  <button  onClick={this.onClickTypeWeight}   className="btn btn-activity" href="#">Update Weight</button>
-                  <Link to={`/records/${this.props.pet.id}`} style={{float: "right"}}><button className="btn btn-warning">Records</button></Link>
-                  <Link to={`/images/${this.props.pet.id}`} style={{float: "right"}}><button className="btn btn-warning">Images</button></Link>
-                </div>
+              </div>
+              <div className="card-body-buttons">
+                <button onClick={this.onClickTypeFeeding} className="btn btn-activity" href="#">Feed Me</button>
+                <button onClick={this.onClickTypeWeight} className="btn btn-activity" href="#">Update Weight</button>
+                <Link to={`/records/${this.props.pet.id}`} style={{ float: "right" }}><button className="btn btn-warning">Records</button></Link>
+                <Link to={`/images/${this.props.pet.id}`} style={{ float: "right" }}><button className="btn btn-warning">Images</button></Link>
               </div>
             </div>
           </div>
-          {this.state.showPopup ? 
+        </div>
+        {this.state.showPopup ?
           <Event
             text='Close Me'
             type={this.state.type}
@@ -115,10 +93,9 @@ export default class PetCard extends Component {
             onNewActivity={this.onNewActivity}
           />
           : null
-          }
-        </div>
+        }
+      </div>
+    )
+  }
+}
 
-        )
-      }
-      }
-    

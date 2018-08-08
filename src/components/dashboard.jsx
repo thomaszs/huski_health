@@ -5,14 +5,9 @@ import NavBar from "./NavBar.jsx";
 import PetProfile from "./PetProfile.jsx";
 import Timeline from "./Timeline.jsx";
 import PetChart from "./PetChart.jsx";
-
-// import getVets from './Vets.jsx'
-
 import StatusBar from "./StatusBar.jsx";
 import ChatBot from 'react-simple-chatbot';
 import Example from './ChatBot.jsx'
-
-// import NewPetForm from "./NewPetForm.jsx";
 import NewPetForm from "./NewPetForm.jsx";
 
 import axios from 'axios'
@@ -58,9 +53,6 @@ class Dashboard extends Component {
   }
   componentDidUpdate() {
   }
-
-
-
 
   // Once user submits an activity, it should set the state of activities to the new state.
   // oldActivityState + newActivity = newActityState

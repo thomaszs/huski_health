@@ -8,7 +8,7 @@ import {
     PlusButton,
 } from 'react-svg-buttons'
 
-const Demo = () => (
+const AddNewPet = () => (
     <div>
         <PlusButton 
           size={50}
@@ -31,7 +31,6 @@ export default class Pets extends Component {
         let userId = cookies.get('hh')
         axios.get(`http://localhost:8080/api/pets/${userId}`)
             .then(response => {
-                console.log(response);
                 this.setState({ pets: response.data })
             })
             .catch(error => {
@@ -43,7 +42,7 @@ export default class Pets extends Component {
         return (
             <Fragment>
                 <div className="row">
-                    <h1><a className="btn-new-pet" href="http://localhost:3000/pets/new"><Demo /><small>Add New Pet</small></a></h1>
+                    <h1><a className="btn-new-pet" href="http://localhost:3000/pets/new"><AddNewPet /><small>Add New Pet</small></a></h1>
                 </div>
                 <div className="row-pets">
                     {this.state.pets.map(pet => (

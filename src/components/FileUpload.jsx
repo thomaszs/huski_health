@@ -19,7 +19,6 @@ export default class FileUpload extends Component {
     data.append('petid', this.props.petid);
     axios.post('http://localhost:8080/api/uploadimage', data)
       .then((response) => {
-        console.log(response.data)
         this.props.retrieveImages()
       })
       .catch(function (error) {
