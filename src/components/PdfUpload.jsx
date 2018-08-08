@@ -15,15 +15,11 @@ export default class PdfUpload extends Component {
   handleUploadPdf(ev) {
     ev.preventDefault();
     const data = new FormData();
-    console.log("PET ID", this.props.petid)
     data.append('file', this.uploadInput.files[0]);
     data.append('filename', this.fileName.value);
-    data.append('petid', this.props.petid)
-    
-    console.log("TESTING",this.uploadInput.files[0])
+    data.append('petid', this.props.petid)    
     axios.post('http://localhost:8080/api/uploadpdf', data) 
   .then((response) => {
-          console.log(response.data)
           this.props.retrieveFiles()
       })
       .catch(function (error) {

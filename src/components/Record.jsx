@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import { Document, Page } from 'react-pdf';
-
 import '../css/records.css';
 
 export default class Record extends Component {
@@ -18,10 +17,8 @@ export default class Record extends Component {
 
 
   componentDidMount() {
-      console.log(this.props.match.params.id)
     axios.get(`http://localhost:8080/api/record/${this.props.match.params.id}`)
     .then((response) => {
-          console.log(response.data)
         this.setState({pdf: `http://localhost:8080/${response.data[0].filepath}`})
       })
       .catch(function (error) {
@@ -45,12 +42,6 @@ export default class Record extends Component {
 
   render() {
     const { pageNumber, numPages } = this.state;
-    // const pages = for (let i = 1; i > numPages; i++) {
-    //     return (
-    //         <Page pageNumber ={i} />
-    //     )
-    // }
-
     return (
         <div className="container">
         <div className="pdf">

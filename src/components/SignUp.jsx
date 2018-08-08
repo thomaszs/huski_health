@@ -54,10 +54,8 @@ export default class SignUp extends Component {
               if (result === 'already found') {
                   alert("Account already created, please login")
               } else {
-            console.log("Yes, it worked");
             let user = result[0]
             cookies.set('hh', user.id, { path: '/' });
-            console.log(cookies.get('hh'));
             let userId = cookies.get('hh')
             this.props.setUser(userId);
             this.props.history.push('/pets')

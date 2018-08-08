@@ -116,12 +116,6 @@ const petWeightRange =
       "Maine Coon": [10, 25],
       "Egyptian Mau": [12, 18]
     }
-    // for (const key in petWeightRange) {
-    //   const rangeArray = petWeightRange[key].split('–');
-    //   petWeightRange[key] = rangeArray; 
-    // }
-    
-    // console.log(petWeightRange)
 
     const graphSettings = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
@@ -185,7 +179,7 @@ const petWeightRange =
               yAdjust: 10,
               fontColor: 'rgba(75,192,192,1)'
             },
-            id: 'a-line-2', // optional
+            id: 'a-line-2', 
             type: 'line',
             mode: 'horizontal',
             scaleID: 'y-axis-0',
@@ -219,59 +213,30 @@ class WeightChart extends React.Component {
     }; 
 
     this.getLatestGraphData = this.getLatestGraphData.bind(this);
-
-  //   const currentBreed = this.props.pet.breed;
-  //   let defaultMinWeight = 10;
-  //   let defaultMaxWeight = 20;
-  //   let breedMatch;
-  //   for (let eachPet in props.petWeightRange) {
-  //     if (currentBreed === eachPet) {
-  //      breedMatch = true 
-  //   } 
-  // }
-  //   if (breedMatch) {
-  //     defaultMinWeight = props.petWeightRange[currentBreed][0];
-  //     defaultMaxWeight = props.petWeightRange[currentBreed][1];
-  //     options.annotation.annotations[0].value = defaultMinWeight;
-  //     options.annotation.annotations[1].value = defaultMaxWeight;
-  //   } else {
-  //     options.annotation.annotations[0].value = defaultMinWeight;
-  //     options.annotation.annotations[1].value = defaultMaxWeight;
-  //   }
   }
   componentWillMount() {
     this.getLatestGraphData();
   }
-
-  // componentDidUpdate() {
-  //   this.getLatestGraphData();
-  // }
 
   getLatestGraphData() {
     const { pet: { id } = {} } = this.props;
     $.get(`http://localhost:8080/api/pets/${ id }/weights`)
     .then(data => {
       const { graphSettings } = this.state;
-      console.log(data);
       const newWeight = [];
       for (let i of data) {
       newWeight.push(i.notes)
       }
       graphSettings.datasets[0].data = newWeight
       graphSettings.datasets[0].label = this.props.pet.name;
-      // console.log("NEW WEIGHT", newWeight.slice(-1)[0], "ID", this.props.pet.id)
-      console.log(graphSettings.datasets[0].data)
-      // graphSettings.datasets[0].data.push(+data[0].notes) 
       this.setState({ graphSettings });
 
     })
     .catch(err => {
-      debugger;
+      console.log(err);
     });
   }
-
   render() {
-
     const { graphSettings, options } = this.state
     return (
       <div>
@@ -281,7 +246,6 @@ class WeightChart extends React.Component {
     );
   }
 }
-
 WeightChart.defaultProps = {
   petWeightRange,
   options,

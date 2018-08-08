@@ -15,14 +15,12 @@ export default class NavBar extends Component {
   }
 
   onClickLogout(event) {
-    // const cookies = new Cookies();
     event.preventDefault()
     cookies.remove('hh', { path: '/' });
     this.props.logout()
   }
 
   buttons = function () {
-    console.log(this.props.currentUser)
     if (cookies.get('hh')) {
       return <button
         onClick={this.onClickLogout}

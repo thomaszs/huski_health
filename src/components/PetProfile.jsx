@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import moment from 'moment';
 
-
 class PetProfile extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +18,6 @@ class PetProfile extends Component {
     this.onChangePetName = this.onChangePetName.bind(this);
     this.onChangePetWeight = this.onChangePetWeight.bind(this);
     this.onChangePetNotes = this.onChangePetNotes.bind(this); 
-    // this.onChangePetBreed = this.onChangePetBreed.bind(this);
   }
 
   toggleEdit() {
@@ -32,7 +30,6 @@ class PetProfile extends Component {
 
   savePetProfile(event) {
     event.preventDefault();
-    console.log()
     $.ajax(`http://localhost:8080/api/pets/${this.props.pet.id}`, {
       method: 'POST',
       data: {
@@ -44,11 +41,10 @@ class PetProfile extends Component {
         this.props.editPetInfo(result);
       },
       error: function (err) {
-        console.log("It doesnt work")
+        console.log(err)
       }
     });
     this.toggleEdit();
-    console.log(event)
   }
 
   onChangePetName(event) {
@@ -63,7 +59,6 @@ class PetProfile extends Component {
 
   onChangePetWeight(event) {
     event.preventDefault()
-    console.log(this.state.pet.weight)
     this.setState({ petWeight: event.target.value })
   }
 
@@ -77,7 +72,6 @@ class PetProfile extends Component {
                 <div id="profile">
                   <h1>{this.state.petName}</h1>
                   <img className="pet-img" style={{ width: "100%" }} src={this.state.pet.img} alt="pet profile" />
-                  {/*Consider creating a EditPetProfile.jsx component. Will need to make ajax post request to the server to save new pet information*/}
                   <div className="chart-notes">
                     <div className="form-group">
                       <table className="table table-dark" style={{ fontSize: 16 }}>
@@ -85,10 +79,6 @@ class PetProfile extends Component {
                         <form>
                           <label>Name:</label>
                           <input type="text" className="form-control" name="name" defaultValue={this.state.petName} onChange={this.onChangePetName} /><br/>
-                          {/* <label>Weight:</label><input type="text" className="form-control" name="weight" defaultValue={this.state.petWeight} onChange={this.onChangePetWeight} /><br/> */}
-                          {/* <label>Age:</label><input type="text" className="form-control" name="age" /><br/> */}
-                          {/* <label>Birthday:</label><input type="text" className="form-control" name="birthday" /><br/> */}
-                          {/* <label>Breed:</label><input type="text" className="form-control" name="breed" defaultValue={this.state.pet.breed} onChange={this.onChangePetBreed} /><br/> */}
                           <label>Notes:</label> <input type="text" className="form-control" name="notes" defaultValue={this.state.petNotes} onChange={this.onChangePetNotes} /><br/>
                           <button type="button" className="btn btn-primary" onClick={this.savePetProfile}>Save</button>
                         </form>
@@ -103,7 +93,6 @@ class PetProfile extends Component {
         </div>
       )
     }
-
     return (
       <div className="chart-title">
         <div className="chart-wrapper">
@@ -112,7 +101,6 @@ class PetProfile extends Component {
             <img className="pet-img" alt="petprofilepic" style={{ width: "100%" }} src={this.props.pet.img} />
           </div>
           <div className="chart-stage" id="chart-01">
-
           </div>
           <div className="chart-notes">
             <div className="profile-container">

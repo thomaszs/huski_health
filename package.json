@@ -34,7 +34,6 @@
     "sweetalert": "^2.1.0",
     "universal-cookie": "^2.2.0",
     "universal-cookie-express": "^2.2.0",
-    "victory": "^30.1.0",
     "what-dog": "^1.0.4"
   },
   "scripts": {
