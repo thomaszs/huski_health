@@ -43,7 +43,7 @@ exports.seed = function(knex, Promise) {
         {type: 'Weight', notes: '27', profile_id: 2, pet_id: 1},
         {type: 'Weight', notes: '26', profile_id: 2, pet_id: 1},
         {type: 'Weight', notes: '26', profile_id: 2, pet_id: 1},
-        {type: 'Weight', notes: '25', profile_id: 2, pet_id: 1},
+        {type: 'Weight', notes: '35', profile_id: 2, pet_id: 1},
         {type: 'Activity', notes: 'Chased his tail for 1 hr', profile_id: 2, pet_id: 2},
         {type: 'Feeding', notes: 'Duck Confit', profile_id: 1, pet_id: 2},
         {type: 'Weight', notes: '90', profile_id: 2, pet_id: 2},

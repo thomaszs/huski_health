@@ -2,6 +2,10 @@
 
 HuskiHealth is a pet health tracking app designed to help pet owners take the best care of their furry friend. Simply upload a picture of a pet and HuskiHealth will identify the breed and provide a dashboard to track and display a pet's weight, feeding schedule, and exercise activities. We'll also help owner's locate and chat with a vet online, and go paperless to organize a pet's medical records. HuskiHealth is the perfect tool for pet owner's to organize and track their pet's info all in one app. 
 
+## What is looks like
+![Landing Page](https://raw.github.com/thomaszs/huski_health/master/Screenshots/Landing.png)
+![Dashboard](https://raw.github.com/thomaszs/huski_health/master/Screenshots/Dashboard.png)
+![Chatbot](https://raw.github.com/thomaszs/huski_health/master/Screenshots/Chatbot.png)
 
 ## Getting Started
 
