@@ -5,7 +5,6 @@ HuskiHealth is a pet health tracking app designed to help pet owners take the be
 ## What is looks like
 ![Landing Page](https://raw.github.com/thomaszs/huski_health/master/Screenshots/Landing.png)
 ![Dashboard](https://raw.github.com/thomaszs/huski_health/master/Screenshots/Dashboard.png)
-![Chatbot](https://raw.github.com/thomaszs/huski_health/master/Screenshots/Chatbot.png)
 
 ## Getting Started
 
